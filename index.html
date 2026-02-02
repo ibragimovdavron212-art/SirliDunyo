@@ -57,7 +57,7 @@ input {
   width: calc(30% - 5px);
 }
 input.date-picker {
-  width: 30px; /* juda kichkina faqat ikonka uchun */
+  width: 30px;
   padding: 5px;
   vertical-align: middle;
 }
@@ -76,6 +76,12 @@ footer {
   padding: 15px;
   font-size: 14px;
   opacity: 0.7;
+}
+#burj-info {
+  margin-top:15px;
+  background: rgba(255,255,255,0.1);
+  padding:15px;
+  border-radius:10px;
 }
 </style>
 </head>
@@ -112,7 +118,8 @@ footer {
         <input type="date" class="date-picker" id="datepicker" title="Kalendar" onchange="syncDate()">
       </div>
       <button class="submit" onclick="showBurj()">Natija</button>
-      <p id="burj-result" style="margin-top:15px; font-weight:bold;"></p>
+      <div id="burj-result"></div>
+      <div id="burj-info"></div>
     </div>
   </div>
 
@@ -152,7 +159,7 @@ function syncDate() {
   document.getElementById('year').value = d.getFullYear();
 }
 
-// Burj aniqlash (Western Zodiac)
+// Burj aniqlash va tavsif
 function showBurj() {
   const day = parseInt(document.getElementById('day').value);
   const month = parseInt(document.getElementById('month').value);
@@ -160,6 +167,7 @@ function showBurj() {
 
   if (!day || !month || !year || day<1 || day>31 || month<1 || month>12) {
     document.getElementById('burj-result').innerText = "Iltimos, kun, oy va yilingizni to‘g‘ri kiriting.";
+    document.getElementById('burj-info').innerHTML = "";
     return;
   }
 
@@ -178,24 +186,24 @@ function showBurj() {
   else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
 
   const info = {
-    "Qo‘y ♈": "Jasoratli va faol shaxs.",
-    "Buzoq ♉": "Sabrli va ishonchli odam.",
-    "Egizak ♊": "Ijodiy va tez o‘ylovchi.",
-    "Qisqichbaqa ♋": "Hissiy va mehribon.",
-    "Arslon ♌": "Rahbar va e’tiborli.",
-    "Parizod ♍": "Tahlilchi va tartibli.",
-    "Tarozi ♎": "Adolatli va sotsial.",
-    "Chayon ♏": "Intensiv va sirli.",
-    "O‘qotar ♐": "Erkin va sarguzashtchi.",
-    "Echki ♑": "Mas’uliyatli va realistik.",
-    "Qovg‘a ♒": "Ijodiy va futuristik.",
-    "Baliq ♓": "Hissiy va intuitsiyaga ega."
+    "Qo‘y ♈": "Jasoratli va faol shaxs. Sodiq do‘st, ba’zan sabrsiz.",
+    "Buzoq ♉": "Sabrli va ishonchli, moddiy jihatdan ehtiyotkor, ba’zan egosentrik.",
+    "Egizak ♊": "Ijodiy, tez o‘ylovchi, ba’zan e’tiborini jamlay olmaydi.",
+    "Qisqichbaqa ♋": "Hissiy va mehribon, oila va do‘stlariga sodiq.",
+    "Arslon ♌": "Rahbar va e’tiborli, ijodiy, ba’zan g‘ururlik ko‘rsatadi.",
+    "Parizod ♍": "Tahlilchi va tartibli, ba’zan tanqidiy, mas’uliyatli.",
+    "Tarozi ♎": "Adolatli va sotsial, muvozanatli va diplomatik.",
+    "Chayon ♏": "Intensiv va sirli, qat’iy va sodiq, ba’zan sirli.",
+    "O‘qotar ♐": "Erkin va sarguzashtchi, optimistik va ijobiy.",
+    "Echki ♑": "Mas’uliyatli va realistik, qat’iyatli va sabrli.",
+    "Qovg‘a ♒": "Ijodiy va futuristik, g‘oyaviy va mustaqil.",
+    "Baliq ♓": "Hissiy va intuitsiyaga ega, mehribon va sezgir."
   };
 
-  document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b><br>${info[burj]}`;
+  document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b>`;
+  document.getElementById('burj-info').innerHTML = info[burj];
 }
 </script>
 
 </body>
 </html>
-      
