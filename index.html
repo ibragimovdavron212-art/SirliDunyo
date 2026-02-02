@@ -20,10 +20,6 @@
       margin: 0;
       font-size: 2.5em;
     }
-    header p {
-      margin: 5px 0 0 0;
-      font-size: 1.2em;
-    }
     nav {
       display: flex;
       justify-content: center;
@@ -53,11 +49,13 @@
       border-radius: 15px;
       margin-bottom: 20px;
     }
-    input, select {
+    input, select, textarea {
       padding: 10px;
       border-radius: 8px;
       border: none;
       margin: 5px 0;
+      width: 100%;
+      box-sizing: border-box;
     }
     button.submit {
       padding: 10px 20px;
@@ -81,7 +79,6 @@
 
 <header>
   <h1>🌙 Sirli Dunyo</h1>
-  <p>Tush tabiri • Burjlar • Sirli maʼlumotlar</p>
 </header>
 
 <nav>
@@ -95,25 +92,18 @@
   <div id="tush" class="tab-content">
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Bu yerga yangi tush postlarini qo‘shishingiz mumkin.</p>
-      <!-- Misol post -->
-      <div class="card" style="background: rgba(255,255,255,0.2);">
-        <h3>Uyqudagi baliq</h3>
-        <p>Baliq tushda ko‘rish sog‘liq va boylik belgisi.</p>
-      </div>
-      <div class="card" style="background: rgba(255,255,255,0.2);">
-        <h3>Qizil gullar</h3>
-        <p>Qizil gul tushda sevgi va iliqlik belgisi.</p>
-      </div>
+      <p>Yangi tush postlarini shu yerga qo‘shish rejalashtirilgan.</p>
+      <!-- Keyin bu yerga po‘stlarni qo‘shasiz -->
     </div>
   </div>
 
   <!-- Burjlar -->
   <div id="burj" class="tab-content" style="display:none;">
     <div class="card">
-      <h2>♈ Burjlar</h2>
-      <p>O‘z tug‘ilgan sanangizni kiriting:</p>
+      <h2>♈ Burj aniqlash</h2>
+      <p>Tug‘ilgan sanangizni kiriting yoki tanlang:</p>
       <input type="date" id="birthdate">
+      <textarea id="birthdate-text" placeholder="Yoki sanani yozing (yyyy-mm-dd)"></textarea>
       <button class="submit" onclick="showBurj()">Natija</button>
       <p id="burj-result" style="margin-top:15px; font-weight:bold;"></p>
     </div>
@@ -123,13 +113,13 @@
   <div id="sirli" class="tab-content" style="display:none;">
     <div class="card">
       <h2>✨ Sirli Dunyo</h2>
-      <p>Bu yerga sirli maʼlumotlar yoki postlarni keyin qo‘shishingiz mumkin.</p>
+      <p>Keyinchalik bu yerga sirli ma’lumotlar yoki postlar qo‘shiladi.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 SirliDunyo | Barcha huquqlar himoyalangan
+  © 2026 SirliDunyo
 </footer>
 
 <script>
@@ -149,11 +139,14 @@
 
   // Burj aniqlash funksiyasi
   function showBurj() {
-    const date = document.getElementById('birthdate').value;
-    if(!date) {
-      document.getElementById('burj-result').innerText = "Iltimos, tug‘ilgan sanangizni kiriting.";
+    let date = document.getElementById('birthdate').value;
+    const text = document.getElementById('birthdate-text').value;
+
+    if(!date && !text) {
+      document.getElementById('burj-result').innerText = "Iltimos, tug‘ilgan sanangizni kiriting yoki yozing.";
       return;
     }
+    if(!date) date = text;
 
     const month = new Date(date).getMonth() + 1;
     const day = new Date(date).getDate();
@@ -172,7 +165,22 @@
     else if ((month ==1 && day >=20) || (month ==2 && day <=18)) burj="Qovg‘a ♒";
     else if ((month ==2 && day >=19) || (month ==3 && day <=20)) burj="Baliq ♓";
 
-    document.getElementById('burj-result').innerText = "Sizning burjingiz: " + burj;
+    const info = {
+      "Qo‘y ♈": "Jasoratli va faol shaxs.",
+      "Buzoq ♉": "Sabrli va ishonchli odam.",
+      "Egizak ♊": "Ijodiy va tez o‘ylovchi.",
+      "Qisqichbaqa ♋": "Hissiy va mehribon.",
+      "Arslon ♌": "Rahbar va e’tiborli.",
+      "Parizod ♍": "Tahlilchi va tartibli.",
+      "Tarozi ♎": "Adolatli va sotsial.",
+      "Chayon ♏": "Intensiv va sirli.",
+      "O‘qotar ♐": "Erkin va sarguzashtchi.",
+      "Echki ♑": "Mas’uliyatli va realistik.",
+      "Qovg‘a ♒": "Ijodiy va futuristik.",
+      "Baliq ♓": "Hissiy va intuitsiyaga ega."
+    };
+
+    document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b><br>${info[burj]}`;
   }
 </script>
 
