@@ -49,7 +49,7 @@
       border-radius: 15px;
       margin-bottom: 20px;
     }
-    input, select, textarea {
+    input {
       padding: 10px;
       border-radius: 8px;
       border: none;
@@ -100,8 +100,8 @@
   <div id="burj" class="tab-content" style="display:none;">
     <div class="card">
       <h2>♈ Burj aniqlash</h2>
-      <p>Tug‘ilgan sanangizni kalendardan tanlang:</p>
-      <input type="date" id="birthdate">
+      <p>Yilingizni yozing (faqat yil):</p>
+      <input type="number" id="birthyear" placeholder="Masalan: 1995">
       <button class="submit" onclick="showBurj()">Natija</button>
       <p id="burj-result" style="margin-top:15px; font-weight:bold;"></p>
     </div>
@@ -121,7 +121,7 @@
 </footer>
 
 <script>
-  // Tablar funksiyasi
+  // Tablar
   const buttons = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
 
@@ -135,33 +135,21 @@
     });
   });
 
-  // Burj aniqlash
+  // Burj aniqlash (faqat yil asosida)
   function showBurj() {
-    const input = document.getElementById('birthdate').value;
+    const yearInput = document.getElementById('birthyear').value.trim();
+    const year = parseInt(yearInput);
 
-    if(!input) {
-      document.getElementById('burj-result').innerText = "Iltimos, tug‘ilgan sanangizni tanlang.";
+    if(!year || year < 1900 || year > 2100) {
+      document.getElementById('burj-result').innerText = "Iltimos, yilingizni to‘g‘ri kiriting.";
       return;
     }
 
-    const date = new Date(input);
-    const month = date.getMonth() + 1; // 0-11
-    const day = date.getDate();
-
-    let burj = "";
-
-    if ((month == 3 && day >=21) || (month ==4 && day <=19)) burj="Qo‘y ♈";
-    else if ((month ==4 && day >=20) || (month ==5 && day <=20)) burj="Buzoq ♉";
-    else if ((month ==5 && day >=21) || (month ==6 && day <=20)) burj="Egizak ♊";
-    else if ((month ==6 && day >=21) || (month ==7 && day <=22)) burj="Qisqichbaqa ♋";
-    else if ((month ==7 && day >=23) || (month ==8 && day <=22)) burj="Arslon ♌";
-    else if ((month ==8 && day >=23) || (month ==9 && day <=22)) burj="Parizod ♍";
-    else if ((month ==9 && day >=23) || (month ==10 && day <=22)) burj="Tarozi ♎";
-    else if ((month ==10 && day >=23) || (month ==11 && day <=21)) burj="Chayon ♏";
-    else if ((month ==11 && day >=22) || (month ==12 && day <=21)) burj="O‘qotar ♐";
-    else if ((month ==12 && day >=22) || (month ==1 && day <=19)) burj="Echki ♑";
-    else if ((month ==1 && day >=20) || (month ==2 && day <=18)) burj="Qovg‘a ♒";
-    else if ((month ==2 && day >=19) || (month ==3 && day <=20)) burj="Baliq ♓";
+    // Burjlarni yilga qarab chiqarish (faqat misol, xohlansa kun/oy bilan aniqlash mumkin)
+    // Shu yerda xulosa qilinadi: masalan, 12 yil burji aylanishiga qarab
+    const burjList = ["Qo‘y ♈","Buzoq ♉","Egizak ♊","Qisqichbaqa ♋","Arslon ♌","Parizod ♍","Tarozi ♎","Chayon ♏","O‘qotar ♐","Echki ♑","Qovg‘a ♒","Baliq ♓"];
+    const burjIndex = year % 12;
+    const burj = burjList[burjIndex];
 
     const info = {
       "Qo‘y ♈": "Jasoratli va faol shaxs.",
