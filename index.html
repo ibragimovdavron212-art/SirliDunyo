@@ -92,8 +92,7 @@
   <div id="tush" class="tab-content">
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Yangi tush postlarini shu yerga qo‘shish rejalashtirilgan.</p>
-      <!-- Keyin bu yerga po‘stlarni qo‘shasiz -->
+      <p>Bu yerga tush postlari qo‘shiladi. Keyin qo‘shimcha postlar shu bo‘limga kiritiladi.</p>
     </div>
   </div>
 
@@ -101,7 +100,7 @@
   <div id="burj" class="tab-content" style="display:none;">
     <div class="card">
       <h2>♈ Burj aniqlash</h2>
-      <p>Tug‘ilgan sanangizni kiriting yoki tanlang:</p>
+      <p>Tug‘ilgan sanangizni kalendardan tanlang yoki yozib kiriting:</p>
       <input type="date" id="birthdate">
       <textarea id="birthdate-text" placeholder="Yoki sanani yozing (yyyy-mm-dd)"></textarea>
       <button class="submit" onclick="showBurj()">Natija</button>
@@ -139,17 +138,18 @@
 
   // Burj aniqlash funksiyasi
   function showBurj() {
-    let date = document.getElementById('birthdate').value;
+    let input = document.getElementById('birthdate').value;
     const text = document.getElementById('birthdate-text').value;
 
-    if(!date && !text) {
+    if(!input && !text) {
       document.getElementById('burj-result').innerText = "Iltimos, tug‘ilgan sanangizni kiriting yoki yozing.";
       return;
     }
-    if(!date) date = text;
+    if(!input) input = text;
 
-    const month = new Date(date).getMonth() + 1;
-    const day = new Date(date).getDate();
+    const date = new Date(input);
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
     let burj = "";
 
     if ((month == 3 && day >=21) || (month ==4 && day <=19)) burj="Qo‘y ♈";
