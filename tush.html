@@ -1,111 +1,94 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sirli Dunyo - Tush tabiri</title>
-<style>
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  color: white;
-}
-header {
-  text-align: center;
-  padding: 30px;
-  background: rgba(0,0,0,0.3);
-}
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-nav {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 15px;
-}
-nav a {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  font-weight: bold;
-  text-decoration: none;
-}
-nav a.active {
-  background: rgba(255,255,255,0.3);
-}
-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-.card {
-  background: rgba(255,255,255,0.1);
-  padding: 25px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-.tab-content {
-  display: none;
-}
-.tab-content.active {
-  display: block;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirli Dunyo – Tush tabiri</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1f1c2c, #928dab);
+      color: white;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+      gap: 15px;
+    }
+
+    nav a {
+      padding: 10px 20px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.1);
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a.active {
+      background: rgba(255,255,255,0.3);
+    }
+
+    section {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      opacity: 0.8;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-  <h1>🌙 Sirli Dunyo - Tush tabiri</h1>
-</header>
+  <header>
+    <h1>🌙 Sirli Dunyo – Tush tabiri</h1>
+  </header>
 
-<nav>
-  <a href="#tush" class="active" onclick="showTab('tush')">🔮 Tush tabiri</a>
-</nav>
+  <nav>
+    <a href="/index.html">🏠 Bosh sahifa</a>
+    <a href="/tush.html" class="active">🔮 Tush tabiri</a>
+  </nav>
 
-<section>
-  <div id="tush" class="tab-content active">
+  <section>
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Bu yerga tush postlari qo'shiladi. Keyin qo'shimcha postlar shu bo'limga kiritiladi.</p>
+      <p>
+        Bu yerda turli tushlarning ta’biri joylanadi.
+        Keyinchalik har bir tush alohida maqola sifatida qo‘shiladi.
+      </p>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <p>© 2026 Sirli Dunyo — Tush tabiri portal</p>
-</footer>
-
-<script>
-function showTab(tabName) {
-  const tabContents = document.querySelectorAll('.tab-content');
-  const navLinks = document.querySelectorAll('nav a');
-  
-  tabContents.forEach(tc => tc.classList.remove('active'));
-  navLinks.forEach(nav => nav.classList.remove('active'));
-  
-  const content = document.getElementById(tabName);
-  const activeNav = document.querySelector(`nav a[href="#${tabName}"]`);
-  
-  if (content) content.classList.add('active');
-  if (activeNav) activeNav.classList.add('active');
-  
-  window.history.pushState({}, '', `#${tabName}`);
-}
-
-// Sahifa yuklanganda tabni ko'rsatish
-window.onload = function() {
-  const hash = window.location.hash.substring(1);
-  if (hash === 'tush') {
-    showTab('tush');
-  } else {
-    showTab('tush');
-  }
-};
-</script>
+  <footer>
+    <p>© 2026 Sirli Dunyo — Tush tabiri portali</p>
+  </footer>
 
 </body>
 </html>
