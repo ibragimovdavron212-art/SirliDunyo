@@ -1,430 +1,404 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>✨ Sirli Dunyo – Burjlar</title>
-<style>
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #1f1c2c, #928dab);
-  color: white;
-}
-header {
-  text-align: center;
-  padding: 30px;
-  background: rgba(0,0,0,0.3);
-}
-header h1 {
-  margin: 0;
-  font-size: 2.5em;
-}
-nav {
-  display: flex;
-  justify-content: center;
-  margin: 20px 0;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-nav a {
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: rgba(255,255,255,0.1);
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-nav a.active {
-  background: rgba(255,255,255,0.3);
-}
-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
-}
-.card {
-  background: rgba(255,255,255,0.1);
-  padding: 25px;
-  border-radius: 15px;
-  margin-bottom: 20px;
-}
-.date-inputs {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  margin: 20px 0;
-  flex-wrap: wrap;
-}
-.date-group {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.date-group label {
-  font-size: 14px;
-  color: #ccc;
-  min-width: 40px;
-}
-input[type="number"] {
-  width: 70px;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255,255,255,0.15);
-  color: white;
-  text-align: center;
-}
-input[type="date"] {
-  width: 140px;
-  padding: 9px;
-  border-radius: 8px;
-  border: none;
-  background: rgba(255,255,255,0.15);
-  color: white;
-  font-size: 13px;
-}
-.separator {
-  color: #888;
-  font-size: 14px;
-}
-button.submit {
-  padding: 12px 30px;
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(45deg, #6a11cb, #2575fc);
-  color: white;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 15px;
-  font-size: 16px;
-  transition: all 0.3s;
-}
-button.submit:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
-}
-footer {
-  text-align: center;
-  padding: 15px;
-  font-size: 14px;
-  opacity: 0.7;
-}
-#burj-result {
-  margin-top: 20px;
-  font-weight: bold;
-  font-size: 1.5em;
-  color: #ffcc00;
-  text-align: center;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
-}
-#burj-info {
-  margin-top: 20px;
-  background: rgba(255,255,255,0.1);
-  padding: 20px;
-  border-radius: 10px;
-  line-height: 1.7;
-  max-height: 500px;
-  overflow-y: auto;
-}
-.burj-details {
-  margin-top: 10px;
-  border-top: 1px solid rgba(255,255,255,0.2);
-  padding-top: 15px;
-}
-.gender-info {
-  margin-bottom: 25px;
-}
-.gender-info h3 {
-  color: #ffcc00;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirli Dunyo - Burj aniqlash</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            color: white;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ffcc00;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .date-inputs {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .date-group {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .date-group label {
+            font-size: 16px;
+            color: #ccc;
+            min-width: 40px;
+        }
+        
+        input[type="number"] {
+            width: 80px;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        input[type="date"] {
+            width: 160px;
+            padding: 11px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 14px;
+        }
+        
+        .separator {
+            color: #888;
+            font-size: 16px;
+        }
+        
+        button.submit {
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto;
+        }
+        
+        button.submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.5);
+        }
+        
+        #burj-result {
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 1.8em;
+            color: #ffcc00;
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 2px solid rgba(255, 204, 0, 0.3);
+        }
+        
+        #burj-info {
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px;
+            border-radius: 10px;
+            line-height: 1.7;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .gender-info {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        .gender-info h3 {
+            color: #ffcc00;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3em;
+        }
+        
+        .gender-info p {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        strong {
+            color: #ffcc00;
+        }
+        
+        .back-btn {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 15px;
+            font-size: 14px;
+            opacity: 0.7;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .date-inputs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <h1>✨ Sirli Dunyo – Burjlar</h1>
-</header>
-
-<nav>
-  <a href="/index.html">🏠 Bosh sahifa</a>
-  <a href="/tush.html">🔮 Tush tabiri</a>
-  <a href="/burj.html" class="active">✨ Burjlar</a>
-</nav>
-
-<section>
-  <div class="card">
-    <h2>♈ Burj aniqlash</h2>
-    <p>Tug'ilgan kun va oyingizni tanlang:</p>
-    
-    <div class="date-inputs">
-      <div class="date-group">
-        <label>Kun:</label>
-        <input type="number" id="day" placeholder="Kun" min="1" max="31" value="15">
-      </div>
-      
-      <div class="date-group">
-        <label>Oy:</label>
-        <input type="number" id="month" placeholder="Oy" min="1" max="12" value="6">
-      </div>
-      
-      <span class="separator">|</span>
-      
-      <div class="date-group">
-        <label>Kalendar:</label>
-        <input type="date" id="calendar" title="Kalendardan tanlash">
-      </div>
+    <div class="container">
+        <a href="index.html" class="back-btn">🏠 Bosh sahifaga</a>
+        
+        <h1>♈ Burj aniqlash</h1>
+        
+        <p style="text-align: center; font-size: 18px; margin-bottom: 20px;">Tug'ilgan kun va oyingizni tanlang:</p>
+        
+        <div class="date-inputs">
+            <div class="date-group">
+                <label>Kun:</label>
+                <input type="number" id="day" placeholder="Kun" min="1" max="31" value="15">
+            </div>
+            
+            <div class="date-group">
+                <label>Oy:</label>
+                <input type="number" id="month" placeholder="Oy" min="1" max="12" value="6">
+            </div>
+            
+            <span class="separator">|</span>
+            
+            <div class="date-group">
+                <label>Kalendar:</label>
+                <input type="date" id="calendar" title="Kalendardan tanlash">
+            </div>
+        </div>
+        
+        <button class="submit" onclick="showBurj()">🔮 Burjimni aniqlash</button>
+        
+        <div id="burj-result"></div>
+        <div id="burj-info"></div>
     </div>
     
-    <button class="submit" onclick="showBurj()">🔮 Burjimni aniqlash</button>
-    
-    <div id="burj-result"></div>
-    <div id="burj-info"></div>
-  </div>
-</section>
+    <footer>
+        <p>© 2026 Sirli Dunyo — Burjlar portali</p>
+    </footer>
 
-<footer>
-  <p>© 2026 Sirli Dunyo — Burjlar portali</p>
-</footer>
+    <script>
+        // Burj ma'lumotlari
+        const burjInfo = {
+            "Qo'y ♈": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Qo'y ♈</h3><p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Sport, san'at va yangi sarguzashtlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, jasorat, ijodkorlik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, hissiyotlarni boshqarish</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Qo'y ♈</h3><p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do'stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Faollik, sarguzasht, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, g'urur</p></div>"
+            },
+            "Buzoq ♉": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Buzoq ♉</h3><p>Sabrli, barqaror va ishonchli. Oila va do'stlariga sodiq. Ijodiy va go'zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Barqaror munosabatlarni va tartibli hayotni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Barqarorlik, sadoqat, amaliylik</p><p><strong>Rivojlantirish kerak:</strong> O'zgarishlarga ochiqlik</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Buzoq ♉</h3><p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Tabiat, sport va san'at bilan shug'ullanishni yaxshi ko'radi.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, mehnatsevarlik, barqarorlik</p><p><strong>Rivojlantirish kerak:</strong> Yangi g'oyalarga ochiqlik</p></div>"
+            },
+            "Egizak ♊": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Egizak ♊</h3><p>Ijodiy, tez o'ylovchi va ko'p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Do'stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san'atga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Moslashuvchanlik, aql, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Diqqat jamlash, sabr</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Egizak ♊</h3><p>Aqlli, tez o'ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Tez o'zlashtiradi va yangi bilimlarga ochiq. Do'stlik va doimiy aloqalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Aql, ijodiy fikr, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Fokus, barqarorlik</p></div>"
+            },
+            "Qisqichbaqa ♋": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Qisqichbaqa ♋</h3><p>Hissiy, mehribon va oila uchun sodiq. Do'stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o'zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi.</p><p><strong>Kuchli tomonlari:</strong> Mehribonlik, sadoqat, oilaparvar</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Qisqichbaqa ♋</h3><p>Hissiy va mehribon. Oilaga va do'stlarga sodiq, himoyachilik xususiyatiga ega. Oilaviy va do'stlik masalalarida mas'uliyatli.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, himoyachilik, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Shubhalarga berilmaslik</p></div>"
+            },
+            "Arslon ♌": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Arslon ♌</h3><p>Rahbar, e'tiborli va ijodiy. U diqqat markazida bo'lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, ijodkorlik, ishonch</p><p><strong>Rivojlantirish kerak:</strong> Kamtarlik, boshqalarning fikri</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Arslon ♌</h3><p>Rahbar va e'tiborli. Ijodiy va o'ziga ishonchli. Ijtimoiy faoliyatni yoqtiradi, do'stlar va ishdagi yetakchilikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Rahbarlik, ijodkorlik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> G'urur, mag'rurlik</p></div>"
+            },
+            "Parizod ♍": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Parizod ♍</h3><p>Tahlilchi, tartibli va mas'uliyatli. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Tahlil, tartib, mukammallik</p><p><strong>Rivojlantirish kerak:</strong> Tanqidni qabul qilish</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Parizod ♍</h3><p>Tahlilchi va tartibli. Mas'uliyatli va ishga jiddiy yondashadi. Shu burj erkaklari mukammal va tizimli ishlashga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Jiddiylik, tahlil, tartib</p><p><strong>Rivojlantirish kerak:</strong> Tanqidchanlik</p></div>"
+            },
+            "Tarozi ♎": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Tarozi ♎</h3><p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do'stlik va hamkorlikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Adolat, muvozanat, diplomatiklik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Tarozi ♎</h3><p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Shu burj erkaklari adolat va muvozanatni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Muvozanat, diplomatiklik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish tezligi</p></div>"
+            },
+            "Chayon ♏": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Chayon ♏</h3><p>Intensiv, sirli va qat'iy. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e'tiborli.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, qat'iyatli, sirlik</p><p><strong>Rivojlantirish kerak:</strong> Xotirjamlik</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Chayon ♏</h3><p>Sirli va intensiv. Qattiq va qat'iyatli, hissiyotlarga boy.</p><p><strong>Kuchli tomonlari:</strong> Kuchli iroda, sir, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Ochiqlik</p></div>"
+            },
+            "O'qotar ♐": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol O'qotar ♐</h3><p>Erkin va sarguzashtchi. Optimistik va ijobiy. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, sarguzasht, optimizm</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak O'qotar ♐</h3><p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, optimizm, faollik</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlik</p></div>"
+            },
+            "Echki ♑": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Echki ♑</h3><p>Mas'uliyatli, realistik va qat'iyatli. Shu burj ayollari mehnatsevar va tartibli.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, realistik, mehnatsevarlik</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Echki ♑</h3><p>Mas'uliyatli, qat'iyatli va jiddiy. Shu burj erkaklari ishga va oilaga sodiq.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, qat'iyat, sadoqat</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>"
+            },
+            "Qovg'a ♒": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Qovg'a ♒</h3><p>Ijodiy, futuristik va mustaqil. Shu burj ostidagi ayollar yangi g'oyalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Ijodkorlik, mustaqillik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Masofa</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Qovg'a ♒</h3><p>Ijodiy va mustaqil. Futuristik qarashlarga ega.</p><p><strong>Kuchli tomonlari:</strong> Mustaqillik, ijodkorlik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Yaquinlik</p></div>"
+            },
+            "Baliq ♓": {
+                ayol: "<div class='gender-info'><h3>👩 Ayol Baliq ♓</h3><p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Shu burj ayollari san'at va ijodiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Hissiyot, intuitsiya, mehribonlik</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>",
+                erkak: "<div class='gender-info'><h3>👨 Erkak Baliq ♓</h3><p>Hissiy, sezgir va intuitsiyaga ega. Shu burj erkaklari kreativ va yordam berishga tayyor.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, kreativ, yordamchi</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>"
+            }
+        };
 
-<script>
-    oscillator.frequency.setValueAtTime(523, audio.currentTime);
-    gainNode.gain.setValueAtTime(0.1, audio.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.5);
-    oscillator.start();
-    oscillator.stop(audio.currentTime + 0.5);
-  } catch (e) {
-    console.log("Ovoz efekti ishlamadi");
-  }
-}
+        // Kalendar bilan inputni sinxronlash
+        function syncDate() {
+            const date = document.getElementById('calendar').value;
+            if (!date) return;
+            const d = new Date(date);
+            document.getElementById('day').value = d.getDate();
+            document.getElementById('month').value = d.getMonth() + 1;
+        }
 
-window.onload = function() {
-  const today = new Date();
-  document.getElementById('calendar').value = today.toISOString().split('T')[0];
-  syncDate();
-};
-</script>
-// Burj ma'lumotlari
-const burjInfo = {
-"Qo'y ♈": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Qo'y ♈</h3><p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Sport, san'at va yangi sarguzashtlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, jasorat, ijodkorlik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, hissiyotlarni boshqarish</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Qo'y ♈</h3><p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do'stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Faollik, sarguzasht, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, g'urur</p></div>"
-},
-"Buzoq ♉": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Buzoq ♉</h3><p>Sabrli, barqaror va ishonchli. Oila va do'stlariga sodiq. Ijodiy va go'zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Barqaror munosabatlarni va tartibli hayotni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Barqarorlik, sadoqat, amaliylik</p><p><strong>Rivojlantirish kerak:</strong> O'zgarishlarga ochiqlik</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Buzoq ♉</h3><p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Tabiat, sport va san'at bilan shug'ullanishni yaxshi ko'radi.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, mehnatsevarlik, barqarorlik</p><p><strong>Rivojlantirish kerak:</strong> Yangi g'oyalarga ochiqlik</p></div>"
-},
-"Egizak ♊": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Egizak ♊</h3><p>Ijodiy, tez o'ylovchi va ko'p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Do'stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san'atga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Moslashuvchanlik, aql, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Diqqat jamlash, sabr</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Egizak ♊</h3><p>Aqlli, tez o'ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Tez o'zlashtiradi va yangi bilimlarga ochiq. Do'stlik va doimiy aloqalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Aql, ijodiy fikr, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Fokus, barqarorlik</p></div>"
-},
-"Qisqichbaqa ♋": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Qisqichbaqa ♋</h3><p>Hissiy, mehribon va oila uchun sodiq. Do'stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o'zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi.</p><p><strong>Kuchli tomonlari:</strong> Mehribonlik, sadoqat, oilaparvar</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Qisqichbaqa ♋</h3><p>Hissiy va mehribon. Oilaga va do'stlarga sodiq, himoyachilik xususiyatiga ega. Oilaviy va do'stlik masalalarida mas'uliyatli.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, himoyachilik, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Shubhalarga berilmaslik</p></div>"
-},
-"Arslon ♌": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Arslon ♌</h3><p>Rahbar, e'tiborli va ijodiy. U diqqat markazida bo'lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, ijodkorlik, ishonch</p><p><strong>Rivojlantirish kerak:</strong> Kamtarlik, boshqalarning fikri</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Arslon ♌</h3><p>Rahbar va e'tiborli. Ijodiy va o'ziga ishonchli. Ijtimoiy faoliyatni yoqtiradi, do'stlar va ishdagi yetakchilikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Rahbarlik, ijodkorlik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> G'urur, mag'rurlik</p></div>"
-},
-"Parizod ♍": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Parizod ♍</h3><p>Tahlilchi, tartibli va mas'uliyatli. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Tahlil, tartib, mukammallik</p><p><strong>Rivojlantirish kerak:</strong> Tanqidni qabul qilish</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Parizod ♍</h3><p>Tahlilchi va tartibli. Mas'uliyatli va ishga jiddiy yondashadi. Shu burj erkaklari mukammal va tizimli ishlashga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Jiddiylik, tahlil, tartib</p><p><strong>Rivojlantirish kerak:</strong> Tanqidchanlik</p></div>"
-},
-"Tarozi ♎": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Tarozi ♎</h3><p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do'stlik va hamkorlikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Adolat, muvozanat, diplomatiklik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Tarozi ♎</h3><p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Shu burj erkaklari adolat va muvozanatni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Muvozanat, diplomatiklik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish tezligi</p></div>"
-},
-"Chayon ♏": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Chayon ♏</h3><p>Intensiv, sirli va qat'iy. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e'tiborli.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, qat'iyatli, sirlik</p><p><strong>Rivojlantirish kerak:</strong> Xotirjamlik</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Chayon ♏</h3><p>Sirli va intensiv. Qattiq va qat'iyatli, hissiyotlarga boy.</p><p><strong>Kuchli tomonlari:</strong> Kuchli iroda, sir, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Ochiqlik</p></div>"
-},
-"O'qotar ♐": {
-ayol: "<div class='gender-info'><h3>👩 Ayol O'qotar ♐</h3><p>Erkin va sarguzashtchi. Optimistik va ijobiy. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, sarguzasht, optimizm</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak O'qotar ♐</h3><p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, optimizm, faollik</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlik</p></div>"
-},
-"Echki ♑": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Echki ♑</h3><p>Mas'uliyatli, realistik va qat'iyatli. Shu burj ayollari mehnatsevar va tartibli.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, realistik, mehnatsevarlik</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Echki ♑</h3><p>Mas'uliyatli, qat'iyatli va jiddiy. Shu burj erkaklari ishga va oilaga sodiq.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, qat'iyat, sadoqat</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>"
-},
-"Qovg'a ♒": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Qovg'a ♒</h3><p>Ijodiy, futuristik va mustaqil. Shu burj ostidagi ayollar yangi g'oyalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Ijodkorlik, mustaqillik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Masofa</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Qovg'a ♒</h3><p>Ijodiy va mustaqil. Futuristik qarashlarga ega.</p><p><strong>Kuchli tomonlari:</strong> Mustaqillik, ijodkorlik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Yaquinlik</p></div>"
-},
-"Baliq ♓": {
-ayol: "<div class='gender-info'><h3>👩 Ayol Baliq ♓</h3><p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Shu burj ayollari san'at va ijodiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Hissiyot, intuitsiya, mehribonlik</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>",
-erkak: "<div class='gender-info'><h3>👨 Erkak Baliq ♓</h3><p>Hissiy, sezgir va intuitsiyaga ega. Shu burj erkaklari kreativ va yordam berishga tayyor.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, kreativ, yordamchi</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>"
-}
-};
+        // Inputlardan kalendarni sinxronlash
+        document.getElementById('day').addEventListener('change', updateCalendar);
+        document.getElementById('month').addEventListener('change', updateCalendar);
 
-// Tablarni boshqarish
-const tabs = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
+        function updateCalendar() {
+            const day = document.getElementById('day').value;
+            const month = document.getElementById('month').value;
+            const year = new Date().getFullYear();
+            
+            if (day && month) {
+                const date = new Date(year, month - 1, day);
+                document.getElementById('calendar').value = date.toISOString().split('T')[0];
+            }
+        }
 
-tabs.forEach(tab => {
-tab.addEventListener('click', () => {
-// Barcha tablarni inactive qilamiz
-tabs.forEach(t => t.classList.remove('active'));
-tabContents.forEach(tc => tc.classList.remove('active'));
+        // Burj aniqlash qismi
+        function showBurj() {
+            const day = parseInt(document.getElementById('day').value);
+            const month = parseInt(document.getElementById('month').value);
 
-// Faqat bosilgan tab active bo'lsin  
-tab.classList.add('active');  
-  
-// Tanlangan tab kontentini ko'rsatamiz  
-const target = tab.dataset.tab;  
-const content = document.getElementById(target);  
-if (content) {  
-  content.classList.add('active');  
-}
+            if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
+                document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
+                document.getElementById('burj-info').innerHTML = "";
+                return;
+            }
 
-});
-});
+            let burj = "";
+            let burjSymbol = "";
+            
+            if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+                burj = "Qo'y";
+                burjSymbol = "♈";
+            } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+                burj = "Buzoq";
+                burjSymbol = "♉";
+            } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+                burj = "Egizak";
+                burjSymbol = "♊";
+            } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+                burj = "Qisqichbaqa";
+                burjSymbol = "♋";
+            } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+                burj = "Arslon";
+                burjSymbol = "♌";
+            } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+                burj = "Parizod";
+                burjSymbol = "♍";
+            } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+                burj = "Tarozi";
+                burjSymbol = "♎";
+            } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+                burj = "Chayon";
+                burjSymbol = "♏";
+            } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+                burj = "O'qotar";
+                burjSymbol = "♐";
+            } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+                burj = "Echki";
+                burjSymbol = "♑";
+            } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+                burj = "Qovg'a";
+                burjSymbol = "♒";
+            } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+                burj = "Baliq";
+                burjSymbol = "♓";
+            }
 
-// Kalendar bilan inputni sinxronlash
-function syncDate() {
-const date = document.getElementById('calendar').value;
-if(!date) return;
-const d = new Date(date);
-document.getElementById('day').value = d.getDate();
-document.getElementById('month').value = d.getMonth() + 1;
-}
+            const fullBurjName = `${burj} ${burjSymbol}`;
+            document.getElementById('burj-result').innerHTML = `✨ Sizning burjingiz: <b>${fullBurjName}</b>`;
 
-// Inputlardan kalendarni sinxronlash
-document.getElementById('day').addEventListener('change', updateCalendar);
-document.getElementById('month').addEventListener('change', updateCalendar);
+            // Faqat aniqlangan burj tafsilotini chiqaramiz
+            let tafsilot = "";
+            if (burjInfo[fullBurjName]) {
+                tafsilot = `
+                    <div class="burj-details">
+                        ${burjInfo[fullBurjName].ayol}
+                        ${burjInfo[fullBurjName].erkak}
+                    </div>
+                `;
+            } else {
+                tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
+            }
 
-function updateCalendar() {
-const day = document.getElementById('day').value;
-const month = document.getElementById('month').value;
-const year = new Date().getFullYear();
+            document.getElementById('burj-info').innerHTML = tafsilot;
+            
+            // Ovoz efekti
+            playSound();
+        }
 
-if(day && month) {
-const date = new Date(year, month-1, day);
-document.getElementById('calendar').value = date.toISOString().split('T')[0];
-}
-}
+        // Ovoz efekti
+        function playSound() {
+            try {
+                const audio = new AudioContext();
+                const oscillator = audio.createOscillator();
+                const gainNode = audio.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audio.destination);
+                
+                oscillator.frequency.setValueAtTime(523, audio.currentTime);
+                gainNode.gain.setValueAtTime(0.1, audio.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.5);
+                
+                oscillator.start();
+                oscillator.stop(audio.currentTime + 0.5);
+            } catch (e) {
+                console.log("Ovoz efekti ishlamadi");
+            }
+        }
 
-// Burj aniqlash qismi
-function showBurj() {
-const day = parseInt(document.getElementById('day').value);
-const month = parseInt(document.getElementById('month').value);
-
-if (!day || !month || day<1 || day>31 || month<1 || month>12) {
-document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
-document.getElementById('burj-info').innerHTML = "";
-return;
-}
-
-let burj = "";
-let burjSymbol = "";
-
-if((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
-burj = "Qo'y";
-burjSymbol = "♈";
-}
-else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
-burj = "Buzoq";
-burjSymbol = "♉";
-}
-else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-burj = "Egizak";
-burjSymbol = "♊";
-}
-else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-burj = "Qisqichbaqa";
-burjSymbol = "♋";
-}
-else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
-burj = "Arslon";
-burjSymbol = "♌";
-}
-else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
-burj = "Parizod";
-burjSymbol = "♍";
-}
-else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
-burj = "Tarozi";
-burjSymbol = "♎";
-}
-else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
-burj = "Chayon";
-burjSymbol = "♏";
-}
-else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
-burj = "O'qotar";
-burjSymbol = "♐";
-}
-else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
-burj = "Echki";
-burjSymbol = "♑";
-}
-else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
-burj = "Qovg'a";
-burjSymbol = "♒";
-}
-else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-burj = "Baliq";
-burjSymbol = "♓";
-}
-
-const fullBurjName = ${burj} ${burjSymbol};
-document.getElementById('burj-result').innerHTML = ✨ Sizning burjingiz: <b>${fullBurjName}</b>;
-
-// Faqat aniqlangan burj tafsilotini chiqaramiz
-let tafsilot = "";
-if (burjInfo[fullBurjName]) {
-tafsilot =   <div class="burj-details">   ${burjInfo[fullBurjName].ayol}   ${burjInfo[fullBurjName].erkak}   </div>  ;
-} else {
-tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
-}
-
-document.getElementById('burj-info').innerHTML = tafsilot;
-
-// Burjlar tabiga o'tkazish
-tabs.forEach(t => t.classList.remove('active'));
-tabContents.forEach(tc => tc.classList.remove('active'));
-
-document.querySelector('[data-tab="burj"]').classList.add('active');
-document.getElementById('burj').classList.add('active');
-
-// Ovoz efekti
-playSound();
-}
-
-// Ovoz efekti
-function playSound() {
-try {
-const audio = new AudioContext();
-const oscillator = audio.createOscillator();
-const gainNode = audio.createGain();
-
-oscillator.connect(gainNode);  
-gainNode.connect(audio.destination);  
-  
-oscillator.frequency.setValueAtTime(523, audio.currentTime);  
-gainNode.gain.setValueAtTime(0.1, audio.currentTime);  
-gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.5);  
-  
-oscillator.start();  
-oscillator.stop(audio.currentTime + 0.5);
-
-} catch (e) {
-console.log("Ovoz efekti ishlamadi");
-}
-}
-
-// Sahifa yuklanganda
-window.onload = function() {
-const today = new Date();
-document.getElementById('calendar').value = today.toISOString().split('T')[0];
-syncDate();
-};
-</script>
-
-</body>  
+        // Sahifa yuklanganda
+        window.onload = function() {
+            const today = new Date();
+            document.getElementById('calendar').value = today.toISOString().split('T')[0];
+            syncDate();
+        };
+    </script>
+</body>
 </html>
+```
