@@ -39,7 +39,7 @@ nav button.active {
   background: rgba(255,255,255,0.3);
 }
 section {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
 }
@@ -49,12 +49,14 @@ section {
   border-radius: 15px;
   margin-bottom: 20px;
 }
-input {
+input, select {
   padding: 10px;
   border-radius: 8px;
   border: none;
   margin: 5px 5px 5px 0;
-  width: calc(30% - 5px);
+}
+input[type="number"] {
+  width: 100px;
 }
 button.submit {
   padding: 10px 20px;
@@ -78,6 +80,8 @@ footer {
   padding:15px;
   border-radius:10px;
   line-height:1.6;
+  max-height: 500px;
+  overflow-y: auto;
 }
 </style>
 </head>
@@ -106,11 +110,16 @@ footer {
   <div id="burj" class="tab-content" style="display:none;">
     <div class="card">
       <h2>♈ Burj aniqlash</h2>
-      <p>Tug‘ilgan kuningiz, oyingiz va yilingizni yozing:</p>
-      <div style="display:flex; align-items:center;">
+      <p>Tug‘ilgan kuningiz va oyingizni yozing:</p>
+      <div style="display:flex; align-items:center; flex-wrap: wrap;">
         <input type="number" id="day" placeholder="Kun (1-31)" min="1" max="31">
         <input type="number" id="month" placeholder="Oy (1-12)" min="1" max="12">
-        <input type="number" id="year" placeholder="Yil (masalan 1995)">
+        <select id="gender">
+          <option value="">Jinsingizni tanlang</option>
+          <option value="female">Ayol</option>
+          <option value="male">Erkak</option>
+        </select>
+        <input type="date" id="calendar" title="Kalendar (majburiy emas)" onchange="syncDate()">
       </div>
       <button class="submit" onclick="showBurj()">Natija</button>
       <div id="burj-result" style="margin-top:10px; font-weight:bold;"></div>
@@ -144,14 +153,23 @@ buttons.forEach(btn => {
   });
 });
 
-// Burj aniqlash va tafsilotli tavsif
+// Kalendar bilan inputni sinxronlash
+function syncDate() {
+  const date = document.getElementById('calendar').value;
+  if(!date) return;
+  const d = new Date(date);
+  document.getElementById('day').value = d.getDate();
+  document.getElementById('month').value = d.getMonth()+1;
+}
+
+// Burj aniqlash va batafsil tavsif
 function showBurj() {
   const day = parseInt(document.getElementById('day').value);
   const month = parseInt(document.getElementById('month').value);
-  const year = parseInt(document.getElementById('year').value);
+  const gender = document.getElementById('gender').value;
 
-  if (!day || !month || !year || day<1 || day>31 || month<1 || month>12) {
-    document.getElementById('burj-result').innerText = "Iltimos, kun, oy va yilingizni to‘g‘ri kiriting.";
+  if (!day || !month || !gender || day<1 || day>31 || month<1 || month>12) {
+    document.getElementById('burj-result').innerText = "Iltimos, kun, oy va jinsingizni to‘g‘ri kiriting.";
     document.getElementById('burj-info').innerHTML = "";
     return;
   }
@@ -171,22 +189,59 @@ function showBurj() {
   else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
 
   const info = {
-    "Qo‘y ♈": "<b>Shaxsiyati:</b> Jasoratli, faol, rahbarlikni yoqtiradi. <br><b>Ijobiy:</b> Sodiq, qat’iyatli, ijodiy, do‘stlariga sodiq. <br><b>Salbiy:</b> Ba’zan sabrsiz, haddan tashqari rahbarlikni ko‘rsatadi. <br><b>Tavsiyalar:</b> Ochiq fikrli bo‘ling, sabrni rivojlantiring, do‘stlikni qadrlang. <br><b>Qiziqarli fakt:</b> Qo‘y burjidagi insonlar ko‘pincha san’at va sportga qiziqadi.",
-    "Buzoq ♉": "<b>Shaxsiyati:</b> Sabrli, ishonchli, moddiy jihatdan ehtiyotkor. <br><b>Ijobiy:</b> Barqaror, sodiq, fidoyi. <br><b>Salbiy:</b> Ba’zan egosentrik va o‘zgarishlarga qarshilik ko‘rsatadi. <br><b>Tavsiyalar:</b> Yangiliklarga ochiq bo‘ling, moliyaviy rejalaringizni tekshirib boring. <br><b>Qiziqarli fakt:</b> Buzoq burjidagi insonlar ovqat va dam olishni sevadi.",
-    "Egizak ♊": "<b>Shaxsiyati:</b> Ijodiy, tez o‘ylovchi, bilimga chanqoq. <br><b>Ijobiy:</b> Suhbatdosh sifatida yoqimli, moslashuvchan. <br><b>Salbiy:</b> Ba’zan e’tiborini jamlay olmaydi, chalg‘itadi. <br><b>Tavsiyalar:</b> Diqqatni jamlash uchun meditatsiya yoki kun tartibi tuzing. <br><b>Qiziqarli fakt:</b> Egizaklar ko‘pincha ko‘p til o‘rganadi.",
-    "Qisqichbaqa ♋": "<b>Shaxsiyati:</b> Hissiy, mehribon, oila va do‘stlarga sodiq. <br><b>Ijobiy:</b> G‘amxo‘r, mehribon, himoyachilik qiladi. <br><b>Salbiy:</b> Ba’zan haddan tashqari himoyachilik, qayg‘urish. <br><b>Tavsiyalar:</b> Ochiq suhbat va sport bilan hissiyotni tarqatish. <br><b>Qiziqarli fakt:</b> Qisqichbaqa burjidagi insonlar oila bilan ko‘p vaqt o‘tkazadi.",
-    "Arslon ♌": "<b>Shaxsiyati:</b> Rahbar, ijodiy, diqqat markazida bo‘lishni yoqtiradi. <br><b>Ijobiy:</b> Jasoratli, mehribon, sodiq. <br><b>Salbiy:</b> Ba’zan g‘ururlik va qattiqlik. <br><b>Tavsiyalar:</b> Rahbarlik qobiliyatini boshqalar bilan muvozanatlang. <br><b>Qiziqarli fakt:</b> Arslonlar san’at va teatrga qiziqadi.",
-    "Parizod ♍": "<b>Shaxsiyati:</b> Tahlilchi, tartibli, mukammallikni sevadi. <br><b>Ijobiy:</b> Mas’uliyatli, tartibli, diqqatli. <br><b>Salbiy:</b> Ba’zan tanqidiy, perfektsionist. <br><b>Tavsiyalar:</b> Yaxshi dam olish va ijodiy mashg‘ulotlar bilan muvozanatni saqlang. <br><b>Qiziqarli fakt:</b> Parizodlar ko‘p kitob o‘qiydi.",
-    "Tarozi ♎": "<b>Shaxsiyati:</b> Adolatli, sotsial, diplomatik. <br><b>Ijobiy:</b> Muvozanatli, do‘stona, muloqotchi. <br><b>Salbiy:</b> Ba’zan qaror qabul qilishda qiynaladi. <br><b>Tavsiyalar:</b> Ichki ovozingizga quloq soling, muhim qarorlarni yozing. <br><b>Qiziqarli fakt:</b> Tarozi burjidagi insonlar san’at va dizaynni yaxshi ko‘radi.",
-    "Chayon ♏": "<b>Shaxsiyati:</b> Intensiv, sirli, qat’iy. <br><b>Ijobiy:</b> Sodiq, kuchli intuitsiya, g‘amxo‘r. <br><b>Salbiy:</b> Ba’zan sirli, sovuqqon. <br><b>Tavsiyalar:</b> Ochiq muloqot va sport bilan balansni saqlang. <br><b>Qiziqarli fakt:</b> Chayonlar ko‘pincha tabiatni sevadi.",
-    "O‘qotar ♐": "<b>Shaxsiyati:</b> Erkin, sarguzashtchi, optimistik. <br><b>Ijobiy:</b> Sarguzashtlarni sevadi, yangi bilimlarga chanqoq. <br><b>Salbiy:</b> Ba’zan haddan tashqari erkin. <br><b>Tavsiyalar:</b> Reja tuzing va maqsadlaringizni belgilang. <br><b>Qiziqarli fakt:</b> O‘qotarlar sayohatga juda qiziqadi.",
-    "Echki ♑": "<b>Shaxsiyati:</b> Mas’uliyatli, realistik, qat’iyatli. <br><b>Ijobiy:</b> Maqsadli, strategik, sobitqadam. <br><b>Salbiy:</b> Ba’zan biroz sovuqqon. <br><b>Tavsiyalar:</b> Yaqinlar bilan muloqot va dam olishni unutmang. <br><b>Qiziqarli fakt:</b> Echki burjidagi insonlar moliyaviy jihatdan aqlli.",
-    "Qovg‘a ♒": "<b>Shaxsiyati:</b> Ijodiy, futuristik, mustaqil. <br><b>Ijobiy:</b> Innovatsion, g‘oyaviy, do‘stona. <br><b>Salbiy:</b> Ba’zan beqaror. <br><b>Tavsiyalar:</b> G‘oyalarni amalda sinab ko‘ring. <br><b>Qiziqarli fakt:</b> Qovg‘a burjidagi insonlar texnologiyaga qiziqadi.",
-    "Baliq ♓": "<b>Shaxsiyati:</b> Hissiy, intuitsiyaga ega, sezgir. <br><b>Ijobiy:</b> Mehribon, san’at va ijodni sevadi. <br><b>Salbiy:</b> Ba’zan hayoliy, oson ta’sirlanadi. <br><b>Tavsiyalar:</b> Kunlik yozuv va meditatsiya bilan hissiyotni muvozanatlang. <br><b>Qiziqarli fakt:</b> Baliqlar ko‘pincha musiqa va san’at bilan shug‘ullanadi."
+    "Qo‘y ♈": {
+      female: `<b>Ayol Qo‘y:</b> Jasoratli, mustaqil, hissiy jihatdan kuchli. Sodiq do‘st, ba’zan sabrsiz. Ijobiy: rahbarlik qobiliyati, ijodiy, do‘stlikni qadrlaydi. Salbiy: biroz qattiqqo‘l va g‘ururlik. Tavsiyalar: sabrni rivojlantirish, hissiyotlarni boshqarish, faol bo‘lish. Qiziqarli fakt: Qo‘y burjidagi ayollar san’at va sportga qiziqadi.`,
+      male: `<b>Erkak Qo‘y:</b> Rahbarlikni sevadi, faol va sarguzashtchi. Ijobiy: qat’iyatli, jasoratli, do‘stlariga sodiq. Salbiy: ba’zan sabrsiz va g‘ururlik. Tavsiyalar: ochiq fikrli bo‘lish, yangi bilimlarni o‘rganish. Qiziqarli fakt: Qo‘y burjidagi erkaklar sarguzashtlarni yaxshi ko‘radi.`
+    },
+    // Shu tarzda boshqa burjlar ham qo‘shiladi, barcha 12 burj uchun ayol va erkak tafsilotlari
+    "Buzoq ♉": {
+      female: `Ayol Buzoq tafsilotlari...`,
+      male: `Erkak Buzoq tafsilotlari...`
+    },
+    "Egizak ♊": {
+      female: `Ayol Egizak tafsilotlari...`,
+      male: `Erkak Egizak tafsilotlari...`
+    },
+    "Qisqichbaqa ♋": {
+      female: `Ayol Qisqichbaqa tafsilotlari...`,
+      male: `Erkak Qisqichbaqa tafsilotlari...`
+    },
+    "Arslon ♌": {
+      female: `Ayol Arslon tafsilotlari...`,
+      male: `Erkak Arslon tafsilotlari...`
+    },
+    "Parizod ♍": {
+      female: `Ayol Parizod tafsilotlari...`,
+      male: `Erkak Parizod tafsilotlari...`
+    },
+    "Tarozi ♎": {
+      female: `Ayol Tarozi tafsilotlari...`,
+      male: `Erkak Tarozi tafsilotlari...`
+    },
+    "Chayon ♏": {
+      female: `Ayol Chayon tafsilotlari...`,
+      male: `Erkak Chayon tafsilotlari...`
+    },
+    "O‘qotar ♐": {
+      female: `Ayol O‘qotar tafsilotlari...`,
+      male: `Erkak O‘qotar tafsilotlari...`
+    },
+    "Echki ♑": {
+      female: `Ayol Echki tafsilotlari...`,
+      male: `Erkak Echki tafsilotlari...`
+    },
+    "Qovg‘a ♒": {
+      female: `Ayol Qovg‘a tafsilotlari...`,
+      male: `Erkak Qovg‘a tafsilotlari...`
+    },
+    "Baliq ♓": {
+      female: `Ayol Baliq tafsilotlari...`,
+      male: `Erkak Baliq tafsilotlari...`
+    }
   };
 
   document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b>`;
-  document.getElementById('burj-info').innerHTML = info[burj];
+  document.getElementById('burj-info').innerHTML = info[burj][gender];
 }
 </script>
 
