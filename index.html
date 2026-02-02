@@ -3,18 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ========== GOOGLE'DA CHIQISHI UCHUN MUHIM SEO ========== -->
+<!-- ==================== GOOGLE UCHUN QO'SHILDI ==================== -->
 <title>Sirli Dunyo - Tush tabiri, Burj hisoblovchi, Sirli dunyo portal</title>
 <meta name="description" content="Tushlaringizning ma'nosini bilib oling, tug'ilgan kuningiz bo'yicha burjingizni aniqlang, sirli va g'ayritabiiy dunyo haqida ma'lumotlar. Barcha 12 burj haqida to'liq ma'lumot.">
 <meta name="keywords" content="tush tabiri, burj hisoblovchi, qaysi burj, burjni aniqlash, sirli dunyo, horoscope uzbek, zodiac uzbek">
-<meta name="author" content="Sirli Dunyo">
-<meta property="og:title" content="Sirli Dunyo - Tush, Burj, Sirli Dunyo portal">
-<meta property="og:description" content="Tushlaringizning ma'nosini bilib oling, burjingizni aniqlang">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://sirli-dunyo.vercel.app/">
-<link rel="canonical" href="https://sirli-dunyo.vercel.app/">
-<!-- ====================================================== -->
-
+<!-- ============================================================== -->
 <style>
 body {
   margin: 0;
@@ -31,7 +24,6 @@ header h1 {
   margin: 0;
   font-size: 2.5em;
 }
-/* ========== NAVIGATSIYA O'ZGARTIRILDI ========== */
 nav {
   display: flex;
   justify-content: center;
@@ -39,7 +31,7 @@ nav {
   gap: 15px;
   flex-wrap: wrap;
 }
-nav a {
+nav a {  /* O'ZGARTIRILDI: button -> a */
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
@@ -48,17 +40,10 @@ nav a {
   cursor: pointer;
   font-weight: bold;
   text-decoration: none;
-  transition: all 0.3s;
-}
-nav a:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
 }
 nav a.active {
   background: rgba(255,255,255,0.3);
-  box-shadow: 0 4px 12px rgba(255,255,255,0.2);
 }
-/* ============================================== */
 section {
   max-width: 900px;
   margin: auto;
@@ -176,88 +161,38 @@ footer {
   align-items: center;
   gap: 10px;
 }
-/* ========== YANGI: POSTLAR RO'YXATI ========== */
-.post-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
-}
-.post-item {
-  background: rgba(255,255,255,0.08);
-  padding: 20px;
-  border-radius: 10px;
-  transition: all 0.3s;
-}
-.post-item:hover {
-  background: rgba(255,255,255,0.12);
-  transform: translateY(-3px);
-}
-.post-item h3 {
-  margin-top: 0;
-  color: #ffcc00;
-}
-.post-date {
-  font-size: 12px;
-  color: #aaa;
-  margin-top: 10px;
-}
-/* ============================================ */
 </style>
 </head>
 <body>
 
 <header>
-  <h1>🌙 Sirli Dunyo</h1>
-  <p>Tush tabiri, Burj hisoblovchi, Sirli dunyo portal</p>
+  <h1>🌙 Sirli Dunyo - Tush tabiri, Burj hisoblovchi, Sirli dunyo portal</h1>
 </header>
 
-<!-- ========== NAVIGATSIYA O'ZGARTIRILDI ========== -->
+<!-- ==================== O'ZGARTIRILDI ==================== -->
 <nav>
   <a href="#tush" class="active" onclick="showTab('tush')">🔮 Tush tabiri</a>
   <a href="#burj" onclick="showTab('burj')">♈ Burj hisoblovchi</a>
   <a href="#sirli" onclick="showTab('sirli')">✨ Sirli Dunyo</a>
 </nav>
-<!-- ============================================== -->
+<!-- ====================================================== -->
 
 <section>
-  <!-- ========== TUSH TABIRI ========== -->
+  <!-- Tush Tabiri -->
   <div id="tush" class="tab-content active">
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Bu yerda tushlaringizning ma'nosini bilib oling. Har xil tushlar haqida batafsil ma'lumotlar:</p>
-      
-      <!-- YANGI: Tush postlari ro'yxati -->
-      <div class="post-list">
-        <div class="post-item">
-          <h3>Suv tushida ko'rmoq</h3>
-          <p>Suv tushida ko'rish hayotingizdagi hissiy o'zgarishlarni ifodalaydi. Toza suv yaxshi, loyqa suv esa muammolarni ko'rsatadi.</p>
-          <div class="post-date">15 Mart 2026</div>
-        </div>
-        
-        <div class="post-item">
-          <h3>Uchmoq tushida</h3>
-          <p>Uchmoq tushida ko'rish erkinlik va qo'rquqlardan xalos bo'lishni anglatadi. Bu sizning hayotingizdagi cheklovlardan chiqish istagingizni ko'rsatadi.</p>
-          <div class="post-date">10 Mart 2026</div>
-        </div>
-        
-        <div class="post-item">
-          <h3>Yiqilmoq tushida</h3>
-          <p>Yiqilmoq tushida ko'rish hayotingizda nazoratni yo'qotayotganingiz yoki qo'rquv his qilayotganingizni anglatishi mumkin.</p>
-          <div class="post-date">5 Mart 2026</div>
-        </div>
-      </div>
-      
-      <p style="margin-top: 20px; font-style: italic;">Har kuni yangi tush tabirlari qo'shiladi. Tez orada yangi postlar paydo bo'ladi.</p>
+      <p>Bu yerga tush postlari qo'shiladi. Keyin qo'shimcha postlar shu bo'limga kiritiladi.</p>
     </div>
   </div>
 
-  <!-- ========== BURJLAR ========== -->
+  <!-- Burjlar -->
   <div id="burj" class="tab-content">
     <div class="card">
-      <h2>♈ Burj hisoblovchi</h2>
-      <p>Tug'ilgan kun va oyingizni tanlang, qaysi burjda ekanligingizni bilib oling:</p>
+      <h2>♈ Burj aniqlash</h2>
+      <p>Tug'ilgan kun va oyingizni tanlang:</p>
       
+      <!-- Kichik kalendar qatori -->
       <div class="date-inputs">
         <div class="date-group">
           <label>Kun:</label>
@@ -281,109 +216,77 @@ footer {
       
       <div id="burj-result"></div>
       <div id="burj-info"></div>
-      
-      <!-- YANGI: Burjlar haqida qisqacha ma'lumot -->
-      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.2);">
-        <h3>♈ 12 Burj haqida:</h3>
-        <p><strong>Qo'y ♈ (21 Mart - 19 Aprel):</strong> Jasoratli, rahbarlik qobiliyati yuqori</p>
-        <p><strong>Buzoq ♉ (20 Aprel - 20 May):</strong> Sabrli, barqaror, ishonchli</p>
-        <p><strong>Egizak ♊ (21 May - 20 Iyun):</strong> Aqlli, kommunikativ, ijodiy</p>
-        <p>... va boshqalar. Yuqoridagi hisoblovchi yordamida o'zingizning burjingizni aniqlang.</p>
-      </div>
     </div>
   </div>
 
-  <!-- ========== SIRLI DUNYO ========== -->
+  <!-- Sirli Dunyo -->
   <div id="sirli" class="tab-content">
     <div class="card">
       <h2>✨ Sirli Dunyo</h2>
-      <p>G'ayritabiiy, sirli va qiziqarli dunyodan ma'lumotlar:</p>
-      
-      <div class="post-list">
-        <div class="post-item">
-          <h3>Bermuda uchburchagi siri</h3>
-          <p>Bermuda uchburchagida nega kemalar va samolyotlar g'oyib bo'ladi? Olimlar bu haqda nima deydi?</p>
-          <div class="post-date">20 Mart 2026</div>
-        </div>
-        
-        <div class="post-item">
-          <h3>Nostradamus bashoratlari</h3>
-          <p>Nostradamusning hozirgi zamonni bashorat qilgan 10 ta bashorati. Ulardan qaysilari ro'yobga chiqdi?</p>
-          <div class="post-date">12 Mart 2026</div>
-        </div>
-        
-        <div class="post-item">
-          <h3>Misr piramidalari sirlari</h3>
-          <p>Qadimgi Misr piramidalari qanday qurilgan? Ularning astronomik va matematik sirlari.</p>
-          <div class="post-date">1 Mart 2026</div>
-        </div>
-      </div>
-      
-      <p style="margin-top: 20px; font-style: italic;">Sirli dunyo haqida yangi postlar tez orada paydo bo'ladi.</p>
+      <p>Keyinchalik bu yerga sirli ma'lumotlar yoki postlar qo'shiladi.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 Sirli Dunyo — Tush, Burj, Sirli Dunyo portal</p>
-  <p style="font-size: 12px; opacity: 0.5;">Google qidiruvida chiqish uchun optimallashtirilgan</p>
+  <p>© 2026 Sirli Dunyo — Tush tabiri, Burj hisoblovchi, Sirli dunyo portal</p>
 </footer>
 
-<!-- ========== JAVASCRIPT ========== -->
 <script>
-// ========== BURJ MA'LUMOTLARI ==========
+// Burj ma'lumotlari
 const burjInfo = {
   "Qo'y ♈": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Qo'y ♈</h3><p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Sport, san'at va yangi sarguzashtlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, jasorat, ijodkorlik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, hissiyotlarni boshqarish</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Qo'y ♈</h3><p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do'stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Faollik, sarguzasht, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, g'urur</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Qo'y ♈ (21 Mart - 19 Aprel)</h3><p><strong>Jasoratli</strong>, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Sport, san'at va yangi sarguzashtlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, jasorat, ijodkorlik, faollik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, hissiyotlarni boshqarish, o'jarroq</p><p><strong>Yaxshi mos keladi:</strong> Buzoq, Egizak</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Qo'y ♈ (21 Mart - 19 Aprel)</h3><p><strong>Faol</strong>, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do'stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Faollik, sarguzasht, ijtimoiylik, liderlik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, g'urur, birgalikda ishlash</p><p><strong>Yaxshi mos keladi:</strong> Tarozi, Baliq</p></div>"
   },
   "Buzoq ♉": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Buzoq ♉</h3><p>Sabrli, barqaror va ishonchli. Oila va do'stlariga sodiq. Ijodiy va go'zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Barqaror munosabatlarni va tartibli hayotni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Barqarorlik, sadoqat, amaliylik</p><p><strong>Rivojlantirish kerak:</strong> O'zgarishlarga ochiqlik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Buzoq ♉</h3><p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Tabiat, sport va san'at bilan shug'ullanishni yaxshi ko'radi.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, mehnatsevarlik, barqarorlik</p><p><strong>Rivojlantirish kerak:</strong> Yangi g'oyalarga ochiqlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Buzoq ♉ (20 Aprel - 20 May)</h3><p><strong>Sabrli</strong>, barqaror va ishonchli. Oila va do'stlariga sodiq. Ijodiy va go'zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Barqaror munosabatlarni va tartibli hayotni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Barqarorlik, sadoqat, amaliylik, ishonchlilik</p><p><strong>Rivojlantirish kerak:</strong> O'zgarishlarga ochiqlik, qat'iyat</p><p><strong>Yaxshi mos keladi:</strong> Qo'y, Chayon</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Buzoq ♉ (20 Aprel - 20 May)</h3><p><strong>Fidoyi</strong>, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Tabiat, sport va san'at bilan shug'ullanishni yaxshi ko'radi.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, mehnatsevarlik, barqarorlik, ishonchlilik</p><p><strong>Rivojlantirish kerak:</strong> Yangi g'oyalarga ochiqlik, o'zgarishlar</p><p><strong>Yaxshi mos keladi:</strong> Egizak, Baliq</p></div>"
   },
   "Egizak ♊": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Egizak ♊</h3><p>Ijodiy, tez o'ylovchi va ko'p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Do'stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san'atga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Moslashuvchanlik, aql, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Diqqat jamlash, sabr</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Egizak ♊</h3><p>Aqlli, tez o'ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Tez o'zlashtiradi va yangi bilimlarga ochiq. Do'stlik va doimiy aloqalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Aql, ijodiy fikr, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Fokus, barqarorlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Egizak ♊ (21 May - 20 Iyun)</h3><p><strong>Ijodiy</strong>, tez o'ylovchi va ko'p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Do'stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san'atga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Moslashuvchanlik, aql, kommunikativlik, tez o'rganish</p><p><strong>Rivojlantirish kerak:</strong> Diqqat jamlash, sabr, vazifalarni yakunlash</p><p><strong>Yaxshi mos keladi:</strong> Qo'y, Buzoq</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Egizak ♊ (21 May - 20 Iyun)</h3><p><strong>Aqlli</strong>, tez o'ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Tez o'zlashtiradi va yangi bilimlarga ochiq. Do'stlik va doimiy aloqalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Aql, ijodiy fikr, kommunikativlik, ko'p qirralilik</p><p><strong>Rivojlantirish kerak:</strong> Fokus, barqarorlik, sodiqlik</p><p><strong>Yaxshi mos keladi:</strong> Qisqichbaqa, Arslon</p></div>"
   },
   "Qisqichbaqa ♋": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Qisqichbaqa ♋</h3><p>Hissiy, mehribon va oila uchun sodiq. Do'stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o'zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi.</p><p><strong>Kuchli tomonlari:</strong> Mehribonlik, sadoqat, oilaparvar</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Qisqichbaqa ♋</h3><p>Hissiy va mehribon. Oilaga va do'stlarga sodiq, himoyachilik xususiyatiga ega. Oilaviy va do'stlik masalalarida mas'uliyatli.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, himoyachilik, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Shubhalarga berilmaslik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Qisqichbaqa ♋ (21 Iyun - 22 Iyul)</h3><p><strong>Hissiy</strong>, mehribon va oila uchun sodiq. Do'stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o'zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi.</p><p><strong>Kuchli tomonlari:</strong> Mehribonlik, sadoqat, oilaparvar, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik, mustaqillik</p><p><strong>Yaxshi mos keladi:</strong> Egizak, Tarozi</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Qisqichbaqa ♋ (21 Iyun - 22 Iyul)</h3><p><strong>Hissiy</strong> va mehribon. Oilaga va do'stlarga sodiq, himoyachilik xususiyatiga ega. Oilaviy va do'stlik masalalarida mas'uliyatli.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, himoyachilik, hissiyot, oilaparvar</p><p><strong>Rivojlantirish kerak:</strong> Shubhalarga berilmaslik, qat'iyat</p><p><strong>Yaxshi mos keladi:</strong> Arslon, Parizod</p></div>"
   },
   "Arslon ♌": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Arslon ♌</h3><p>Rahbar, e'tiborli va ijodiy. U diqqat markazida bo'lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, ijodkorlik, ishonch</p><p><strong>Rivojlantirish kerak:</strong> Kamtarlik, boshqalarning fikri</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Arslon ♌</h3><p>Rahbar va e'tiborli. Ijodiy va o'ziga ishonchli. Ijtimoiy faoliyatni yoqtiradi, do'stlar va ishdagi yetakchilikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Rahbarlik, ijodkorlik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> G'urur, mag'rurlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Arslon ♌ (23 Iyul - 22 Avgust)</h3><p><strong>Rahbar</strong>, e'tiborli va ijodiy. U diqqat markazida bo'lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli. Adolatni va halollikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, ijodkorlik, ishonch, jasorat</p><p><strong>Rivojlantirish kerak:</strong> Kamtarlik, boshqalarning fikri, g'urur</p><p><strong>Yaxshi mos keladi:</strong> Qisqichbaqa, Baliq</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Arslon ♌ (23 Iyul - 22 Avgust)</h3><p><strong>Rahbar</strong> va e'tiborli. Ijodiy va o'ziga ishonchli. Ijtimoiy faoliyatni yoqtiradi, do'stlar va ishdagi yetakchilikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Rahbarlik, ijodkorlik, ijtimoiylik, sadoqat</p><p><strong>Rivojlantirish kerak:</strong> G'urur, mag'rurlik, o'zini o'zi maqtash</p><p><strong>Yaxshi mos keladi:</strong> Parizod, Tarozi</p></div>"
   },
   "Parizod ♍": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Parizod ♍</h3><p>Tahlilchi, tartibli va mas'uliyatli. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Tahlil, tartib, mukammallik</p><p><strong>Rivojlantirish kerak:</strong> Tanqidni qabul qilish</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Parizod ♍</h3><p>Tahlilchi va tartibli. Mas'uliyatli va ishga jiddiy yondashadi. Shu burj erkaklari mukammal va tizimli ishlashga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Jiddiylik, tahlil, tartib</p><p><strong>Rivojlantirish kerak:</strong> Tanqidchanlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Parizod ♍ (23 Avgust - 22 Sentyabr)</h3><p><strong>Tahlilchi</strong>, tartibli va mas'uliyatli. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Tahlil, tartib, mukammallik, amaliylik</p><p><strong>Rivojlantirish kerak:</strong> Tanqidni qabul qilish, kamtarlik</p><p><strong>Yaxshi mos keladi:</strong> Arslon, Chayon</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Parizod ♍ (23 Avgust - 22 Sentyabr)</h3><p><strong>Tahlilchi</strong> va tartibli. Mas'uliyatli va ishga jiddiy yondashadi. Shu burj erkaklari mukammal va tizimli ishlashga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Jiddiylik, tahlil, tartib, mehnatsevarlik</p><p><strong>Rivojlantirish kerak:</strong> Tanqidchanlik, qat'iyat</p><p><strong>Yaxshi mos keladi:</strong> Qovg'a, Echki</p></div>"
   },
   "Tarozi ♎": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Tarozi ♎</h3><p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do'stlik va hamkorlikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Adolat, muvozanat, diplomatiklik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Tarozi ♎</h3><p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Shu burj erkaklari adolat va muvozanatni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Muvozanat, diplomatiklik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish tezligi</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Tarozi ♎ (23 Sentyabr - 22 Oktyabr)</h3><p><strong>Adolatli</strong>, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do'stlik va hamkorlikni qadrlaydi. Go'zallik va uyg'unlikni yoqtiradi.</p><p><strong>Kuchli tomonlari:</strong> Adolat, muvozanat, diplomatiklik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish, qat'iyat</p><p><strong>Yaxshi mos keladi:</strong> Qo'y, Chayon</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Tarozi ♎ (23 Sentyabr - 22 Oktyabr)</h3><p><strong>Muvozanatli</strong> va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Shu burj erkaklari adolat va muvozanatni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Muvozanat, diplomatiklik, ijtimoiylik, adolat</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish tezligi, mustaqillik</p><p><strong>Yaxshi mos keladi:</strong> Egizak, Baliq</p></div>"
   },
   "Chayon ♏": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Chayon ♏</h3><p>Intensiv, sirli va qat'iy. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e'tiborli.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, qat'iyatli, sirlik</p><p><strong>Rivojlantirish kerak:</strong> Xotirjamlik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Chayon ♏</h3><p>Sirli va intensiv. Qattiq va qat'iyatli, hissiyotlarga boy.</p><p><strong>Kuchli tomonlari:</strong> Kuchli iroda, sir, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Ochiqlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Chayon ♏ (23 Oktyabr - 21 Noyabr)</h3><p><strong>Intensiv</strong>, sirli va qat'iy. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e'tiborli. Sirlarni saqlashni biladi.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, qat'iyatli, sirlik, sodiqlik</p><p><strong>Rivojlantirish kerak:</strong> Xotirjamlik, ishonch, ochiqlik</p><p><strong>Yaxshi mos keladi:</strong> Parizod, O'qotar</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Chayon ♏ (23 Oktyabr - 21 Noyabr)</h3><p><strong>Sirli</strong> va intensiv. Qattiq va qat'iyatli, hissiyotlarga boy. Sirlarni saqlashni biladi va sodiq do'st.</p><p><strong>Kuchli tomonlari:</strong> Kuchli iroda, sir, hissiyot, sodiqlik</p><p><strong>Rivojlantirish kerak:</strong> Ochiqlik, ishonch, munosabatda ochiqlik</p><p><strong>Yaxshi mos keladi:</strong> Buzoq, Qovg'a</p></div>"
   },
   "O'qotar ♐": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol O'qotar ♐</h3><p>Erkin va sarguzashtchi. Optimistik va ijobiy. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, sarguzasht, optimizm</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak O'qotar ♐</h3><p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, optimizm, faollik</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol O'qotar ♐ (22 Noyabr - 21 Dekabr)</h3><p><strong>Erkin</strong> va sarguzashtchi. Optimistik va ijobiy. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, sarguzasht, optimizm, ochiqlik</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik, mas'uliyat</p><p><strong>Yaxshi mos keladi:</strong> Chayon, Echki</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak O'qotar ♐ (22 Noyabr - 21 Dekabr)</h3><p><strong>Erkin</strong>, sarguzashtchi va optimistik. Mustaqil va faol. Yangi bilim va tajribalarni qidiruvchi.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, optimizm, faollik, sarguzasht</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlik, chidamlilik, majburiyat</p><p><strong>Yaxshi mos keladi:</strong> Egizak, Qovg'a</p></div>"
   },
   "Echki ♑": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Echki ♑</h3><p>Mas'uliyatli, realistik va qat'iyatli. Shu burj ayollari mehnatsevar va tartibli.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, realistik, mehnatsevarlik</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Echki ♑</h3><p>Mas'uliyatli, qat'iyatli va jiddiy. Shu burj erkaklari ishga va oilaga sodiq.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, qat'iyat, sadoqat</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Echki ♑ (22 Dekabr - 19 Yanvar)</h3><p><strong>Mas'uliyatli</strong>, realistik va qat'iyatli. Shu burj ayollari mehnatsevar va tartibli. Karyerada muvaffaqiyatga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, realistik, mehnatsevarlik, tartib</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik, hissiyot, dam olish</p><p><strong>Yaxshi mos keladi:</strong> O'qotar, Qovg'a</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Echki ♑ (22 Dekabr - 19 Yanvar)</h3><p><strong>Mas'uliyatli</strong>, qat'iyatli va jiddiy. Shu burj erkaklari ishga va oilaga sodiq. Karyerada yuqori natijalarga erishishni xohlaydi.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, qat'iyat, sadoqat, mehnatsevarlik</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik, hissiyot, dam olish</p><p><strong>Yaxshi mos keladi:</strong> Parizod, Baliq</p></div>"
   },
   "Qovg'a ♒": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Qovg'a ♒</h3><p>Ijodiy, futuristik va mustaqil. Shu burj ostidagi ayollar yangi g'oyalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Ijodkorlik, mustaqillik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Masofa</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Qovg'a ♒</h3><p>Ijodiy va mustaqil. Futuristik qarashlarga ega.</p><p><strong>Kuchli tomonlari:</strong> Mustaqillik, ijodkorlik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Yaquinlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Qovg'a ♒ (20 Yanvar - 18 Fevral)</h3><p><strong>Ijodiy</strong>, futuristik va mustaqil. Shu burj ostidagi ayollar yangi g'oyalarni qadrlaydi. Ijtimoiy adolat va o'zgarishlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Ijodkorlik, mustaqillik, futurizm, g'ayrioddiy fikrlash</p><p><strong>Rivojlantirish kerak:</strong> Masofa, hissiyot, an'anaviylik</p><p><strong>Yaxshi mos keladi:</strong> Echki, O'qotar</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Qovg'a ♒ (20 Yanvar - 18 Fevral)</h3><p><strong>Ijodiy</strong> va mustaqil. Futuristik qarashlarga ega. Texnologiya va yangi g'oyalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Mustaqillik, ijodkorlik, futurizm, g'ayrioddiy fikrlash</p><p><strong>Rivojlantirish kerak:</strong> Yaquinlik, hissiyot, an'anaviylik</p><p><strong>Yaxshi mos keladi:</strong> Egizak, Qo'y</p></div>"
   },
   "Baliq ♓": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Baliq ♓</h3><p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Shu burj ayollari san'at va ijodiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Hissiyot, intuitsiya, mehribonlik</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Baliq ♓</h3><p>Hissiy, sezgir va intuitsiyaga ega. Shu burj erkaklari kreativ va yordam berishga tayyor.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, kreativ, yordamchi</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>"
+    ayol: "<div class='gender-info'><h3>👩 Ayol Baliq ♓ (19 Fevral - 20 Mart)</h3><p><strong>Hissiy</strong> va intuitsiyaga ega, mehribon va sezgir. Shu burj ayollari san'at va ijodiy faoliyatga qiziqadi. Boshqalarga yordam berishni yoqtiradi.</p><p><strong>Kuchli tomonlari:</strong> Hissiyot, intuitsiya, mehribonlik, ijodkorlik</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik, qat'iyat, realistik qarash</p><p><strong>Yaxshi mos keladi:</strong> Arslon, Echki</p></div>",
+    erkak: "<div class='gender-info'><h3>👨 Erkak Baliq ♓ (19 Fevral - 20 Mart)</h3><p><strong>Hissiy</strong>, sezgir va intuitsiyaga ega. Shu burj erkaklari kreativ va yordam berishga tayyor. San'at va ijodiyotni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, kreativ, yordamchi, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik, qat'iyat, realistik fikrlash</p><p><strong>Yaxshi mos keladi:</strong> Buzoq, Tarozi</p></div>"
   }
 };
 
-// ========== TABLARNI BOSHQARISH ==========
+// ==================== YANGI QO'SHILDI ====================
+// Google uchun tablarni boshqarish
 function showTab(tabName) {
   // Barcha tablarni yashirish
   const tabContents = document.querySelectorAll('.tab-content');
@@ -403,14 +306,11 @@ function showTab(tabName) {
     activeNav.classList.add('active');
   }
   
-  // URL ni o'zgartirish (Google uchun)
+  // Google uchun URL o'zgartirish
   window.history.pushState({}, '', `#${tabName}`);
-  
-  // Sahifa tepasiga scroll qilish
-  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-// ========== URL BO'YICHA TAB KO'RSATISH ==========
+// Sahifa yuklanganda URL bo'yicha tab ko'rsatish
 window.onload = function() {
   const today = new Date();
   document.getElementById('calendar').value = today.toISOString().split('T')[0];
@@ -424,8 +324,9 @@ window.onload = function() {
     showTab('tush'); // Default tab
   }
 };
+// ======================================================
 
-// ========== BURJ HISOBLOVCHI FUNKSIYALARI ==========
+// Kalendar bilan inputni sinxronlash
 function syncDate() {
   const date = document.getElementById('calendar').value;
   if(!date) return;
@@ -434,6 +335,7 @@ function syncDate() {
   document.getElementById('month').value = d.getMonth() + 1;
 }
 
+// Inputlardan kalendarni sinxronlash
 document.getElementById('day').addEventListener('change', updateCalendar);
 document.getElementById('month').addEventListener('change', updateCalendar);
 
@@ -448,8 +350,115 @@ function updateCalendar() {
   }
 }
 
+// Burj aniqlash qismi
 function showBurj() {
   const day = parseInt(document.getElementById('day').value);
   const month = parseInt(document.getElementById('month').value);
 
   if (!day || !month || day<1 || day>31 || month<1 || month>12) {
+    document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
+    document.getElementById('burj-info').innerHTML = "";
+    return;
+  }
+
+  let burj = "";
+  let burjSymbol = "";
+  
+  if((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+    burj = "Qo'y";
+    burjSymbol = "♈";
+  }
+  else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+    burj = "Buzoq";
+    burjSymbol = "♉";
+  }
+  else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+    burj = "Egizak";
+    burjSymbol = "♊";
+  }
+  else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+    burj = "Qisqichbaqa";
+    burjSymbol = "♋";
+  }
+  else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+    burj = "Arslon";
+    burjSymbol = "♌";
+  }
+  else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+    burj = "Parizod";
+    burjSymbol = "♍";
+  }
+  else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+    burj = "Tarozi";
+    burjSymbol = "♎";
+  }
+  else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+    burj = "Chayon";
+    burjSymbol = "♏";
+  }
+  else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+    burj = "O'qotar";
+    burjSymbol = "♐";
+  }
+  else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+    burj = "Echki";
+    burjSymbol = "♑";
+  }
+  else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+    burj = "Qovg'a";
+    burjSymbol = "♒";
+  }
+  else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+    burj = "Baliq";
+    burjSymbol = "♓";
+  }
+
+  const fullBurjName = `${burj} ${burjSymbol}`;
+  document.getElementById('burj-result').innerHTML = `✨ Sizning burjingiz: <b>${fullBurjName}</b>`;
+
+  // Faqat aniqlangan burj tafsilotini chiqaramiz
+  let tafsilot = "";
+  if (burjInfo[fullBurjName]) {
+    tafsilot = `
+      <div class="burj-details">
+        ${burjInfo[fullBurjName].ayol}
+        ${burjInfo[fullBurjName].erkak}
+      </div>
+    `;
+  } else {
+    tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
+  }
+
+  document.getElementById('burj-info').innerHTML = tafsilot;
+  
+  // Burjlar tabiga o'tkazish
+  showTab('burj');
+  
+  // Ovoz efekti
+  playSound();
+}
+
+// Ovoz efekti
+function playSound() {
+  try {
+    const audio = new AudioContext();
+    const oscillator = audio.createOscillator();
+    const gainNode = audio.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audio.destination);
+    
+    oscillator.frequency.setValueAtTime(523, audio.currentTime);
+    gainNode.gain.setValueAtTime(0.1, audio.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.5);
+    
+    oscillator.start();
+    oscillator.stop(audio.currentTime + 0.5);
+  } catch (e) {
+    console.log("Ovoz efekti ishlamadi");
+  }
+}
+</script>
+
+</body>
+</html>
