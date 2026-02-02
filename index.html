@@ -194,7 +194,14 @@ function showBurj() {
   else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
 
   document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b>`;
-  document.getElementById('burj-info').innerHTML = `
+
+// Faqat aniqlangan burj tafsilotini chiqaramiz
+let tafsilot = "";
+if (burjInfo[burj]) {
+  tafsilot = `<div>${burjInfo[burj].ayol}</div><hr><div>${burjInfo[burj].erkak}</div>`;
+}
+
+document.getElementById('burj-info').innerHTML = tafsilot;
 
 <h3>Ayol Qo‘y ♈</h3>
 <p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do‘st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Ba’zan sabrsiz va tez qaror qabul qilishi mumkin. Sport, san’at va yangi sarguzashtlarga qiziqadi. Shu burj ostidagi ayollar o‘zini erkin his qiladi, qarorlarni tez qabul qiladi, muammolarga jasorat bilan duch keladi. Tavsiyalar: sabrni rivojlantirish, hissiyotlarni boshqarish, yangi tajriba va sarguzashtlardan qo‘rqmaslik. Ularni do‘stlik, sadoqat va ijodiy ishlarga qiziqishi bilan ajratish mumkin.</p>
