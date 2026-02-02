@@ -60,8 +60,8 @@ input[type="number"] {
   width: 80px;
 }
 input[type="date"] {
-  width: 40px;
-  padding: 5px;
+  width: 150px;
+  padding: 10px;
   vertical-align: middle;
 }
 button.submit {
@@ -83,16 +83,29 @@ footer {
 #burj-result {
   margin-top: 15px;
   font-weight: bold;
-  font-size: 1.1em;
+  font-size: 1.3em;
+  color: #ffcc00;
+  text-align: center;
 }
 #burj-info {
-  margin-top:15px;
+  margin-top: 20px;
   background: rgba(255,255,255,0.1);
-  padding:15px;
-  border-radius:10px;
-  line-height:1.6;
-  max-height: 500px;
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.6;
+  max-height: 400px;
   overflow-y: auto;
+}
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 </style>
 </head>
@@ -110,68 +123,115 @@ footer {
 
 <section>
   <!-- Tush Tabiri -->
-  <div id="tush" class="tab-content">
+  <div id="tush" class="tab-content active">
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Bu yerga tush postlari qo‘shiladi. Keyin qo‘shimcha postlar shu bo‘limga kiritiladi.</p>
+      <p>Bu yerga tush postlari qo'shiladi. Keyin qo'shimcha postlar shu bo'limga kiritiladi.</p>
     </div>
   </div>
 
   <!-- Burjlar -->
-  <div id="burj" class="tab-content" style="display:none;">
+  <div id="burj" class="tab-content">
     <div class="card">
       <h2>♈ Burj aniqlash</h2>
-      <p>Tug‘ilgan kun va oyingizni yozing:</p>
-      <div style="display:flex; align-items:center; flex-wrap: wrap;">
-        <input type="number" id="day" placeholder="Kun (1-31)" min="1" max="31">
-        <input type="number" id="month" placeholder="Oy (1-12)" min="1" max="12">
-        <input type="date" id="calendar" title="Kalendar (majburiy emas)" onchange="syncDate()">
+      <p>Tug'ilgan kun va oyingizni yozing:</p>
+      <div style="display:flex; align-items:center; flex-wrap: wrap; gap: 10px;">
+        <input type="number" id="day" placeholder="Kun (1-31)" min="1" max="31" value="15">
+        <input type="number" id="month" placeholder="Oy (1-12)" min="1" max="12" value="6">
+        <span>yoki</span>
+        <input type="date" id="calendar" title="Kalendar orqali tanlash" onchange="syncDate()">
       </div>
-      <button class="submit" onclick="showBurj()">Natija</button>
+      <button class="submit" onclick="showBurj()">Burjimni aniqlash</button>
       <div id="burj-result"></div>
       <div id="burj-info"></div>
     </div>
   </div>
 
   <!-- Sirli Dunyo -->
-  <div id="sirli" class="tab-content" style="display:none;">
+  <div id="sirli" class="tab-content">
     <div class="card">
       <h2>✨ Sirli Dunyo</h2>
-      <p>Keyinchalik bu yerga sirli ma’lumotlar yoki postlar qo‘shiladi.</p>
+      <p>Keyinchalik bu yerga sirli ma'lumotlar yoki postlar qo'shiladi.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  © 2026 SirliDunyo
+  © 2026 SirliDunyo | GitHub + Netlify
 </footer>
 
 <script>
+// Burj ma'lumotlari
+const burjInfo = {
+  "Qo'y ♈": {
+    ayol: "<h3>Ayol Qo'y ♈</h3><p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Ba'zan sabrsiz va tez qaror qabul qilishi mumkin. Sport, san'at va yangi sarguzashtlarga qiziqadi. Shu burj ostidagi ayollar o'zini erkin his qiladi, qarorlarni tez qabul qiladi, muammolarga jasorat bilan duch keladi. Tavsiyalar: sabrni rivojlantirish, hissiyotlarni boshqarish, yangi tajriba va sarguzashtlardan qo'rqmaslik.</p>",
+    erkak: "<h3>Erkak Qo'y ♈</h3><p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do'stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi. Ba'zan sabrsizlik va g'ururlik ko'rsatishi mumkin. Shu burj ostidagi erkaklar doimo yangi tajriba izlaydi va sarguzashtlar bilan shug'ullanishni yaxshi ko'radi.</p>"
+  },
+  "Buzoq ♉": {
+    ayol: "<h3>Ayol Buzoq ♉</h3><p>Sabrli, barqaror va ishonchli. Oila va do'stlariga sodiq. Ijodiy va go'zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Ba'zan egosentrik va o'zgarishlardan qo'rqadi. Barqaror munosabatlarni va tartibli hayotni qadrlaydi. Ishda muvaffaqiyatli, san'at, tabiat va ovqat pishirishga qiziqadi.</p>",
+    erkak: "<h3>Erkak Buzoq ♉</h3><p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ba'zan biroz egosentrik va yangi g'oyalarga ochiq emas. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Sevgi va do'stlikda sodiq. Tabiat, sport va san'at bilan shug'ullanishni yaxshi ko'radi.</p>"
+  },
+  "Egizak ♊": {
+    ayol: "<h3>Ayol Egizak ♊</h3><p>Ijodiy, tez o'ylovchi va ko'p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Ba'zan diqqatini jamlay olmaydi. Do'stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san'atga qiziqadi.</p>",
+    erkak: "<h3>Erkak Egizak ♊</h3><p>Aqlli, tez o'ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Ba'zan diqqatni jamlay olmaydi, lekin tez o'zlashtiradi va yangi bilimlarga ochiq. Do'stlik va doimiy aloqalarni qadrlaydi.</p>"
+  },
+  "Qisqichbaqa ♋": {
+    ayol: "<h3>Ayol Qisqichbaqa ♋</h3><p>Hissiy, mehribon va oila uchun sodiq. Ba'zan noaniqlik va shubhalarga moyil. Do'stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o'zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi.</p>",
+    erkak: "<h3>Erkak Qisqichbaqa ♋</h3><p>Hissiy va mehribon. Oilaga va do'stlarga sodiq, himoyachilik xususiyatiga ega. Ba'zan xotirjamlikni yo'qotadi, shubhalarga beriladi. Oilaviy va do'stlik masalalarida mas'uliyatli.</p>"
+  },
+  "Arslon ♌": {
+    ayol: "<h3>Ayol Arslon ♌</h3><p>Rahbar, e'tiborli va ijodiy. Ba'zan g'ururlikni ko'rsatadi, lekin odatda do'stona va mehribon. U diqqat markazida bo'lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli.</p>",
+    erkak: "<h3>Erkak Arslon ♌</h3><p>Rahbar va e'tiborli. Ijodiy va o'ziga ishonchli. Ba'zan g'ururlik va mag'rurlik ko'rsatadi. Ijtimoiy faoliyatni yoqtiradi, do'stlar va ishdagi yetakchilikni qadrlaydi.</p>"
+  },
+  "Parizod ♍": {
+    ayol: "<h3>Ayol Parizod ♍</h3><p>Tahlilchi, tartibli va mas'uliyatli. Ba'zan tanqidiy va tanqidni qabul qilishi qiyin bo'ladi. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi.</p>",
+    erkak: "<h3>Erkak Parizod ♍</h3><p>Tahlilchi va tartibli. Mas'uliyatli va ishga jiddiy yondashadi. Ba'zan tanqidiy bo'lishi mumkin. Shu burj erkaklari mukammal va tizimli ishlashga intiladi.</p>"
+  },
+  "Tarozi ♎": {
+    ayol: "<h3>Ayol Tarozi ♎</h3><p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do'stlik va hamkorlikni qadrlaydi. Ba'zan qaror qabul qilishda ikkilanadi.</p>",
+    erkak: "<h3>Erkak Tarozi ♎</h3><p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Ba'zan qaror qabul qilishda sekinlashadi. Shu burj erkaklari adolat va muvozanatni qadrlaydi.</p>"
+  },
+  "Chayon ♏": {
+    ayol: "<h3>Ayol Chayon ♏</h3><p>Intensiv, sirli va qat'iy. Ba'zan xotirjamlikni yo'qotadi. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e'tiborli.</p>",
+    erkak: "<h3>Erkak Chayon ♏</h3><p>Sirli va intensiv. Ba'zan shaxsiy hayotini yopiq saqlaydi. Qattiq va qat'iyatli, hissiyotlarga boy.</p>"
+  },
+  "O'qotar ♐": {
+    ayol: "<h3>Ayol O'qotar ♐</h3><p>Erkin va sarguzashtchi. Optimistik va ijobiy. Ba'zan noaniqlikka moyil. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi.</p>",
+    erkak: "<h3>Erkak O'qotar ♐</h3><p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol. Ba'zan noaniqlikka moyil bo'lishi mumkin.</p>"
+  },
+  "Echki ♑": {
+    ayol: "<h3>Ayol Echki ♑</h3><p>Mas'uliyatli, realistik va qat'iyatli. Ba'zan juda jiddiy va tanqidiy bo'lishi mumkin. Shu burj ayollari mehnatsevar va tartibli.</p>",
+    erkak: "<h3>Erkak Echki ♑</h3><p>Mas'uliyatli, qat'iyatli va jiddiy. Ba'zan tanqidiy va qat'iy bo'lishi mumkin. Shu burj erkaklari ishga va oilaga sodiq.</p>"
+  },
+  "Qovg'a ♒": {
+    ayol: "<h3>Ayol Qovg'a ♒</h3><p>Ijodiy, futuristik va mustaqil. Ba'zan boshqalar bilan munosabatda masofa saqlaydi. Shu burj ostidagi ayollar yangi g'oyalarni qadrlaydi.</p>",
+    erkak: "<h3>Erkak Qovg'a ♒</h3><p>Ijodiy va mustaqil. Futuristik qarashlarga ega. Ba'zan boshqalar bilan yaqinlikni saqlash qiyin bo'ladi.</p>"
+  },
+  "Baliq ♓": {
+    ayol: "<h3>Ayol Baliq ♓</h3><p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Ba'zan hayotiy voqealardan ta'sirlanadi. Shu burj ayollari san'at va ijodiy faoliyatga qiziqadi.</p>",
+    erkak: "<h3>Erkak Baliq ♓</h3><p>Hissiy, sezgir va intuitsiyaga ega. Ba'zan hayotiy voqealardan ta'sirlanadi. Shu burj erkaklari kreativ va yordam berishga tayyor.</p>"
+  }
+};
+
 // Tablarni boshqarish
 const tabs = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
 tabs.forEach(tab => {
   tab.addEventListener('click', () => {
-    // barcha tablarni inactive qilamiz
+    // Barcha tablarni inactive qilamiz
     tabs.forEach(t => t.classList.remove('active'));
-    // faqat bosilgan tab active bo‘lsin
+    tabContents.forEach(tc => tc.classList.remove('active'));
+    
+    // Faqat bosilgan tab active bo'lsin
     tab.classList.add('active');
     
-    // barcha kontentlarni yashiramiz
-    tabContents.forEach(tc => tc.style.display = 'none');
-    
-    // faqat tanlangan tabni ko‘rsatamiz
+    // Tanlangan tab kontentini ko'rsatamiz
     const target = tab.dataset.tab;
     const content = document.getElementById(target);
     if (content) {
-      content.style.display = 'block';
+      content.classList.add('active');
     }
-  });
-});
-
-// Boshlang‘ichda birinchi tabni ko‘rsatish
-document.getElementById('tush').style.display = 'block';
   });
 });
 
@@ -181,7 +241,22 @@ function syncDate() {
   if(!date) return;
   const d = new Date(date);
   document.getElementById('day').value = d.getDate();
-  document.getElementById('month').value = d.getMonth()+1;
+  document.getElementById('month').value = d.getMonth() + 1;
+}
+
+// Inputlardan kalendarni sinxronlash
+document.getElementById('day').addEventListener('change', updateCalendar);
+document.getElementById('month').addEventListener('change', updateCalendar);
+
+function updateCalendar() {
+  const day = document.getElementById('day').value;
+  const month = document.getElementById('month').value;
+  const year = new Date().getFullYear();
+  
+  if(day && month) {
+    const date = new Date(year, month-1, day);
+    document.getElementById('calendar').value = date.toISOString().split('T')[0];
+  }
 }
 
 // Burj aniqlash qismi
@@ -190,109 +265,98 @@ function showBurj() {
   const month = parseInt(document.getElementById('month').value);
 
   if (!day || !month || day<1 || day>31 || month<1 || month>12) {
-    document.getElementById('burj-result').innerText = "Iltimos, kun va oyni to‘g‘ri kiriting.";
+    document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
     document.getElementById('burj-info').innerHTML = "";
     return;
   }
 
   let burj = "";
-  if((month == 3 && day >= 21) || (month == 4 && day <= 19)) burj="Qo‘y ♈";
-  else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) burj="Buzoq ♉";
-  else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) burj="Egizak ♊";
-  else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) burj="Qisqichbaqa ♋";
-  else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) burj="Arslon ♌";
-  else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) burj="Parizod ♍";
-  else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) burj="Tarozi ♎";
-  else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) burj="Chayon ♏";
-  else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) burj="O‘qotar ♐";
-  else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) burj="Echki ♑";
-  else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) burj="Qovg‘a ♒";
-  else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
+  let burjSymbol = "";
+  
+  if((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+    burj = "Qo'y";
+    burjSymbol = "♈";
+  }
+  else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+    burj = "Buzoq";
+    burjSymbol = "♉";
+  }
+  else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+    burj = "Egizak";
+    burjSymbol = "♊";
+  }
+  else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+    burj = "Qisqichbaqa";
+    burjSymbol = "♋";
+  }
+  else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+    burj = "Arslon";
+    burjSymbol = "♌";
+  }
+  else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+    burj = "Parizod";
+    burjSymbol = "♍";
+  }
+  else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+    burj = "Tarozi";
+    burjSymbol = "♎";
+  }
+  else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+    burj = "Chayon";
+    burjSymbol = "♏";
+  }
+  else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+    burj = "O'qotar";
+    burjSymbol = "♐";
+  }
+  else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+    burj = "Echki";
+    burjSymbol = "♑";
+  }
+  else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+    burj = "Qovg'a";
+    burjSymbol = "♒";
+  }
+  else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+    burj = "Baliq";
+    burjSymbol = "♓";
+  }
 
-  document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b>`;
+  const fullBurjName = `${burj} ${burjSymbol}`;
+  document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${fullBurjName}</b>`;
 
-// Faqat aniqlangan burj tafsilotini chiqaramiz
-let tafsilot = "";
-if (burjInfo[burj]) {
-  tafsilot = `<div>${burjInfo[burj].ayol}</div><hr><div>${burjInfo[burj].erkak}</div>`;
+  // Faqat aniqlangan burj tafsilotini chiqaramiz
+  let tafsilot = "";
+  if (burjInfo[fullBurjName]) {
+    tafsilot = `
+      <div style="margin-bottom: 20px;">
+        ${burjInfo[fullBurjName].ayol}
+      </div>
+      <hr style="border-color: #666; margin: 20px 0;">
+      <div>
+        ${burjInfo[fullBurjName].erkak}
+      </div>
+    `;
+  } else {
+    tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
+  }
+
+  document.getElementById('burj-info').innerHTML = tafsilot;
+  
+  // Burjlar tabiga o'tkazish
+  tabs.forEach(t => t.classList.remove('active'));
+  tabContents.forEach(tc => tc.classList.remove('active'));
+  
+  document.querySelector('[data-tab="burj"]').classList.add('active');
+  document.getElementById('burj').classList.add('active');
 }
 
-document.getElementById('burj-info').innerHTML = tafsilot;
-
-<h3>Ayol Qo‘y ♈</h3>
-<p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do‘st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Ba’zan sabrsiz va tez qaror qabul qilishi mumkin. Sport, san’at va yangi sarguzashtlarga qiziqadi. Shu burj ostidagi ayollar o‘zini erkin his qiladi, qarorlarni tez qabul qiladi, muammolarga jasorat bilan duch keladi. Tavsiyalar: sabrni rivojlantirish, hissiyotlarni boshqarish, yangi tajriba va sarguzashtlardan qo‘rqmaslik. Ularni do‘stlik, sadoqat va ijodiy ishlarga qiziqishi bilan ajratish mumkin.</p>
-
-<h3>Erkak Qo‘y ♈</h3>
-<p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do‘stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi. Ba’zan sabrsizlik va g‘ururlik ko‘rsatishi mumkin. Shu burj ostidagi erkaklar doimo yangi tajriba izlaydi va sarguzashtlar bilan shug‘ullanishni yaxshi ko‘radi. Tavsiyalar: ochiq fikrli bo‘lish, yangi bilimlarni o‘rganish, hissiyotlarni boshqarish. Ularning shaxsiyati jasorat, mustaqillik va ijtimoiy faoliyat bilan ajralib turadi.</p>
-
-<h3>Ayol Buzoq ♉</h3>
-<p>Sabrli, barqaror va ishonchli. Oila va do‘stlariga sodiq. Ijodiy va go‘zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Ba’zan egosentrik va o‘zgarishlardan qo‘rqadi. Barqaror munosabatlarni va tartibli hayotni qadrlaydi. Ishda muvaffaqiyatli, san’at, tabiat va ovqat pishirishga qiziqadi. Tavsiyalar: hissiyotlarni boshqarish, o‘zgarishlarga ochiq bo‘lish, sabrni oshirish, barqarorlikni qadrlash. Shu burj ayollari odatda uzoq muddatli va sodiq munosabatlarni qadrlaydi.</p>
-
-<h3>Erkak Buzoq ♉</h3>
-<p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ba’zan biroz egosentrik va yangi g‘oyalarga ochiq emas. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Sevgi va do‘stlikda sodiq. Tabiat, sport va san’at bilan shug‘ullanishni yaxshi ko‘radi. Tavsiyalar: sabrni oshirish, oila va do‘stlarga e’tibor qaratish. Shu burj erkaklari qat’iyatli va mas’uliyatli shaxsiyatga ega.</p>
-
-<h3>Ayol Egizak ♊</h3>
-<p>Ijodiy, tez o‘ylovchi va ko‘p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Ba’zan diqqatini jamlay olmaydi. Do‘stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san’atga qiziqadi. Tavsiyalar: fokus va sabrni rivojlantirish, hissiyotlarni boshqarish. Shu burj ostidagi ayollar kommunikativ va tezkor qarorlar qabul qiluvchi bo‘ladi.</p>
-
-<h3>Erkak Egizak ♊</h3>
-<p>Aqlli, tez o‘ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Ba’zan diqqatni jamlay olmaydi, lekin tez o‘zlashtiradi va yangi bilimlarga ochiq. Do‘stlik va doimiy aloqalarni qadrlaydi. Tavsiyalar: fokusni oshirish, barqarorlikni rivojlantirish, ijodiy faoliyatga e’tibor qaratish. Shu burj erkaklari tezkor fikrlash va muloqotda ustun bo‘ladi.</p>
-
-<h3>Ayol Qisqichbaqa ♋</h3>
-<p>Hissiy, mehribon va oila uchun sodiq. Ba’zan noaniqlik va shubhalarga moyil. Do‘stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o‘zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi. Tavsiyalar: hissiyotlarni boshqarish, o‘ziga va boshqalarga nisbatan sabrni oshirish, oila bilan vaqtni qadrlash. Shu burj ayollari sezgir, mehribon va oilaga bag‘ishlangan shaxsiyatga ega.</p>
-
-<h3>Erkak Qisqichbaqa ♋</h3>
-<p>Hissiy va mehribon. Oilaga va do‘stlarga sodiq, himoyachilik xususiyatiga ega. Ba’zan xotirjamlikni yo‘qotadi, shubhalarga beriladi. Oilaviy va do‘stlik masalalarida mas’uliyatli. Tavsiyalar: hissiyotlarni boshqarish, sabrni oshirish, hissiy jihatdan barqarorlikni saqlash. Shu burj erkaklari oilaga va yaqinlarga sodiq, hissiy jihatdan chuqur.</p>
-
-<h3>Ayol Arslon ♌</h3>
-<p>Rahbar, e’tiborli va ijodiy. Ba’zan g‘ururlikni ko‘rsatadi, lekin odatda do‘stona va mehribon. U diqqat markazida bo‘lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli. Tavsiyalar: boshqalarning fikrini qadrlash, sabrni oshirish, ijtimoiy aloqalarni rivojlantirish. Shu burj ayollari o‘ziga ishongan, rahbarlikni qadrlaydigan shaxsiyatga ega.</p>
-
-<h3>Erkak Arslon ♌</h3>
-<p>Rahbar va e’tiborli. Ijodiy va o‘ziga ishonchli. Ba’zan g‘ururlik va mag‘rurlik ko‘rsatadi. Ijtimoiy faoliyatni yoqtiradi, do‘stlar va ishdagi yetakchilikni qadrlaydi. Tavsiyalar: sabrni oshirish, hamkorlikni rivojlantirish. Shu burj erkaklari diqqat markazida bo‘lishni va liderlikni qadrlaydi.</p>
-
-<h3>Ayol Parizod ♍</h3>
-<p>Tahlilchi, tartibli va mas’uliyatli. Ba’zan tanqidiy va tanqidni qabul qilishi qiyin bo‘ladi. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi, tartib va aniqlikni qadrlaydi. Tavsiyalar: ochiq fikrli bo‘lish, yangi tajribaga ochiq bo‘lish, o‘z fikrini boshqalarga aniq yetkazish.</p>
-
-<h3>Erkak Parizod ♍</h3>
-<p>Tahlilchi va tartibli. Mas’uliyatli va ishga jiddiy yondashadi. Ba’zan tanqidiy bo‘lishi mumkin. Shu burj erkaklari mukammal va tizimli ishlashga intiladi, ma’lumotni diqqat bilan tahlil qiladi. Tavsiyalar: moslashuvchanlikni oshirish, hamkorlikni rivojlantirish, ijodiy fikrlashni rivojlantirish.</p>
-
-<h3>Ayol Tarozi ♎</h3>
-<p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do‘stlik va hamkorlikni qadrlaydi. Ba’zan qaror qabul qilishda ikkilanadi. Shu burj ayollari go‘zallik va san’atga qiziqadi, odamlarga hurmat bilan munosabatda bo‘ladi. Tavsiyalar: qat’iylikni oshirish, o‘z fikrini aniq ifodalash, o‘zini boshqalarga namoyon qilish.</p>
-
-<h3>Erkak Tarozi ♎</h3>
-<p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Ba’zan qaror qabul qilishda sekinlashadi. Shu burj erkaklari adolat va muvozanatni qadrlaydi, jamoa ishida muvaffaqiyatli. Tavsiyalar: qat’iylikni oshirish, o‘z pozitsiyasini aniq ifodalash, boshqalar bilan hamkorlikni rivojlantirish.</p>
-
-<h3>Ayol Chayon ♏</h3>
-<p>Intensiv, sirli va qat’iy. Ba’zan xotirjamlikni yo‘qotadi. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e’tiborli. Ular sirli va chuqur his-tuyg‘ularga ega. Tavsiyalar: hissiyotlarni boshqarish, o‘zgarishlarga ochiq bo‘lish, shaxsiy chegaralarni belgilash.</p>
-
-<h3>Erkak Chayon ♏</h3>
-<p>Sirli va intensiv. Ba’zan shaxsiy hayotini yopiq saqlaydi. Qattiq va qat’iyatli, hissiyotlarga boy. Shu burj erkaklari kuchli ichki hissiyotga ega, strategik va sezgir bo‘ladi. Tavsiyalar: ochiqlikni oshirish, hissiyotlarni boshqarish, sodiqlik va ishonchni qadrlash.</p>
-
-<h3>Ayol O‘qotar ♐</h3>
-<p>Erkin va sarguzashtchi. Optimistik va ijobiy. Ba’zan noaniqlikka moyil. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi, mustaqil va faol. Tavsiyalar: sabrni oshirish, ehtiyotkorlikni rivojlantirish, o‘zining erkinligini saqlash.</p>
-
-<h3>Erkak O‘qotar ♐</h3>
-<p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol. Ba’zan noaniqlikka moyil bo‘lishi mumkin. Shu burj erkaklari sayohat, yangi bilim va sarguzashtlarni yaxshi ko‘radi. Tavsiyalar: reja tuzishni va ehtiyotkorlikni oshirish, ijtimoiy aloqalarni rivojlantirish.</p>
-
-<h3>Ayol Echki ♑</h3>
-<p>Mas’uliyatli, realistik va qat’iyatli. Ba’zan juda jiddiy va tanqidiy bo‘lishi mumkin. Shu burj ayollari mehnatsevar va tartibli, oilaga va ishga sodiq. Tavsiyalar: moslashuvchanlikni oshirish, hissiyotlarni boshqarish, shaxsiy ehtiyojlarga e’tibor berish.</p>
-
-<h3>Erkak Echki ♑</h3>
-<p>Mas’uliyatli, qat’iyatli va jiddiy. Ba’zan tanqidiy va qat’iy bo‘lishi mumkin. Shu burj erkaklari ishga va oilaga sodiq, barqaror va qat’iyatli shaxsiyatga ega. Tavsiyalar: yumshoqlik va moslashuvchanlikni rivojlantirish, hissiyotlarni boshqarish.</p>
-
-<h3>Ayol Qovg‘a ♒</h3>
-<p>Ijodiy, futuristik va mustaqil. Ba’zan boshqalar bilan munosabatda masofa saqlaydi. Shu burj ostidagi ayollar yangi g‘oyalarni qadrlaydi, texnologiya va san’atga qiziqadi. Tavsiyalar: hissiy aloqalarni rivojlantirish, sabrni oshirish, ijtimoiy hamkorlikni oshirish.</p>
-
-<h3>Erkak Qovg‘a ♒</h3>
-<p>Ijodiy va mustaqil. Futuristik qarashlarga ega. Ba’zan boshqalar bilan yaqinlikni saqlash qiyin bo‘ladi. Shu burj erkaklari yangi texnologiyalar va g‘oyalarga qiziqadi. Tavsiyalar: ijtimoiy aloqalarni oshirish, sabrni rivojlantirish, kreativ ishlarni rivojlantirish.</p>
-
-<h3>Ayol Baliq ♓</h3>
-<p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Ba’zan hayotiy voqealardan ta’sirlanadi. Shu burj ayollari san’at va ijodiy faoliyatga qiziqadi, boshqalarga yordam berishni yoqtiradi. Tavsiyalar: hissiyotlarni boshqarish, hayotiy qarorlarni rejalashtirish, kreativ va sezgir faoliyatni rivojlantirish.</p>
-
-<h3>Erkak Baliq ♓</h3>
-<p>Hissiy, sezgir va intuitsiyaga ega. Ba’zan hayotiy voqealardan ta’sirlanadi. Shu burj erkaklari kreativ va yordam berishga tayyor. Tavsiyalar: hissiyotlarni boshqarish, hayotiy qarorlarni ongli qabul qilish, boshqalarga yordam berish va ijodiy faoliyat bilan shug‘ullanish.</p>
-
-`;
-}
+// Dastlab kalendarni o'rnatish
+window.onload = function() {
+  const today = new Date();
+  document.getElementById('calendar').value = today.toISOString().split('T')[0];
+  syncDate();
+};
 </script>
 
 </body>
