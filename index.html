@@ -168,7 +168,7 @@ function syncDate() {
   document.getElementById('month').value = d.getMonth()+1;
 }
 
-// Burj aniqlash va batafsil tavsif
+// Burj aniqlash qismi
 function showBurj() {
   const day = parseInt(document.getElementById('day').value);
   const month = parseInt(document.getElementById('month').value);
@@ -193,35 +193,97 @@ function showBurj() {
   else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) burj="Qovg‘a ♒";
   else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
 
-  // Har bir burj uchun ko‘p malumot (ayol va erkak)
-  const burjInfo = {
-    "Qo‘y ♈": {
-      female: `<b>Ayol Qo‘y:</b> Jasoratli, mustaqil, hissiy jihatdan kuchli. Sodiq do‘st, ba’zan sabrsiz. Ijobiy: rahbarlik, ijodkorlik, do‘stlikni qadrlash. Salbiy: biroz qattiqqo‘l va g‘ururlik. Tavsiyalar: sabrni rivojlantirish, hissiyotlarni boshqarish. Qiziqarli fakt: Qo‘y ayollari san’at va sportni yaxshi ko‘radi. Batafsil: Qo‘y burji ostidagi ayol o‘zini erkin his qiladi, qarorlarini tez qabul qiladi, ba’zan muammolarga jasorat bilan duch keladi. Shu burj ostida tug‘ilgan ayollar do‘stlik va sadoqatga katta ahamiyat beradi, ijodiy faoliyatlari juda rivojlangan, o‘ziga xos shaxsiyatga ega.`,
-      male: `<b>Erkak Qo‘y:</b> Rahbarlikni sevadi, faol va sarguzashtchi. Ijobiy: qat’iyatli, jasoratli, do‘stlariga sodiq. Salbiy: ba’zan sabrsiz va g‘ururlik. Tavsiyalar: ochiq fikrli bo‘lish, yangi bilimlarni o‘rganish. Qiziqarli fakt: Qo‘y erkaklari sarguzashtlarni yaxshi ko‘radi. Batafsil: Qo‘y erkagi odatda faol va ijtimoiy, rahbarlik qobiliyatiga ega. U tezkor qarorlar qabul qiladi, maqsad sari qat’iyat bilan harakat qiladi. Shu burj ostidagi erkaklar do‘stlik va sadoqatga e’tibor beradi, lekin ba’zan g‘ururlik va sabrsizlik ularning yo‘lini to‘sadi.`
-    },
-    "Buzoq ♉": {
-      female: `Ayol Buzoq: Sabrli, barqaror, moddiy jihatdan ehtiyotkor. Ijodiy va go‘zallikni qadrlaydi. Batafsil: U barqaror munosabatlar va barqaror hayotni qadrlaydi, hissiyotlarni mustahkamlashga intiladi. Salbiy tomonlari: egosentrik va biroz mulohazali bo‘lishi mumkin. Qiziqarli faktlar: san’at va tabiatni yaxshi ko‘radi.`,
-      male: `Erkak Buzoq: Fidoyi, sodiq, mehnatsevar. Batafsil: Ba’zan biroz egosentrik, lekin ishonchli va do‘stona. Salbiy: o‘ziga juda bog‘liq bo‘lishi mumkin. Tavsiyalar: oila va do‘stlarga e’tibor qaratish, sabrni oshirish.`
-    },
-    // Shu tarzda barcha 12 burj qo‘shilishi mumkin
-    "Egizak ♊": {female:"Ayol Egizak tafsilotlari...", male:"Erkak Egizak tafsilotlari..."},
-    "Qisqichbaqa ♋": {female:"Ayol Qisqichbaqa tafsilotlari...", male:"Erkak Qisqichbaqa tafsilotlari..."},
-    "Arslon ♌": {female:"Ayol Arslon tafsilotlari...", male:"Erkak Arslon tafsilotlari..."},
-    "Parizod ♍": {female:"Ayol Parizod tafsilotlari...", male:"Erkak Parizod tafsilotlari..."},
-    "Tarozi ♎": {female:"Ayol Tarozi tafsilotlari...", male:"Erkak Tarozi tafsilotlari..."},
-    "Chayon ♏": {female:"Ayol Chayon tafsilotlari...", male:"Erkak Chayon tafsilotlari..."},
-    "O‘qotar ♐": {female:"Ayol O‘qotar tafsilotlari...", male:"Erkak O‘qotar tafsilotlari..."},
-    "Echki ♑": {female:"Ayol Echki tafsilotlari...", male:"Erkak Echki tafsilotlari..."},
-    "Qovg‘a ♒": {female:"Ayol Qovg‘a tafsilotlari...", male:"Erkak Qovg‘a tafsilotlari..."},
-    "Baliq ♓": {female:"Ayol Baliq tafsilotlari...", male:"Erkak Baliq tafsilotlari..."}
-  };
-
-  // Har bir burjda ayol va erkak tafsilotlari chiqadi
-  // Qidirishdan keyin har doim hamma tafsilot ko‘p malumot sifatida ko‘rinadi
+  // BURJ MALUMOT QISMIGACHA
   document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b>`;
-  document.getElementById('burj-info').innerHTML = burjInfo[burj].female + "<br><br>" + burjInfo[burj].male;
+  document.getElementById('burj-info').innerHTML = ""; 
+  // const burjInfo = {
+  "Qo‘y ♈": {
+    ayol: `<h3>Ayol Qo‘y ♈</h3>
+<p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do‘st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Ba’zan sabrsiz va tez qaror qabul qilishi mumkin. Sport va san’atga qiziqadi. Shu burj ostidagi ayollar o‘zini erkin his qiladi, qarorlarni tez qabul qiladi, muammolarga jasorat bilan duch keladi. Tavsiyalar: sabrni rivojlantirish, hissiyotlarni boshqarish, yangi tajriba va sarguzashtlardan qo‘rqmaslik.</p>`,
+    erkak: `<h3>Erkak Qo‘y ♈</h3>
+<p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do‘stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi. Ba’zan sabrsizlik va g‘ururlik ko‘rsatishi mumkin. Shu burj ostidagi erkaklar doimo yangi tajriba izlaydi va sarguzashtlar bilan shug‘ullanishni yaxshi ko‘radi. Tavsiyalar: ochiq fikrli bo‘lish, yangi bilimlarni o‘rganish, hissiyotlarni boshqarish.</p>`
+  },
+
+  "Buzoq ♉": {
+    ayol: `<h3>Ayol Buzoq ♉</h3>
+<p>Sabrli, barqaror va ishonchli. Oila va do‘stlariga sodiq. Ijodiy va go‘zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Ba’zan egosentrik va o‘zgarishlardan qo‘rqadi. U barqaror munosabatlarni va tartibli hayotni qadrlaydi. Ishda muvaffaqiyatli, san’at va tabiatga qiziqadi. Tavsiyalar: hissiyotlarni boshqarish va o‘zgarishlarga ochiq bo‘lish, sabrni oshirish, barqarorlikni qadrlash.</p>`,
+    erkak: `<h3>Erkak Buzoq ♉</h3>
+<p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ba’zan biroz egosentrik va yangi g‘oyalarga ochiq emas. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Sevgi va do‘stlikda sodiq. Tabiat bilan bog‘liq faoliyatni yaxshi ko‘radi. Tavsiyalar: sabrni oshirish, oila va do‘stlarga e’tibor qaratish.</p>`
+  },
+
+  "Egizak ♊": {
+    ayol: `<h3>Ayol Egizak ♊</h3>
+<p>Ijodiy, tez o‘ylovchi va ko‘p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Ba’zan diqqatini jamlay olmaydi. Do‘stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san’atga qiziqadi. Tavsiyalar: fokus va sabrni rivojlantirish, hissiyotlarni boshqarish.</p>`,
+    erkak: `<h3>Erkak Egizak ♊</h3>
+<p>Aqlli, tez o‘ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Ba’zan diqqatni jamlay olmaydi, lekin tez o‘zlashtiradi va yangi bilimlarga ochiq. Do‘stlik va doimiy aloqalarni qadrlaydi. Tavsiyalar: fokusni oshirish, barqarorlikni rivojlantirish, ijodiy faoliyatga e’tibor qaratish.</p>`
+  },
+
+  "Qisqichbaqa ♋": {
+    ayol: `<h3>Ayol Qisqichbaqa ♋</h3>
+<p>Hissiy, mehribon va oila uchun sodiq. Ba’zan noaniqlik va shubhalarga moyil. Do‘stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o‘zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi. Tavsiyalar: hissiyotlarni boshqarish, o‘ziga va boshqalarga nisbatan sabrni oshirish, oila bilan vaqtni qadrlash.</p>`,
+    erkak: `<h3>Erkak Qisqichbaqa ♋</h3>
+<p>Hissiy va mehribon. Oilaga va do‘stlarga sodiq, himoyachilik xususiyatiga ega. Ba’zan xotirjamlikni yo‘qotadi, shubhalarga beriladi. Oilaviy va do‘stlik masalalarida mas’uliyatli. Tavsiyalar: hissiyotlarni boshqarish, sabrni oshirish, hissiy jihatdan barqarorlikni saqlash.</p>`
+  },
+
+  "Arslon ♌": {
+    ayol: `<h3>Ayol Arslon ♌</h3>
+<p>Rahbar, e’tiborli va ijodiy. Ba’zan g‘ururlikni ko‘rsatadi, lekin odatda do‘stona va mehribon. U diqqat markazida bo‘lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli. Tavsiyalar: boshqalarning fikrini qadrlash, sabrni oshirish.</p>`,
+    erkak: `<h3>Erkak Arslon ♌</h3>
+<p>Rahbar va e’tiborli. Ijodiy va o‘ziga ishonchli. Ba’zan g‘ururlik va mag‘rurlik ko‘rsatadi. Ijtimoiy faoliyatni yoqtiradi, do‘stlar va ishdagi yetakchilikni qadrlaydi. Tavsiyalar: sabrni oshirish, hamkorlikni rivojlantirish.</p>`
+  },
+
+  "Parizod ♍": {
+    ayol: `<h3>Ayol Parizod ♍</h3>
+<p>Tahlilchi, tartibli va mas’uliyatli. Ba’zan tanqidiy va tanqidni qabul qilishi qiyin. Ijodiy va tizimli ishlashni yoqtiradi. Tavsiyalar: ochiq fikrli bo‘lish, yangi tajribaga ochiq bo‘lish.</p>`,
+    erkak: `<h3>Erkak Parizod ♍</h3>
+<p>Tahlilchi va tartibli. Mas’uliyatli va ishga jiddiy yondashadi. Ba’zan tanqidiy bo‘lishi mumkin. Tavsiyalar: moslashuvchanlikni oshirish, hamkorlikni rivojlantirish.</p>`
+  },
+
+  "Tarozi ♎": {
+    ayol: `<h3>Ayol Tarozi ♎</h3>
+<p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli. Ba’zan qaror qabul qilishda ikkilanadi. Shu burj ostidagi ayollar do‘stlik va hamkorlikni qadrlaydi. Tavsiyalar: qat’iylikni oshirish, o‘z fikrini aniq ifodalash.</p>`,
+    erkak: `<h3>Erkak Tarozi ♎</h3>
+<p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Ba’zan ikkilanadi, qaror qabul qilishda sekinlashadi. Tavsiyalar: qat’iylikni oshirish, o‘z pozitsiyasini aniq ifodalash.</p>`
+  },
+
+  "Chayon ♏": {
+    ayol: `<h3>Ayol Chayon ♏</h3>
+<p>Intensiv, sirli va qat’iy. Ba’zan xotirjamlikni yo‘qotadi. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e’tiborli. Tavsiyalar: hissiyotlarni boshqarish, o‘zgarishlarga ochiq bo‘lish.</p>`,
+    erkak: `<h3>Erkak Chayon ♏</h3>
+<p>Sirli va intensiv. Ba’zan shaxsiy hayotini yopiq saqlaydi. Qattiq va qat’iyatli, hissiyotlarga boy. Tavsiyalar: ochiqlikni oshirish, hissiyotlarni boshqarish.</p>`
+  },
+
+  "O‘qotar ♐": {
+    ayol: `<h3>Ayol O‘qotar ♐</h3>
+<p>Erkin va sarguzashtchi. Optimistik va ijobiy. Ba’zan noaniqlikka moyil. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi, mustaqil va faol. Tavsiyalar: sabrni oshirish, ehtiyotkorlikni rivojlantirish.</p>`,
+    erkak: `<h3>Erkak O‘qotar ♐</h3>
+<p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol. Ba’zan noaniqlikka moyil bo‘lishi mumkin. Tavsiyalar: reja tuzishni va ehtiyotkorlikni oshirish.</p>`
+  },
+
+  "Echki ♑": {
+    ayol: `<h3>Ayol Echki ♑</h3>
+<p>Mas’uliyatli, realistik va qat’iyatli. Ba’zan juda jiddiy va tanqidiy bo‘lishi mumkin. Shu burj ostidagi ayollar mehnatsevar va tartibli, oilaga va ishga sodiq. Tavsiyalar: moslashuvchanlikni oshirish, hissiyotlarni boshqarish.</p>`,
+    erkak: `<h3>Erkak Echki ♑</h3>
+<p>Mas’uliyatli, qat’iyatli va jiddiy. Ba’zan tanqidiy va qat’iy bo‘lishi mumkin. Tavsiyalar: yumshoqlik va moslashuvchanlikni rivojlantirish.</p>`
+  },
+
+  "Qovg‘a ♒": {
+    ayol: `<h3>Ayol Qovg‘a ♒</h3>
+<p>Ijodiy, futuristik va mustaqil. Ba’zan boshqalar bilan munosabatda masofa saqlaydi. Shu burj ostidagi ayollar yangi g‘oyalarni qadrlaydi, texnologiya va san’atga qiziqadi. Tavsiyalar: hissiy aloqalarni rivojlantirish, sabrni oshirish.</p>`,
+    erkak: `<h3>Erkak Qovg‘a ♒</h3>
+<p>Ijodiy va mustaqil. Futuristik qarashlarga ega. Ba’zan boshqalar bilan yaqinlikni saqlash qiyin bo‘ladi. Tavsiyalar: ijtimoiy aloqalarni oshirish, sabrni rivojlantirish.</p>`
+  },
+
+  "Baliq ♓": {
+    ayol: `<h3>Ayol Baliq ♓</h3>
+<p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Ba’zan hayotiy voqealardan ta’sirlanadi. Shu burj ostidagi ayollar san’at va ijodiy faoliyatga qiziqadi, boshqalarga yordam berishni yoqtiradi. Tavsiyalar: hissiyotlarni boshqarish, hayotiy qarorlarni rejalashtirish.</p>`,
+    erkak: `<h3>Erkak Baliq ♓</h3>
+<p>Hissiy, sezgir va intuitsiyaga ega. Ba’zan hayotiy voqealardan ta’sirlanadi. Shu burj ostidagi erkaklar kreativ va yordam berishga tayyor. Tavsiyalar: hissiyotlarni boshqarish, hayotiy qarorlarni ongli qabul qilish.</p>`
+  }
+};
 }
 </script>
 
 </body>
 </html>
+    
