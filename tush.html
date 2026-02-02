@@ -1,94 +1,289 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sirli Dunyo – Tush tabiri</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: white;
-    }
-
-    header {
-      text-align: center;
-      padding: 30px;
-      background: rgba(0,0,0,0.3);
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-
-    nav {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      gap: 15px;
-    }
-
-    nav a {
-      padding: 10px 20px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-    }
-
-    nav a.active {
-      background: rgba(255,255,255,0.3);
-    }
-
-    section {
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 25px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      text-align: center;
-      padding: 15px;
-      opacity: 0.8;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>✨ Sirli Dunyo – Burjlar</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: white;
+}
+header {
+  text-align: center;
+  padding: 30px;
+  background: rgba(0,0,0,0.3);
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+nav a {
+  padding: 10px 20px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+nav a.active {
+  background: rgba(255,255,255,0.3);
+}
+section {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+.date-inputs {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+.date-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.date-group label {
+  font-size: 14px;
+  color: #ccc;
+  min-width: 40px;
+}
+input[type="number"] {
+  width: 70px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  text-align: center;
+}
+input[type="date"] {
+  width: 140px;
+  padding: 9px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.15);
+  color: white;
+  font-size: 13px;
+}
+.separator {
+  color: #888;
+  font-size: 14px;
+}
+button.submit {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+button.submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+#burj-result {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.5em;
+  color: #ffcc00;
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+#burj-info {
+  margin-top: 20px;
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.7;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.burj-details {
+  margin-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 15px;
+}
+.gender-info {
+  margin-bottom: 25px;
+}
+.gender-info h3 {
+  color: #ffcc00;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+</style>
 </head>
-
 <body>
 
-  <header>
-    <h1>🌙 Sirli Dunyo – Tush tabiri</h1>
-  </header>
+<header>
+  <h1>✨ Sirli Dunyo – Burjlar</h1>
+</header>
 
-  <nav>
-    <a href="/index.html">🏠 Bosh sahifa</a>
-    <a href="/tush.html" class="active">🔮 Tush tabiri</a>
-  </nav>
+<nav>
+  <a href="/index.html">🏠 Bosh sahifa</a>
+  <a href="/tush.html">🔮 Tush tabiri</a>
+  <a href="/burj.html" class="active">✨ Burjlar</a>
+</nav>
 
-  <section>
-    <div class="card">
-      <h2>🔮 Tush tabiri</h2>
-      <p>
-        Bu yerda turli tushlarning ta’biri joylanadi.
-        Keyinchalik har bir tush alohida maqola sifatida qo‘shiladi.
-      </p>
+<section>
+  <div class="card">
+    <h2>♈ Burj aniqlash</h2>
+    <p>Tug'ilgan kun va oyingizni tanlang:</p>
+    
+    <div class="date-inputs">
+      <div class="date-group">
+        <label>Kun:</label>
+        <input type="number" id="day" placeholder="Kun" min="1" max="31" value="15">
+      </div>
+      
+      <div class="date-group">
+        <label>Oy:</label>
+        <input type="number" id="month" placeholder="Oy" min="1" max="12" value="6">
+      </div>
+      
+      <span class="separator">|</span>
+      
+      <div class="date-group">
+        <label>Kalendar:</label>
+        <input type="date" id="calendar" title="Kalendardan tanlash">
+      </div>
     </div>
-  </section>
+    
+    <button class="submit" onclick="showBurj()">🔮 Burjimni aniqlash</button>
+    
+    <div id="burj-result"></div>
+    <div id="burj-info"></div>
+  </div>
+</section>
 
-  <footer>
-    <p>© 2026 Sirli Dunyo — Tush tabiri portali</p>
-  </footer>
+<footer>
+  <p>© 2026 Sirli Dunyo — Burjlar portali</p>
+</footer>
+
+<script>
+// Burj ma'lumotlari
+const burjInfo = {/* burjInfo ni index.html dagi kabi shu yerga joylashtirasiz */};
+
+// Kalendar bilan inputni sinxronlash
+function syncDate() {
+  const date = document.getElementById('calendar').value;
+  if(!date) return;
+  const d = new Date(date);
+  document.getElementById('day').value = d.getDate();
+  document.getElementById('month').value = d.getMonth() + 1;
+}
+
+document.getElementById('day').addEventListener('change', updateCalendar);
+document.getElementById('month').addEventListener('change', updateCalendar);
+
+function updateCalendar() {
+  const day = document.getElementById('day').value;
+  const month = document.getElementById('month').value;
+  const year = new Date().getFullYear();
+  
+  if(day && month) {
+    const date = new Date(year, month-1, day);
+    document.getElementById('calendar').value = date.toISOString().split('T')[0];
+  }
+}
+
+function showBurj() {
+  const day = parseInt(document.getElementById('day').value);
+  const month = parseInt(document.getElementById('month').value);
+
+  if (!day || !month || day<1 || day>31 || month<1 || month>12) {
+    document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
+    document.getElementById('burj-info').innerHTML = "";
+    return;
+  }
+
+  let burj = "";
+  let burjSymbol = "";
+  
+  if((month == 3 && day >= 21) || (month == 4 && day <= 19)) { burj="Qo'y"; burjSymbol="♈"; }
+  else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) { burj="Buzoq"; burjSymbol="♉"; }
+  else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) { burj="Egizak"; burjSymbol="♊"; }
+  else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) { burj="Qisqichbaqa"; burjSymbol="♋"; }
+  else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) { burj="Arslon"; burjSymbol="♌"; }
+  else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) { burj="Parizod"; burjSymbol="♍"; }
+  else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) { burj="Tarozi"; burjSymbol="♎"; }
+  else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) { burj="Chayon"; burjSymbol="♏"; }
+  else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) { burj="O'qotar"; burjSymbol="♐"; }
+  else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) { burj="Echki"; burjSymbol="♑"; }
+  else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) { burj="Qovg'a"; burjSymbol="♒"; }
+  else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) { burj="Baliq"; burjSymbol="♓"; }
+
+  const fullBurjName = `${burj} ${burjSymbol}`;
+  document.getElementById('burj-result').innerHTML = `✨ Sizning burjingiz: <b>${fullBurjName}</b>`;
+
+  let tafsilot = "";
+  if (burjInfo[fullBurjName]) {
+    tafsilot = `<div class="burj-details">${burjInfo[fullBurjName].ayol}${burjInfo[fullBurjName].erkak}</div>`;
+  } else {
+    tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
+  }
+
+  document.getElementById('burj-info').innerHTML = tafsilot;
+
+  playSound();
+}
+
+function playSound() {
+  try {
+    const audio = new AudioContext();
+    const oscillator = audio.createOscillator();
+    const gainNode = audio.createGain();
+    oscillator.connect(gainNode);
+    gainNode.connect(audio.destination);
+    oscillator.frequency.setValueAtTime(523, audio.currentTime);
+    gainNode.gain.setValueAtTime(0.1, audio.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.5);
+    oscillator.start();
+    oscillator.stop(audio.currentTime + 0.5);
+  } catch (e) {
+    console.log("Ovoz efekti ishlamadi");
+  }
+}
+
+window.onload = function() {
+  const today = new Date();
+  document.getElementById('calendar').value = today.toISOString().split('T')[0];
+  syncDate();
+};
+</script>
 
 </body>
 </html>
