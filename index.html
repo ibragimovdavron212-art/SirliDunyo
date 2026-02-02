@@ -100,9 +100,8 @@
   <div id="burj" class="tab-content" style="display:none;">
     <div class="card">
       <h2>♈ Burj aniqlash</h2>
-      <p>Tug‘ilgan sanangizni kalendardan tanlang yoki yozib kiriting:</p>
+      <p>Tug‘ilgan sanangizni kalendardan tanlang:</p>
       <input type="date" id="birthdate">
-      <textarea id="birthdate-text" placeholder="Yoki sanani yozing (yyyy-mm-dd)"></textarea>
       <button class="submit" onclick="showBurj()">Natija</button>
       <p id="burj-result" style="margin-top:15px; font-weight:bold;"></p>
     </div>
@@ -122,7 +121,7 @@
 </footer>
 
 <script>
-  // Tablar uchun
+  // Tablar funksiyasi
   const buttons = document.querySelectorAll('.tab-btn');
   const contents = document.querySelectorAll('.tab-content');
 
@@ -136,20 +135,19 @@
     });
   });
 
-  // Burj aniqlash funksiyasi
+  // Burj aniqlash
   function showBurj() {
-    let input = document.getElementById('birthdate').value;
-    const text = document.getElementById('birthdate-text').value;
+    const input = document.getElementById('birthdate').value;
 
-    if(!input && !text) {
-      document.getElementById('burj-result').innerText = "Iltimos, tug‘ilgan sanangizni kiriting yoki yozing.";
+    if(!input) {
+      document.getElementById('burj-result').innerText = "Iltimos, tug‘ilgan sanangizni tanlang.";
       return;
     }
-    if(!input) input = text;
 
     const date = new Date(input);
-    const month = date.getMonth() + 1;
+    const month = date.getMonth() + 1; // 0-11
     const day = date.getDate();
+
     let burj = "";
 
     if ((month == 3 && day >=21) || (month ==4 && day <=19)) burj="Qo‘y ♈";
