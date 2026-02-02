@@ -5,223 +5,256 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sirli Dunyo - Burj aniqlash</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #1f1c2c, #928dab);
             color: white;
+            min-height: 100vh;
             padding: 20px;
         }
         
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         h1 {
             text-align: center;
             color: #ffcc00;
             margin-bottom: 30px;
-            font-size: 2.5em;
+            font-size: 2.8em;
+            text-shadow: 0 2px 10px rgba(255, 204, 0, 0.3);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .description {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .input-section {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
         }
         
         .date-inputs {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin: 30px 0;
-            flex-wrap: wrap;
             justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+            flex-wrap: wrap;
         }
         
-        .date-group {
+        .input-group {
             display: flex;
-            align-items: center;
-            gap: 5px;
+            flex-direction: column;
+            gap: 8px;
         }
         
-        .date-group label {
+        .input-group label {
             font-size: 16px;
-            color: #ccc;
-            min-width: 40px;
+            color: #aaa;
         }
         
-        input[type="number"] {
-            width: 80px;
-            padding: 12px;
-            border-radius: 8px;
+        input[type="number"], input[type="date"] {
+            padding: 12px 15px;
             border: none;
+            border-radius: 10px;
             background: rgba(255, 255, 255, 0.15);
             color: white;
-            text-align: center;
             font-size: 16px;
+            min-width: 150px;
         }
         
-        input[type="date"] {
-            width: 160px;
-            padding: 11px;
-            border-radius: 8px;
-            border: none;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 14px;
+        input[type="number"]:focus, input[type="date"]:focus {
+            outline: 2px solid #6a11cb;
         }
         
         .separator {
-            color: #888;
-            font-size: 16px;
+            color: #666;
+            font-size: 20px;
         }
         
-        button.submit {
-            padding: 15px 40px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #6a11cb, #2575fc);
-            color: white;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 18px;
-            transition: all 0.3s;
+        .submit-btn {
             display: block;
             margin: 30px auto;
+            padding: 16px 45px;
+            font-size: 18px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
         }
         
-        button.submit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.5);
+        .submit-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.5);
         }
         
         #burj-result {
-            margin-top: 30px;
-            font-weight: bold;
-            font-size: 1.8em;
-            color: #ffcc00;
             text-align: center;
+            font-size: 1.8em;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 15px;
             border: 2px solid rgba(255, 204, 0, 0.3);
+            margin: 20px 0;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         #burj-info {
-            margin-top: 30px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.05);
             padding: 25px;
-            border-radius: 10px;
-            line-height: 1.7;
-            max-height: 600px;
-            overflow-y: auto;
+            border-radius: 15px;
+            margin-top: 20px;
         }
         
         .gender-info {
             margin-bottom: 30px;
             padding: 20px;
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
+            border-radius: 12px;
         }
         
         .gender-info h3 {
             color: #ffcc00;
             margin-bottom: 15px;
+            font-size: 1.4em;
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 1.3em;
         }
         
         .gender-info p {
             margin-bottom: 10px;
+            line-height: 1.7;
             font-size: 16px;
         }
         
-        strong {
+        .gender-info strong {
             color: #ffcc00;
         }
         
-        .back-btn {
-            padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .back-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+        .burj-details {
+            margin-top: 10px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 15px;
         }
         
         footer {
             text-align: center;
             margin-top: 40px;
-            padding: 15px;
-            font-size: 14px;
-            opacity: 0.7;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
         }
         
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
             .container {
                 padding: 20px;
             }
             
-            .date-inputs {
-                flex-direction: column;
-                align-items: center;
+            h1 {
+                font-size: 2.2em;
             }
             
-            h1 {
-                font-size: 2em;
+            .date-inputs {
+                flex-direction: column;
+            }
+            
+            .separator {
+                display: none;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">🏠 Bosh sahifaga</a>
+        <a href="index.html" class="back-btn">← Bosh sahifaga qaytish</a>
         
-        <h1>♈ Burj aniqlash</h1>
+        <h1>♈ Burj aniqlash ♓</h1>
         
-        <p style="text-align: center; font-size: 18px; margin-bottom: 20px;">Tug'ilgan kun va oyingizni tanlang:</p>
-        
-        <div class="date-inputs">
-            <div class="date-group">
-                <label>Kun:</label>
-                <input type="number" id="day" placeholder="Kun" min="1" max="31" value="15">
-            </div>
-            
-            <div class="date-group">
-                <label>Oy:</label>
-                <input type="number" id="month" placeholder="Oy" min="1" max="12" value="6">
-            </div>
-            
-            <span class="separator">|</span>
-            
-            <div class="date-group">
-                <label>Kalendar:</label>
-                <input type="date" id="calendar" title="Kalendardan tanlash">
-            </div>
+        <div class="description">
+            Tug'ilgan kuningizni kiriting va sizning burjingizni aniqlang
         </div>
         
-        <button class="submit" onclick="showBurj()">🔮 Burjimni aniqlash</button>
+        <div class="input-section">
+            <div class="date-inputs">
+                <div class="input-group">
+                    <label>Kun (1-31):</label>
+                    <input type="number" id="day" min="1" max="31" value="15" placeholder="Kun">
+                </div>
+                
+                <div class="input-group">
+                    <label>Oy (1-12):</label>
+                    <input type="number" id="month" min="1" max="12" value="6" placeholder="Oy">
+                </div>
+                
+                <span class="separator">|</span>
+                
+                <div class="input-group">
+                    <label>Kalendar:</label>
+                    <input type="date" id="calendar">
+                </div>
+            </div>
+            
+            <button class="submit-btn" onclick="showBurj()">🔮 Burjimni aniqlash</button>
+        </div>
         
-        <div id="burj-result"></div>
-        <div id="burj-info"></div>
+        <div id="burj-result">
+            Bu yerda sizning burjingiz ko'rinadi
+        </div>
+        
+        <div id="burj-info">
+            Burj ma'lumotlari bu yerda paydo bo'ladi
+        </div>
     </div>
     
     <footer>
-        <p>© 2026 Sirli Dunyo — Burjlar portali</p>
+        <p>© 2026 Sirli Dunyo — Barcha huquqlar himoyalangan</p>
     </footer>
 
     <script>
-        // Burj ma'lumotlari
+        // Burj ma'lumotlari (Sizning ma'lumotlaringiz bilan bir xil)
         const burjInfo = {
             "Qo'y ♈": {
                 ayol: "<div class='gender-info'><h3>👩 Ayol Qo'y ♈</h3><p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Sport, san'at va yangi sarguzashtlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, jasorat, ijodkorlik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, hissiyotlarni boshqarish</p></div>",
@@ -274,17 +307,17 @@
         };
 
         // Kalendar bilan inputni sinxronlash
-        function syncDate() {
-            const date = document.getElementById('calendar').value;
-            if (!date) return;
-            const d = new Date(date);
-            document.getElementById('day').value = d.getDate();
-            document.getElementById('month').value = d.getMonth() + 1;
-        }
+        document.getElementById('calendar').addEventListener('change', function() {
+            const date = new Date(this.value);
+            if (!isNaN(date.getTime())) {
+                document.getElementById('day').value = date.getDate();
+                document.getElementById('month').value = date.getMonth() + 1;
+            }
+        });
 
-        // Inputlardan kalendarni sinxronlash
-        document.getElementById('day').addEventListener('change', updateCalendar);
-        document.getElementById('month').addEventListener('change', updateCalendar);
+        // Kun/oy o'zgarganda kalendarni yangilash
+        document.getElementById('day').addEventListener('input', updateCalendar);
+        document.getElementById('month').addEventListener('input', updateCalendar);
 
         function updateCalendar() {
             const day = document.getElementById('day').value;
@@ -297,60 +330,75 @@
             }
         }
 
-        // Burj aniqlash qismi
+        // Burj aniqlash funktsiyasi
         function showBurj() {
             const day = parseInt(document.getElementById('day').value);
             const month = parseInt(document.getElementById('month').value);
 
+            // Validatsiya
             if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
-                document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
+                document.getElementById('burj-result').innerHTML = 
+                    "<span style='color: #ff6b6b'>❌ Iltimos, to'g'ri kun va oy kiriting</span>";
                 document.getElementById('burj-info').innerHTML = "";
                 return;
             }
 
+            // Burjni aniqlash
             let burj = "";
             let burjSymbol = "";
             
             if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
                 burj = "Qo'y";
                 burjSymbol = "♈";
-            } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+            }
+            else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
                 burj = "Buzoq";
                 burjSymbol = "♉";
-            } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+            }
+            else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
                 burj = "Egizak";
                 burjSymbol = "♊";
-            } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+            }
+            else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
                 burj = "Qisqichbaqa";
                 burjSymbol = "♋";
-            } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+            }
+            else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
                 burj = "Arslon";
                 burjSymbol = "♌";
-            } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+            }
+            else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
                 burj = "Parizod";
                 burjSymbol = "♍";
-            } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+            }
+            else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
                 burj = "Tarozi";
                 burjSymbol = "♎";
-            } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+            }
+            else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
                 burj = "Chayon";
                 burjSymbol = "♏";
-            } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+            }
+            else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
                 burj = "O'qotar";
                 burjSymbol = "♐";
-            } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+            }
+            else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
                 burj = "Echki";
                 burjSymbol = "♑";
-            } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+            }
+            else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
                 burj = "Qovg'a";
                 burjSymbol = "♒";
-            } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+            }
+            else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
                 burj = "Baliq";
                 burjSymbol = "♓";
             }
 
             const fullBurjName = `${burj} ${burjSymbol}`;
-            document.getElementById('burj-result').innerHTML = `✨ Sizning burjingiz: <b>${fullBurjName}</b>`;
+            document.getElementById('burj-result').innerHTML = 
+                `✨ Sizning burjingiz: <b style="color: #ffcc00">${fullBurjName}</b>`;
 
             // Faqat aniqlangan burj tafsilotini chiqaramiz
             let tafsilot = "";
@@ -362,7 +410,7 @@
                     </div>
                 `;
             } else {
-                tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
+                tafsilot = "<p style='color: #ff6b6b'>Bu burj uchun ma'lumot topilmadi.</p>";
             }
 
             document.getElementById('burj-info').innerHTML = tafsilot;
@@ -396,7 +444,8 @@
         window.onload = function() {
             const today = new Date();
             document.getElementById('calendar').value = today.toISOString().split('T')[0];
-            syncDate();
+            document.getElementById('day').value = today.getDate();
+            document.getElementById('month').value = today.getMonth() + 1;
         };
     </script>
 </body>
