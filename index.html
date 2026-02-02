@@ -1,79 +1,83 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🌙 Sirli Dunyo</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      background: linear-gradient(135deg, #1f1c2c, #928dab);
-      color: white;
-    }
-    header {
-      text-align: center;
-      padding: 30px;
-      background: rgba(0,0,0,0.3);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.5em;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      margin: 20px 0;
-      gap: 15px;
-    }
-    nav button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.1);
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    nav button.active {
-      background: rgba(255,255,255,0.3);
-    }
-    section {
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-    }
-    .card {
-      background: rgba(255,255,255,0.1);
-      padding: 20px;
-      border-radius: 15px;
-      margin-bottom: 20px;
-    }
-    input {
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      margin: 5px 0;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    button.submit {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 8px;
-      background: #4caf50;
-      color: white;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 10px;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      font-size: 14px;
-      opacity: 0.7;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🌙 Sirli Dunyo</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: white;
+}
+header {
+  text-align: center;
+  padding: 30px;
+  background: rgba(0,0,0,0.3);
+}
+header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+nav {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 15px;
+}
+nav button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+}
+nav button.active {
+  background: rgba(255,255,255,0.3);
+}
+section {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+.card {
+  background: rgba(255,255,255,0.1);
+  padding: 20px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+}
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin: 5px 5px 5px 0;
+  width: calc(30% - 5px);
+}
+input.date-picker {
+  width: 30px; /* juda kichkina faqat ikonka uchun */
+  padding: 5px;
+  vertical-align: middle;
+}
+button.submit {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #4caf50;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+  opacity: 0.7;
+}
+</style>
 </head>
 <body>
 
@@ -100,8 +104,13 @@
   <div id="burj" class="tab-content" style="display:none;">
     <div class="card">
       <h2>♈ Burj aniqlash</h2>
-      <p>Yilingizni yozing (faqat yil):</p>
-      <input type="number" id="birthyear" placeholder="Masalan: 1995">
+      <p>Tug‘ilgan kuningiz, oyingiz va yilingizni yozing:</p>
+      <div style="display:flex; align-items:center;">
+        <input type="number" id="day" placeholder="Kun (1-31)" min="1" max="31">
+        <input type="number" id="month" placeholder="Oy (1-12)" min="1" max="12">
+        <input type="number" id="year" placeholder="Yil (masalan 1995)">
+        <input type="date" class="date-picker" id="datepicker" title="Kalendar" onchange="syncDate()">
+      </div>
       <button class="submit" onclick="showBurj()">Natija</button>
       <p id="burj-result" style="margin-top:15px; font-weight:bold;"></p>
     </div>
@@ -121,54 +130,72 @@
 </footer>
 
 <script>
-  // Tablar
-  const buttons = document.querySelectorAll('.tab-btn');
-  const contents = document.querySelectorAll('.tab-content');
-
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      contents.forEach(c => c.style.display = 'none');
-      document.getElementById(btn.dataset.tab).style.display = 'block';
-    });
+// Tablar
+const buttons = document.querySelectorAll('.tab-btn');
+const contents = document.querySelectorAll('.tab-content');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    contents.forEach(c => c.style.display = 'none');
+    document.getElementById(btn.dataset.tab).style.display = 'block';
   });
+});
 
-  // Burj aniqlash (faqat yil asosida)
-  function showBurj() {
-    const yearInput = document.getElementById('birthyear').value.trim();
-    const year = parseInt(yearInput);
+// Kalendar va inputni sinxronlash
+function syncDate() {
+  const date = document.getElementById('datepicker').value;
+  if(!date) return;
+  const d = new Date(date);
+  document.getElementById('day').value = d.getDate();
+  document.getElementById('month').value = d.getMonth()+1;
+  document.getElementById('year').value = d.getFullYear();
+}
 
-    if(!year || year < 1900 || year > 2100) {
-      document.getElementById('burj-result').innerText = "Iltimos, yilingizni to‘g‘ri kiriting.";
-      return;
-    }
+// Burj aniqlash (Western Zodiac)
+function showBurj() {
+  const day = parseInt(document.getElementById('day').value);
+  const month = parseInt(document.getElementById('month').value);
+  const year = parseInt(document.getElementById('year').value);
 
-    // Burjlarni yilga qarab chiqarish (faqat misol, xohlansa kun/oy bilan aniqlash mumkin)
-    // Shu yerda xulosa qilinadi: masalan, 12 yil burji aylanishiga qarab
-    const burjList = ["Qo‘y ♈","Buzoq ♉","Egizak ♊","Qisqichbaqa ♋","Arslon ♌","Parizod ♍","Tarozi ♎","Chayon ♏","O‘qotar ♐","Echki ♑","Qovg‘a ♒","Baliq ♓"];
-    const burjIndex = year % 12;
-    const burj = burjList[burjIndex];
-
-    const info = {
-      "Qo‘y ♈": "Jasoratli va faol shaxs.",
-      "Buzoq ♉": "Sabrli va ishonchli odam.",
-      "Egizak ♊": "Ijodiy va tez o‘ylovchi.",
-      "Qisqichbaqa ♋": "Hissiy va mehribon.",
-      "Arslon ♌": "Rahbar va e’tiborli.",
-      "Parizod ♍": "Tahlilchi va tartibli.",
-      "Tarozi ♎": "Adolatli va sotsial.",
-      "Chayon ♏": "Intensiv va sirli.",
-      "O‘qotar ♐": "Erkin va sarguzashtchi.",
-      "Echki ♑": "Mas’uliyatli va realistik.",
-      "Qovg‘a ♒": "Ijodiy va futuristik.",
-      "Baliq ♓": "Hissiy va intuitsiyaga ega."
-    };
-
-    document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b><br>${info[burj]}`;
+  if (!day || !month || !year || day<1 || day>31 || month<1 || month>12) {
+    document.getElementById('burj-result').innerText = "Iltimos, kun, oy va yilingizni to‘g‘ri kiriting.";
+    return;
   }
+
+  let burj = "";
+  if((month == 3 && day >= 21) || (month == 4 && day <= 19)) burj="Qo‘y ♈";
+  else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) burj="Buzoq ♉";
+  else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) burj="Egizak ♊";
+  else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) burj="Qisqichbaqa ♋";
+  else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) burj="Arslon ♌";
+  else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) burj="Parizod ♍";
+  else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) burj="Tarozi ♎";
+  else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) burj="Chayon ♏";
+  else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) burj="O‘qotar ♐";
+  else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) burj="Echki ♑";
+  else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) burj="Qovg‘a ♒";
+  else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
+
+  const info = {
+    "Qo‘y ♈": "Jasoratli va faol shaxs.",
+    "Buzoq ♉": "Sabrli va ishonchli odam.",
+    "Egizak ♊": "Ijodiy va tez o‘ylovchi.",
+    "Qisqichbaqa ♋": "Hissiy va mehribon.",
+    "Arslon ♌": "Rahbar va e’tiborli.",
+    "Parizod ♍": "Tahlilchi va tartibli.",
+    "Tarozi ♎": "Adolatli va sotsial.",
+    "Chayon ♏": "Intensiv va sirli.",
+    "O‘qotar ♐": "Erkin va sarguzashtchi.",
+    "Echki ♑": "Mas’uliyatli va realistik.",
+    "Qovg‘a ♒": "Ijodiy va futuristik.",
+    "Baliq ♓": "Hissiy va intuitsiyaga ega."
+  };
+
+  document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b><br>${info[burj]}`;
+}
 </script>
 
 </body>
 </html>
+      
