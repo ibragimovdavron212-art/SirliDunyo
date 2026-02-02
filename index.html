@@ -56,11 +56,6 @@ input {
   margin: 5px 5px 5px 0;
   width: calc(30% - 5px);
 }
-input.date-picker {
-  width: 30px;
-  padding: 5px;
-  vertical-align: middle;
-}
 button.submit {
   padding: 10px 20px;
   border: none;
@@ -82,6 +77,7 @@ footer {
   background: rgba(255,255,255,0.1);
   padding:15px;
   border-radius:10px;
+  line-height:1.6;
 }
 </style>
 </head>
@@ -115,10 +111,9 @@ footer {
         <input type="number" id="day" placeholder="Kun (1-31)" min="1" max="31">
         <input type="number" id="month" placeholder="Oy (1-12)" min="1" max="12">
         <input type="number" id="year" placeholder="Yil (masalan 1995)">
-        <input type="date" class="date-picker" id="datepicker" title="Kalendar" onchange="syncDate()">
       </div>
       <button class="submit" onclick="showBurj()">Natija</button>
-      <div id="burj-result"></div>
+      <div id="burj-result" style="margin-top:10px; font-weight:bold;"></div>
       <div id="burj-info"></div>
     </div>
   </div>
@@ -149,17 +144,7 @@ buttons.forEach(btn => {
   });
 });
 
-// Kalendar va inputni sinxronlash
-function syncDate() {
-  const date = document.getElementById('datepicker').value;
-  if(!date) return;
-  const d = new Date(date);
-  document.getElementById('day').value = d.getDate();
-  document.getElementById('month').value = d.getMonth()+1;
-  document.getElementById('year').value = d.getFullYear();
-}
-
-// Burj aniqlash va tavsif
+// Burj aniqlash va tafsilotli tavsif
 function showBurj() {
   const day = parseInt(document.getElementById('day').value);
   const month = parseInt(document.getElementById('month').value);
@@ -186,18 +171,18 @@ function showBurj() {
   else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) burj="Baliq ♓";
 
   const info = {
-    "Qo‘y ♈": "Jasoratli va faol shaxs. Sodiq do‘st, ba’zan sabrsiz.",
-    "Buzoq ♉": "Sabrli va ishonchli, moddiy jihatdan ehtiyotkor, ba’zan egosentrik.",
-    "Egizak ♊": "Ijodiy, tez o‘ylovchi, ba’zan e’tiborini jamlay olmaydi.",
-    "Qisqichbaqa ♋": "Hissiy va mehribon, oila va do‘stlariga sodiq.",
-    "Arslon ♌": "Rahbar va e’tiborli, ijodiy, ba’zan g‘ururlik ko‘rsatadi.",
-    "Parizod ♍": "Tahlilchi va tartibli, ba’zan tanqidiy, mas’uliyatli.",
-    "Tarozi ♎": "Adolatli va sotsial, muvozanatli va diplomatik.",
-    "Chayon ♏": "Intensiv va sirli, qat’iy va sodiq, ba’zan sirli.",
-    "O‘qotar ♐": "Erkin va sarguzashtchi, optimistik va ijobiy.",
-    "Echki ♑": "Mas’uliyatli va realistik, qat’iyatli va sabrli.",
-    "Qovg‘a ♒": "Ijodiy va futuristik, g‘oyaviy va mustaqil.",
-    "Baliq ♓": "Hissiy va intuitsiyaga ega, mehribon va sezgir."
+    "Qo‘y ♈": "<b>Shaxsiyati:</b> Jasoratli, faol, rahbarlikni yoqtiradi. <br><b>Ijobiy:</b> Sodiq, qat’iyatli, ijodiy, do‘stlariga sodiq. <br><b>Salbiy:</b> Ba’zan sabrsiz, haddan tashqari rahbarlikni ko‘rsatadi. <br><b>Tavsiyalar:</b> Ochiq fikrli bo‘ling, sabrni rivojlantiring, do‘stlikni qadrlang. <br><b>Qiziqarli fakt:</b> Qo‘y burjidagi insonlar ko‘pincha san’at va sportga qiziqadi.",
+    "Buzoq ♉": "<b>Shaxsiyati:</b> Sabrli, ishonchli, moddiy jihatdan ehtiyotkor. <br><b>Ijobiy:</b> Barqaror, sodiq, fidoyi. <br><b>Salbiy:</b> Ba’zan egosentrik va o‘zgarishlarga qarshilik ko‘rsatadi. <br><b>Tavsiyalar:</b> Yangiliklarga ochiq bo‘ling, moliyaviy rejalaringizni tekshirib boring. <br><b>Qiziqarli fakt:</b> Buzoq burjidagi insonlar ovqat va dam olishni sevadi.",
+    "Egizak ♊": "<b>Shaxsiyati:</b> Ijodiy, tez o‘ylovchi, bilimga chanqoq. <br><b>Ijobiy:</b> Suhbatdosh sifatida yoqimli, moslashuvchan. <br><b>Salbiy:</b> Ba’zan e’tiborini jamlay olmaydi, chalg‘itadi. <br><b>Tavsiyalar:</b> Diqqatni jamlash uchun meditatsiya yoki kun tartibi tuzing. <br><b>Qiziqarli fakt:</b> Egizaklar ko‘pincha ko‘p til o‘rganadi.",
+    "Qisqichbaqa ♋": "<b>Shaxsiyati:</b> Hissiy, mehribon, oila va do‘stlarga sodiq. <br><b>Ijobiy:</b> G‘amxo‘r, mehribon, himoyachilik qiladi. <br><b>Salbiy:</b> Ba’zan haddan tashqari himoyachilik, qayg‘urish. <br><b>Tavsiyalar:</b> Ochiq suhbat va sport bilan hissiyotni tarqatish. <br><b>Qiziqarli fakt:</b> Qisqichbaqa burjidagi insonlar oila bilan ko‘p vaqt o‘tkazadi.",
+    "Arslon ♌": "<b>Shaxsiyati:</b> Rahbar, ijodiy, diqqat markazida bo‘lishni yoqtiradi. <br><b>Ijobiy:</b> Jasoratli, mehribon, sodiq. <br><b>Salbiy:</b> Ba’zan g‘ururlik va qattiqlik. <br><b>Tavsiyalar:</b> Rahbarlik qobiliyatini boshqalar bilan muvozanatlang. <br><b>Qiziqarli fakt:</b> Arslonlar san’at va teatrga qiziqadi.",
+    "Parizod ♍": "<b>Shaxsiyati:</b> Tahlilchi, tartibli, mukammallikni sevadi. <br><b>Ijobiy:</b> Mas’uliyatli, tartibli, diqqatli. <br><b>Salbiy:</b> Ba’zan tanqidiy, perfektsionist. <br><b>Tavsiyalar:</b> Yaxshi dam olish va ijodiy mashg‘ulotlar bilan muvozanatni saqlang. <br><b>Qiziqarli fakt:</b> Parizodlar ko‘p kitob o‘qiydi.",
+    "Tarozi ♎": "<b>Shaxsiyati:</b> Adolatli, sotsial, diplomatik. <br><b>Ijobiy:</b> Muvozanatli, do‘stona, muloqotchi. <br><b>Salbiy:</b> Ba’zan qaror qabul qilishda qiynaladi. <br><b>Tavsiyalar:</b> Ichki ovozingizga quloq soling, muhim qarorlarni yozing. <br><b>Qiziqarli fakt:</b> Tarozi burjidagi insonlar san’at va dizaynni yaxshi ko‘radi.",
+    "Chayon ♏": "<b>Shaxsiyati:</b> Intensiv, sirli, qat’iy. <br><b>Ijobiy:</b> Sodiq, kuchli intuitsiya, g‘amxo‘r. <br><b>Salbiy:</b> Ba’zan sirli, sovuqqon. <br><b>Tavsiyalar:</b> Ochiq muloqot va sport bilan balansni saqlang. <br><b>Qiziqarli fakt:</b> Chayonlar ko‘pincha tabiatni sevadi.",
+    "O‘qotar ♐": "<b>Shaxsiyati:</b> Erkin, sarguzashtchi, optimistik. <br><b>Ijobiy:</b> Sarguzashtlarni sevadi, yangi bilimlarga chanqoq. <br><b>Salbiy:</b> Ba’zan haddan tashqari erkin. <br><b>Tavsiyalar:</b> Reja tuzing va maqsadlaringizni belgilang. <br><b>Qiziqarli fakt:</b> O‘qotarlar sayohatga juda qiziqadi.",
+    "Echki ♑": "<b>Shaxsiyati:</b> Mas’uliyatli, realistik, qat’iyatli. <br><b>Ijobiy:</b> Maqsadli, strategik, sobitqadam. <br><b>Salbiy:</b> Ba’zan biroz sovuqqon. <br><b>Tavsiyalar:</b> Yaqinlar bilan muloqot va dam olishni unutmang. <br><b>Qiziqarli fakt:</b> Echki burjidagi insonlar moliyaviy jihatdan aqlli.",
+    "Qovg‘a ♒": "<b>Shaxsiyati:</b> Ijodiy, futuristik, mustaqil. <br><b>Ijobiy:</b> Innovatsion, g‘oyaviy, do‘stona. <br><b>Salbiy:</b> Ba’zan beqaror. <br><b>Tavsiyalar:</b> G‘oyalarni amalda sinab ko‘ring. <br><b>Qiziqarli fakt:</b> Qovg‘a burjidagi insonlar texnologiyaga qiziqadi.",
+    "Baliq ♓": "<b>Shaxsiyati:</b> Hissiy, intuitsiyaga ega, sezgir. <br><b>Ijobiy:</b> Mehribon, san’at va ijodni sevadi. <br><b>Salbiy:</b> Ba’zan hayoliy, oson ta’sirlanadi. <br><b>Tavsiyalar:</b> Kunlik yozuv va meditatsiya bilan hissiyotni muvozanatlang. <br><b>Qiziqarli fakt:</b> Baliqlar ko‘pincha musiqa va san’at bilan shug‘ullanadi."
   };
 
   document.getElementById('burj-result').innerHTML = `Sizning burjingiz: <b>${burj}</b>`;
