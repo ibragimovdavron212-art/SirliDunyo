@@ -552,4 +552,56 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Play sound
     playSound();
- 
+  };
+  
+  // ==================== DREAM CONTENT TOGGLE ====================
+  window.toggleTushContent = function() {
+    const content = document.getElementById('tush-content');
+    if (!content) return;
+    
+    if (content.style.display === 'none' || content.style.display === '') {
+      content.style.display = 'block';
+      playSound();
+    } else {
+      content.style.display = 'none';
+    }
+  };
+  
+  // ==================== SOUND EFFECT ====================
+  function playSound() {
+    try {
+      const audio = new AudioContext();
+      const oscillator = audio.createOscillator();
+      const gainNode = audio.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audio.destination);
+      
+      oscillator.frequency.setValueAtTime(523, audio.currentTime);
+      gainNode.gain.setValueAtTime(0.1, audio.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.3);
+      
+      oscillator.start();
+      oscillator.stop(audio.currentTime + 0.3);
+    } catch (e) {
+      // Ignore audio errors
+    }
+  }
+  
+  // ==================== INITIAL SETUP ====================
+  // Set up calendar
+  const today = new Date();
+  document.getElementById('calendar').value = today.toISOString().split('T')[0];
+  syncDate();
+  
+  // Add event listeners for calendar
+  document.getElementById('day').addEventListener('input', updateCalendar);
+  document.getElementById('month').addEventListener('input', updateCalendar);
+  document.getElementById('calendar').addEventListener('change', syncDate);
+  
+  console.log('Sirli Dunyo sayti muvaffaqiyatli yuklandi!');
+});
+</script>
+
+</body>
+</html>
