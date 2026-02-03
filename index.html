@@ -35,9 +35,14 @@ nav button {
   color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: all 0.3s;
+}
+nav button:hover {
+  background: rgba(255,255,255,0.2);
 }
 nav button.active {
   background: rgba(255,255,255,0.3);
+  transform: scale(1.05);
 }
 section {
   max-width: 900px;
@@ -132,14 +137,14 @@ footer {
 }
 .tab-content {
   display: none;
+  animation: fadeIn 0.5s;
 }
 .tab-content.active {
   display: block;
-  animation: fadeIn 0.5s;
 }
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .burj-details {
   margin-top: 10px;
@@ -155,6 +160,82 @@ footer {
   display: flex;
   align-items: center;
   gap: 10px;
+}
+.dream-toggle {
+  text-align: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+  background: rgba(106,17,203,0.1);
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+.dream-toggle:hover {
+  background: rgba(106,17,203,0.2);
+  transform: scale(1.02);
+}
+.dream-toggle h3 {
+  color: #ffcc00;
+  margin: 0;
+  font-size: 18px;
+}
+.dream-toggle p {
+  color: #ccc;
+  font-size: 14px;
+  margin: 5px 0 0 0;
+}
+.dream-content {
+  background: rgba(255,255,255,0.05);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+.dream-image {
+  text-align: center;
+  margin: 20px 0;
+}
+.dream-image img {
+  width: 100%;
+  max-width: 400px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid rgba(106,17,203,0.3);
+}
+.dream-section {
+  margin: 15px 0;
+  padding: 15px;
+  border-radius: 8px;
+}
+.dream-section.ibn-sirin {
+  background: rgba(139,69,19,0.1);
+  border-left: 3px solid #8B4513;
+}
+.dream-section.teachings {
+  background: rgba(106,17,203,0.1);
+}
+.dream-section.water-types {
+  border-left: 3px solid #2575fc;
+  padding-left: 15px;
+}
+.dream-section.water-colors {
+  background: rgba(255,204,0,0.1);
+}
+.dream-section.psychology {
+  background: rgba(37,117,252,0.1);
+}
+.dream-section.conclusion {
+  background: linear-gradient(45deg, rgba(106,17,203,0.15), rgba(37,117,252,0.15));
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+.seo-meta {
+  font-size: 12px;
+  color: #888;
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 </style>
 </head>
@@ -175,198 +256,121 @@ footer {
   <div id="tush" class="tab-content active">
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Suv Tez orada poʻst qoʻshiladi</p>
-    <div id="tush" class="tab-content active">
-  <div class="card">
-    <h2>🔮 Tush tabiri</h2>
-    
-    <!-- Kichik ko'rinadigan sarlavha -->
-    <div style="text-align:center; margin-bottom:15px; cursor:pointer; background:rgba(106,17,203,0.1); padding:12px; border-radius:8px;" 
-         onclick="toggleTushContent()">
-      <h3 style="color:#ffcc00; margin:0; font-size:18px;">🌊 Suv Ko'rish Tushining To'liq Tabiri</h3>
-      <p style="color:#ccc; font-size:14px; margin:5px 0 0 0;">Ibn Sirin tush tabiri (Bosing va o'qing)</p>
-    </div>
-    
-    <!-- Asosiy kontent (yashirin) -->
-    <div id="tush-content" style="display:none;">
       
-      <!-- Mobile uchun qulay rasm -->
-      <div style="text-align:center; margin:20px 0;">
-        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
-             alt="Suv tush tabiri - Ibn Sirin tush talqini" 
-             style="width:100%; max-width:400px; height:200px; object-fit:cover; border-radius:10px; border:2px solid rgba(106,17,203,0.3);">
-        <p style="color:#aaa; font-size:13px; margin-top:5px;">💧 Suv - hayot, poklik va baraka ramzi</p>
+      <!-- Kichik ko'rinadigan sarlavha -->
+      <div class="dream-toggle" onclick="toggleTushContent()">
+        <h3>🌊 Suv Ko'rish Tushining To'liq Tabiri</h3>
+        <p>Ibn Sirin tush tabiri (Bosing va o'qing)</p>
       </div>
       
-      <!-- Asosiy ma'lumotlar -->
-      <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:10px; margin-bottom:20px;">
-        <h3 style="color:#ffcc00; font-size:20px; margin-bottom:15px; text-align:center;">
-          Ibn Sirin: Suv Tushining Ma'nolari
-        </h3>
+      <!-- Asosiy kontent (yashirin) -->
+      <div id="tush-content" style="display:none;">
         
-        <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">
-          <strong>Tushlar ustasi Ibn Sirin</strong> (rahimahulloh) o'zining "Tobir-ul Ahlam" ("Tushlarning tabiri") kitobida suv tushlariga alohida e'tibor bergan. 
-          Uning ta'limotiga ko'ra, suv tushlari inson hayotining eng muhim jihatlarini aks ettiradi.
-        </p>
-        
-        <!-- Ibn Sirin haqida -->
-        <div style="background:rgba(139,69,19,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid #8B4513;">
-          <h4 style="color:#8B4513; font-size:17px; margin-bottom:10px;">📚 Ibn Sirin Haqida:</h4>
-          <p>Imom Ibn Sirin - Islom dunyosida tush tabiri ilmining eng buyuk ustasi. 
-          Uning asarlari 14 asr davomida tush tabiri bo'yicha asosiy manba bo'lib kelgan.</p>
-        </div>
-        
-        <!-- Asosiy ma'nolar -->
-        <div style="background:rgba(106,17,203,0.1); padding:15px; border-radius:8px; margin:15px 0;">
-          <h4 style="color:#6a11cb; font-size:17px; margin-bottom:10px;">📖 Ibn Sirin Ta'limoti:</h4>
-          <p><strong>• Toza suv ichish:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi" - Ibn Sirin. Din mustahkamligi, imon kuchi, ruhiy poklik belgisi.</p>
+        <div class="dream-content">
+          <!-- Mobile uchun qulay rasm -->
+          <div class="dream-image">
+            <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                 alt="Suv tush tabiri - Ibn Sirin tush talqini">
+            <p style="color:#aaa; font-size:13px; margin-top:5px;">💧 Suv - hayot, poklik va baraka ramzi</p>
+          </div>
           
-          <p><strong>• Daryoda suzish:</strong> "Daryoda suzayotganni ko'rsang, u hayotida yuksaladi" - Ibn Sirin. Hayotda muvaffaqiyat, baraka, omadli harakatlanish.</p>
+          <h3 style="color:#ffcc00; font-size:20px; margin-bottom:15px; text-align:center;">
+            Ibn Sirin: Suv Tushining Ma'nolari
+          </h3>
           
-          <p><strong>• Dengiz/Okean ko'rish:</strong> "Dengizni ko'rish - sulton yoki hukmdor oldida bo'lishdir" - Ibn Sirin. Kuchli hokimiyat oldida bo'lish, keng imkoniyatlar.</p>
-          
-          <p><strong>• Bulg'angan suv:</strong> "Loyqa suv - g'am-g'ussa va mushkullotdir" - Ibn Sirin. Qiyinchiliklar, ruhiy tushkunlik, noaniqlik.</p>
-          
-          <p><strong>• Suvga cho'milish:</strong> Gunohlardan poklanish, tavba qilish, yangilanish ramzidir.</p>
-          
-          <p><strong>• Suvda cho'kish:</strong> G'ammog'uz, qarz yoki mushkulotga tushishni anglatadi, lekin Allohga tayanish lozim.</p>
-        </div>
-        
-        <!-- Suv turlari -->
-        <div style="border-left:3px solid #2575fc; padding-left:15px; margin:15px 0;">
-          <h4 style="color:#2575fc; font-size:17px; margin-bottom:10px;">💧 Suv Turiga Ko'ra:</h4>
-          <p><strong>Daryo suvi:</strong> Hayot oqimi, moliyaviy yaxshilanish, tabiiy rivojlanish</p>
-          <p><strong>Buloq suvi:</strong> Yangi imkoniyatlar, kutilmagan yaxshiliklar, ilhom</p>
-          <p><strong>Ko'l suvi:</strong> Tinchlik, barqarorlik, ichki muvozanat</p>
-          <p><strong>Boshqotirma suv:</strong> Qiyinchiliklar, to'siqlar, sinovlar</p>
-        </div>
-        
-        <!-- Suv holatlari -->
-        <div style="margin:15px 0;">
-          <h4 style="color:#ffcc00; font-size:17px; margin-bottom:10px;">🌊 Suv Holatiga Ko'ra:</h4>
-          <p><strong>Tinch suv:</strong> Hayotda muvozanat, ichki tinchlik, ruhiy barqarorlik</p>
-          <p><strong>To'lqinli suv:</strong> Hayotiy sinovlar, o'zgarishlar, qiyin vaziyatlar</p>
-          <p><strong>Muzlagan suv:</strong> Hisiyotlarning sovutishi, harakatsizlik, to'xtab qolish</p>
-          <p><strong>Qaynoq suv:</strong> G'azab, jahl, keskin hissiyotlar ko'tarilishi</p>
-        </div>
-        
-        <!-- Suv ranglari -->
-        <div style="background:rgba(255,204,0,0.1); padding:15px; border-radius:8px; margin:15px 0;">
-          <h4 style="color:#ffcc00; font-size:17px; margin-bottom:10px;">🎨 Suv Ranglari Ma'nosi:</h4>
-          <p><strong>Ko'k suv:</strong> Sog'lomlik, tinchlik, ruhiy barqarorlik</p>
-          <p><strong>Yashil suv:</strong> Baraka, o'sish, rivojlanish, moliyaviy yaxshilanish</p>
-          <p><strong>Oq suv:</strong> Poklik, soflik, ilhom, yangi boshlanish</p>
-          <p><strong>Qora suv:</strong> G'am, tushkunlik, noaniqlik, qo'rquv</p>
-          <p><strong>Sariq suv:</strong> Kasallik, zaiflik, ehtiyot bo'lish kerakligi</p>
-        </div>
-        
-        <!-- Amaliy maslahatlar -->
-        <div style="border-left:3px solid #6a11cb; padding-left:15px; margin:15px 0;">
-          <h4 style="color:#6a11cb; font-size:17px; margin-bottom:10px;">💡 Amaliy Maslahatlar:</h4>
-          <p>1. Suvning holati, rangi va sizning harakatingizni yodda tuting</p>
-          <p>2. Ibn Sirin "Tobir-ul Ahlam" kitobiga murojaat qiling</p>
-          <p>3. Hayotingizdagi dolzarb masalalarni solishtiring</p>
-          <p>4. Ijobiy talqinlarga e'tibor bering</p>
-          <p>5. Duo va ibodat bilan birga tushni tahlil qiling</p>
-          <p>6. Agar tush sizni tashvishlantirsa, Allohdan yordam so'rang</p>
-        </div>
-        
-        <!-- Psixologik talqin -->
-        <div style="background:rgba(37,117,252,0.1); padding:15px; border-radius:8px; margin:15px 0;">
-          <h4 style="color:#2575fc; font-size:17px; margin-bottom:10px;">🧠 Zamonaviy Psixologik Nuqtai Nazar:</h4>
-          <p>Bugungi psixologlar tushlarni ongning tozalash jarayoni deb hisoblaydilar. 
-          <strong>Suv tushlari</strong> ko'pincha ichki hissiyotlarni qayta ishlash, 
-          ruhiy tiklanish va yangilanish jarayonlarini aks ettiradi.</p>
-          <p>Psixolog Carl Jung: "Suv - ong osti ramzi"</p>
-        </div>
-        
-        <!-- Xulosa -->
-        <div style="text-align:center; background:linear-gradient(45deg, rgba(106,17,203,0.15), rgba(37,117,252,0.15)); 
-                    padding:20px; border-radius:10px; margin-top:25px;">
-          <h4 style="color:#ffcc00; font-size:18px; margin-bottom:10px;">✨ Xulosa</h4>
-          <p style="font-size:16px; line-height:1.6;">
-            Ibn Sirin ta'limotiga ko'ra, suv tushlari inson hayotining eng muhim jihatlarini aks ettiradi. 
-            Har bir suv tushi o'ziga xos ma'noga ega bo'lib, uni to'g'ri tushunish hayot yo'lingizni aniqlashtirishga yordam beradi.
+          <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">
+            <strong>Tushlar ustasi Ibn Sirin</strong> (rahimahulloh) o'zining "Tobir-ul Ahlam" ("Tushlarning tabiri") kitobida suv tushlariga alohida e'tibor bergan. 
+            Uning ta'limotiga ko'ra, suv tushlari inson hayotining eng muhim jihatlarini aks ettiradi.
           </p>
-          <p style="color:#ccc; font-style:italic; margin-top:10px; font-size:14px;">
-            "Tushlar - Allohning bandalariga bo'lgan maxfiy xabarlaridir" - Ibn Sirin
-          </p>
+          
+          <!-- Ibn Sirin haqida -->
+          <div class="dream-section ibn-sirin">
+            <h4 style="color:#8B4513; font-size:17px; margin-bottom:10px;">📚 Ibn Sirin Haqida:</h4>
+            <p>Imom Ibn Sirin - Islom dunyosida tush tabiri ilmining eng buyuk ustasi. 
+            Uning asarlari 14 asr davomida tush tabiri bo'yicha asosiy manba bo'lib kelgan.</p>
+          </div>
+          
+          <!-- Asosiy ma'nolar -->
+          <div class="dream-section teachings">
+            <h4 style="color:#6a11cb; font-size:17px; margin-bottom:10px;">📖 Ibn Sirin Ta'limoti:</h4>
+            <p><strong>• Toza suv ichish:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi" - Ibn Sirin. Din mustahkamligi, imon kuchi, ruhiy poklik belgisi.</p>
+            <p><strong>• Daryoda suzish:</strong> "Daryoda suzayotganni ko'rsang, u hayotida yuksaladi" - Ibn Sirin. Hayotda muvaffaqiyat, baraka, omadli harakatlanish.</p>
+            <p><strong>• Dengiz/Okean ko'rish:</strong> "Dengizni ko'rish - sulton yoki hukmdor oldida bo'lishdir" - Ibn Sirin. Kuchli hokimiyat oldida bo'lish, keng imkoniyatlar.</p>
+            <p><strong>• Bulg'angan suv:</strong> "Loyqa suv - g'am-g'ussa va mushkullotdir" - Ibn Sirin. Qiyinchiliklar, ruhiy tushkunlik, noaniqlik.</p>
+            <p><strong>• Suvga cho'milish:</strong> Gunohlardan poklanish, tavba qilish, yangilanish ramzidir.</p>
+            <p><strong>• Suvda cho'kish:</strong> G'ammog'uz, qarz yoki mushkulotga tushishni anglatadi, lekin Allohga tayanish lozim.</p>
+          </div>
+          
+          <!-- Suv turlari -->
+          <div class="dream-section water-types">
+            <h4 style="color:#2575fc; font-size:17px; margin-bottom:10px;">💧 Suv Turiga Ko'ra:</h4>
+            <p><strong>Daryo suvi:</strong> Hayot oqimi, moliyaviy yaxshilanish, tabiiy rivojlanish</p>
+            <p><strong>Buloq suvi:</strong> Yangi imkoniyatlar, kutilmagan yaxshiliklar, ilhom</p>
+            <p><strong>Ko'l suvi:</strong> Tinchlik, barqarorlik, ichki muvozanat</p>
+            <p><strong>Boshqotirma suv:</strong> Qiyinchiliklar, to'siqlar, sinovlar</p>
+          </div>
+          
+          <!-- Suv holatlari -->
+          <div style="margin:15px 0;">
+            <h4 style="color:#ffcc00; font-size:17px; margin-bottom:10px;">🌊 Suv Holatiga Ko'ra:</h4>
+            <p><strong>Tinch suv:</strong> Hayotda muvozanat, ichki tinchlik, ruhiy barqarorlik</p>
+            <p><strong>To'lqinli suv:</strong> Hayotiy sinovlar, o'zgarishlar, qiyin vaziyatlar</p>
+            <p><strong>Muzlagan suv:</strong> Hisiyotlarning sovutishi, harakatsizlik, to'xtab qolish</p>
+            <p><strong>Qaynoq suv:</strong> G'azab, jahl, keskin hissiyotlar ko'tarilishi</p>
+          </div>
+          
+          <!-- Suv ranglari -->
+          <div class="dream-section water-colors">
+            <h4 style="color:#ffcc00; font-size:17px; margin-bottom:10px;">🎨 Suv Ranglari Ma'nosi:</h4>
+            <p><strong>Ko'k suv:</strong> Sog'lomlik, tinchlik, ruhiy barqarorlik</p>
+            <p><strong>Yashil suv:</strong> Baraka, o'sish, rivojlanish, moliyaviy yaxshilanish</p>
+            <p><strong>Oq suv:</strong> Poklik, soflik, ilhom, yangi boshlanish</p>
+            <p><strong>Qora suv:</strong> G'am, tushkunlik, noaniqlik, qo'rquv</p>
+            <p><strong>Sariq suv:</strong> Kasallik, zaiflik, ehtiyot bo'lish kerakligi</p>
+          </div>
+          
+          <!-- Amaliy maslahatlar -->
+          <div style="border-left:3px solid #6a11cb; padding-left:15px; margin:15px 0;">
+            <h4 style="color:#6a11cb; font-size:17px; margin-bottom:10px;">💡 Amaliy Maslahatlar:</h4>
+            <p>1. Suvning holati, rangi va sizning harakatingizni yodda tuting</p>
+            <p>2. Ibn Sirin "Tobir-ul Ahlam" kitobiga murojaat qiling</p>
+            <p>3. Hayotingizdagi dolzarb masalalarni solishtiring</p>
+            <p>4. Ijobiy talqinlarga e'tibor bering</p>
+            <p>5. Duo va ibodat bilan birga tushni tahlil qiling</p>
+            <p>6. Agar tush sizni tashvishlantirsa, Allohdan yordam so'rang</p>
+          </div>
+          
+          <!-- Psixologik talqin -->
+          <div class="dream-section psychology">
+            <h4 style="color:#2575fc; font-size:17px; margin-bottom:10px;">🧠 Zamonaviy Psixologik Nuqtai Nazar:</h4>
+            <p>Bugungi psixologlar tushlarni ongning tozalash jarayoni deb hisoblaydilar. 
+            <strong>Suv tushlari</strong> ko'pincha ichki hissiyotlarni qayta ishlash, 
+            ruhiy tiklanish va yangilanish jarayonlarini aks ettiradi.</p>
+            <p>Psixolog Carl Jung: "Suv - ong osti ramzi"</p>
+          </div>
+          
+          <!-- Xulosa -->
+          <div class="dream-section conclusion">
+            <h4 style="color:#ffcc00; font-size:18px; margin-bottom:10px;">✨ Xulosa</h4>
+            <p style="font-size:16px; line-height:1.6;">
+              Ibn Sirin ta'limotiga ko'ra, suv tushlari inson hayotining eng muhim jihatlarini aks ettiradi. 
+              Har bir suv tushi o'ziga xos ma'noga ega bo'lib, uni to'g'ri tushunish hayot yo'lingizni aniqlashtirishga yordam beradi.
+            </p>
+            <p style="color:#ccc; font-style:italic; margin-top:10px; font-size:14px;">
+              "Tushlar - Allohning bandalariga bo'lgan maxfiy xabarlaridir" - Ibn Sirin
+            </p>
+          </div>
+          
+          <!-- SEO meta -->
+          <div class="seo-meta">
+            <p><strong>SEO kalit so'zlar:</strong> tush tabiri, suv tushi, ibn sirin tush tabiri, suv ko'rish tushi, 
+            tush ma'nolari, tushlarni tushunish, suzish tushi, suv tushining ma'nolari, tush talqini</p>
+            <p><strong>Manba:</strong> Ibn Sirin "Tobir-ul Ahlam" kitobi</p>
+          </div>
         </div>
-        
-        <!-- SEO meta -->
-        <div style="font-size:12px; color:#888; margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
-          <p><strong>SEO kalit so'zlar:</strong> tush tabiri, suv tushi, ibn sirin tush tabiri, suv ko'rish tushi, 
-          tush ma'nolari, tushlarni tushunish, suzish tushi, suv tushining ma'nolari, tush talqini</p>
-          <p><strong>Manba:</strong> Ibn Sirin "Tobir-ul Ahlam" kitobi</p>
-        </div>
-        
       </div>
     </div>
-    
   </div>
-</div>
-
-<script>
-// Tush kontentini ochish/yopish funksiyasi
-function toggleTushContent() {
-  const content = document.getElementById('tush-content');
-  if (content.style.display === 'none' || content.style.display === '') {
-    content.style.display = 'block';
-    // Ovoz efekti
-    playClickSound();
-  } else {
-    content.style.display = 'none';
-  }
-}
-
-// Ovoz efekti
-function playClickSound() {
-  try {
-    const audio = new AudioContext();
-    const oscillator = audio.createOscillator();
-    const gainNode = audio.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audio.destination);
-    
-    oscillator.frequency.setValueAtTime(523, audio.currentTime);
-    gainNode.gain.setValueAtTime(0.05, audio.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.3);
-    
-    oscillator.start();
-    oscillator.stop(audio.currentTime + 0.3);
-  } catch (e) {
-    // Ovoz ishlamasa, hech narsa qilmaymiz
-  }
-}
-
-// Sahifa yuklanganda tush kontentini tekshirish
-document.addEventListener('DOMContentLoaded', function() {
-  // Agar tush kontenti yo'qolsa, qayta tiklash
-  const tushContent = document.getElementById('tush-content');
-  const tushButton = document.querySelector('[onclick="toggleTushContent()"]');
-  
-  // Har safar tab o'zgarganda tekshirish
-  document.querySelectorAll('.tab-btn').forEach(tab => {
-    tab.addEventListener('click', function() {
-      // Tush tabiriga o'tilganda kontentni tekshirish
-      if (this.getAttribute('data-tab') === 'tush') {
-        setTimeout(() => {
-          if (tushContent && tushContent.style.display === 'none') {
-            // Kontent mavjud, faqat yashirin
-            // Hech narsa qilmaymiz
-          }
-        }, 100);
-      }
-    });
-  });
-});
-</script>        
-          
-      
-      
-      
-      
 
   <!-- Burjlar -->
   <div id="burj" class="tab-content">
@@ -415,201 +419,137 @@ document.addEventListener('DOMContentLoaded', function() {
 </footer>
 
 <script>
-// Burj ma'lumotlari
-const burjInfo = {
-  "Qo'y ♈": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Qo'y ♈</h3><p>Jasoratli, mustaqil va hissiy jihatdan kuchli. Sodiq do'st va oilaga sodiq. Rahbarlik qobiliyati rivojlangan, ijodkor va faol. Sport, san'at va yangi sarguzashtlarga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, jasorat, ijodkorlik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, hissiyotlarni boshqarish</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Qo'y ♈</h3><p>Faol, sarguzashtchi va jasoratli. Rahbarlikni sevadi, tez qaror qabul qiladi. Do'stlik va sadoqat unga juda muhim. Ijodiy va ijtimoiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Faollik, sarguzasht, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Sabr, g'urur</p></div>"
-  },
-  "Buzoq ♉": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Buzoq ♉</h3><p>Sabrli, barqaror va ishonchli. Oila va do'stlariga sodiq. Ijodiy va go'zallikni qadrlaydi, moddiy jihatdan ehtiyotkor. Barqaror munosabatlarni va tartibli hayotni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Barqarorlik, sadoqat, amaliylik</p><p><strong>Rivojlantirish kerak:</strong> O'zgarishlarga ochiqlik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Buzoq ♉</h3><p>Fidoyi, sodiq va barqaror. Mehnatsevar, oilaga sodiq. Ish va martaba: moliya, menejment va barqaror sohalarda muvaffaqiyatli. Tabiat, sport va san'at bilan shug'ullanishni yaxshi ko'radi.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, mehnatsevarlik, barqarorlik</p><p><strong>Rivojlantirish kerak:</strong> Yangi g'oyalarga ochiqlik</p></div>"
-  },
-  "Egizak ♊": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Egizak ♊</h3><p>Ijodiy, tez o'ylovchi va ko'p qirrali. Tez moslashadi, yangi bilim va tajribaga ochiq. Do'stlik va oilaga sodiq. Ijtimoiy faoliyatni yoqtiradi, texnologiya va san'atga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Moslashuvchanlik, aql, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Diqqat jamlash, sabr</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Egizak ♊</h3><p>Aqlli, tez o'ylovchi va ijodiy faol. Sotsial va ijtimoiy faoliyatga qiziqadi. Tez o'zlashtiradi va yangi bilimlarga ochiq. Do'stlik va doimiy aloqalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Aql, ijodiy fikr, kommunikativlik</p><p><strong>Rivojlantirish kerak:</strong> Fokus, barqarorlik</p></div>"
-  },
-  "Qisqichbaqa ♋": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Qisqichbaqa ♋</h3><p>Hissiy, mehribon va oila uchun sodiq. Do'stlik va yaqinlar bilan munosabatlarga katta ahamiyat beradi. U o'zini oilaviy va hissiy jihatdan qulay his qiladigan joyda erkin his qiladi.</p><p><strong>Kuchli tomonlari:</strong> Mehribonlik, sadoqat, oilaparvar</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Qisqichbaqa ♋</h3><p>Hissiy va mehribon. Oilaga va do'stlarga sodiq, himoyachilik xususiyatiga ega. Oilaviy va do'stlik masalalarida mas'uliyatli.</p><p><strong>Kuchli tomonlari:</strong> Sadoqat, himoyachilik, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Shubhalarga berilmaslik</p></div>"
-  },
-  "Arslon ♌": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Arslon ♌</h3><p>Rahbar, e'tiborli va ijodiy. U diqqat markazida bo'lishni yoqtiradi va kreativ faoliyatda muvaffaqiyatli.</p><p><strong>Kuchli tomonlari:</strong> Liderlik, ijodkorlik, ishonch</p><p><strong>Rivojlantirish kerak:</strong> Kamtarlik, boshqalarning fikri</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Arslon ♌</h3><p>Rahbar va e'tiborli. Ijodiy va o'ziga ishonchli. Ijtimoiy faoliyatni yoqtiradi, do'stlar va ishdagi yetakchilikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Rahbarlik, ijodkorlik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> G'urur, mag'rurlik</p></div>"
-  },
-  "Parizod ♍": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Parizod ♍</h3><p>Tahlilchi, tartibli va mas'uliyatli. Ijodiy va tizimli ishlashni yoqtiradi. Shu burj ayollari har bir ishni mukammal bajarishga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Tahlil, tartib, mukammallik</p><p><strong>Rivojlantirish kerak:</strong> Tanqidni qabul qilash</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Parizod ♍</h3><p>Tahlilchi va tartibli. Mas'uliyatli va ishga jiddiy yondashadi. Shu burj erkaklari mukammal va tizimli ishlashga intiladi.</p><p><strong>Kuchli tomonlari:</strong> Jiddiylik, tahlil, tartib</p><p><strong>Rivojlantirish kerak:</strong> Tanqidchanlik</p></div>"
-  },
-  "Tarozi ♎": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Tarozi ♎</h3><p>Adolatli, muvozanatli va diplomatik. Ijtimoiy faoliyatda muvaffaqiyatli, do'stlik va hamkorlikni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Adolat, muvozanat, diplomatiklik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Tarozi ♎</h3><p>Muvozanatli va diplomatik. Ijtimoiy faoliyatni qadrlaydi. Shu burj erkaklari adolat va muvozanatni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Muvozanat, diplomatiklik, ijtimoiylik</p><p><strong>Rivojlantirish kerak:</strong> Qaror qabul qilish tezligi</p></div>"
-  },
-  "Chayon ♏": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Chayon ♏</h3><p>Intensiv, sirli va qat'iy. Shu burj ostidagi ayollar kuchli hissiyotga ega, sezgir va e'tiborli.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, qat'iyatli, sirlik</p><p><strong>Rivojlantirish kerak:</strong> Xotirjamlik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Chayon ♏</h3><p>Sirli va intensiv. Qattiq va qat'iyatli, hissiyotlarga boy.</p><p><strong>Kuchli tomonlari:</strong> Kuchli iroda, sir, hissiyot</p><p><strong>Rivojlantirish kerak:</strong> Ochiqlik</p></div>"
-  },
-  "O'qotar ♐": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol O'qotar ♐</h3><p>Erkin va sarguzashtchi. Optimistik va ijobiy. Shu burj ostidagi ayollar yangi joylar va tajribalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, sarguzasht, optimizm</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlikka chidamlilik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak O'qotar ♐</h3><p>Erkin, sarguzashtchi va optimistik. Mustaqil va faol.</p><p><strong>Kuchli tomonlari:</strong> Erkinlik, optimizm, faollik</p><p><strong>Rivojlantirish kerak:</strong> Noaniqlik</p></div>"
-  },
-  "Echki ♑": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Echki ♑</h3><p>Mas'uliyatli, realistik va qat'iyatli. Shu burj ayollari mehnatsevar va tartibli.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, realistik, mehnatsevarlik</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Echki ♑</h3><p>Mas'uliyatli, qat'iyatli va jiddiy. Shu burj erkaklari ishga va oilaga sodiq.</p><p><strong>Kuchli tomonlari:</strong> Mas'uliyat, qat'iyat, sadoqat</p><p><strong>Rivojlantirish kerak:</strong> Jiddiylik</p></div>"
-  },
-  "Qovg'a ♒": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Qovg'a ♒</h3><p>Ijodiy, futuristik va mustaqil. Shu burj ostidagi ayollar yangi g'oyalarni qadrlaydi.</p><p><strong>Kuchli tomonlari:</strong> Ijodkorlik, mustaqillik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Masofa</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Qovg'a ♒</h3><p>Ijodiy va mustaqil. Futuristik qarashlarga ega.</p><p><strong>Kuchli tomonlari:</strong> Mustaqillik, ijodkorlik, futurizm</p><p><strong>Rivojlantirish kerak:</strong> Yaquinlik</p></div>"
-  },
-  "Baliq ♓": {
-    ayol: "<div class='gender-info'><h3>👩 Ayol Baliq ♓</h3><p>Hissiy va intuitsiyaga ega, mehribon va sezgir. Shu burj ayollari san'at va ijodiy faoliyatga qiziqadi.</p><p><strong>Kuchli tomonlari:</strong> Hissiyot, intuitsiya, mehribonlik</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>",
-    erkak: "<div class='gender-info'><h3>👨 Erkak Baliq ♓</h3><p>Hissiy, sezgir va intuitsiyaga ega. Shu burj erkaklari kreativ va yordam berishga tayyor.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, kreativ, yordamchi</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>"
-  }
-};
-// ==================== TAB BOSHQARUVI ====================
-const tabs = document.querySelectorAll('.tab-btn');
-const tabContents = document.querySelectorAll('.tab-content');
-
-// Tab almashtirish funksiyasi (SODDA)
-function switchTab(tabId) {
-  // 1. Barcha tablarni yopish
-  tabs.forEach(tab => tab.classList.remove('active'));
-  tabContents.forEach(content => content.classList.remove('active'));
-  
-  // 2. Tanlangan tabni ochish
-  const selectedTab = document.querySelector(`[data-tab="${tabId}"]`);
-  const selectedContent = document.getElementById(tabId);
-  
-  if (selectedTab) selectedTab.classList.add('active');
-  if (selectedContent) selectedContent.classList.add('active');
-}
-
-// Tab tugmalariga event qo'shish
-tabs.forEach(tab => {
-  tab.addEventListener('click', function() {
-    const tabId = this.getAttribute('data-tab');
-    switchTab(tabId);
-  });
-});
-
-// ==================== BURJ ANIQLASH ====================
-function showBurj() {
-  const day = parseInt(document.getElementById('day').value);
-  const month = parseInt(document.getElementById('month').value);
-
-  if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
-    document.getElementById('burj-result').innerHTML = 
-      "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting (1-31 kun, 1-12 oy).</span>";
-    document.getElementById('burj-info').innerHTML = "";
-    return;
-  }
-
-  let burj = "";
-  let burjSymbol = "";
-  
-  if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
-    burj = "Qo'y"; burjSymbol = "♈";
-  } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
-    burj = "Buzoq"; burjSymbol = "♉";
-  } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-    burj = "Egizak"; burjSymbol = "♊";
-  } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-    burj = "Qisqichbaqa"; burjSymbol = "♋";
-  } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
-    burj = "Arslon"; burjSymbol = "♌";
-  } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
-    burj = "Parizod"; burjSymbol = "♍";
-  } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
-    burj = "Tarozi"; burjSymbol = "♎";
-  } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
-    burj = "Chayon"; burjSymbol = "♏";
-  } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
-    burj = "O'qotar"; burjSymbol = "♐";
-  } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
-    burj = "Echki"; burjSymbol = "♑";
-  } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
-    burj = "Qovg'a"; burjSymbol = "♒";
-  } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-    burj = "Baliq"; burjSymbol = "♓";
-  }
-
-  const fullBurjName = `${burj} ${burjSymbol}`;
-  document.getElementById('burj-result').innerHTML = 
-    `<div style="background:rgba(106,17,203,0.1); padding:15px; border-radius:10px; text-align:center;">
-       <h3 style="color:#ffcc00; margin:0;">✨ Sizning burjingiz:</h3>
-       <p style="font-size:24px; font-weight:bold; color:#6a11cb; margin:10px 0;">${fullBurjName}</p>
-       <p style="color:#ccc; font-size:14px;">Tug'ilgan kun: ${day} - ${month}</p>
-     </div>`;
-
-  // Burjlar tabiga o'tkazish (SODDA USUL)
-  switchTab('burj');
-  
-  // Ovoz efekti
-  playSound();
-}
-
-// ==================== TUSH KONTENTINI OCHISH/YOPISH ====================
-function toggleTushContent() {
-  const content = document.getElementById('tush-content');
-  if (!content) return;
-  
-  if (content.style.display === 'none' || content.style.display === '') {
-    content.style.display = 'block';
-  } else {
-    content.style.display = 'none';
-  }
-}
-
-// ==================== KALENDAR FUNKSIYALARI ====================
-function syncDate() {
-  const date = document.getElementById('calendar').value;
-  if (!date) return;
-  const d = new Date(date);
-  document.getElementById('day').value = d.getDate();
-  document.getElementById('month').value = d.getMonth() + 1;
-}
-
-function updateCalendar() {
-  const day = document.getElementById('day').value;
-  const month = document.getElementById('month').value;
-  const year = new Date().getFullYear();
-  
-  if (day && month) {
-    const date = new Date(year, month - 1, day);
-    document.getElementById('calendar').value = date.toISOString().split('T')[0];
-  }
-}
-
-function playSound() {
-  try {
-    const audio = new AudioContext();
-    const oscillator = audio.createOscillator();
-    const gainNode = audio.createGain();
-    
-    oscillator.connect(gainNode);
-    gainNode.connect(audio.destination);
-    
-    oscillator.frequency.setValueAtTime(523, audio.currentTime);
-    gainNode.gain.setValueAtTime(0.1, audio.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.5);
-    
-    oscillator.start();
-    oscillator.stop(audio.currentTime + 0.5);
-  } catch (e) {
-    // Ovoz ishlamasa, hech narsa qilmaymiz
-  }
-}
-
-// ==================== SAHIFA YUKLANGANDA ====================
+// ==================== TAB MANAGEMENT ====================
 document.addEventListener('DOMContentLoaded', function() {
-  // Kalendarni sozlash
-  const today = new Date();
-  document.getElementById('calendar').value = today.toISOString().split('T')[0];
-  syncDate();
+  // Get all tab elements
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
   
-  // Input eventlari
-  document.getElementById('day').addEventListener('change', updateCalendar);
-  document.getElementById('month').addEventListener('change', updateCalendar);
-  document.getElementById('calendar').addEventListener('change', syncDate);
-});
+  // Tab switching function
+  function switchTab(tabId) {
+    // Remove active class from all tabs
+    tabButtons.forEach(btn => btn.classList.remove('active'));
+    tabContents.forEach(content => content.classList.remove('active'));
     
+    // Add active class to selected tab
+    const selectedBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
+    const selectedContent = document.getElementById(tabId);
+    
+    if (selectedBtn) selectedBtn.classList.add('active');
+    if (selectedContent) selectedContent.classList.add('active');
+  }
+  
+  // Add click events to tab buttons
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const tabId = this.getAttribute('data-tab');
+      switchTab(tabId);
+    });
+  });
+  
+  // ==================== ZODIAC FUNCTIONS ====================
+  // Calendar sync functions
+  function syncDate() {
+    const date = document.getElementById('calendar').value;
+    if (!date) return;
+    const d = new Date(date);
+    document.getElementById('day').value = d.getDate();
+    document.getElementById('month').value = d.getMonth() + 1;
+  }
+  
+  function updateCalendar() {
+    const day = document.getElementById('day').value;
+    const month = document.getElementById('month').value;
+    const year = new Date().getFullYear();
+    
+    if (day && month) {
+      const date = new Date(year, month - 1, day);
+      document.getElementById('calendar').value = date.toISOString().split('T')[0];
+    }
+  }
+  
+  // Zodiac calculation function
+  window.showBurj = function() {
+    const day = parseInt(document.getElementById('day').value);
+    const month = parseInt(document.getElementById('month').value);
+    
+    if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
+      document.getElementById('burj-result').innerHTML = 
+        '<div style="color:red; text-align:center; padding:10px; background:rgba(255,0,0,0.1); border-radius:8px;">Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.</div>';
+      document.getElementById('burj-info').innerHTML = '';
+      return;
+    }
+    
+    let burj = '';
+    let symbol = '';
+    
+    if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+      burj = "Qo'y"; symbol = "♈";
+    } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+      burj = "Buzoq"; symbol = "♉";
+    } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
+      burj = "Egizak"; symbol = "♊";
+    } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
+      burj = "Qisqichbaqa"; symbol = "♋";
+    } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+      burj = "Arslon"; symbol = "♌";
+    } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+      burj = "Parizod"; symbol = "♍";
+    } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
+      burj = "Tarozi"; symbol = "♎";
+    } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
+      burj = "Chayon"; symbol = "♏";
+    } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+      burj = "O'qotar"; symbol = "♐";
+    } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+      burj = "Echki"; symbol = "♑";
+    } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+      burj = "Qovg'a"; symbol = "♒";
+    } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+      burj = "Baliq"; symbol = "♓";
+    }
+    
+    const fullBurjName = `${burj} ${symbol}`;
+    
+    // Display result
+    document.getElementById('burj-result').innerHTML = 
+      `<div style="background:rgba(106,17,203,0.1); padding:20px; border-radius:10px; text-align:center;">
+         <h3 style="color:#ffcc00; margin:0 0 10px 0;">✨ Sizning burjingiz:</h3>
+         <div style="font-size:32px; font-weight:bold; color:#6a11cb; margin:10px 0;">${fullBurjName}</div>
+         <p style="color:#ccc; font-size:14px; margin:5px 0;">Tug'ilgan kun: ${day} - ${month}</p>
+       </div>`;
+    
+    // Zodiac information
+    const burjDescriptions = {
+      "Qo'y ♈": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi. Liderlik qobiliyati yuqori.",
+      "Buzoq ♉": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi. Sabrli va mehnatsevar.",
+      "Egizak ♊": "Qiziquvchan, mulogotchi va tez o'zgaruvchan. Ko'p qirrali va ijodiy.",
+      "Qisqichbaqa ♋": "Sezgir, oilaviy va himoyachi. Hissiyotlarga boy va sodiq.",
+      "Arslon ♌": "Karizmatik, yetakchi va ijodkor. Diqqat markazida bo'lishni yaxshi ko'radi.",
+      "Parizod ♍": "Batafsil, tashkilotchi va amaliy. Mukammallikka intiluvchi.",
+      "Tarozi ♎": "Adolatli, munozarali va go'zallikni qadirlovchi. Diplomatik va ijtimoiy.",
+      "Chayon ♏": "Intensiv, serg'ayrat va sirli. Kuchli irodali va maqsadli.",
+      "O'qotar ♐": "Ozodlikni sevuvchi, sayohatchi va falsafiy. Optimistik va keng qarashli.",
+      "Echki ♑": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi. Disciplinali va sabrli.",
+      "Qovg'a ♒": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi. Mustaqil va innovatsion.",
+      "Baliq ♓": "Sezgir, ruhiy va xayolparast. Mehribon va boshqalarga yordam berishni yaxshi ko'radi."
+    };
+    
+    document.getElementById('burj-info').innerHTML = `
+      <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:10px; margin-top:15px;">
+        <h4 style="color:#2575fc; font-size:18px; margin-bottom:15px; text-align:center;">📖 ${burj} haqida:</h4>
+        <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">${burjDescriptions[fullBurjName] || "Bu burj haqida ma'lumotlar tez orada qo'shiladi."}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:20px;">
+          <span style="background:rgba(106,17,203,0.2); padding:5px 10px; border-radius:5px; font-size:14px;">🎯 Maqsad: Yuksalish</span>
+          <span style="background:rgba(37,117,252,0.2); padding:5px 10px; border-radius:5px; font-size:14px;">💖 Muvofiqlik: ${burj === "Qo'y" ? "Buzoq" : burj === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}</span>
+          <span style="background:rgba(255,204,0,0.2); padding:5px 10px; border-radius:5px; font-size:14px;">⭐ Omadli raqam: ${(day % 9) || 9}</span>
+        </div>
+      </div>
+    `;
+    
+    // Switch to zodiac tab
+    switchTab('burj');
+    
+    // Play sound
+    playSound();
+ 
