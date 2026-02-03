@@ -466,60 +466,39 @@ const burjInfo = {
     erkak: "<div class='gender-info'><h3>👨 Erkak Baliq ♓</h3><p>Hissiy, sezgir va intuitsiyaga ega. Shu burj erkaklari kreativ va yordam berishga tayyor.</p><p><strong>Kuchli tomonlari:</strong> Sezgir, kreativ, yordamchi</p><p><strong>Rivojlantirish kerak:</strong> Ta'sirchanlik</p></div>"
   }
 };
-
-// Tablarni boshqarish
+// ==================== TAB BOSHQARUVI ====================
 const tabs = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
+// Tab almashtirish funksiyasi
+function switchTab(tabId, dontScroll = false) {
+  // Barcha tablarni yopish
+  tabs.forEach(t => t.classList.remove('active'));
+  tabContents.forEach(tc => tc.classList.remove('active'));
+  
+  // Tanlangan tabni ochish
+  const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
+  if (activeTab) activeTab.classList.add('active');
+  
+  const content = document.getElementById(tabId);
+  if (content) content.classList.add('active');
+  
+  if (!dontScroll) window.scrollTo(0, 0);
+}
+
+// Tab tugmalariga event qo'shish
 tabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    // Barcha tablarni inactive qilamiz
-    tabs.forEach(t => t.classList.remove('active'));
-    tabContents.forEach(tc => tc.classList.remove('active'));
-    
-    // Faqat bosilgan tab active bo'lsin
-    tab.classList.add('active');
-    
-    // Tanlangan tab kontentini ko'rsatamiz
-    const target = tab.dataset.tab;
-    const content = document.getElementById(target);
-    if (content) {
-      content.classList.add('active');
-    }
-  });
+  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
 });
 
-// Kalendar bilan inputni sinxronlash
-function syncDate() {
-  const date = document.getElementById('calendar').value;
-  if(!date) return;
-  const d = new Date(date);
-  document.getElementById('day').value = d.getDate();
-  document.getElementById('month').value = d.getMonth() + 1;
-}
-
-// Inputlardan kalendarni sinxronlash
-document.getElementById('day').addEventListener('change', updateCalendar);
-document.getElementById('month').addEventListener('change', updateCalendar);
-
-function updateCalendar() {
-  const day = document.getElementById('day').value;
-  const month = document.getElementById('month').value;
-  const year = new Date().getFullYear();
-  
-  if(day && month) {
-    const date = new Date(year, month-1, day);
-    document.getElementById('calendar').value = date.toISOString().split('T')[0];
-  }
-}
-
-// Burj aniqlash qismi
+// ==================== BURJ ANIQLASH ====================
 function showBurj() {
   const day = parseInt(document.getElementById('day').value);
   const month = parseInt(document.getElementById('month').value);
 
-  if (!day || !month || day<1 || day>31 || month<1 || month>12) {
-    document.getElementById('burj-result').innerHTML = "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting.</span>";
+  if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
+    document.getElementById('burj-result').innerHTML = 
+      "<span style='color:red'>Iltimos, kun va oyni to'g'ri kiriting (1-31 kun, 1-12 oy).</span>";
     document.getElementById('burj-info').innerHTML = "";
     return;
   }
@@ -527,85 +506,108 @@ function showBurj() {
   let burj = "";
   let burjSymbol = "";
   
-  if((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
-    burj = "Qo'y";
-    burjSymbol = "♈";
-  }
-  else if((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
-    burj = "Buzoq";
-    burjSymbol = "♉";
-  }
-  else if((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
-    burj = "Egizak";
-    burjSymbol = "♊";
-  }
-  else if((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
-    burj = "Qisqichbaqa";
-    burjSymbol = "♋";
-  }
-  else if((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
-    burj = "Arslon";
-    burjSymbol = "♌";
-  }
-  else if((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
-    burj = "Parizod";
-    burjSymbol = "♍";
-  }
-  else if((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
-    burj = "Tarozi";
-    burjSymbol = "♎";
-  }
-  else if((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
-    burj = "Chayon";
-    burjSymbol = "♏";
-  }
-  else if((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
-    burj = "O'qotar";
-    burjSymbol = "♐";
-  }
-  else if((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
-    burj = "Echki";
-    burjSymbol = "♑";
-  }
-  else if((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
-    burj = "Qovg'a";
-    burjSymbol = "♒";
-  }
-  else if((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
-    burj = "Baliq";
-    burjSymbol = "♓";
+  if ((month == 3 && day >= 21) || (month == 4 && day <= 19)) {
+    burj = "Qo'y"; burjSymbol = "♈";
+  } else if ((month == 4 && day >= 20) || (month == 5 && day <= 20)) {
+    burj = "Buzoq"; burjSymbol = "♉";
+  } else if ((month == 5 && day >= 21) || (month == 6 && day <= 20)) {
+    burj = "Egizak"; burjSymbol = "♊";
+  } else if ((month == 6 && day >= 21) || (month == 7 && day <= 22)) {
+    burj = "Qisqichbaqa"; burjSymbol = "♋";
+  } else if ((month == 7 && day >= 23) || (month == 8 && day <= 22)) {
+    burj = "Arslon"; burjSymbol = "♌";
+  } else if ((month == 8 && day >= 23) || (month == 9 && day <= 22)) {
+    burj = "Parizod"; burjSymbol = "♍";
+  } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
+    burj = "Tarozi"; burjSymbol = "♎";
+  } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
+    burj = "Chayon"; burjSymbol = "♏";
+  } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
+    burj = "O'qotar"; burjSymbol = "♐";
+  } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
+    burj = "Echki"; burjSymbol = "♑";
+  } else if ((month == 1 && day >= 20) || (month == 2 && day <= 18)) {
+    burj = "Qovg'a"; burjSymbol = "♒";
+  } else if ((month == 2 && day >= 19) || (month == 3 && day <= 20)) {
+    burj = "Baliq"; burjSymbol = "♓";
   }
 
   const fullBurjName = `${burj} ${burjSymbol}`;
-  document.getElementById('burj-result').innerHTML = `✨ Sizning burjingiz: <b>${fullBurjName}</b>`;
+  document.getElementById('burj-result').innerHTML = 
+    `<div style="background:rgba(106,17,203,0.1); padding:15px; border-radius:10px; text-align:center;">
+       <h3 style="color:#ffcc00; margin:0;">✨ Sizning burjingiz:</h3>
+       <p style="font-size:24px; font-weight:bold; color:#6a11cb; margin:10px 0;">${fullBurjName}</p>
+       <p style="color:#ccc; font-size:14px;">Tug'ilgan kun: ${day} - ${month}</p>
+     </div>`;
 
-  // Faqat aniqlangan burj tafsilotini chiqaramiz
-  let tafsilot = "";
-  if (burjInfo[fullBurjName]) {
-    tafsilot = `
-      <div class="burj-details">
-        ${burjInfo[fullBurjName].ayol}
-        ${burjInfo[fullBurjName].erkak}
+  // Burj haqida qisqa ma'lumot
+  const burjDescriptions = {
+    "Qo'y ♈": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi",
+    "Buzoq ♉": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi",
+    "Egizak ♊": "Qiziquvchan, mulogotchi va tez o'zgaruvchan",
+    "Qisqichbaqa ♋": "Sezgir, oilaviy va himoyachi",
+    "Arslon ♌": "Karizmatik, yetakchi va ijodkor",
+    "Parizod ♍": "Batafsil, tashkilotchi va amaliy",
+    "Tarozi ♎": "Adolatli, munozarali va go'zallikni qadirlovchi",
+    "Chayon ♏": "Intensiv, serg'ayrat va sirli",
+    "O'qotar ♐": "Ozodlikni sevuvchi, sayohatchi va falsafiy",
+    "Echki ♑": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi",
+    "Qovg'a ♒": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi",
+    "Baliq ♓": "Sezgir, ruhiy va xayolparast"
+  };
+
+  document.getElementById('burj-info').innerHTML = `
+    <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:10px; margin-top:15px;">
+      <h4 style="color:#2575fc; margin-bottom:10px;">📖 ${burj} haqida:</h4>
+      <p style="font-size:16px; line-height:1.6;">${burjDescriptions[fullBurjName] || "Bu burj haqida ma'lumot keyinroq qo'shiladi."}</p>
+      <div style="display:flex; justify-content:space-between; margin-top:15px; font-size:14px; color:#aaa;">
+        <span>🎯 Maqsad: Yuksalish</span>
+        <span>💖 Muvofiqlik: ${burj === "Qo'y" ? "Buzoq" : burj === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}</span>
+        <span>⭐ Omadli raqam: ${day % 9 || 9}</span>
       </div>
-    `;
-  } else {
-    tafsilot = "<p style='color:red'>Bu burj uchun ma'lumot topilmadi.</p>";
-  }
-
-  document.getElementById('burj-info').innerHTML = tafsilot;
+    </div>
+  `;
   
-  // Burjlar tabiga o'tkazish
-  tabs.forEach(t => t.classList.remove('active'));
-  tabContents.forEach(tc => tc.classList.remove('active'));
-  
-  document.querySelector('[data-tab="burj"]').classList.add('active');
-  document.getElementById('burj').classList.add('active');
+  // Burjlar tabiga o'tkazish (YANGI USUL)
+  switchTab('burj', true);
   
   // Ovoz efekti
   playSound();
 }
 
-// Ovoz efekti
+// ==================== TUSH KONTENTINI OCHISH/YOPISH ====================
+function toggleTushContent() {
+  const content = document.getElementById('tush-content');
+  if (!content) return;
+  
+  if (content.style.display === 'none' || content.style.display === '') {
+    content.style.display = 'block';
+    playSound();
+  } else {
+    content.style.display = 'none';
+  }
+}
+
+// ==================== KALENDAR FUNKSIYALARI ====================
+function syncDate() {
+  const date = document.getElementById('calendar').value;
+  if (!date) return;
+  const d = new Date(date);
+  document.getElementById('day').value = d.getDate();
+  document.getElementById('month').value = d.getMonth() + 1;
+}
+
+function updateCalendar() {
+  const day = document.getElementById('day').value;
+  const month = document.getElementById('month').value;
+  const year = new Date().getFullYear();
+  
+  if (day && month) {
+    const date = new Date(year, month - 1, day);
+    document.getElementById('calendar').value = date.toISOString().split('T')[0];
+  }
+}
+
 function playSound() {
   try {
     const audio = new AudioContext();
@@ -622,17 +624,30 @@ function playSound() {
     oscillator.start();
     oscillator.stop(audio.currentTime + 0.5);
   } catch (e) {
-    console.log("Ovoz efekti ishlamadi");
+    // Ovoz ishlamasa, hech narsa qilmaymiz
   }
 }
 
-// Sahifa yuklanganda
-window.onload = function() {
+// ==================== SAHIFA YUKLANGANDA ====================
+document.addEventListener('DOMContentLoaded', function() {
+  // Kalendarni sozlash
   const today = new Date();
   document.getElementById('calendar').value = today.toISOString().split('T')[0];
   syncDate();
-};
-</script>
+  
+  // Input eventlari
+  document.getElementById('day').addEventListener('change', updateCalendar);
+  document.getElementById('month').addEventListener('change', updateCalendar);
+  
+  // Kalendar eventi
+  document.getElementById('calendar').addEventListener('change', syncDate);
+  
+  // Tush kontent tugmasini qayta ulash
+  const tushButton = document.querySelector('[onclick="toggleTushContent()"]');
+  if (tushButton) {
+    tushButton.onclick = toggleTushContent;
+  }
+});
 
-</body>
-  </html>
+  
+  
