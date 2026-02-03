@@ -175,227 +175,198 @@ footer {
   <div id="tush" class="tab-content active">
     <div class="card">
       <h2>🔮 Tush tabiri</h2>
-      <p>Suv Tushining To'liq Tabiri</p>
-    <!-- Tush Tabiri -->
-<div id="tush" class="tab-content active">
+      <p>Suv Tez orada poʻst qoʻshiladi</p>
+    <div id="tush" class="tab-content active">
   <div class="card">
     <h2>🔮 Tush tabiri</h2>
     
-    <!-- SEO Optimallashtirilgan Suv Tush Tabiri (KENG) -->
-    <div style="background:rgba(255,255,255,0.05); padding:25px; border-radius:12px;">
+    <!-- Kichik ko'rinadigan sarlavha -->
+    <div style="text-align:center; margin-bottom:15px; cursor:pointer; background:rgba(106,17,203,0.1); padding:12px; border-radius:8px;" 
+         onclick="toggleTushContent()">
+      <h3 style="color:#ffcc00; margin:0; font-size:18px;">🌊 Suv Ko'rish Tushining To'liq Tabiri</h3>
+      <p style="color:#ccc; font-size:14px; margin:5px 0 0 0;">Ibn Sirin tush tabiri (Bosing va o'qing)</p>
+    </div>
+    
+    <!-- Asosiy kontent (yashirin) -->
+    <div id="tush-content" style="display:none;">
       
-      <!-- Mobile uchun optimallashtirilgan rasm -->
-      <div style="text-align:center; margin-bottom:25px;">
-        <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-             alt="Suv ko'rish tushi - Ibn Sirin tush tabiri, suv tushining ma'nolari va talqini" 
-             title="Suv tush tabiri | Ibn Sirin tush talqini | Tushlarni tushunish"
-             style="width:100%; max-width:600px; height:300px; object-fit:cover; border-radius:12px; border:3px solid rgba(106,17,203,0.3); box-shadow: 0 5px 15px rgba(0,0,0,0.2);">
-        <p style="color:#ccc; font-size:14px; margin-top:8px;">💧 Suv - hayot, imon, poklik va baraka ramzi (Ibn Sirin)</p>
+      <!-- Mobile uchun qulay rasm -->
+      <div style="text-align:center; margin:20px 0;">
+        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+             alt="Suv tush tabiri - Ibn Sirin tush talqini" 
+             style="width:100%; max-width:400px; height:200px; object-fit:cover; border-radius:10px; border:2px solid rgba(106,17,203,0.3);">
+        <p style="color:#aaa; font-size:13px; margin-top:5px;">💧 Suv - hayot, poklik va baraka ramzi</p>
       </div>
       
-      <!-- Asosiy sarlavha (H1) -->
-      <h1 style="color:#ffcc00; text-align:center; font-size:26px; margin-bottom:20px; line-height:1.3;">
-        Ibn Sirin: Suv Ko'rish Tushining To'liq Tabiri va Barcha Ma'nolari
-      </h1>
-      
-      <!-- Kirish matni -->
-      <p style="font-size:17px; line-height:1.7; margin-bottom:20px; text-align:center;">
-        <strong style="color:#6a11cb;">"Tushlar - ruhiy olamimizning maxfiy tillari"</strong>
-      </p>
-      <p style="font-size:16px; line-height:1.6; margin-bottom:20px;">
-        <strong>Suv haqida tush ko'rish</strong> eng keng tarqalgan va eng muhim tushlardan biri hisoblanadi. 
-        Tush tabiri ilmida alohida o'rin egallagan suv tushlari haqida <strong>Ibn Sirin</strong> o'zining 
-        mashhur "Tobir-ul Ahlam" ("Tushlarning tabiri") kitobida batafsil ma'lumot bergan.
-      </p>
-      
-      <!-- Ibn Sirin haqida qisqacha -->
-      <div style="background:rgba(139,69,19,0.15); padding:15px; border-radius:10px; margin:20px 0; border-left:4px solid #8B4513;">
-        <h2 style="color:#8B4513; font-size:20px; margin-bottom:10px;">📚 Ibn Sirin Haqida:</h2>
-        <p style="font-size:15px; line-height:1.6;">
-          <strong>Imom Ibn Sirin (rahimahulloh)</strong> - islom dunyosida tush tabiri ilmining eng buyuk ustasi. 
-          Uning "Tobir-ul Ahlam" asari 14 asr davomida tush tabiri bo'yicha asosiy manba bo'lib kelgan. 
-          Ibn Sirin tushlarni o'qishda Qur'on, Hadis va inson psixologiyasini uyg'unlashtirgan.
-        </p>
-      </div>
-      
-      <!-- Asosiy ma'nolar -->
-      <div style="background:rgba(106,17,203,0.15); padding:20px; border-radius:12px; margin:25px 0;">
-        <h2 style="color:#6a11cb; font-size:22px; margin-bottom:15px; text-align:center;">
-          💧 Ibn Sirin Ta'limotiga Ko'ra Suv Tushlari
-        </h2>
+      <!-- Asosiy ma'lumotlar -->
+      <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:10px; margin-bottom:20px;">
+        <h3 style="color:#ffcc00; font-size:20px; margin-bottom:15px; text-align:center;">
+          Ibn Sirin: Suv Tushining Ma'nolari
+        </h3>
         
-        <h3 style="color:#ffcc00; font-size:18px; margin:15px 0 10px 0;">1. Toza Suv Ichish:</h3>
         <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">
-          Ibn Sirin aytadi: <strong>"Toza suv ichganni ko'rsang, bu uning dinida mustahkam ekanligini bildiradi"</strong>. 
-          Toza suv - imon, halollik, ruhiy poklik va din mustahkamligi ramzidir. Agar tushingizda toza, 
-          sovuq suv ichayotgan bo'lsangiz, bu sizning ruhiy jihatdan toza ekanligingizni va Allohning rizosi 
-          yo'lida ekanligingizni bildiradi.
+          <strong>Tushlar ustasi Ibn Sirin</strong> (rahimahulloh) o'zining "Tobir-ul Ahlam" ("Tushlarning tabiri") kitobida suv tushlariga alohida e'tibor bergan. 
+          Uning ta'limotiga ko'ra, suv tushlari inson hayotining eng muhim jihatlarini aks ettiradi.
         </p>
         
-        <h3 style="color:#ffcc00; font-size:18px; margin:15px 0 10px 0;">2. Oqar Suvda Suzish:</h3>
-        <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">
-          Ibn Sirin o'z asarida: <strong>"Daryoda suzayotganni ko'rsang, u hayotida yuksaladi"</strong> deb yozgan. 
-          Oqar suvda suzish - hayotda muvaffaqiyat, baraka, omadli harakatlanish va maqsadlarga erishish ramzidir. 
-          Suvning oqimi sizga yordam berayotgan bo'lsa, bu hayotiy vaziyatlarning sizga qulay ketayotganini bildiradi.
-        </p>
-        
-        <h3 style="color:#ffcc00; font-size:18px; margin:15px 0 10px 0;">3. Dengiz yoki Okean Ko'rish:</h3>
-        <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">
-          Ibn Sirin talqiniga ko'ra: <strong>"Dengizni ko'rish - sulton yoki hukmdor oldida bo'lishdir"</strong>. 
-          Dengiz - kuch, hokimiyat, keng imkoniyatlar va cheksizlik ramzi. Agar dengiz tinch bo'lsa, 
-          bu hokimiyat bilan yaxshi munosabatda bo'lishingizni bildiradi. To'lqinli bo'lsa, qiyinchiliklar kutilmoqda.
-        </p>
-        
-        <h3 style="color:#ffcc00; font-size:18px; margin:15px 0 10px 0;">4. Bulg'angan yoki Loyqa Suv:</h3>
-        <p style="font-size:16px; line-height:1.6; margin-bottom:15px;">
-          Ibn Sirin ogohlantiradi: <strong>"Loyqa suv - g'am-g'ussa va mushkullotdir"</strong>. 
-          Bulg'angan suv ko'rish - ruhiy tushkunlik, qiyin qarorlar, noaniqlik yoki dinida zaiflik belgisidir. 
-          Agar tushingizda loyqa suv ichayotgan bo'lsangiz, bu sizning ruhiy holatingizni yaxshilash kerakligini ko'rsatadi.
-        </p>
-      </div>
-      
-      <!-- Suv holatlari -->
-      <div style="margin:25px 0;">
-        <h2 style="color:#2575fc; font-size:22px; margin-bottom:15px; text-align:center;">
-          🌊 Suv Holatiga Ko'ra Talqinlar
-        </h2>
-        
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:15px; margin-top:20px;">
-          <div style="background:rgba(37,117,252,0.1); padding:15px; border-radius:10px;">
-            <h3 style="color:#2575fc; font-size:17px; margin-bottom:8px;">🌅 Tinch Suv:</h3>
-            <p style="font-size:15px;">Hayotda muvozanat, ichki tinchlik, ruhiy barqarorlik. Ibn Sirin: "Tinch suv - qalbi tinchlik"</p>
-          </div>
-          
-          <div style="background:rgba(37,117,252,0.1); padding:15px; border-radius:10px;">
-            <h3 style="color:#2575fc; font-size:17px; margin-bottom:8px;">🌊 To'lqinli Suv:</h3>
-            <p style="font-size:15px;">Hayotiy sinovlar, o'zgarishlar, qiyin vaziyatlar. To'lqinlar katta bo'lsa, qiyinchiliklar kuchli</p>
-          </div>
-          
-          <div style="background:rgba(37,117,252,0.1); padding:15px; border-radius:10px;">
-            <h3 style="color:#2575fc; font-size:17px; margin-bottom:8px;">🧊 Muzlagan Suv:</h3>
-            <p style="font-size:15px;">Hisiyotlarning sovutishi, harakatsizlik, to'xtab qolish. Muammolar yechimi kutishni talab qiladi</p>
-          </div>
-          
-          <div style="background:rgba(37,117,252,0.1); padding:15px; border-radius:10px;">
-            <h3 style="color:#2575fc; font-size:17px; margin-bottom:8px;">🔥 Qaynoq Suv:</h3>
-            <p style="font-size:15px;">G'azab, jahl, keskin hissiyotlar. Ibn Sirin: "Qaynoq suv - g'azab va janjal"</p>
-          </div>
+        <!-- Ibn Sirin haqida -->
+        <div style="background:rgba(139,69,19,0.1); padding:15px; border-radius:8px; margin:15px 0; border-left:3px solid #8B4513;">
+          <h4 style="color:#8B4513; font-size:17px; margin-bottom:10px;">📚 Ibn Sirin Haqida:</h4>
+          <p>Imom Ibn Sirin - Islom dunyosida tush tabiri ilmining eng buyuk ustasi. 
+          Uning asarlari 14 asr davomida tush tabiri bo'yicha asosiy manba bo'lib kelgan.</p>
         </div>
-      </div>
-      
-      <!-- Suv ranglari -->
-      <div style="background:rgba(255,204,0,0.1); padding:20px; border-radius:12px; margin:25px 0;">
-        <h2 style="color:#ffcc00; font-size:22px; margin-bottom:15px; text-align:center;">
-          🎨 Suv Ranglari va Ularning Ma'nolari
-        </h2>
         
-        <div style="display:flex; flex-wrap:wrap; gap:15px; justify-content:center; margin-top:20px;">
-          <div style="background:rgba(0,100,255,0.2); padding:12px; border-radius:8px; flex:1; min-width:120px;">
-            <h3 style="color:#0064ff; font-size:16px; margin-bottom:5px;">🔵 Ko'k Suv:</h3>
-            <p style="font-size:14px;">Sog'lomlik, tinchlik, ruhiy barqarorlik, sog'liq</p>
-          </div>
+        <!-- Asosiy ma'nolar -->
+        <div style="background:rgba(106,17,203,0.1); padding:15px; border-radius:8px; margin:15px 0;">
+          <h4 style="color:#6a11cb; font-size:17px; margin-bottom:10px;">📖 Ibn Sirin Ta'limoti:</h4>
+          <p><strong>• Toza suv ichish:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi" - Ibn Sirin. Din mustahkamligi, imon kuchi, ruhiy poklik belgisi.</p>
           
-          <div style="background:rgba(0,255,100,0.2); padding:12px; border-radius:8px; flex:1; min-width:120px;">
-            <h3 style="color:#00ff64; font-size:16px; margin-bottom:5px;">🟢 Yashil Suv:</h3>
-            <p style="font-size:14px;">Baraka, o'sish, rivojlanish, moliyaviy yaxshilanish</p>
-          </div>
+          <p><strong>• Daryoda suzish:</strong> "Daryoda suzayotganni ko'rsang, u hayotida yuksaladi" - Ibn Sirin. Hayotda muvaffaqiyat, baraka, omadli harakatlanish.</p>
           
-          <div style="background:rgba(255,255,255,0.2); padding:12px; border-radius:8px; flex:1; min-width:120px;">
-            <h3 style="color:#ffffff; font-size:16px; margin-bottom:5px;">⚪ Oq Suv:</h3>
-            <p style="font-size:14px;">Poklik, soflik, ilhom, yangi boshlanish</p>
-          </div>
+          <p><strong>• Dengiz/Okean ko'rish:</strong> "Dengizni ko'rish - sulton yoki hukmdor oldida bo'lishdir" - Ibn Sirin. Kuchli hokimiyat oldida bo'lish, keng imkoniyatlar.</p>
           
-          <div style="background:rgba(0,0,0,0.2); padding:12px; border-radius:8px; flex:1; min-width:120px;">
-            <h3 style="color:#cccccc; font-size:16px; margin-bottom:5px;">⚫ Qora Suv:</h3>
-            <p style="font-size:14px;">G'am, tushkunlik, noaniqlik, qo'rquv</p>
-          </div>
+          <p><strong>• Bulg'angan suv:</strong> "Loyqa suv - g'am-g'ussa va mushkullotdir" - Ibn Sirin. Qiyinchiliklar, ruhiy tushkunlik, noaniqlik.</p>
+          
+          <p><strong>• Suvga cho'milish:</strong> Gunohlardan poklanish, tavba qilish, yangilanish ramzidir.</p>
+          
+          <p><strong>• Suvda cho'kish:</strong> G'ammog'uz, qarz yoki mushkulotga tushishni anglatadi, lekin Allohga tayanish lozim.</p>
         </div>
-      </div>
-      
-      <!-- Amaliy maslahatlar -->
-      <div style="border-left:4px solid #6a11cb; padding-left:20px; margin:25px 0;">
-        <h2 style="color:#6a11cb; font-size:22px; margin-bottom:15px;">
-          💡 Suv Tushidan Keyin Amaliy Maslahatlar
-        </h2>
         
-        <ol style="font-size:16px; line-height:1.7; margin-left:20px;">
-          <li><strong>Tafsilotlarni yodda saqlang:</strong> Suvning rangi, holati, o'zingizning harakatingiz</li>
-          <li><strong>Ibn Sirin talqinlariga murojaat qiling:</strong> Uning asarlari eng ishonchli manba</li>
-          <li><strong>Hayotingizdagi dolzarb masalalarni solishtiring:</strong> Tush hayotiy vaziyatlar bilan bog'liq bo'lishi mumkin</li>
-          <li><strong>Psixologik jihatni hisobga oling:</strong> Tushlar ruhiy holatingizni aks ettiradi</li>
-          <li><strong>Ijobiy talqinlarga e'tibor bering:</strong> Har qanday tushdan ijobiy ma'no chiqarish mumkin</li>
-          <li><strong>Duo va ibodat bilan birga tushni tahlil qiling:</strong> Ruhiy tayyorgarlik muhim</li>
-        </ol>
-      </div>
-      
-      <!-- Psixologik talqin -->
-      <div style="background:rgba(106,17,203,0.1); padding:20px; border-radius:12px; margin:25px 0;">
-        <h2 style="color:#6a11cb; font-size:22px; margin-bottom:15px;">
-          🧠 Zamonaviy Psixologiya va Ibn Sirin Talqinlari
-        </h2>
+        <!-- Suv turlari -->
+        <div style="border-left:3px solid #2575fc; padding-left:15px; margin:15px 0;">
+          <h4 style="color:#2575fc; font-size:17px; margin-bottom:10px;">💧 Suv Turiga Ko'ra:</h4>
+          <p><strong>Daryo suvi:</strong> Hayot oqimi, moliyaviy yaxshilanish, tabiiy rivojlanish</p>
+          <p><strong>Buloq suvi:</strong> Yangi imkoniyatlar, kutilmagan yaxshiliklar, ilhom</p>
+          <p><strong>Ko'l suvi:</strong> Tinchlik, barqarorlik, ichki muvozanat</p>
+          <p><strong>Boshqotirma suv:</strong> Qiyinchiliklar, to'siqlar, sinovlar</p>
+        </div>
         
-        <p style="font-size:16px; line-height:1.7; margin-bottom:15px;">
-          Bugungi zamon psixologlari tushlarni ongning tozalash jarayoni deb hisoblaydilar. 
-          <strong>Suv tushlari</strong> ayniqsa muhim, chunki ular insonning ichki hissiyotlari, 
-          ruhiy holati va ong osti istaklarini aks ettiradi.
-        </p>
+        <!-- Suv holatlari -->
+        <div style="margin:15px 0;">
+          <h4 style="color:#ffcc00; font-size:17px; margin-bottom:10px;">🌊 Suv Holatiga Ko'ra:</h4>
+          <p><strong>Tinch suv:</strong> Hayotda muvozanat, ichki tinchlik, ruhiy barqarorlik</p>
+          <p><strong>To'lqinli suv:</strong> Hayotiy sinovlar, o'zgarishlar, qiyin vaziyatlar</p>
+          <p><strong>Muzlagan suv:</strong> Hisiyotlarning sovutishi, harakatsizlik, to'xtab qolish</p>
+          <p><strong>Qaynoq suv:</strong> G'azab, jahl, keskin hissiyotlar ko'tarilishi</p>
+        </div>
         
-        <p style="font-size:16px; line-height:1.7;">
-          <strong>Psixolog Carl Jung</strong> ta'kidlaganidek: "Suv - ong osti ramzi". 
-          Ibn Sirin asrlar oldin aytganidek: "Suv - ruh ramzi". 
-          Ikkala nuqtai nazar ham suv tushlarining ruhiy va psixologik ahamiyatini tasdiqlaydi.
-        </p>
-      </div>
-      
-      <!-- Xulosa -->
-      <div style="text-align:center; background:linear-gradient(45deg, rgba(106,17,203,0.25), rgba(37,117,252,0.25)); 
-                  padding:25px; border-radius:12px; margin-top:30px;">
-        <h2 style="color:#ffcc00; font-size:24px; margin-bottom:15px;">
-          ✨ Xulosa: Suv Tushlari Haqida Asosiy Fikrlar
-        </h2>
+        <!-- Suv ranglari -->
+        <div style="background:rgba(255,204,0,0.1); padding:15px; border-radius:8px; margin:15px 0;">
+          <h4 style="color:#ffcc00; font-size:17px; margin-bottom:10px;">🎨 Suv Ranglari Ma'nosi:</h4>
+          <p><strong>Ko'k suv:</strong> Sog'lomlik, tinchlik, ruhiy barqarorlik</p>
+          <p><strong>Yashil suv:</strong> Baraka, o'sish, rivojlanish, moliyaviy yaxshilanish</p>
+          <p><strong>Oq suv:</strong> Poklik, soflik, ilhom, yangi boshlanish</p>
+          <p><strong>Qora suv:</strong> G'am, tushkunlik, noaniqlik, qo'rquv</p>
+          <p><strong>Sariq suv:</strong> Kasallik, zaiflik, ehtiyot bo'lish kerakligi</p>
+        </div>
         
-        <p style="font-size:17px; line-height:1.7; margin-bottom:15px;">
-          Ibn Sirin ta'limotiga ko'ra, <strong>suv tushlari</strong> inson hayotining eng muhim 
-          jihatlarini aks ettiradi: din, imon, ruhiy holat, hayotiy yo'l va kelajak istiqbollari.
-        </p>
+        <!-- Amaliy maslahatlar -->
+        <div style="border-left:3px solid #6a11cb; padding-left:15px; margin:15px 0;">
+          <h4 style="color:#6a11cb; font-size:17px; margin-bottom:10px;">💡 Amaliy Maslahatlar:</h4>
+          <p>1. Suvning holati, rangi va sizning harakatingizni yodda tuting</p>
+          <p>2. Ibn Sirin "Tobir-ul Ahlam" kitobiga murojaat qiling</p>
+          <p>3. Hayotingizdagi dolzarb masalalarni solishtiring</p>
+          <p>4. Ijobiy talqinlarga e'tibor bering</p>
+          <p>5. Duo va ibodat bilan birga tushni tahlil qiling</p>
+          <p>6. Agar tush sizni tashvishlantirsa, Allohdan yordam so'rang</p>
+        </div>
         
-        <p style="font-size:16px; line-height:1.6; color:#ccc; margin-bottom:15px;">
-          Har bir suv tushi o'ziga xos ma'noga ega bo'lib, uni to'g'ri tushunish uchun:
-        </p>
+        <!-- Psixologik talqin -->
+        <div style="background:rgba(37,117,252,0.1); padding:15px; border-radius:8px; margin:15px 0;">
+          <h4 style="color:#2575fc; font-size:17px; margin-bottom:10px;">🧠 Zamonaviy Psixologik Nuqtai Nazar:</h4>
+          <p>Bugungi psixologlar tushlarni ongning tozalash jarayoni deb hisoblaydilar. 
+          <strong>Suv tushlari</strong> ko'pincha ichki hissiyotlarni qayta ishlash, 
+          ruhiy tiklanish va yangilanish jarayonlarini aks ettiradi.</p>
+          <p>Psixolog Carl Jung: "Suv - ong osti ramzi"</p>
+        </div>
         
-        <div style="display:inline-block; background:rgba(255,255,255,0.1); padding:10px 20px; border-radius:8px; margin-top:10px;">
-          <p style="color:#ffcc00; font-size:16px; margin:0;">
-            🔍 Suv holati + 🌈 Suv rangi + 🏊 Harakatingiz = To'g'ri talqin
+        <!-- Xulosa -->
+        <div style="text-align:center; background:linear-gradient(45deg, rgba(106,17,203,0.15), rgba(37,117,252,0.15)); 
+                    padding:20px; border-radius:10px; margin-top:25px;">
+          <h4 style="color:#ffcc00; font-size:18px; margin-bottom:10px;">✨ Xulosa</h4>
+          <p style="font-size:16px; line-height:1.6;">
+            Ibn Sirin ta'limotiga ko'ra, suv tushlari inson hayotining eng muhim jihatlarini aks ettiradi. 
+            Har bir suv tushi o'ziga xos ma'noga ega bo'lib, uni to'g'ri tushunish hayot yo'lingizni aniqlashtirishga yordam beradi.
+          </p>
+          <p style="color:#ccc; font-style:italic; margin-top:10px; font-size:14px;">
+            "Tushlar - Allohning bandalariga bo'lgan maxfiy xabarlaridir" - Ibn Sirin
           </p>
         </div>
         
-        <p style="font-style:italic; color:#ffcc00; margin-top:20px; font-size:16px;">
-          "Tushlar - Allohning bandalariga bo'lgan maxfiy xabarlaridir" - Ibn Sirin
-        </p>
-      </div>
-      
-      <!-- SEO meta va kalit so'zlar -->
-      <div style="font-size:13px; color:#888; margin-top:30px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.2);">
-        <p style="margin-bottom:10px;"><strong>📈 SEO Kalit So'zlar:</strong></p>
-        <p style="font-size:14px; color:#aaa; line-height:1.5;">
-          tush tabiri, suv tushi, ibn sirin tush tabiri, suv ko'rish tushi, tush ma'nolari, 
-          tushlarni tushunish, suzish tushi, suv tushining ma'nolari, daryo tushi, dengiz tushi, 
-          toza suv tushi, bulg'angan suv tushi, tush talqini, psixologik tush tahlili, 
-          ruhiy tushlar, tush tabiri ilmi, tushlar haqida ma'lumot, tush sharhlari
-        </p>
-        
-        <div style="display:flex; justify-content:space-between; margin-top:15px; font-size:12px;">
-          <p><strong>📚 Manba:</strong> Ibn Sirin "Tobir-ul Ahlam"</p>
-          <p><strong>📅 Yangilangan:</strong> 2026</p>
-          <p><strong>🏷 Kategoriya:</strong> Tush tabirlari va ma'nolari</p>
+        <!-- SEO meta -->
+        <div style="font-size:12px; color:#888; margin-top:20px; padding-top:15px; border-top:1px solid rgba(255,255,255,0.1);">
+          <p><strong>SEO kalit so'zlar:</strong> tush tabiri, suv tushi, ibn sirin tush tabiri, suv ko'rish tushi, 
+          tush ma'nolari, tushlarni tushunish, suzish tushi, suv tushining ma'nolari, tush talqini</p>
+          <p><strong>Manba:</strong> Ibn Sirin "Tobir-ul Ahlam" kitobi</p>
         </div>
+        
       </div>
-      
     </div>
+    
   </div>
 </div>
-    </div>
-  </div>
+
+<script>
+// Tush kontentini ochish/yopish funksiyasi
+function toggleTushContent() {
+  const content = document.getElementById('tush-content');
+  if (content.style.display === 'none' || content.style.display === '') {
+    content.style.display = 'block';
+    // Ovoz efekti
+    playClickSound();
+  } else {
+    content.style.display = 'none';
+  }
+}
+
+// Ovoz efekti
+function playClickSound() {
+  try {
+    const audio = new AudioContext();
+    const oscillator = audio.createOscillator();
+    const gainNode = audio.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audio.destination);
+    
+    oscillator.frequency.setValueAtTime(523, audio.currentTime);
+    gainNode.gain.setValueAtTime(0.05, audio.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audio.currentTime + 0.3);
+    
+    oscillator.start();
+    oscillator.stop(audio.currentTime + 0.3);
+  } catch (e) {
+    // Ovoz ishlamasa, hech narsa qilmaymiz
+  }
+}
+
+// Sahifa yuklanganda tush kontentini tekshirish
+document.addEventListener('DOMContentLoaded', function() {
+  // Agar tush kontenti yo'qolsa, qayta tiklash
+  const tushContent = document.getElementById('tush-content');
+  const tushButton = document.querySelector('[onclick="toggleTushContent()"]');
+  
+  // Har safar tab o'zgarganda tekshirish
+  document.querySelectorAll('.tab-btn').forEach(tab => {
+    tab.addEventListener('click', function() {
+      // Tush tabiriga o'tilganda kontentni tekshirish
+      if (this.getAttribute('data-tab') === 'tush') {
+        setTimeout(() => {
+          if (tushContent && tushContent.style.display === 'none') {
+            // Kontent mavjud, faqat yashirin
+            // Hech narsa qilmaymiz
+          }
+        }, 100);
+      }
+    });
+  });
+});
+</script>        
+          
+      
+      
+      
+      
 
   <!-- Burjlar -->
   <div id="burj" class="tab-content">
