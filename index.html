@@ -470,25 +470,26 @@ const burjInfo = {
 const tabs = document.querySelectorAll('.tab-btn');
 const tabContents = document.querySelectorAll('.tab-content');
 
-// Tab almashtirish funksiyasi
-function switchTab(tabId, dontScroll = false) {
-  // Barcha tablarni yopish
-  tabs.forEach(t => t.classList.remove('active'));
-  tabContents.forEach(tc => tc.classList.remove('active'));
+// Tab almashtirish funksiyasi (SODDA)
+function switchTab(tabId) {
+  // 1. Barcha tablarni yopish
+  tabs.forEach(tab => tab.classList.remove('active'));
+  tabContents.forEach(content => content.classList.remove('active'));
   
-  // Tanlangan tabni ochish
-  const activeTab = document.querySelector(`[data-tab="${tabId}"]`);
-  if (activeTab) activeTab.classList.add('active');
+  // 2. Tanlangan tabni ochish
+  const selectedTab = document.querySelector(`[data-tab="${tabId}"]`);
+  const selectedContent = document.getElementById(tabId);
   
-  const content = document.getElementById(tabId);
-  if (content) content.classList.add('active');
-  
-  if (!dontScroll) window.scrollTo(0, 0);
+  if (selectedTab) selectedTab.classList.add('active');
+  if (selectedContent) selectedContent.classList.add('active');
 }
 
 // Tab tugmalariga event qo'shish
 tabs.forEach(tab => {
-  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  tab.addEventListener('click', function() {
+    const tabId = this.getAttribute('data-tab');
+    switchTab(tabId);
+  });
 });
 
 // ==================== BURJ ANIQLASH ====================
@@ -540,36 +541,8 @@ function showBurj() {
        <p style="color:#ccc; font-size:14px;">Tug'ilgan kun: ${day} - ${month}</p>
      </div>`;
 
-  // Burj haqida qisqa ma'lumot
-  const burjDescriptions = {
-    "Qo'y ♈": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi",
-    "Buzoq ♉": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi",
-    "Egizak ♊": "Qiziquvchan, mulogotchi va tez o'zgaruvchan",
-    "Qisqichbaqa ♋": "Sezgir, oilaviy va himoyachi",
-    "Arslon ♌": "Karizmatik, yetakchi va ijodkor",
-    "Parizod ♍": "Batafsil, tashkilotchi va amaliy",
-    "Tarozi ♎": "Adolatli, munozarali va go'zallikni qadirlovchi",
-    "Chayon ♏": "Intensiv, serg'ayrat va sirli",
-    "O'qotar ♐": "Ozodlikni sevuvchi, sayohatchi va falsafiy",
-    "Echki ♑": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi",
-    "Qovg'a ♒": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi",
-    "Baliq ♓": "Sezgir, ruhiy va xayolparast"
-  };
-
-  document.getElementById('burj-info').innerHTML = `
-    <div style="background:rgba(255,255,255,0.05); padding:20px; border-radius:10px; margin-top:15px;">
-      <h4 style="color:#2575fc; margin-bottom:10px;">📖 ${burj} haqida:</h4>
-      <p style="font-size:16px; line-height:1.6;">${burjDescriptions[fullBurjName] || "Bu burj haqida ma'lumot keyinroq qo'shiladi."}</p>
-      <div style="display:flex; justify-content:space-between; margin-top:15px; font-size:14px; color:#aaa;">
-        <span>🎯 Maqsad: Yuksalish</span>
-        <span>💖 Muvofiqlik: ${burj === "Qo'y" ? "Buzoq" : burj === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}</span>
-        <span>⭐ Omadli raqam: ${day % 9 || 9}</span>
-      </div>
-    </div>
-  `;
-  
-  // Burjlar tabiga o'tkazish (YANGI USUL)
-  switchTab('burj', true);
+  // Burjlar tabiga o'tkazish (SODDA USUL)
+  switchTab('burj');
   
   // Ovoz efekti
   playSound();
@@ -582,7 +555,6 @@ function toggleTushContent() {
   
   if (content.style.display === 'none' || content.style.display === '') {
     content.style.display = 'block';
-    playSound();
   } else {
     content.style.display = 'none';
   }
@@ -638,16 +610,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Input eventlari
   document.getElementById('day').addEventListener('change', updateCalendar);
   document.getElementById('month').addEventListener('change', updateCalendar);
-  
-  // Kalendar eventi
   document.getElementById('calendar').addEventListener('change', syncDate);
-  
-  // Tush kontent tugmasini qayta ulash
-  const tushButton = document.querySelector('[onclick="toggleTushContent()"]');
-  if (tushButton) {
-    tushButton.onclick = toggleTushContent;
-  }
 });
-
-  
-  
+    
