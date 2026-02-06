@@ -589,4 +589,168 @@
                 zodiac: zodiac,
                 symbol: symbol,
                 day: day,
-                month
+                month:month,
+                description: getZodiacDescription(zodiac)
+            };
+            
+            // Save to global variable for sharing
+            window.currentZodiac = shareData;
+            
+            // Display result
+            document.getElementById('zodiac-result').innerHTML = 
+                `<div class="zodiac-result">
+                    <h3 style="color:#ffcc00; margin-bottom:10px;">✨ Sizning burjingiz:</h3>
+                    <div class="zodiac-name">${fullZodiacName}</div>
+                    <p style="color:#aaa;">Tug'ilgan kun: ${day} - ${month}</p>
+                </div>`;
+            
+            // Zodiac information
+            const zodiacInfo = {
+                "Qo'y": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi.",
+                "Buzoq": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi.",
+                "Egizak": "Qiziquvchan, mulogotchi va tez o'zgaruvchan.",
+                "Qisqichbaqa": "Sezgir, oilaviy va himoyachi.",
+                "Arslon": "Karizmatik, yetakchi va ijodkor.",
+                "Parizod": "Batafsil, tashkilotchi va amaliy.",
+                "Tarozi": "Adolatli, munozarali va go'zallikni qadirlovchi.",
+                "Chayon": "Intensiv, serg'ayrat va sirli.",
+                "O'qotar": "Ozodlikni sevuvchi, sayohatchi va falsafiy.",
+                "Echki": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi.",
+                "Qovg'a": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi.",
+                "Baliq": "Sezgir, ruhiy va xayolparast."
+            };
+            
+            document.getElementById('zodiac-info').innerHTML = `
+                <div class="zodiac-details">
+                    <h4 style="color:#2575fc; margin-bottom:15px;">📖 ${zodiac} haqida:</h4>
+                    <p>${zodiacInfo[zodiac]}</p>
+                    <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:15px;">
+                        <span style="background:rgba(106,17,203,0.2); padding:5px 10px; border-radius:5px; font-size:0.9rem;">
+                            🎯 Maqsad: Yuksalish
+                        </span>
+                        <span style="background:rgba(37,117,252,0.2); padding:5px 10px; border-radius:5px; font-size:0.9rem;">
+                            💖 Muvofiqlik: ${zodiac === "Qo'y" ? "Buzoq" : zodiac === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}
+                        </span>
+                        <span style="background:rgba(255,204,0,0.2); padding:5px 10px; border-radius:5px; font-size:0.9rem;">
+                            ⭐ Omadli raqam: ${(day % 9) || 9}
+                        </span>
+                    </div>
+                </div>
+            `;
+            
+            // Generate share link
+            generateShareLink(shareData);
+            
+            // Show share section
+            document.getElementById('share-section').style.display = 'block';
+            
+            // Switch to zodiac tab
+            switchTab('burj');
+            
+            // Scroll to result
+            document.getElementById('zodiac-result').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function getZodiacDescription(zodiac) {
+            const descriptions = {
+                "Qo'y": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi",
+                "Buzoq": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi",
+                "Egizak": "Qiziquvchan, mulogotchi va tez o'zgaruvchan",
+                "Qisqichbaqa": "Sezgir, oilaviy va himoyachi",
+                "Arslon": "Karizmatik, yetakchi va ijodkor",
+                "Parizod": "Batafsil, tashkilotchi va amaliy",
+                "Tarozi": "Adolatli, munozarali va go'zallikni qadirlovchi",
+                "Chayon": "Intensiv, serg'ayrat va sirli",
+                "O'qotar": "Ozodlikni sevuvchi, sayohatchi va falsafiy",
+                "Echki": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi",
+                "Qovg'a": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi",
+                "Baliq": "Sezgir, ruhiy va xayolparast"
+            };
+            return descriptions[zodiac] || "";
+        }
+
+        // ==================== SHARE FUNCTIONS ====================
+        function generateShareLink(data) {
+            const message = `✨ Meni burjim: ${data.zodiac} ${data.symbol}\n📅 Tug'ilgan kunim: ${data.day}-${data.month}\n📖 Tavsifi: ${data.description}\n\n👉 Tush Tabiri saytida o'zingizning burjingizni bilib oling: tushtabiri.uz`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            const currentUrl = window.location.href.split('#')[0];
+            const shareUrl = `${currentUrl}#burj?day=${data.day}&month=${data.month}&zodiac=${encodeURIComponent(data.zodiac)}`;
+            
+            document.getElementById('share-link').value = shareUrl;
+            window.shareMessage = message;
+            window.shareUrl = shareUrl;
+            
+            return { message, url: shareUrl };
+        }
+
+        function shareToTelegram() {
+            const { message, url } = generateShareLink(window.currentZodiac);
+            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(message)}`;
+            window.open(telegramUrl, '_blank');
+        }
+
+        function shareToWhatsApp() {
+            const { message, url } = generateShareLink(window.currentZodiac);
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message + '\n\n' + url)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function copyShareLink() {
+            copyToClipboard();
+            alert('📋 Natija nusxalandi! Endi istalgan joyga yuborishingiz mumkin.');
+        }
+
+        function copyToClipboard() {
+            const shareLink = document.getElementById('share-link');
+            shareLink.select();
+            shareLink.setSelectionRange(0, 99999);
+            
+            try {
+                navigator.clipboard.writeText(shareLink.value)
+                    .then(() => {
+                        alert('✅ Link nusxalandi!');
+                    })
+                    .catch(err => {
+                        // Fallback for older browsers
+                        document.execCommand('copy');
+                        alert('✅ Link nusxalandi!');
+                    });
+            } catch (err) {
+                // Another fallback
+                document.execCommand('copy');
+                alert('✅ Link nusxalandi!');
+            }
+        }
+
+        // ==================== MODAL FUNCTIONS ====================
+        function showAbout() {
+            alert("Tush Tabiri - Ibn Sirin asarlari asosida tushlarning haqiqiy ma'nolarini tushuntiradigan platforma.\n\nEmail: info@tushtabiri.uz");
+        }
+        
+        function showContact() {
+            alert("Aloqa uchun: info@tushtabiri.uz\n\nIsh vaqti: 09:00 - 18:00");
+        }
+
+        // ==================== URL PARAMETERS ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check for URL parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const day = urlParams.get('day');
+            const month = urlParams.get('month');
+            const zodiac = urlParams.get('zodiac');
+            
+            if (day && month) {
+                document.getElementById('day').value = day;
+                document.getElementById('month').value = month;
+                calculateZodiac();
+            }
+            
+            // Check hash for tab
+            if (window.location.hash === '#burj') {
+                switchTab('burj');
+            }
+        });
+    </script>
+</body>
+</html>
