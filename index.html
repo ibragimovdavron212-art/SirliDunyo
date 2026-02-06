@@ -660,7 +660,8 @@
                     <button class="calculate-btn pulse" onclick="calculateZodiac()">
                         <span>✨</span> Burjimni Aniqlash
                     </button>
-                    <div class="result-section">
+                    
+           <div class="result-section">
                         <div id="zodiac-result"></div>
                         <div id="zodiac-info"></div>
                         
@@ -732,10 +733,92 @@
             <p class="copyright">© 2026 Tush Tabiri. Barcha huquqlar himoyalangan.</p>
         </footer>
     </div>
+
     <script>
+        // ===== OVOZ FUNKSIYALARI =====
+        
+        // Muvaffaqiyatli ovoz (burj aniqlanganda)
+        function playSuccessSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                
+                // Kutilayotgan ovoz (3 ta nota)
+                const frequencies = [659.25, 830.61, 1046.50]; // E5, G#5, C6
+                const duration = 0.15;
+                
+                frequencies.forEach((freq, index) => {
+                    setTimeout(() => {
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        oscillator.frequency.value = freq;
+                        oscillator.type = 'sine';
+                        
+                        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+                        
+                        oscillator.start();
+                        oscillator.stop(audioContext.currentTime + duration);
+                    }, index * 100);
+                });
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+        
+        // Xatolik ovazi (noto'g'ri ma'lumot kiritilganda)
+        function playErrorSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 200;
+                oscillator.type = 'sawtooth';
+                
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.3);
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+        
+        // Tugma bosilganda chiqadigan ovoz
+        function playButtonClickSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'triangle';
+                
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+
         // ===== SECTION SWITCHING =====
         function switchSection(sectionId) {
-            console.log('Switching to:', sectionId);
+            // Tugma bosilganda ovoz
+            playButtonClickSound();
             
             // Remove active from all buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -763,30 +846,35 @@
                 console.error('Section not found:', sectionId);
             }
         }
-
-        // ===== ARTICLE OPENING =====
+           // ===== ARTICLE OPENING =====
         function openArticle(type) {
             const articles = {
                 'suv': "Suv tushlarining to'liq tahlili...",
                 'hayvon': "Hayvonlar tushlarining ma'nolari...",
                 'ish': "Ish tushlarining tahlili..."
             };
+            playButtonClickSound();
             alert(articles[type] || "Maqola tayyorlanmoqda...");
         }
 
         // ===== ZODIAC CALCULATION =====
         function calculateZodiac() {
+            // Tugma bosilganda ovoz
+            playButtonClickSound();
+            
             const day = parseInt(document.getElementById('day').value);
             const month = parseInt(document.getElementById('month').value);
             
             if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
-                alert('Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.');
+                playErrorSound();
+                alert('⚠️ Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.');
                 return;
             }
             
             let zodiac = '';
             let symbol = '';
             
+            // Burj hisoblash
             if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
                 zodiac = "Qo'y"; symbol = "♈";
             } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
@@ -815,6 +903,9 @@
             
             const fullZodiacName = `${zodiac} ${symbol}`;
             
+            // Muvaffaqiyatli ovoz chalinadi
+            playSuccessSound();
+            
             // Display result
             document.getElementById('zodiac-result').innerHTML = `
                 <div class="zodiac-result">
@@ -824,24 +915,86 @@
                 </div>
             `;
             
+            // Burj ma'lumotlari
+            const zodiacDetails = {
+                "Qo'y": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi. Liderlik qobiliyati yuqori.",
+                "Buzoq": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi. Sabrli va mehnatsevar.",
+                "Egizak": "Qiziquvchan, muloqotchi va tez o'zgaruvchan. Ko'p qirrali va ijodiy.",
+                "Qisqichbaqa": "Sezgir, oilaviy va himoyachi. Hissiyotlarga boy va sodiq.",
+                "Arslon": "Karizmatik, yetakchi va ijodkor. Diqqat markazida bo'lishni yaxshi ko'radi.",
+                "Parizod": "Batafsil, tashkilotchi va amaliy. Mukammallikka intiluvchi.",
+                "Tarozi": "Adolatli, munozarali va go'zallikni qadirlovchi. Diplomatik va ijtimoiy.",
+                "Chayon": "Intensiv, serg'ayrat va sirli. Kuchli irodali va maqsadli.",
+                "O'qotar": "Ozodlikni sevuvchi, sayohatchi va falsafiy. Optimistik va keng qarashli.",
+                "Echki": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi. Disciplinali va sabrli.",
+                "Qovg'a": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi. Mustaqil va innovatsion.",
+                "Baliq": "Sezgir, ruhiy va xayolparast. Mehribon va boshqalarga yordam berishni yaxshi ko'radi."
+            };
+            
+            document.getElementById('zodiac-info').innerHTML = `
+                <div class="zodiac-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">📖</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Tavsif</h4>
+                            <p>${zodiacDetails[zodiac]}</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🎯</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Maqsad</h4>
+                            <p>Yuksalish va rivojlanish</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💖</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Muvofiqlik</h4>
+                            <p>${zodiac === "Qo'y" ? "Buzoq" : zodiac === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">⭐</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Omadli raqam</h4>
+                            <p>${(day % 9) || 9}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
             // Show share section
             document.getElementById('share-section').style.display = 'block';
+            
+            // Scroll to result
+            setTimeout(() => {
+                document.getElementById('zodiac-result').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+            }, 300);
         }
-             // ===== SHARE FUNCTIONS =====
+
+        // ===== SHARE FUNCTIONS =====
         function shareToTelegram() {
+            playButtonClickSound();
             alert('Telegramda ulashish funksiyasi');
         }
         
         function shareToWhatsApp() {
+            playButtonClickSound();
             alert('WhatsAppda ulashish funksiyasi');
         }
         
         function copyResult() {
+            playButtonClickSound();
             alert('Natija nusxalandi!');
         }
 
         // ===== UTILITY FUNCTIONS =====
         function showPrivacy() {
+            playButtonClickSound();
             alert("Maxfiylik siyosati: Barcha ma'lumotlar shaxsiy va maxfiy saqlanadi.");
         }
 
@@ -868,4 +1021,3 @@
     </script>
 </body>
 </html>
-           
