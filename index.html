@@ -774,19 +774,178 @@ function openArticle(type) {
 </script>
                     
                     <!-- Post 2 -->
-                    <div class="post-card">
-                        <span class="post-category">🐍 Hayvon tushlari</span>
-                        <h3 class="post-title">Hayvonlar Tushlarida Nimani Anglatadi?</h3>
-                        <p class="post-excerpt">
-                            Arslon, ilon, qush va boshqa hayvonlarni ko'rish tushlarining maxsus ma'nolari...
-                        </p>
-                        <div class="post-meta">
-                            <span class="post-date">📅 10-yanvar, 2026</span>
-                            <a href="#" class="read-more" onclick="showFullArticle('hayvon')">
-                                O'qish <span>→</span>
-                            </a>
+<div class="post-card">
+    <span class="post-category">🐍 Hayvon tushlari</span>
+    <h3 class="post-title">Hayvonlar Tushlarida Nimani Anglatadi?</h3>
+    <p class="post-excerpt">
+        Arslon, ilon, qush va boshqa hayvonlarni ko'rish tushlarining maxsus ma'nolari...
+    </p>
+    <div class="post-meta">
+        <span class="post-date">📅 10-yanvar, 2026</span>
+        <a href="javascript:void(0)" class="read-more" onclick="openArticle('hayvon')">
+            O'qish <span>→</span>
+        </a>
+    </div>
+    
+    <!-- Po'stning butun kontenti (yashirin) -->
+    <div class="full-content" style="display: none;">
+        <div class="article-body" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            
+            <h2 style="color: #ffcc00; margin-bottom: 25px;">Hayvonlar Tushlarida Nimani Anglatadi?</h2>
+            
+            <p style="margin-bottom: 20px; line-height: 1.8;">
+                <strong>Ibn Sirin ta'limotiga ko'ra</strong>, har bir hayvonning o'ziga xos ramziy ma'nolari bor. 
+                "Tobir-ul Ahlam" kitobida hayvonlar tushlari 7 asosiy guruhga bo'lingan.
+            </p>
+            
+            <!-- 1. Arslon -->
+            <div class="article-section" style="background: rgba(255, 152, 0, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #ff9800;">
+                <h3 style="color: #ff9800; margin-bottom: 15px; font-size: 1.4rem;">🦁 Arslon Ko'rish Tushining Tahlili</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Ibn Sirin talqini:</strong> "Arslon ko'rgan odam hokimiyatga ega bo'ladi"
+                </p>
+                <p><strong>Asosiy ma'nolari:</strong></p>
+                <ul style="margin-bottom: 15px; padding-left: 25px;">
+                    <li>Kuch, qudrat va hokimiyat</li>
+                    <li>Jamiyatda obro' va nufuz oshishi</li>
+                    <li>Rahbarlik qobiliyati va qarorchanlik</li>
+                    <li>Dushmanlar ustidan g'alaba</li>
+                </ul>
+                <p><strong>Amaliy tavsiyalar:</strong></p>
+                <ul style="padding-left: 25px;">
+                    <li>Liderlik lavozimiga ariza topshirish</li>
+                    <li>O'z ishida yetakchilik qilish</li>
+                    <li>Muhim qarorlar qabul qilish</li>
+                </ul>
+            </div>
+            
+            <!-- 2. Ilon -->
+            <div class="article-section" style="background: rgba(76, 175, 80, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #4caf50;">
+                <h3 style="color: #4caf50; margin-bottom: 15px; font-size: 1.4rem;">🐍 Ilon Ko'rish Tushining Ma'nolari</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Ibn Sirin talqini:</strong> "Ilon - yashirin dushman yoki kutilmagan pul"
+                </p>
+                <p><strong>Ilon holatiga qarab:</strong></p>
+                <ul style="margin-bottom: 15px; padding-left: 25px;">
+                    <li><strong>Uyqudagi ilon:</strong> Yashirin xavf yoki g'iybat</li>
+                    <li><strong>Chalayotgan ilon:</strong> Tez va kutilmagan moliya</li>
+                    <li><strong>Hujum qilayotgan ilon:</strong> Ochiq dushmanlik</li>
+                    <li><strong>O'ldirilgan ilon:</strong> Muammoning bartaraf etilishi</li>
+                </ul>
+                <p><strong>Ehtiyot choralari:</strong></p>
+                <ul style="padding-left: 25px;">
+                    <li>Moliyaviy bitimlarda ehtiyot bo'lish</li>
+                    <li>Yaqin atrofdagi odamlarga ishonmaslik</li>
+                    <li>Hujum qilgan ilon ko'rilsa - duo o'qish</li>
+                </ul>
+            </div>
+            
+            <!-- 3. Qushlar -->
+            <div class="article-section" style="background: rgba(33, 150, 243, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+                <h3 style="color: #2196f3; margin-bottom: 20px; font-size: 1.4rem;">🦅 Qushlar Tushining Tahlili</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: rgba(255, 152, 0, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #ff9800; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #ff9800;">Burgut/Uqab</strong>
                         </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Yuqori martaba, karera muvaffaqiyati, katta maqsadlar</p>
                     </div>
+                    
+                    <div style="background: rgba(76, 175, 80, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #4caf50; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #4caf50;">Laylak</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Yangi oila, farzand, uy-joy yoki ko'chish</p>
+                    </div>
+                    
+                    <div style="background: rgba(156, 39, 176, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #9c27b0; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #9c27b0;">Boyqush/Bayquş</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Sirli bilim, sezgir qobiliyat, bashorat</p>
+                    </div>
+                    
+                    <div style="background: rgba(244, 67, 54, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #f44336; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #f44336;">Qarg'a</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Yomon xabar, g'am-g'ussa, yo'qotish</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4. Uy hayvonlari -->
+            <div class="article-section" style="background: rgba(121, 85, 72, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #795548;">
+                <h3 style="color: #795548; margin-bottom: 20px; font-size: 1.4rem;">🏠 Uy Hayvonlari Tushining Ma'nolari</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr style="background: rgba(121, 85, 72, 0.2);">
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Hayvon</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Ijobiy ma'no</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Salbiy ma'no</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 12px;"><strong>🐕 It</strong></td>
+                            <td style="padding: 12px;">Sadoqatli do'st, himoya</td>
+                            <td style="padding: 12px;">Yomon odam, g'iybat</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 12px;"><strong>🐈 Mushuk</strong></td>
+                            <td style="padding: 12px;">Baxt, omad, muloyimlik</td>
+                            <td style="padding: 12px;">Makr, xiyonat, ayol g'iybati</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 12px;"><strong>🐎 Ot</strong></td>
+                            <td style="padding: 12px;">Shon-sharaf, muvaffaqiyat</td>
+                            <td style="padding: 12px;">O'lim, og'ir kasallik</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px;"><strong>🐄 Sigir</strong></td>
+                            <td style="padding: 12px;">Moliyaviy baraka, farovonlik</td>
+                            <td style="padding: 12px;">Og'ir mehnat, qiyinchilik</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 5. Xulosa -->
+            <div class="article-section" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(76, 175, 80, 0.1)); padding: 30px; border-radius: 15px;">
+                <h3 style="color: #ffcc00; margin-bottom: 20px; font-size: 1.4rem;">📝 Hayvon Tushlarini Tahlil Qilish Qoidalari</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #ff9800; margin-bottom: 10px;">1. HAYVONNING HOLATINI KO'RING</h4>
+                        <p style="font-size: 0.95rem;">Tinch, hujum qilayotgan, yuguryotgan yoki o'lik holati muhim</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #4caf50; margin-bottom: 10px;">2. RANG VA KATTA-KICHIKLIGINI E'TIBORGA OLING</h4>
+                        <p style="font-size: 0.95rem;">Katta hayvon - katta ahamiyat, kichik hayvon - mayda ishlar</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #2196f3; margin-bottom: 10px;">3. O'Z HIS-TUYG'ULARINGIZNI YOZING</h4>
+                        <p style="font-size: 0.95rem;">Qo'rqdingizmi, quvondingizmi, hayratda qoldingizmi?</p>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; font-style: italic;">
+                    <strong>Muhim eslatma:</strong> Ibn Sirin aytganidek: "Yaxshi hayvon - xushxabar, yomon hayvon - ogohlantirish". 
+                    Har qanday tushni Allohdan yaxshilik tilab, duolar bilan kutish kerak.
+                </p>
+            
+            </div>
+        </div>
+    </div>
+</div>
                     
                     <!-- Post 3 -->
                     <div class="post-card">
