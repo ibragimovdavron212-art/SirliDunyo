@@ -946,24 +946,179 @@ function openArticle(type) {
         </div>
     </div>
 </div>
-                    
                     <!-- Post 3 -->
-                    <div class="post-card">
-                        <span class="post-category">💼 Ish tushlari</span>
-                        <h3 class="post-title">Ish va Karera Tushlarining Tahlili</h3>
-                        <p class="post-excerpt">
-                            Ish joyi, pul, loyiha va kasbiy muvaffaqiyat haqidagi tushlarning ma'nolari...
-                        </p>
-                        <div class="post-meta">
-                            <span class="post-date">📅 5-yanvar, 2026</span>
-                            <a href="#" class="read-more" onclick="showFullArticle('ish')">
-                                O'qish <span>→</span>
-                            </a>
+<div class="post-card">
+    <span class="post-category">💼 Ish tushlari</span>
+    <h3 class="post-title">Ish va Karera Tushlarining Tahlili</h3>
+    <p class="post-excerpt">
+        Ish joyi, pul, loyiha va kasbiy muvaffaqiyat haqidagi tushlarning ma'nolari...
+    </p>
+    <div class="post-meta">
+        <span class="post-date">📅 5-yanvar, 2026</span>
+        <a href="javascript:void(0)" class="read-more" onclick="openArticle('ish')">
+            O'qish <span>→</span>
+        </a>
+    </div>
+    
+    <!-- Po'stning butun kontenti (yashirin) -->
+    <div class="full-content" style="display: none;">
+        <div class="article-body" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+            
+            <h2 style="color: #ffcc00; margin-bottom: 25px;">Ish va Karera Tushlarining To'liq Tahlili</h2>
+            
+            <p style="margin-bottom: 20px; line-height: 1.8;">
+                <strong>Ibn Sirin ta'limotiga ko'ra</strong>, ish va karera bilan bog'liq tushlar kelajakdagi kasbiy imkoniyatlar, 
+                moliyaviy holat va martaba o'sishi haqida ramziy ma'lumot beradi.
+            </p>
+            
+            <!-- 1. Pul va Moliya tushlari -->
+            <div class="article-section" style="background: rgba(255, 193, 7, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #ffc107;">
+                <h3 style="color: #ffc107; margin-bottom: 15px; font-size: 1.4rem;">💰 Pul Ko'rish Tushining Tahlili</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Ibn Sirin talqini:</strong> "Pul ko'rish - halol rizq va baraka belgisidir"
+                </p>
+                <p><strong>Pul turiga qarab:</strong></p>
+                <ul style="margin-bottom: 15px; padding-left: 25px;">
+                    <li><strong>Qog'oz pul:</strong> Tez va oson daromad</li>
+                    <li><strong>Tanga/metal pul:</strong> Barqaror va uzog muddatli moliya</li>
+                    <li><strong>Ko'p miqdordagi pul:</strong> Katta moliyaviy muvaffaqiyat</li>
+                    <li><strong>Topilgan pul:</strong> Kutilmagan daromad yoki meros</li>
+                </ul>
+                <p><strong>Moliyaviy tavsiyalar:</strong></p>
+                <ul style="padding-left: 25px;">
+                    <li>Pul topganingizda - sadaqa bering</li>
+                    <li>Pul yo'qotganingizda - sabr qiling</li>
+                    <li>Ko'p pul ko'rganingizda - investitsiya qiling</li>
+                </ul>
+            </div>
+            
+            <!-- 2. Ish o'rnida bo'lish -->
+            <div class="article-section" style="background: rgba(63, 81, 181, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #3f51b5;">
+                <h3 style="color: #3f51b5; margin-bottom: 15px; font-size: 1.4rem;">🏢 Ish Joyida Bo'lish Tushining Ma'nolari</h3>
+                <p style="margin-bottom: 15px;">
+                    <strong>Ibn Sirin talqini:</strong> "O'z ish joyingizni ko'rishingiz - martabangiz mustahkam bo'lishidir"
+                </p>
+                <p><strong>Holatlarga qarab:</strong></p>
+                <ul style="margin-bottom: 15px; padding-left: 25px;">
+                    <li><strong>Ishda ishlayotganingizni ko'rish:</strong> Karyerada barqarorlik</li>
+                    <li><strong>Ish joyingizni yangi ko'rish:</strong> Yangi lavozim yoki o'zgarish</li>
+                    <li><strong>Ish joyingizni buzilgan ko'rish:</strong> Ish muammolari yoki o'zgarishlar</li>
+                    <li><strong>Ishdan bo'shatilganingizni ko'rish:</strong> Yangi imkoniyatlar uchun tayyorgarlik</li>
+                </ul>
+                <p><strong>Karyera tavsiyalari:</strong></p>
+                <ul style="padding-left: 25px;">
+                    <li>Yangi ish joyini ko'rganingizda - rezyume tayyorlang</li>
+                    <li>Ishda muvaffaqiyatli ko'ringanizda - rahbaringiz bilan suhbatlashing</li>
+                    <li>Ishdan bo'shatilganingizda - yangi ko'nikmalar o'rganing</li>
+                </ul>
+            </div>
+            
+            <!-- 3. Loyiha va Mijozlar -->
+            <div class="article-section" style="background: rgba(233, 30, 99, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
+                <h3 style="color: #e91e63; margin-bottom: 20px; font-size: 1.4rem;">📈 Loyiha va Biznes Tushlarining Tahlili</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background: rgba(255, 193, 7, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #ffc107; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #ffc107;">Shartnoma imzolash</strong>
                         </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Muvaffaqiyatli bitim, yangi sheriklik, moliyaviy kelishuv</p>
+                    </div>
+                    
+                    <div style="background: rgba(63, 81, 181, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #3f51b5; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #3f51b5;">Yangi loyiha boshlash</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Yangi biznes, ish boshlash, innovatsion g'oya</p>
+                    </div>
+                    
+                    <div style="background: rgba(76, 175, 80, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #4caf50; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #4caf50;">Mijoz bilan uchrashuv</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Yangi mijoz, daromad manbai, biznes kengayishi</p>
+                    </div>
+                    
+                    <div style="background: rgba(244, 67, 54, 0.15); padding: 15px; border-radius: 8px;">
+                        <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                            <div style="width: 20px; height: 20px; background: #f44336; border-radius: 50%; margin-right: 10px;"></div>
+                            <strong style="color: #f44336;">Loyiha barbod bo'lishi</strong>
+                        </div>
+                        <p style="margin: 0; font-size: 0.95rem;">Ogohlantirish, rejalashtirishni qayta ko'rib chiqish</p>
                     </div>
                 </div>
             </div>
-        </section>
+            
+            <!-- 4. Lavozim o'zgarishlari -->
+            <div class="article-section" style="background: rgba(0, 150, 136, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #009688;">
+                <h3 style="color: #009688; margin-bottom: 20px; font-size: 1.4rem;">📊 Lavozim va Martaba Tushlarining Ma'nolari</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                    <thead>
+                        <tr style="background: rgba(0, 150, 136, 0.2);">
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Tush holati</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Ma'nosi</th>
+                            <th style="padding: 12px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1);">Amaliy chora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 12px;"><strong>Lavozim oshirilishi</strong></td>
+                            <td style="padding: 12px;">Martaba yuksalishi, maosh oshishi</td>
+                            <td style="padding: 12px;">Kurslarga yozilish, ko'nikmalarni oshirish</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 12px;"><strong>Yangi ishga kirish</strong></td>
+                            <td style="padding: 12px;">Yangi imkoniyatlar, karera o'zgarishi</td>
+                            <td style="padding: 12px;">Rezyume tayyorlash, intervyuga tayyorgarlik</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 12px;"><strong>Ishdan bo'shatilish</strong></td>
+                            <td style="padding: 12px;">Yangi yo'nalish, o'z-o'zini rivojlantirish</td>
+                            <td style="padding: 12px;">Yangi ko'nikmalar o'rganish, biznes boshlash</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px;"><strong>O'z biznesingizni ko'rish</strong></td>
+                            <td style="padding: 12px;">Mustaqillik, moliyaviy erkinlik</td>
+                            <td style="padding: 12px;">Biznes reja tuzish, investitsiya qilish</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- 5. Xulosa -->
+            <div class="article-section" style="background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(63, 81, 181, 0.1)); padding: 30px; border-radius: 15px;">
+                <h3 style="color: #ffcc00; margin-bottom: 20px; font-size: 1.4rem;">📝 Ish Tushlarini To'g'ri Tahlil Qilish Qoidalari</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 15px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #ffc107; margin-bottom: 10px;">1. PUL VA DAROMAD TUSHINI YOZING</h4>
+                        <p style="font-size: 0.95rem;">Pul miqdori, turi, qayerdaligi va his-tuyg'ularingizni yozing</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #3f51b5; margin-bottom: 10px;">2. KARYERA MAQSADLARINGIZ BILAN SOLISHTIRING</h4>
+                        <p style="font-size: 0.95rem;">Tushda ko'rganingiz sizning rejalaringizga mosmi?</p>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 8px;">
+                        <h4 style="color: #009688; margin-bottom: 10px;">3. AMALIY QADAMLARNI REJALASHTIRING</h4>
+                        <p style="font-size: 0.95rem;">Tush faqat signaldir, natija amal orqali keladi</p>
+                    </div>
+                </div>
+                
+                <p style="margin-top: 20px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 8px; font-style: italic;">
+                    <strong>Ibn Sirin ta'limoti:</strong> "Ish tushlari - Allohning rizq yo'llaridan biridir. 
+                    Halol mehnat orqali kelgan daromad - eng barkamol rizqdir."
+                </p>
+            
+            </div>
+        </div>
+    </div>
+</div>
 
         <!-- BURJLAR SECTION -->
         <section id="burj" class="section">
