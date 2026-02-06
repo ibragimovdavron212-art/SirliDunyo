@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🌙 Tush Tabiri | Ibn Sirin Tush Tahlili</title>
+    <title>🌙 Tush Tabiri</title>
     <style>
         * {
             margin: 0;
@@ -305,20 +305,55 @@
             text-decoration: underline;
         }
         
+        /* MODAL STYLES */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #1f1c2c, #928dab);
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid rgba(106, 17, 203, 0.5);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            color: #ffcc00;
+            font-size: 1.5rem;
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
         /* ANIMATIONS */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite;
         }
         
         /* RESPONSIVE */
@@ -372,13 +407,13 @@
         <!-- HEADER -->
         <header class="header">
             <h1 class="site-title">🌙 Tush Tabiri</h1>
-            <p class="site-subtitle">Ibn Sirin tush tahlili | Burjlar va astrologiya</p>
+            <p class="site-subtitle">Tushlarning haqiqiy ma'nolari</p>
         </header>
 
         <!-- NAVIGATION TABS -->
         <nav class="nav-tabs">
-            <button class="tab-btn active" data-tab="tush">🔮 Tush Tabiri</button>
-            <button class="tab-btn" data-tab="burj">♈ Burjlar</button>
+            <button class="tab-btn active" data-tab="tush">Tush tabiri</button>
+            <button class="tab-btn" data-tab="burj">Burjlar</button>
         </nav>
 
         <!-- TUSH TABIRI SECTION -->
@@ -386,12 +421,12 @@
             <div class="content-card">
                 <h2 class="section-title">
                     <span>🔮</span>
-                    Tush Tabiri
+                    Tush tabiri
                 </h2>
                 
                 <div class="dream-toggle" onclick="toggleDreamContent()">
                     <h3>🌊 Suv Ko'rish Tushining To'liq Tabiri</h3>
-                    <p>Ibn Sirin tush tabiri - Bosing va o'qing</p>
+                    <p>Ibn Sirin tush tabiri (Bosing va o'qing)</p>
                 </div>
                 
                 <div id="dream-content" class="dream-content" style="display: none;">
@@ -421,6 +456,15 @@
                         <p><strong>• Toza suv ichish:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi" - Ibn Sirin. Din mustahkamligi, imon kuchi, ruhiy poklik belgisi.</p>
                         <p><strong>• Daryoda suzish:</strong> "Daryoda suzayotganni ko'rsang, u hayotida yuksaladi" - Ibn Sirin. Hayotda muvaffaqiyat, baraka, omadli harakatlanish.</p>
                         <p><strong>• Dengiz/Okean ko'rish:</strong> "Dengizni ko'rish - sulton yoki hukmdor oldida bo'lishdir" - Ibn Sirin. Kuchli hokimiyat oldida bo'lish, keng imkoniyatlar.</p>
+                        <p><strong>• Bulg'angan suv:</strong> "Loyqa suv - g'am-g'ussa va mushkullotdir" - Ibn Sirin. Qiyinchiliklar, ruhiy tushkunlik, noaniqlik.</p>
+                    </div>
+                    
+                    <div class="dream-section water-types-section">
+                        <h4 style="color:#2575fc; font-size:1.3rem; margin-bottom:15px;">💧 Suv Turiga Ko'ra:</h4>
+                        <p><strong>Daryo suvi:</strong> Hayot oqimi, moliyaviy yaxshilanish, tabiiy rivojlanish</p>
+                        <p><strong>Buloq suvi:</strong> Yangi imkoniyatlar, kutilmagan yaxshiliklar, ilhom</p>
+                        <p><strong>Ko'l suvi:</strong> Tinchlik, barqarorlik, ichki muvozanat</p>
+                        <p><strong>Boshqotirma suv:</strong> Qiyinchiliklar, to'siqlar, sinovlar</p>
                     </div>
                 </div>
             </div>
@@ -431,7 +475,7 @@
             <div class="content-card">
                 <h2 class="section-title">
                     <span>♈</span>
-                    Burj Aniqlash
+                    Burj aniqlash
                 </h2>
                 
                 <p style="text-align:center; font-size:1.1rem; margin-bottom:30px;">
@@ -457,7 +501,7 @@
                     </div>
                 </div>
                 
-                <button class="submit-btn pulse" onclick="calculateZodiac()">
+                <button class="submit-btn" onclick="calculateZodiac()">
                     🔮 Burjimni aniqlash
                 </button>
                 
@@ -470,114 +514,79 @@
 
         <!-- FOOTER -->
         <footer class="footer">
-            <p>© 2026 <strong>Tush Tabiri</strong> - Tushlarning haqiqiy ma'nolari | Ibn Sirin tush tabiri</p>
+            <p>© 2026 <strong>Tush Tabiri</strong> — Tushlarning haqiqiy ma'nolari</p>
             <div class="footer-links">
-                <a href="javascript:void(0)" onclick="showAbout()">Biz haqimizda</a>
-                <a href="javascript:void(0)" onclick="showContact()">Aloqa</a>
-                <a href="javascript:void(0)" onclick="showPrivacy()">Maxfiylik</a>
+                <a href="javascript:void(0)" onclick="showAboutModal()">Biz haqimizda</a>
+                <a href="javascript:void(0)" onclick="showContactModal()">Aloqa</a>
             </div>
         </footer>
+    </div>
+
+    <!-- ABOUT MODAL -->
+    <div id="aboutModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">ℹ️ Tush Tabiri haqida</h3>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Tush Tabiri</strong> - tushlar, burjlar va mistik dunyo haqida aniq, ishonchli ma'lumotlar beruvchi platforma.</p>
+                <br>
+                <p><strong>Bizning maqsadimiz:</strong> Ibn Sirin ta'limoti asosida tushlarning haqiqiy ma'nolarini tushuntirish.</p>
+                <br>
+                <p><strong>Manbalarimiz:</strong></p>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li>Ibn Sirin - "Tobir-ul Ahlam" kitobi</li>
+                    <li>Zamonaviy psixologiya tadqiqotlari</li>
+                    <li>Astrologiya ilmiy asoslari</li>
+                </ul>
+                <br>
+                <p>Barcha ma'lumotlar bepul va barcha uchun ochiq.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">📞 Aloqa</h3>
+                <button class="close-btn" onclick="closeModal()">✕</button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Tush Tabiri</strong> jamoasi bilan bog'laning:</p>
+                <br>
+                <p><strong>📧 Email:</strong> info@tushtabiri.uz</p>
+                <p><strong>📱 Telegram:</strong> @tushtabiri_bot</p>
+                <br>
+                <p><strong>Ish vaqti:</strong> 09:00 - 18:00</p>
+                <br>
+                <p>Savollaringiz bo'lsa, bizga yozishingiz mumkin.</p>
+                <p style="margin-top:20px; color:#aaa; font-size:0.9rem;">
+                    * Tez orada javob beramiz
+                </p>
+            </div>
+        </div>
     </div>
 
     <script>
         // ==================== TAB MANAGEMENT ====================
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize tabs
+            // Tab elementlari
             const tabButtons = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
             
-            // Tab switching function
+            // Tab almashtirish funksiyasi
             function switchTab(tabId) {
-                // Remove active class from all
+                // Barcha tablardan active classni olib tashlash
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 tabContents.forEach(content => content.classList.remove('active'));
                 
-                // Add active to selected
+                // Tanlangan tabga active class qo'shish
                 document.querySelector(`[data-tab="${tabId}"]`).classList.add('active');
                 document.getElementById(tabId).classList.add('active');
             }
             
-            // Add click events to tabs
+            // Tab tugmalariga click event qo'shish
             tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    switchTab(tabId);
-                });
-            });
-            
-            // Initialize calendar sync
-            initializeCalendarSync();
-            
-            console.log('🌙 Tush Tabiri sayti yuklandi!');
-        });
-
-        // ==================== DREAM CONTENT TOGGLE ====================
-        function toggleDreamContent() {
-            const content = document.getElementById('dream-content');
-            if (content.style.display === 'none' || content.style.display === '') {
-                content.style.display = 'block';
-                // Scroll to content
-                content.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            } else {
-                content.style.display = 'none';
-            }
-        }
-
-        // ==================== CALENDAR SYNC FUNCTIONS ====================
-        function initializeCalendarSync() {
-            const dayInput = document.getElementById('day');
-            const monthInput = document.getElementById('month');
-            const calendarInput = document.getElementById('calendar');
-            
-            // Sync from calendar to inputs
-            calendarInput.addEventListener('change', function() {
-                if (this.value) {
-                    const date = new Date(this.value);
-                    dayInput.value = date.getDate();
-                    monthInput.value = date.getMonth() + 1;
-                }
-            });
-            
-            // Sync from inputs to calendar
-            dayInput.addEventListener('input', updateCalendar);
-            monthInput.addEventListener('input', updateCalendar);
-            
-            function updateCalendar() {
-                const day = dayInput.value;
-                const month = monthInput.value;
-                const year = new Date().getFullYear();
-                
-                if (day && month) {
-                    const date = new Date(year, month - 1, day);
-                    calendarInput.value = date.toISOString().split('T')[0];
-                }
-            }
-        }
-
-        // ==================== ZODIAC CALCULATION ====================
-        function calculateZodiac() {
-            const day = parseInt(document.getElementById('day').value);
-            const month = parseInt(document.getElementById('month').value);
-            
-            // Input validation
-            if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
-                document.getElementById('zodiac-result').innerHTML = 
-                    '<div style="color:#ff6b6b; text-align:center; padding:20px; background:rgba(255,107,107,0.1); border-radius:15px;">' +
-                    '⚠️ Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.</div>';
-                document.getElementById('zodiac-info').innerHTML = '';
-                return;
-            }
-            
-            // Zodiac calculation
-            let zodiac = '';
-            let symbol = '';
-            
-            if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
-                zodiac = "Qo'y"; symbol = "♈";
-            } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
-                zodiac = "Buzoq"; symbol = "♉";
-            } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
-                zodiac = "Egizak"; symbol = "♊";
-            } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
-                zodiac = "Qisqichbaqa"; symbol = "♋";
-            } else if ((month === 7 && day >= 23) || (m      
+             
