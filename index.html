@@ -106,8 +106,7 @@
             border-color: transparent;
             box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
         }
-        
-        /* ===== SECTIONS ===== */
+             /* ===== SECTIONS ===== */
         .section {
             display: none;
             animation: fadeIn 0.5s ease-out;
@@ -247,7 +246,8 @@
             align-items: center;
             gap: 8px;
         }
-              .read-more {
+        
+        .read-more {
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
@@ -350,9 +350,8 @@
         .calculate-btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(106, 17, 203, 0.5);
-        }
-        
-        /* ===== RESULTS ===== */
+            }
+                /* ===== RESULTS ===== */
         .result-section {
             margin-top: 50px;
         }
@@ -443,7 +442,8 @@
             margin-bottom: 8px;
             font-size: 1.2rem;
         }
-             /* ===== SHARE SECTION ===== */
+        
+        /* ===== SHARE SECTION ===== */
         .share-section {
             margin-top: 50px;
             padding-top: 40px;
@@ -499,6 +499,229 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
         
+        /* ===== ABOUT SECTION ===== */
+        .about-section {
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.15), rgba(37, 117, 252, 0.1));
+            border-radius: 24px;
+            padding: 50px;
+            margin: 50px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.02)"/></svg>');
+            background-size: cover;
+            z-index: 0;
+        }
+        
+        .about-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #ccc;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-card {
+            background: rgba(255, 255, 255, 0.07);
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .about-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .about-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .about-card p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+               /* ===== TESTIMONIALS ===== */
+        .testimonials {
+            margin: 60px 0;
+        }
+        
+        .testimonial-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 40px;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: #ccc;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        .author-info h4 {
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 60px 0 40px;
+            margin-top: 80px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+        
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 25px;
+            cursor: pointer;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-link {
+            color: #aaa;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        
+        .footer-link:hover {
+            color: var(--accent);
+            background: rgba(255, 204, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 30px;
+        }
+        
         /* ===== ANIMATIONS ===== */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(30px); }
@@ -530,7 +753,75 @@
             animation: float 3s ease-in-out infinite;
         }
         
-        /* ===== RESPONSIVE ===== */
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--accent);
+        }
+                /* ===== RESPONSIVE ===== */
+        @media (max-width: 992px) {
+            .logo {
+                font-size: 2.5rem;
+            }
+            
+            .nav-btn {
+                padding: 14px 28px;
+                font-size: 1rem;
+            }
+            
+            .card {
+                padding: 30px;
+            }
+            
+            .zodiac-display {
+                font-size: 3.5rem;
+            }
+        }
+        
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -579,6 +870,11 @@
             .share-btn {
                 width: 100%;
             }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -616,7 +912,7 @@
     <div class="container">
         <!-- HEADER -->
         <header class="header">
-            <div class="logo-container" onclick="showSection('tush')">
+            <div class="logo-container" onclick="switchSection('tush')">
                 <div class="logo float">TushVaBurj.uz</div>
             </div>
             <p class="tagline">Professional tush tahlili va burj platformasi ✨</p>
@@ -624,11 +920,14 @@
 
         <!-- NAVIGATION -->
         <nav class="navigation">
-            <button class="nav-btn active" onclick="showSection('tush')">
+            <button class="nav-btn active" onclick="switchSection('tush')">
                 <span>🔮</span> Tush Tabiri
             </button>
-            <button class="nav-btn" onclick="showSection('burj')">
+            <button class="nav-btn" onclick="switchSection('burjlar')">
                 <span>♈</span> Burj Aniqlash
+            </button>
+            <button class="nav-btn" onclick="switchSection('about')">
+                <span>🌟</span> Biz haqimizda
             </button>
         </nav>
 
@@ -705,11 +1004,31 @@
                             </a>
                         </div>
                     </div>
+                          <!-- Post 4 -->
+                    <div class="post-card">
+                        <!-- BU YERGA RASM QO'YASIZ -->
+                        <div class="post-banner">
+                            <!-- <img src="odam-tushlari.jpg" alt="Odam tushlari"> -->
+                        </div>
+                        
+                        <span class="post-category">👥 Odam tushlari</span>
+                        <h3 class="post-title">Odamlar Tushda: Qarindoshlar va Tanishlar</h3>
+                        <p class="post-excerpt">
+                            Tushda ko'rilgan odamlarning ma'nosi: ota-ona, do'stlar, sevgili va noma'lum odamlar...
+                        </p>
+                        <div class="post-meta">
+                            <span class="post-date">📅 1-yanvar, 2026</span>
+                            <a href="javascript:void(0)" class="read-more" onclick="openArticle('odam')">
+                                O'qish <span>→</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
-              <!-- BURJ SECTION -->
-        <section id="burj" class="section">
+
+        <!-- BURJLAR SECTION -->
+        <section id="burjlar" class="section">
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">♈</div>
@@ -775,6 +1094,88 @@
                 </div>
             </div>
         </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🌟</div>
+                    <h2 class="card-title">TushVaBurj.uz haqida</h2>
+                </div>
+                
+                <div class="about-section">
+                    <h3 class="about-title">Bizning Maqsadimiz</h3>
+                    <p class="about-description">
+                        <strong>TushVaBurj.uz</strong> - bu tushlar va astrologiya haqida ishonchli va professional ma'lumotlar taqdim etuvchi platforma. 
+                        Bizning maqsadimiz - Ibn Sirin ta'limoti asosida tushlarning haqiqiy ma'nolarini va astrologik bilimlarni oddiy, tushunarli va zamonaviy tarzda yetkazish.
+                    </p>
+                    
+                    <div class="about-content">
+                        <div class="about-card">
+                            <div class="about-icon">📚</div>
+                            <h3>Ilmiy Asos</h3>
+                            <p>Ibn Sirin asarlari, zamonaviy psixologiya tadqiqotlari va an'anaviy astrologik bilimlar asosida</p>
+                        </div>
+                        
+                        <div class="about-card">
+                            <div class="about-icon">🎯</div>
+                            <h3>Maqsadimiz</h3>
+                            <p>Tushlarning haqiqiy ma'nolarini oddiy va tushunarli tarzda tushuntirish, burjlar haqida aniq ma'lumot berish</p>
+                        </div>
+                        
+                        <div class="about-card">
+                            <div class="about-icon">🔬</div>
+                            <h3>Professionalizm</h3>
+                            <p>Mutaxassislar tomonidan tayyorlangan aniq, ishonchli va doimiy yangilanib turiladigan ma'lumotlar</p>
+                        </div>
+                    </div>
+                    
+                    <div class="about-content" style="margin-top: 40px;">
+                        <div class="about-card">
+                            <div class="about-icon">💫</div>
+                            <h3>Bizning Afzalliklarimiz</h3>
+                            <p>O'zbek tilida eng batafsil va tizimli ma'lumotlar, foydalanish qulayligi, yangi maqolalar</p>
+                        </div>
+                        
+                        <div class="about-card">
+                            <div class="about-icon">🤝</div>
+                            <h3>Hamkorlik</h3>
+                            <p>Astrologlar va psixologlar bilan hamkorlikda ishlab, eng aniq va foydali ma'lumotlarni taqdim etamiz</p>
+                        </div>
+                        
+                        <div class="about-card">
+                            <div class="about-icon">📈</div>
+                            <h3>Rivojlanish</h3>
+                            <p>Har oy yangi maqolalar, testlar va interaktiv funksiyalar qo'shib boramiz</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                <!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-logo" onclick="switchSection('tush')">TushVaBurj.uz</div>
+            <p style="color: #888; margin-bottom: 20px; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Professional tush tahlili va astrologiya platformasi. Barcha ma'lumotlar ilmiy asosda.
+            </p>
+            
+            <div class="footer-links">
+                <a href="javascript:void(0)" class="footer-link" onclick="switchSection('tush')">Tush tabiri</a>
+                <a href="javascript:void(0)" class="footer-link" onclick="switchSection('burjlar')">Burjlar</a>
+                <a href="javascript:void(0)" class="footer-link" onclick="switchSection('about')">Biz haqimizda</a>
+                <a href="javascript:void(0)" class="footer-link" onclick="showPrivacyModal()">Maxfiylik</a>
+                <a href="javascript:void(0)" class="footer-link" onclick="showContactModal()">Aloqa</a>
+            </div>
+            
+            <div class="social-links">
+                <a href="#" class="social-icon">📘</a>
+                <a href="#" class="social-icon">📷</a>
+                <a href="#" class="social-icon">🐦</a>
+                <a href="#" class="social-icon">📹</a>
+            </div>
+            
+            <p class="copyright">© 2026 TushVaBurj.uz. Barcha huquqlar himoyalangan.</p>
+        </footer>
     </div>
 
     <script>
@@ -851,39 +1252,36 @@
                 console.log("Audio not supported");
             }
         }
-               // ===== SECTION SWITCHING =====
-        function showSection(sectionId) {
+
+        // ===== SECTION SWITCHING =====
+        function switchSection(sectionId) {
             playButtonClickSound();
             
-            // Barcha bo'limlarni yashirish
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Barcha tugmalardan active klassini olib tashlash
+            // Update navigation buttons
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 btn.classList.remove('active');
             });
             
-            // Tanlangan bo'limni ko'rsatish
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Tanlangan tugmani active qilish
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                if (btn.textContent.includes(sectionId === 'tush' ? 'Tush' : 'Burj')) {
-                    btn.classList.add('active');
-                }
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
             
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Activate clicked button
+            event?.target.closest('.nav-btn')?.classList.add('active');
+            
+            // Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
         }
 
         // ===== INITIAL LOAD =====
         document.addEventListener('DOMContentLoaded', function() {
             // Start with Tush Tabiri section
-            showSection('tush');
+            switchSection('tush');
             
             // Set current date
             const today = new Date();
@@ -911,10 +1309,13 @@
                 'ish': {
                     title: "Ish va Karera Tushlarining Tahlili",
                     content: "Ish bilan bog'liq tushlar ko'pincha real hayotingizdagi vaziyatlarni aks ettiradi:\n\n• Yangi ish - yangi boshlanish\n• Ishdan bo'shatilish - o'zgarishlarga tayyorlik\n• Ishda muvaffaqiyat - haqiqiy imkoniyatlar\n• Hamkasblar - ijtimoiy munosabatlar\n• Ish joyi - o'zingizni qayerda ko'rishingiz\n\nBu tushlar karyera qarorlaringizga yordam beradi."
+                },
+                'odam': {
+                    title: "Odamlar Tushda: Qarindoshlar va Tanishlar",
+                    content: "Tushda ko'rilgan odamlar ko'pincha sizning munosabatlaringizni ifodalaydi:\n\n• Ota-ona - maslahat, himoya\n• Sevgili - hissiyotlar, munosabatlar\n• Do'st - yordam, sadoqat\n• Noma'lum odam - ichki o'zingiz\n• O'lik odam - esdalik, kechirim\n\nOdamning kimligi emas, siz unga qanday munosabatda bo'lganingiz muhim."
                 }
             };
-            
-            const article = articleData[type] || {
+                    const article = articleData[type] || {
                 title: "Maqola tayyorlanmoqda",
                 content: "Ushbu maqola tez orada qo'shiladi. Kuting!"
             };
@@ -1037,8 +1438,7 @@
                 });
             }, 300);
         }
-
-        // ===== SHARE FUNCTIONS =====
+            // ===== SHARE FUNCTIONS =====
         function shareViaTelegram() {
             playButtonClickSound();
             const zodiacResult = document.querySelector('.zodiac-display')?.textContent || 'Burjimni aniqladim';
@@ -1062,7 +1462,8 @@
             const zodiacResult = document.querySelector('.zodiac-display')?.textContent || 'Burjimni aniqladim';
             const date = document.querySelector('.birth-date')?.textContent || '';
             const text = `Mening burjim: ${zodiacResult}\n${date}\n\nAniqlash uchun: TushVaBurj.uz`;
-                navigator.clipboard.writeText(text).then(() => {
+            
+            navigator.clipboard.writeText(text).then(() => {
                 alert('✅ Natija nusxalandi! Endi istalgan joyga joylashtirishingiz mumkin.');
             }).catch(err => {
                 alert('❌ Nusxalash amalga oshmadi. Iltimos, qayta urinib ko\'ring.');
