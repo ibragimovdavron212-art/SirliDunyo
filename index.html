@@ -163,15 +163,14 @@
             border-color: var(--primary);
         }
         
-        /* PO'ST UCHUN JOY - SIZ BU YERGA RASM QO'YASIZ -->
-        <!-- QO'YISH UCHUN: <img src="rasmingiz.jpg" alt="Tavsif" style="width:100%;height:100%;object-fit:cover;"> -->
+        /* PO'ST UCHUN JOY */
         .post-banner {
             width: 100%;
             height: 200px;
             border-radius: 12px;
             margin-bottom: 15px;
             overflow: hidden;
-            background: #333;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             position: relative;
         }
         
@@ -221,15 +220,20 @@
         }
         
         .read-more {
-            color: var(--accent);
+            color: #ffcc00; /* SARIQ RANG */
             text-decoration: none;
             font-weight: 600;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
             gap: 5px;
+            transition: color 0.3s ease;
         }
-          /* ZODIAC CALCULATOR */
+        
+        .read-more:hover {
+            color: #ffdd44;
+        }
+               /* ZODIAC CALCULATOR */
         .zodiac-form {
             max-width: 600px;
             margin: 0 auto;
@@ -398,24 +402,24 @@
     <div class="container">
         <!-- HEADER -->
         <header class="header">
-            <div class="logo" onclick="showSection('tush')">TushVaBurj.uz</div>
+            <div class="logo" onclick="showSection('tush', this)">TushVaBurj.uz</div>
             <p class="tagline">Professional tush tahlili va burj platformasi</p>
         </header>
 
         <!-- NAVIGATION -->
         <nav class="navigation">
-            <button class="nav-btn active" onclick="showSection('tush')">
+            <button class="nav-btn active" onclick="showSection('tush', this)">
                 <span>🔮</span> Tush Tabiri
             </button>
-            <button class="nav-btn" onclick="showSection('burj')">
+            <button class="nav-btn" onclick="showSection('burj', this)">
                 <span>♈</span> Burj Aniqlash
             </button>
-            <button class="nav-btn" onclick="showSection('about')">
+            <button class="nav-btn" onclick="showSection('about', this)">
                 <span>🌟</span> Biz haqimizda
             </button>
         </nav>
 
-        <!-- TUSH TABIRI SECTION - SAYT YUKLANGANDA BU KO'RINADI -->
+        <!-- TUSH TABIRI SECTION -->
         <section id="tush" class="section active">
             <div class="card">
                 <div class="card-header">
@@ -430,16 +434,19 @@
                 <div class="blog-posts">
                     <!-- MAQOLA 1 - SUV -->
                     <div class="post-card">
-                        <!-- BU YERGA RASM QO'YASIZ -->
                         <div class="post-banner">
                             <!-- RASM QO'YISH UCHUN: -->
                             <!-- <img src="suv-tushlari.jpg" alt="Suv tushlari"> -->
+                            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;">
+                                💧
+                            </div>
                         </div>
                         
                         <span class="post-category">💧 Suv tushlari</span>
                         <h3 class="post-title">Suv Ko'rish Tushining Tahlili</h3>
                         <p class="post-excerpt">
-                            <!-- Qisqacha matn -->
+                            Suv tushlari hayotiy energiya, tozalanish va hissiyotlarni ifodalaydi. 
+                            Tushdagi suvning holatiga qarab tahlil farq qiladi.
                         </p>
                         <div class="post-meta">
                             <span class="post-date">📅 15-yanvar, 2026</span>
@@ -451,16 +458,19 @@
                     
                     <!-- MAQOLA 2 - HAYVON -->
                     <div class="post-card">
-                        <!-- BU YERGA RASM QO'YASIZ -->
                         <div class="post-banner">
                             <!-- RASM QO'YISH UCHUN: -->
                             <!-- <img src="hayvon-tushlari.jpg" alt="Hayvon tushlari"> -->
+                            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;">
+                                🐍
+                            </div>
                         </div>
                         
                         <span class="post-category">🐍 Hayvon tushlari</span>
                         <h3 class="post-title">Hayvonlar Tushlarda Nimani Anglatadi?</h3>
                         <p class="post-excerpt">
-                            <!-- Qisqacha matn -->
+                            Hayvonlar tushlarda turli ma'nolarni anglatadi. 
+                            Masalan, arslon kuch va hokimiyatni, quyon esa qo'rquvni ifodalashi mumkin.
                         </p>
                         <div class="post-meta">
                             <span class="post-date">📅 10-yanvar, 2026</span>
@@ -472,16 +482,19 @@
                     
                     <!-- MAQOLA 3 - ISH -->
                     <div class="post-card">
-                        <!-- BU YERGA RASM QO'YASIZ -->
                         <div class="post-banner">
                             <!-- RASM QO'YISH UCHUN: -->
                             <!-- <img src="ish-tushlari.jpg" alt="Ish tushlari"> -->
+                            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:white;font-size:24px;">
+                                💼
+                            </div>
                         </div>
                         
                         <span class="post-category">💼 Ish tushlari</span>
                         <h3 class="post-title">Ish va Karera Tushlarining Tahlili</h3>
                         <p class="post-excerpt">
-                            <!-- Qisqacha matn -->
+                            Ish haqidagi tushlar kelajakdagi kasbiy yutuqlar, 
+                            muammolar yoki yangi imkoniyatlar haqida xabar berishi mumkin.
                         </p>
                         <div class="post-meta">
                             <span class="post-date">📅 5-yanvar, 2026</span>
@@ -594,15 +607,31 @@
                         </div>
                     </div>
                 </div>
+                
+                <div style="text-align: center; margin-top: 40px; color: #aaa; font-size: 0.9rem;">
+                    <p>© 2026 TushVaBurj.uz - Barcha huquqlar himoyalangan</p>
+                    <p style="margin-top: 10px;">Email: info@tushvaburj.uz | Telefon: +998 90 123 45 67</p>
+                </div>
             </div>
         </section>
     </div>
 
     <script>
-        // ===== OVOZ FUNKSIYALARI =====
+        // ===== OVOZ FUNKSIYASI (TEKSHIRILGAN) =====
+        let audioContext;
+        
         function playButtonClickSound() {
             try {
-                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                // AudioContext yaratish
+                if (!audioContext) {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                
+                // AudioContext suspended holatda bo'lishi mumkin
+                if (audioContext.state === 'suspended') {
+                    audioContext.resume();
+                }
+                
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
                 
@@ -610,20 +639,22 @@
                 gainNode.connect(audioContext.destination);
                 
                 oscillator.frequency.value = 800;
-                oscillator.type = 'triangle';
+                oscillator.type = 'sine';
                 
-                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
                 gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
                 
-                oscillator.start();
+                oscillator.start(audioContext.currentTime);
                 oscillator.stop(audioContext.currentTime + 0.1);
+                
             } catch (e) {
+                console.log("Ovoz funksiyasi ishlamadi:", e);
                 // Ovozi ishlamasa ham sayt ishlashda davom etadi
             }
         }
 
-        // ===== BO'LIMLARNI O'ZGARTIRISH =====
-        function showSection(sectionId) {
+        // ===== BO'LIMLARNI O'ZGARTIRISH (TUZATILGAN) =====
+        function showSection(sectionId, buttonElement) {
             playButtonClickSound();
             
             // Barcha bo'limlarni yashirish
@@ -640,17 +671,19 @@
             document.getElementById(sectionId).classList.add('active');
             
             // Tanlangan tugmani active qilish
-            event.target.classList.add('active');
+            if (buttonElement) {
+                buttonElement.classList.add('active');
+            }
             
             // Yuqoriga scroll qilish
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-            // ===== SAYT YUKLANGANDA - TUSH TABIRI KO'RINADI =====
+        
+        // ===== SAYT YUKLANGANDA - TUSH TABIRI KO'RINADI =====
         document.addEventListener('DOMContentLoaded', function() {
             // Barcha bo'limlarni yashirish
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
-                section.style.display = 'none';
             });
             
             // Barcha tugmalardan active klassini olib tashlash
@@ -660,7 +693,6 @@
             
             // Faqat Tush Tabiri bo'limini ko'rsatish
             document.getElementById('tush').classList.add('active');
-            document.getElementById('tush').style.display = 'block';
             
             // Faqat Tush Tabiri tugmasini active qilish
             document.querySelector('.nav-btn').classList.add('active');
@@ -669,8 +701,21 @@
         // ===== MAQOLA KO'RSATISH =====
         function showArticle(type) {
             playButtonClickSound();
-            // Siz maqola matnini o'zingiz yozasiz
-            alert("Maqola tayyorlanmoqda...");
+            let title = '';
+            let content = '';
+            
+            if (type === 'suv') {
+                title = 'Suv Ko\'rish Tushining Tahlili';
+                content = 'Suv tushlari hayotiy energiya, tozalanish va hissiyotlarni ifodalaydi...';
+            } else if (type === 'hayvon') {
+                title = 'Hayvonlar Tushlarda Nimani Anglatadi?';
+                content = 'Hayvonlar tushlarda turli ma\'nolarni anglatadi...';
+            } else if (type === 'ish') {
+                title = 'Ish va Karera Tushlarining Tahlili';
+                content = 'Ish haqidagi tushlar kelajakdagi kasbiy yutuqlar...';
+            }
+            
+            alert(`MAQOLA: ${title}\n\n${content}\n\nTo'liq maqola tez orada yuklanadi...`);
         }
         
         // ===== BURJ HISOBLASH =====
@@ -767,11 +812,11 @@
             };
             return descriptions[zodiac] || "";
         }
-        
-        // ===== ULASHISH FUNKSIYALARI =====
+              // ===== ULASHISH FUNKSIYALARI =====
         function shareTelegram() {
             playButtonClickSound();
-            const zodiac = document.querySelector('.zodiac-display')?.textContent || 'Burjim';
+            const zodiacElement = document.querySelector('.zodiac-display');
+            const zodiac = zodiacElement ? zodiacElement.textContent : 'Burjim';
             const text = `Mening burjim: ${zodiac}\nTushVaBurj.uz saytida aniqladim`;
             const url = `https://t.me/share/url?url=${encodeURIComponent('https://tushvaburj.uz')}&text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
@@ -779,7 +824,8 @@
         
         function shareWhatsApp() {
             playButtonClickSound();
-            const zodiac = document.querySelector('.zodiac-display')?.textContent || 'Burjim';
+            const zodiacElement = document.querySelector('.zodiac-display');
+            const zodiac = zodiacElement ? zodiacElement.textContent : 'Burjim';
             const text = `Mening burjim: ${zodiac}%0ATushVaBurj.uz saytida aniqladim`;
             window.open(`https://wa.me/?text=${text}`, '_blank');
         }
