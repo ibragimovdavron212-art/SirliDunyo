@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ TushVaBurj.uz | Tush Tahlili va Burj Platformasi</title>
+    <title>✨ TushVaBurj.uz | Professional Tush Tahlili va Burj Platformasi</title>
     <style>
         :root {
             --primary: #6a11cb;
@@ -12,6 +12,7 @@
             --dark: #0a0a1a;
             --light: #f8f9fa;
             --card-bg: rgba(255, 255, 255, 0.08);
+            --card-border: rgba(255, 255, 255, 0.12);
         }
         
         * {
@@ -21,10 +22,12 @@
         }
         
         body {
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', 'Tahoma', Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
             color: var(--light);
             min-height: 100vh;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
         
         .container {
@@ -33,218 +36,252 @@
             padding: 0 20px;
         }
         
-        /* HEADER */
+        /* ===== HEADER ===== */
         .header {
             text-align: center;
-            padding: 40px 0 20px;
+            padding: 50px 0 30px;
+            position: relative;
         }
         
-        .logo {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--accent), #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
+        .logo-container {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
             cursor: pointer;
         }
         
-        .tagline {
-            font-size: 1.1rem;
-            color: #aaa;
-            font-weight: 300;
+        .logo {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--accent), #ff6b6b, #6a11cb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 300% 300%;
+            animation: gradient-shift 8s ease infinite;
         }
         
-        /* NAVIGATION */
+        .tagline {
+            font-size: 1.2rem;
+            color: #aaa;
+            font-weight: 300;
+            letter-spacing: 0.8px;
+            margin-bottom: 10px;
+        }
+        
+        /* ===== NAVIGATION ===== */
         .navigation {
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 30px 0;
+            margin: 40px 0;
             flex-wrap: wrap;
         }
         
         .nav-btn {
-            padding: 14px 32px;
+            padding: 16px 36px;
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--card-border);
             color: var(--light);
-            border-radius: 12px;
-            font-size: 1rem;
+            border-radius: 14px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            backdrop-filter: blur(10px);
         }
         
         .nav-btn:hover {
-            background: rgba(106, 17, 203, 0.2);
-            transform: translateY(-2px);
+            background: rgba(106, 17, 203, 0.3);
+            transform: translateY(-3px);
             border-color: var(--primary);
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.2);
         }
         
         .nav-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-color: transparent;
-            box-shadow: 0 8px 25px rgba(106, 17, 203, 0.3);
+            box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
         }
-          /* SECTIONS */
+        
+        /* ===== SECTIONS ===== */
         .section {
             display: none;
+            animation: fadeIn 0.5s ease-out;
         }
         
         .section.active {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* CARDS */
+        /* ===== CARDS ===== */
         .card {
             background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 30px;
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 35px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
         }
         
         .card-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
+            gap: 20px;
+            margin-bottom: 30px;
         }
         
         .card-icon {
-            font-size: 1.8rem;
-            width: 50px;
-            height: 50px;
+            font-size: 2.2rem;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             background: rgba(106, 17, 203, 0.2);
-            border-radius: 10px;
+            border-radius: 12px;
         }
         
         .card-title {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: var(--accent);
         }
+
+            /* ===== DREAM INTERPRETATION ===== */
+        .hero-text {
+            font-size: 1.2rem;
+            color: #ccc;
+            margin-bottom: 35px;
+            line-height: 1.8;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
         
-        /* POST CARDS */
         .blog-posts {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .post-card {
-            background: linear-gradient(145deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.05));
-            border: 1px solid rgba(106, 17, 203, 0.2);
-            border-radius: 16px;
-            padding: 25px;
-            transition: all 0.3s ease;
+            background: linear-gradient(145deg, rgba(106, 17, 203, 0.15), rgba(37, 117, 252, 0.08));
+            border: 1px solid rgba(106, 17, 203, 0.25);
+            border-radius: 18px;
+            padding: 28px;
+            transition: all 0.4s ease;
             height: 100%;
+            position: relative;
+            overflow: hidden;
         }
         
         .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(106, 17, 203, 0.3);
             border-color: var(--primary);
-        }
-        
-        /* BANNER JOYI - BU YERGA RASM QO'YASIZ */
-        .post-banner {
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            background: #333;
-            position: relative;
-        }
-        
-        .post-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
         }
         
         .post-category {
             display: inline-block;
-            padding: 6px 14px;
-            background: rgba(106, 17, 203, 0.2);
-            color: var(--accent);
+            padding: 8px 18px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        /* PO'ST BANNER UCHUN JOY */
+        .post-banner-placeholder {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.2));
+            border-radius: 12px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.1rem;
+            border: 2px dashed rgba(255, 255, 255, 0.1);
         }
         
         .post-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             line-height: 1.4;
+            color: var(--light);
         }
         
         .post-excerpt {
-            color: #ccc;
-            font-size: 0.95rem;
-            margin-bottom: 20px;
-            line-height: 1.6;
+            color: #bbb;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            line-height: 1.7;
         }
         
         .post-meta {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-top: 20px;
-            padding-top: 15px;
+            margin-top: 25px;
+            padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .post-date {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #888;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .read-more {
             color: var(--accent);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
         }
         
-        /* ZODIAC CALCULATOR */
+        .read-more:hover {
+            background: rgba(255, 204, 0, 0.2);
+            transform: translateX(5px);
+        }
+        
+        /* ===== ZODIAC CALCULATOR ===== */
         .zodiac-form {
-            max-width: 600px;
+            max-width: 700px;
             margin: 0 auto;
         }
         
         .form-text {
             text-align: center;
             color: #aaa;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
+            margin-bottom: 40px;
+            font-size: 1.2rem;
+            line-height: 1.7;
         }
         
         .input-group {
             display: flex;
-            gap: 20px;
-            margin: 30px 0;
+            gap: 25px;
+            margin: 40px 0;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
@@ -253,140 +290,370 @@
         .date-input {
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            gap: 10px;
+            flex: 1;
+            min-width: 150px;
         }
         
         .date-input label {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
             color: var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .date-input input,
-        .date-input select {
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
+        .date-input input {
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
             color: var(--light);
-            font-size: 1rem;
-            width: 150px;
+            font-size: 1.1rem;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .date-input input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .separator {
+            color: #666;
+            font-size: 1.5rem;
+            font-weight: 300;
         }
         
         .calculate-btn {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             border: none;
-            padding: 16px 40px;
-            font-size: 1.1rem;
+            padding: 20px 50px;
+            font-size: 1.3rem;
             font-weight: 700;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex;
             align-items: center;
-            gap: 12px;
-            margin: 30px auto;
+            gap: 15px;
+            margin: 40px auto;
+            box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
         }
         
         .calculate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
-            }
-             /* RESULTS */
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(106, 17, 203, 0.5);
+        }
+        
+        /* ===== RESULTS ===== */
         .result-section {
-            margin-top: 40px;
+            margin-top: 50px;
         }
         
         .zodiac-result {
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.15), rgba(37, 117, 252, 0.1));
-            border: 1px solid rgba(106, 17, 203, 0.3);
-            border-radius: 20px;
-            padding: 40px;
+            background: linear-gradient(135deg, rgba(106, 17, 203, 0.2), rgba(37, 117, 252, 0.15));
+            border: 1px solid rgba(106, 17, 203, 0.4);
+            border-radius: 24px;
+            padding: 50px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .zodiac-result::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 204, 0, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+        
+        .result-title {
+            font-size: 1.6rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
         }
         
         .zodiac-display {
-            font-size: 3.5rem;
+            font-size: 4.5rem;
             font-weight: 800;
-            background: linear-gradient(45deg, var(--accent), #ff6b6b);
+            background: linear-gradient(45deg, var(--accent), #ff6b6b, var(--primary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 20px 0;
+            margin: 30px 0;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .birth-date {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-top: 15px;
+            position: relative;
+            z-index: 1;
         }
         
         .zodiac-details {
             background: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 20px;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
         }
         
         .detail-item {
             display: flex;
             align-items: center;
-            gap: 15px;
-            padding: 12px 0;
+            gap: 20px;
+            padding: 20px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
         .detail-item:last-child {
             border-bottom: none;
         }
         
+        .detail-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            min-width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 204, 0, 0.1);
+            border-radius: 10px;
+        }
+        
+        .detail-content h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+        
+        /* ===== SHARE SECTION ===== */
         .share-section {
-            margin-top: 40px;
-            padding-top: 30px;
+            margin-top: 50px;
+            padding-top: 40px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .share-title {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 25px;
+            text-align: center;
         }
         
         .share-buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
         }
         
         .share-btn {
-            padding: 12px 25px;
+            padding: 18px 35px;
             border: none;
-            border-radius: 10px;
+            border-radius: 12px;
             font-weight: 600;
             cursor: pointer;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             transition: all 0.3s ease;
+            font-size: 1.1rem;
+            min-width: 180px;
+            justify-content: center;
         }
         
-        /* RESPONSIVE */
+        .share-telegram {
+            background: linear-gradient(135deg, #0088cc, #00aced);
+            color: white;
+        }
+        
+        .share-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+        }
+        
+        .share-copy {
+            background: linear-gradient(135deg, var(--primary), #8a2be2);
+            color: white;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        /* ===== MODAL ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            color: var(--accent);
+        }
+        
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .header {
+                padding: 30px 0;
+            }
+            
             .logo {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .nav-btn {
-                padding: 12px 20px;
-                font-size: 0.95rem;
+                padding: 12px 24px;
                 width: 100%;
+                justify-content: center;
             }
             
             .navigation {
                 flex-direction: column;
+                gap: 10px;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .zodiac-display {
+                font-size: 2.8rem;
             }
             
             .input-group {
                 flex-direction: column;
+                gap: 15px;
             }
             
             .date-input {
                 width: 100%;
             }
             
-            .date-input input,
-            .date-input select {
+            .share-buttons {
+                flex-direction: column;
+            }
+            
+            .share-btn {
+                width: 100%;
+            }
+        }
+         @media (max-width: 480px) {
+            .logo {
+                font-size: 1.8rem;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .zodiac-display {
+                font-size: 2.2rem;
+            }
+            
+            .zodiac-result {
+                padding: 30px 20px;
+            }
+            
+            .calculate-btn {
+                padding: 18px 30px;
+                font-size: 1.1rem;
                 width: 100%;
             }
         }
@@ -396,60 +663,63 @@
     <div class="container">
         <!-- HEADER -->
         <header class="header">
-            <div class="logo" onclick="showSection('tush')">TushVaBurj.uz</div>
-            <p class="tagline">Professional tush tahlili va burj platformasi</p>
+            <div class="logo-container" onclick="switchSection('tush')">
+                <div class="logo float">TushVaBurj.uz</div>
+            </div>
+            <p class="tagline">Professional tush tahlili va burj platformasi ✨</p>
         </header>
 
         <!-- NAVIGATION -->
         <nav class="navigation">
-            <button class="nav-btn active" onclick="showSection('tush')">
+            <button class="nav-btn active" onclick="switchSection('tush')">
                 <span>🔮</span> Tush Tabiri
             </button>
-            <button class="nav-btn" onclick="showSection('burj')">
+            <button class="nav-btn" onclick="switchSection('burjlar')">
                 <span>♈</span> Burj Aniqlash
             </button>
         </nav>
 
-        <!-- TUSH TABIRI BO'LIMI -->
+        <!-- TUSH TABIRI SECTION -->
         <section id="tush" class="section active">
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">🔮</div>
-                    <h2 class="card-title">Tushlar Olami</h2>
+                    <h2 class="card-title">Tushlar Olami: Sirli Ma'nolarni Ochish</h2>
                 </div>
                 
-                <p style="color: #ccc; margin-bottom: 25px; text-align: center;">
-                    Ibn Sirin ta'limoti asosida tushlaringizning ma'nolarini oching.
+                <p class="hero-text">
+                    Ibn Sirin ta'limoti va zamonaviy psixologiya asosida tushlaringizning chuqur ma'nolarini kashf eting. 
+                    Har bir tush - bu sizning ongingizdan kelgan muhim xabar. Keling, bu xabarlarni to'g'ri talqin qilishni o'rganamiz.
                 </p>
                 
                 <div class="blog-posts">
-                    <!-- MAQOLA 1 -->
+                    <!-- Post 1 -->
                     <div class="post-card">
-                        <!-- BU YERGA RASM QO'YASIZ -->
-                        <div class="post-banner">
-                            <!-- <img src="suv-tushlari.jpg" alt="Suv tushlari"> -->
+                        <!-- PO'ST UCHUN JOY -->
+                        <div class="post-banner-placeholder">
+                            <!-- SIZ BU YERGA RASM QO'YASIZ -->
+                            <!-- <img src="suv-tushlari-banner.jpg" alt="Suv tushlari"> -->
                         </div>
-                        
                         <span class="post-category">💧 Suv tushlari</span>
-                        <h3 class="post-title">Suv Ko'rish Tushining Tahlili</h3>
+                        <h3 class="post-title">Suv Ko'rish Tushining To'liq Tahlili</h3>
                         <p class="post-excerpt">
-                            Ibn Sirin ta'limotiga ko'ra suv tushlari hayot, poklik va baraka ramzidir...
+                            Ibn Sirin ta'limotiga ko'ra suv tushlari hayot, poklik va baraka ramzidir. Suvning holatiga qarab tahlil farqlanadi...
                         </p>
                         <div class="post-meta">
                             <span class="post-date">📅 15-yanvar, 2026</span>
-                            <a href="#" class="read-more" onclick="showArticle('suv')">
-                                O'qish <span>→</span>
+                            <a href="javascript:void(0)" class="read-more" onclick="openArticle('suv')">
+                                To'liq o'qish <span>→</span>
                             </a>
                         </div>
                     </div>
                     
-                    <!-- MAQOLA 2 -->
+                    <!-- Post 2 -->
                     <div class="post-card">
-                        <!-- BU YERGA RASM QO'YASIZ -->
-                        <div class="post-banner">
-                            <!-- <img src="hayvon-tushlari.jpg" alt="Hayvon tushlari"> -->
+                        <!-- PO'ST UCHUN JOY -->
+                        <div class="post-banner-placeholder">
+                            <!-- SIZ BU YERGA RASM QO'YASIZ -->
+                            <!-- <img src="hayvon-tushlari-banner.jpg" alt="Hayvon tushlari"> -->
                         </div>
-                        
                         <span class="post-category">🐍 Hayvon tushlari</span>
                         <h3 class="post-title">Hayvonlar Tushlarda Nimani Anglatadi?</h3>
                         <p class="post-excerpt">
@@ -457,19 +727,19 @@
                         </p>
                         <div class="post-meta">
                             <span class="post-date">📅 10-yanvar, 2026</span>
-                            <a href="#" class="read-more" onclick="showArticle('hayvon')">
+                            <a href="javascript:void(0)" class="read-more" onclick="openArticle('hayvon')">
                                 O'qish <span>→</span>
                             </a>
                         </div>
                     </div>
                     
-                    <!-- MAQOLA 3 -->
+                    <!-- Post 3 -->
                     <div class="post-card">
-                        <!-- BU YERGA RASM QO'YASIZ -->
-                        <div class="post-banner">
-                            <!-- <img src="ish-tushlari.jpg" alt="Ish tushlari"> -->
+                        <!-- PO'ST UCHUN JOY -->
+                        <div class="post-banner-placeholder">
+                            <!-- SIZ BU YERGA RASM QO'YASIZ -->
+                            <!-- <img src="ish-tushlari-banner.jpg" alt="Ish tushlari"> -->
                         </div>
-                        
                         <span class="post-category">💼 Ish tushlari</span>
                         <h3 class="post-title">Ish va Karera Tushlarining Tahlili</h3>
                         <p class="post-excerpt">
@@ -477,7 +747,7 @@
                         </p>
                         <div class="post-meta">
                             <span class="post-date">📅 5-yanvar, 2026</span>
-                            <a href="#" class="read-more" onclick="showArticle('ish')">
+                            <a href="javascript:void(0)" class="read-more" onclick="openArticle('ish')">
                                 O'qish <span>→</span>
                             </a>
                         </div>
@@ -485,8 +755,9 @@
                 </div>
             </div>
         </section>
-           <!-- BURJ BO'LIMI -->
-        <section id="burj" class="section">
+
+        <!-- BURJLAR SECTION -->
+        <section id="burjlar" class="section">
             <div class="card">
                 <div class="card-header">
                     <div class="card-icon">♈</div>
@@ -495,7 +766,8 @@
                 
                 <div class="zodiac-form">
                     <p class="form-text">
-                        Tug'ilgan kuningizni tanlang va burjingizni bilib oling
+                        Tug'ilgan kuningizni tanlang va burjingizni bilib oling. 
+                        Har bir burjning o'ziga xos xususiyatlari, kuchli va zaif tomonlari haqida batafsil ma'lumot oling.
                     </p>
                     
                     <div class="input-group">
@@ -504,9 +776,11 @@
                             <input type="number" id="day" min="1" max="31" value="15" placeholder="Kun">
                         </div>
                         
+                        <div class="separator">|</div>
+                        
                         <div class="date-input">
                             <label>📆 Oy</label>
-                            <select id="month">
+                            <select id="month" style="padding: 16px 20px; background: rgba(255, 255, 255, 0.07); border: 1px solid var(--card-border); border-radius: 14px; color: var(--light); font-size: 1.1rem; width: 100%;">
                                 <option value="1">Yanvar</option>
                                 <option value="2" selected>Fevral</option>
                                 <option value="3">Mart</option>
@@ -523,23 +797,25 @@
                         </div>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculateZodiac()">
+                    <button class="calculate-btn pulse" onclick="calculateZodiac()">
                         <span>✨</span> Burjimni Aniqlash
                     </button>
                     
                     <div class="result-section">
                         <div id="zodiac-result"></div>
+                        <div id="zodiac-info"></div>
                         
                         <div id="share-section" class="share-section" style="display: none;">
-                            <h3 style="text-align: center; color: var(--accent); margin-bottom: 20px;">
-                                Natijani Ulashing
-                            </h3>
+                            <h3 class="share-title">Natijani Do'stlaringiz bilan Ulashing</h3>
                             <div class="share-buttons">
-                                <button class="share-btn" style="background: #0088cc; color: white;" onclick="shareTelegram()">
+                                <button class="share-btn share-telegram" onclick="shareViaTelegram()">
                                     <span>📱</span> Telegram
                                 </button>
-                                <button class="share-btn" style="background: #25D366; color: white;" onclick="shareWhatsApp()">
+                                <button class="share-btn share-whatsapp" onclick="shareViaWhatsApp()">
                                     <span>📲</span> WhatsApp
+                                </button>
+                                <button class="share-btn share-copy" onclick="copyResultToClipboard()">
+                                    <span>📋</span> Nusxa olish
                                 </button>
                             </div>
                         </div>
@@ -548,10 +824,94 @@
             </div>
         </section>
     </div>
+        <!-- MODAL FOR ARTICLES -->
+    <div id="articleModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle" class="modal-title">Maqola</h3>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div id="modalContent" style="color: #ccc; line-height: 1.7; max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
 
     <script>
-        // OVOZ EFFEKTLARI
-        function playSound(type) {
+        // ===== SECTION SWITCHING =====
+        function switchSection(sectionId) {
+            playButtonClickSound();
+            
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Set active button
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes(sectionId === 'tush' ? 'Tush' : 'Burj')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== INITIAL LOAD =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Start with Tush Tabiri section
+            switchSection('tush');
+            
+            // Set current date
+            const today = new Date();
+            const dayInput = document.getElementById('day');
+            const monthSelect = document.getElementById('month');
+            
+            if (dayInput && monthSelect) {
+                dayInput.value = today.getDate();
+                monthSelect.value = today.getMonth() + 1;
+            }
+        });
+
+        // ===== AUDIO FUNCTIONS =====
+        function playSuccessSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const frequencies = [659.25, 830.61, 1046.50];
+                const duration = 0.15;
+                
+                frequencies.forEach((freq, index) => {
+                    setTimeout(() => {
+                        const oscillator = audioContext.createOscillator();
+                        const gainNode = audioContext.createGain();
+                        
+                        oscillator.connect(gainNode);
+                        gainNode.connect(audioContext.destination);
+                        
+                        oscillator.frequency.value = freq;
+                        oscillator.type = 'sine';
+                        
+                        gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+                        gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + duration);
+                        
+                        oscillator.start();
+                        oscillator.stop(audioContext.currentTime + duration);
+                    }, index * 100);
+                });
+            } catch (e) {
+                console.log("Audio not supported");
+            }
+        }
+        
+        function playErrorSound() {
             try {
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
@@ -560,103 +920,125 @@
                 oscillator.connect(gainNode);
                 gainNode.connect(audioContext.destination);
                 
-                if (type === 'click') {
-                    oscillator.frequency.value = 800;
-                    oscillator.type = 'sine';
-                    gainNode.gain.setValueAtTime(0.1, audioContext.currentTime);
-                    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
-                    oscillator.start();
-                    oscillator.stop(audioContext.currentTime + 0.1);
-                } else if (type === 'success') {
-                    const freq1 = 523.25; // C5
-                    const freq2 = 659.25; // E5
-                    const freq3 = 783.99; // G5
-                    
-                    [freq1, freq2, freq3].forEach((freq, i) => {
-                        setTimeout(() => {
-                            const osc = audioContext.createOscillator();
-                            const gain = audioContext.createGain();
-                            osc.connect(gain);
-                            gain.connect(audioContext.destination);
-                            osc.frequency.value = freq;
-                            osc.type = 'sine';
-                            gain.gain.setValueAtTime(0.1, audioContext.currentTime);
-                            gain.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.15);
-                            osc.start();
-                            osc.stop(audioContext.currentTime + 0.15);
-                        }, i * 100);
-                    });
-                }
+                oscillator.frequency.value = 200;
+                oscillator.type = 'sawtooth';
+                
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.3);
             } catch (e) {
-                // Ovozi ishlamasa ham sayt ishlashda davom etadi
+                console.log("Audio not supported");
+            }
+        }
+        
+        function playButtonClickSound() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                
+                oscillator.frequency.value = 800;
+                oscillator.type = 'triangle';
+                
+                gainNode.gain.setValueAtTime(0.2, audioContext.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+                
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {
+                console.log("Audio not supported");
             }
         }
 
-        // ===== BO'LIMLARNI O'ZGARTIRISH =====
-        function showSection(sectionId) {
-            playSound('click');
+        // ===== ARTICLE FUNCTIONS =====
+        function openArticle(type) {
+            playButtonClickSound();
             
-            // Barcha bo'limlarni yashirish
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Barcha tugmalardan active klassini olib tashlash
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Tanlangan bo'limni ko'rsatish
-            document.getElementById(sectionId).classList.add('active');
-                   // Tanlangan tugmani active qilish
-            event.target.classList.add('active');
-            
-            // Yuqoriga scroll qilish
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-        
-        // ===== SAYT YUKLANGANDA =====
-        document.addEventListener('DOMContentLoaded', function() {
-            // Faqat Tush Tabiri bo'limini ko'rsatish
-            document.getElementById('tush').classList.add('active');
-        });
-        
-        // ===== MAQOLA KO'RSATISH =====
-        function showArticle(type) {
-            playSound('click');
             const articles = {
                 'suv': {
                     title: "Suv Ko'rish Tushining To'liq Tahlili",
-                    content: "Ibn Sirin ta'limotiga ko'ra suv tushlari hayot, poklik va baraka ramzidir. Suvning holatiga qarab tahlil farqlanadi..."
+                    content: `
+                        <h3>Ibn Sirin ta'limoti asosida</h3>
+                        <p>Suv tushlari hayot, poklik va baraka ramzidir. Suvning holati tahlilga ta'sir qiladi:</p>
+                        <ul style="margin: 15px 0; padding-left: 20px;">
+                            <li><strong>Toza suv</strong> - omad, baraka, ruhiy poklik</li>
+                            <li><strong>Bulg'anchiq suv</strong> - qiyinchiliklar, muammolar</li>
+                            <li><strong>Dengiz</strong> - katta imkoniyatlar, keng ko'lamli o'zgarishlar</li>
+                            <li><strong>Daryo</strong> - hayot oqimi, doimiy harakat</li>
+                            <li><strong>Bulutli suv</strong> - noaniqlik, ichki izlanish</li>
+                        </ul>
+                        <p>Suv tushlari ko'pincha sizning hissiy holatingizni ifodalaydi. Toza va oqar suv ijobiy, bulg'anchiq suv esa salbiy belgi hisoblanadi.</p>
+                    `
                 },
                 'hayvon': {
                     title: "Hayvonlar Tushlarda Nimani Anglatadi?",
-                    content: "Arslon, ilon, qush va boshqa hayvonlarni ko'rish tushlarining maxsus ma'nolari..."
+                    content: `
+                        <h3>Hayvon tushlarining ma'nolari</h3>
+                        <p>Har bir hayvonning tushda o'ziga xos ma'nosi bor:</p>
+                        <ul style="margin: 15px 0; padding-left: 20px;">
+                            <li><strong>Arslon</strong> - kuch, hokimiyat, liderlik</li>
+                            <li><strong>Ilon</strong> - fitna, xavf, yashirin dushmanlar</li>
+                            <li><strong>Qush</strong> - xabar, yangilik, erkinlik</li>
+                            <li><strong>Ot</strong> - erkinlik, safar, kuch</li>
+                            <li><strong>It</strong> - sadoqat, do'stlik, himoya</li>
+                            <li><strong>Mushuk</strong> - mustaqillik, ayollik, sir</li>
+                        </ul>
+                        <p>Hayvonning rangi va harakati ham muhim ahamiyatga ega. Oq hayvonlar poklik, qora hayvonlar esa xavf belgisi bo'lishi mumkin.</p>
+                    `
                 },
                 'ish': {
                     title: "Ish va Karera Tushlarining Tahlili",
-                    content: "Ish joyi, pul, loyiha va kasbiy muvaffaqiyat haqidagi tushlarning ma'nolari..."
+                    content: `
+                        <h3>Ish bilan bog'liq tushlar</h3>
+                        <p>Bu tushlar ko'pincha real hayotingizdagi vaziyatlarni aks ettiradi:</p>
+                        <ul style="margin: 15px 0; padding-left: 20px;">
+                            <li><strong>Yangi ish</strong> - yangi boshlanish, imkoniyatlar</li>
+                            <li><strong>Ishdan bo'shatilish</strong> - o'zgarishlarga tayyorlik, qo'rquv</li>
+                            <li><strong>Ishda muvaffaqiyat</strong> - haqiqiy imkoniyatlar, o'ziga ishonch</li>
+                            <li><strong>Hamkasblar bilan munosabat</strong> - ijtimoiy munosabatlar, jamoa ishi</li>
+                            <li><strong>Ish joyi</strong> - o'zingizni qayerda ko'rishingiz, maqsadlar</li>
+                        </ul>
+                        <p>Bu tushlar karyera qarorlaringizga yordam beradi va kelajakdagi imkoniyatlarni ko'rsatishi mumkin.</p>
+                    `
                 }
             };
+            const article = articles[type] || {
+                title: "Maqola tayyorlanmoqda",
+                content: "<p>Ushbu maqola tez orada qo'shiladi. Iltimos, kuting!</p>"
+            };
             
-            const article = articles[type];
-            alert(article.title + "\n\n" + article.content);
+            document.getElementById('modalTitle').textContent = article.title;
+            document.getElementById('modalContent').innerHTML = article.content;
+            document.getElementById('articleModal').style.display = 'flex';
         }
-        
-        // ===== BURJ HISOBLASH =====
+
+        // ===== MODAL FUNCTIONS =====
+        function closeModal() {
+            document.getElementById('articleModal').style.display = 'none';
+        }
+
+        // Click outside to close modal
+        document.getElementById('articleModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // ===== ZODIAC CALCULATION =====
         function calculateZodiac() {
-            playSound('click');
+            playButtonClickSound();
             
             const day = parseInt(document.getElementById('day').value);
             const month = parseInt(document.getElementById('month').value);
             
-            if (!day || day < 1 || day > 31) {
-                alert("Iltimos, to'g'ri kun kiriting (1-31)");
-                return;
-            }
-            
-            if (!month || month < 1 || month > 12) {
-                alert("Iltimos, to'g'ri oy kiriting (1-12)");
+            if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
+                playErrorSound();
+                alert('⚠️ Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.');
                 return;
             }
             
@@ -688,7 +1070,8 @@
             } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
                 zodiac = "Baliq"; symbol = "♓";
             }
-            playSound('success');
+            
+            playSuccessSound();
             
             const monthNames = {
                 1: 'Yanvar', 2: 'Fevral', 3: 'Mart', 4: 'Aprel',
@@ -696,43 +1079,56 @@
                 9: 'Sentabr', 10: 'Oktabr', 11: 'Noyabr', 12: 'Dekabr'
             };
             
-            const zodiacInfo = {
-                "Qo'y": "Faol, energik, yangi boshlanishlarni yaxshi ko'ruvchi",
-                "Buzoq": "Barqaror, ishonchli, sabrli va mehnatsevar",
-                "Egizak": "Qiziquvchan, muloqotchi, tez o'zgaruvchan",
-                "Qisqichbaqa": "Sezgir, oilaviy, himoyachi va sodiq",
-                "Arslon": "Karizmatik, yetakchi, ijodkor va jasur",
-                "Parizod": "Batafsil, tashkilotchi, mukammallikka intiluvchi",
-                "Tarozi": "Adolatli, munozarali, go'zallikni qadirlovchi",
-                "Chayon": "Intensiv, serg'ayrat, sirli va maqsadli",
-                "O'qotar": "Ozodlikni sevuvchi, sayohatchi, falsafiy",
-                "Echki": "Ambitsiyali, mas'uliyatli, disciplinali",
-                "Qovg'a": "Ijodiy, gumanist, mustaqil va innovatsion",
-                "Baliq": "Sezgir, ruhiy, xayolparast va mehribon"
-            };
-            
             document.getElementById('zodiac-result').innerHTML = `
                 <div class="zodiac-result">
-                    <h3 style="color: var(--accent); margin-bottom: 20px;">✨ Sizning burjingiz</h3>
+                    <h3 class="result-title">✨ Sizning burjingiz</h3>
                     <div class="zodiac-display">${zodiac} ${symbol}</div>
-                    <p style="color: #aaa; margin-top: 10px;">
-                        Tug'ilgan sana: ${day} - ${monthNames[month]}
-                    </p>
-                    
-                    <div class="zodiac-details">
-                        <div class="detail-item">
-                            <span style="color: var(--accent);">📖</span>
-                            <div>
-                                <strong>Tavsif:</strong><br>
-                                ${zodiacInfo[zodiac]}
-                            </div>
+                    <p class="birth-date">Tug'ilgan sana: ${day} - ${monthNames[month]}</p>
+                </div>
+            `;
+            
+            const zodiacDetails = {
+                "Qo'y": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi. Liderlik qobiliyati yuqori.",
+                "Buzoq": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi. Sabrli va mehnatsevar.",
+                "Egizak": "Qiziquvchan, muloqotchi va tez o'zgaruvchan. Ko'p qirrali va ijodiy.",
+                "Qisqichbaqa": "Sezgir, oilaviy va himoyachi. Hissiyotlarga boy va sodiq.",
+                "Arslon": "Karizmatik, yetakchi va ijodkor. Diqqat markazida bo'lishni yaxshi ko'radi.",
+                "Parizod": "Batafsil, tashkilotchi va amaliy. Mukammallikka intiluvchi.",
+                "Tarozi": "Adolatli, munozarali va go'zallikni qadirlovchi. Diplomatik va ijtimoiy.",
+                "Chayon": "Intensiv, serg'ayrat va sirli. Kuchli irodali va maqsadli.",
+                "O'qotar": "Ozodlikni sevuvchi, sayohatchi va falsafiy. Optimistik va keng qarashli.",
+                "Echki": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi. Disciplinali va sabrli.",
+                "Qovg'a": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi. Mustaqil va innovatsion.",
+                "Baliq": "Sezgir, ruhiy va xayolparast. Mehribon va boshqalarga yordam berishni yaxshi ko'radi."
+            };
+            document.getElementById('zodiac-info').innerHTML = `
+                <div class="zodiac-details">
+                    <div class="detail-item">
+                        <div class="detail-icon">📖</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Tavsif</h4>
+                            <p>${zodiacDetails[zodiac]}</p>
                         </div>
-                        <div class="detail-item">
-                            <span style="color: var(--accent);">⭐</span>
-                            <div>
-                                <strong>Omadli raqam:</strong><br>
-                                ${(day % 9) || 9}
-                            </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">🎯</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Maqsad</h4>
+                            <p>Yuksalish va rivojlanish</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">💖</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Muvofiqlik</h4>
+                            <p>${zodiac === "Qo'y" ? "Buzoq" : zodiac === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}</p>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-icon">⭐</div>
+                        <div>
+                            <h4 style="color: var(--accent); margin-bottom: 5px;">Omadli raqam</h4>
+                            <p>${(day % 9) || 9}</p>
                         </div>
                     </div>
                 </div>
@@ -740,29 +1136,44 @@
             
             document.getElementById('share-section').style.display = 'block';
             
-            // Natijaga scroll qilish
             setTimeout(() => {
                 document.getElementById('zodiac-result').scrollIntoView({ 
                     behavior: 'smooth', 
-                    block: 'center' 
+                    block: 'start' 
                 });
-            }, 100);
+            }, 300);
         }
-        
-        // ===== ULASHISH FUNKSIYALARI =====
-        function shareTelegram() {
-            playSound('click');
-            const zodiac = document.querySelector('.zodiac-display')?.textContent || 'Burjim';
-            const text = `Mening burjim: ${zodiac}\nTushVaBurj.uz saytida aniqladim`;
+
+        // ===== SHARE FUNCTIONS =====
+        function shareViaTelegram() {
+            playButtonClickSound();
+            const zodiacResult = document.querySelector('.zodiac-display')?.textContent || 'Burjimni aniqladim';
+            const date = document.querySelector('.birth-date')?.textContent || '';
+            const text = `Mening burjim: ${zodiacResult}\n${date}\n\nAniqlash uchun: TushVaBurj.uz`;
             const url = `https://t.me/share/url?url=${encodeURIComponent('https://tushvaburj.uz')}&text=${encodeURIComponent(text)}`;
             window.open(url, '_blank');
         }
         
-        function shareWhatsApp() {
-            playSound('click');
-            const zodiac = document.querySelector('.zodiac-display')?.textContent || 'Burjim';
-            const text = `Mening burjim: ${zodiac}%0ATushVaBurj.uz saytida aniqladim`;
-            window.open(`https://wa.me/?text=${text}`, '_blank');
+        function shareViaWhatsApp() {
+            playButtonClickSound();
+            const zodiacResult = document.querySelector('.zodiac-display')?.textContent || 'Burjimni aniqladim';
+            const date = document.querySelector('.birth-date')?.textContent || '';
+            const text = `Mening burjim: ${zodiacResult}\n${date}\n\nAniqlash uchun: TushVaBurj.uz`;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+        
+        function copyResultToClipboard() {
+            playButtonClickSound();
+            const zodiacResult = document.querySelector('.zodiac-display')?.textContent || 'Burjimni aniqladim';
+            const date = document.querySelector('.birth-date')?.textContent || '';
+            const text = `Mening burjim: ${zodiacResult}\n${date}\n\nAniqlash uchun: TushVaBurj.uz`;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                alert('✅ Natija nusxalandi! Endi istalgan joyga joylashtirishingiz mumkin.');
+            }).catch(err => {
+                alert('❌ Nusxalash amalga oshmadi. Iltimos, qayta urinib ko\'ring.');
+            });
         }
     </script>
 </body>
