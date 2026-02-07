@@ -151,8 +151,8 @@
             font-weight: 700;
             color: var(--accent);
         }
-
-            /* ===== DREAM INTERPRETATION ===== */
+        
+        /* ===== DREAM INTERPRETATION ===== */
         .hero-text {
             font-size: 1.2rem;
             color: #ccc;
@@ -198,8 +198,7 @@
             font-weight: 600;
             margin-bottom: 20px;
         }
-        
-        /* PO'ST BANNER UCHUN JOY */
+          /* PO'ST BANNER UCHUN JOY */
         .post-banner-placeholder {
             height: 200px;
             background: linear-gradient(135deg, rgba(106, 17, 203, 0.3), rgba(37, 117, 252, 0.2));
@@ -418,8 +417,8 @@
             gap: 20px;
             padding: 20px 0;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        .detail-item:last-child {
+            }
+             .detail-item:last-child {
             border-bottom: none;
         }
         
@@ -528,56 +527,6 @@
             animation: float 3s ease-in-out infinite;
         }
         
-        /* ===== MODAL ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .modal-content {
-            background: var(--card-bg);
-            border-radius: 24px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            border: 1px solid var(--card-border);
-            backdrop-filter: blur(20px);
-            animation: fadeIn 0.3s ease-out;
-        }
-        
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-        
-        .modal-title {
-            font-size: 1.8rem;
-            color: var(--accent);
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            color: #aaa;
-            font-size: 2rem;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-        
-        .modal-close:hover {
-            color: var(--accent);
-        }
-        
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container {
@@ -628,35 +577,6 @@
                 width: 100%;
             }
         }
-         @media (max-width: 480px) {
-            .logo {
-                font-size: 1.8rem;
-            }
-            
-            .card {
-                padding: 20px;
-            }
-            
-            .card-header {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            
-            .zodiac-display {
-                font-size: 2.2rem;
-            }
-            
-            .zodiac-result {
-                padding: 30px 20px;
-            }
-            
-            .calculate-btn {
-                padding: 18px 30px;
-                font-size: 1.1rem;
-                width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
@@ -668,8 +588,7 @@
             </div>
             <p class="tagline">Professional tush tahlili va burj platformasi ✨</p>
         </header>
-
-        <!-- NAVIGATION -->
+             <!-- NAVIGATION -->
         <nav class="navigation">
             <button class="nav-btn active" onclick="switchSection('tush')">
                 <span>🔮</span> Tush Tabiri
@@ -695,10 +614,13 @@
                 <div class="blog-posts">
                     <!-- Post 1 -->
                     <div class="post-card">
-                        <!-- PO'ST UCHUN JOY -->
                         <div class="post-banner-placeholder">
-                            <!-- SIZ BU YERGA RASM QO'YASIZ -->
-                            <!-- <img src="suv-tushlari-banner.jpg" alt="Suv tushlari"> -->
+                            <!-- SIZ PO'STNI BU YERGA QO'YASIZ -->
+                            <div style="text-align: center; padding: 20px;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">💧</div>
+                                <div>Suv tushlari po'sti</div>
+                                <div style="font-size: 0.9rem; margin-top: 10px;">Siz bu yerga rasm qo'yasiz</div>
+                            </div>
                         </div>
                         <span class="post-category">💧 Suv tushlari</span>
                         <h3 class="post-title">Suv Ko'rish Tushining To'liq Tahlili</h3>
@@ -715,10 +637,13 @@
                     
                     <!-- Post 2 -->
                     <div class="post-card">
-                        <!-- PO'ST UCHUN JOY -->
                         <div class="post-banner-placeholder">
-                            <!-- SIZ BU YERGA RASM QO'YASIZ -->
-                            <!-- <img src="hayvon-tushlari-banner.jpg" alt="Hayvon tushlari"> -->
+                            <!-- SIZ PO'STNI BU YERGA QO'YASIZ -->
+                            <div style="text-align: center; padding: 20px;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">🐍</div>
+                                <div>Hayvon tushlari po'sti</div>
+                                <div style="font-size: 0.9rem; margin-top: 10px;">Siz bu yerga rasm qo'yasiz</div>
+                            </div>
                         </div>
                         <span class="post-category">🐍 Hayvon tushlari</span>
                         <h3 class="post-title">Hayvonlar Tushlarda Nimani Anglatadi?</h3>
@@ -735,10 +660,13 @@
                     
                     <!-- Post 3 -->
                     <div class="post-card">
-                        <!-- PO'ST UCHUN JOY -->
                         <div class="post-banner-placeholder">
-                            <!-- SIZ BU YERGA RASM QO'YASIZ -->
-                            <!-- <img src="ish-tushlari-banner.jpg" alt="Ish tushlari"> -->
+                            <!-- SIZ PO'STNI BU YERGA QO'YASIZ -->
+                            <div style="text-align: center; padding: 20px;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">💼</div>
+                                <div>Ish tushlari po'sti</div>
+                                <div style="font-size: 0.9rem; margin-top: 10px;">Siz bu yerga rasm qo'yasiz</div>
+                            </div>
                         </div>
                         <span class="post-category">💼 Ish tushlari</span>
                         <h3 class="post-title">Ish va Karera Tushlarining Tahlili</h3>
@@ -824,63 +752,8 @@
             </div>
         </section>
     </div>
-        <!-- MODAL FOR ARTICLES -->
-    <div id="articleModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 id="modalTitle" class="modal-title">Maqola</h3>
-                <button class="modal-close" onclick="closeModal()">×</button>
-            </div>
-            <div id="modalContent" style="color: #ccc; line-height: 1.7; max-height: 60vh; overflow-y: auto;"></div>
-        </div>
-    </div>
 
     <script>
-        // ===== SECTION SWITCHING =====
-        function switchSection(sectionId) {
-            playButtonClickSound();
-            
-            // Hide all sections
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active from all buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Set active button
-            const buttons = document.querySelectorAll('.nav-btn');
-            buttons.forEach(btn => {
-                if (btn.textContent.includes(sectionId === 'tush' ? 'Tush' : 'Burj')) {
-                    btn.classList.add('active');
-                }
-            });
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // ===== INITIAL LOAD =====
-        document.addEventListener('DOMContentLoaded', function() {
-            // Start with Tush Tabiri section
-            switchSection('tush');
-            
-            // Set current date
-            const today = new Date();
-            const dayInput = document.getElementById('day');
-            const monthSelect = document.getElementById('month');
-            
-            if (dayInput && monthSelect) {
-                dayInput.value = today.getDate();
-                monthSelect.value = today.getMonth() + 1;
-            }
-        });
-
         // ===== AUDIO FUNCTIONS =====
         function playSuccessSound() {
             try {
@@ -910,7 +783,6 @@
                 console.log("Audio not supported");
             }
         }
-        
         function playErrorSound() {
             try {
                 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -955,79 +827,142 @@
             }
         }
 
-        // ===== ARTICLE FUNCTIONS =====
-        function openArticle(type) {
+        // ===== SECTION SWITCHING - ASOSIY TO'G'RILASH =====
+        function switchSection(sectionId) {
             playButtonClickSound();
             
-            const articles = {
+            // 1. Barcha tugmalardan active klassini olib tashlash
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // 2. Barcha bo'limlarni yashirish
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // 3. Tanlangan tugmani active qilish
+            const activeButton = event.target.closest('.nav-btn');
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+            
+            // 4. Tanlangan bo'limni ko'rsatish
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        // ===== SAYT YUKLANGANDA - TUSH TABIRI BO'LIMINI AVVAL KO'RSATISH =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Faqat Tush Tabiri bo'limi ko'rinadi
+            switchSection('tush');
+            
+            // Barcha bo'limlarni yashirish (faqat JavaScript)
+            document.querySelectorAll('.section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Faqat tush bo'limini ko'rsatish
+            document.getElementById('tush').style.display = 'block';
+            
+            // Faqat tush tugmasi active bo'ladi
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.nav-btn[onclick*="tush"]').classList.add('active');
+            
+            // Calendar va input setup
+            const today = new Date();
+            const monthSelect = document.getElementById('month');
+            const dayInput = document.getElementById('day');
+            
+            if (monthSelect && dayInput) {
+                monthSelect.value = today.getMonth() + 1;
+                dayInput.value = today.getDate();
+            }
+        });
+
+        // ===== ARTICLE OPENING =====
+        function openArticle(type) {
+            playButtonClickSound();
+            const articleData = {
                 'suv': {
                     title: "Suv Ko'rish Tushining To'liq Tahlili",
-                    content: `
-                        <h3>Ibn Sirin ta'limoti asosida</h3>
-                        <p>Suv tushlari hayot, poklik va baraka ramzidir. Suvning holati tahlilga ta'sir qiladi:</p>
-                        <ul style="margin: 15px 0; padding-left: 20px;">
-                            <li><strong>Toza suv</strong> - omad, baraka, ruhiy poklik</li>
-                            <li><strong>Bulg'anchiq suv</strong> - qiyinchiliklar, muammolar</li>
-                            <li><strong>Dengiz</strong> - katta imkoniyatlar, keng ko'lamli o'zgarishlar</li>
-                            <li><strong>Daryo</strong> - hayot oqimi, doimiy harakat</li>
-                            <li><strong>Bulutli suv</strong> - noaniqlik, ichki izlanish</li>
-                        </ul>
-                        <p>Suv tushlari ko'pincha sizning hissiy holatingizni ifodalaydi. Toza va oqar suv ijobiy, bulg'anchiq suv esa salbiy belgi hisoblanadi.</p>
-                    `
+                    content: "Ibn Sirin ta'limotiga ko'ra suv tushlari hayot, poklik va baraka ramzidir. Suvning holati tahlilga ta'sir qiladi:\n\n1. Toza suv - omad, baraka\n2. Bulg'anchiq suv - qiyinchiliklar\n3. Dengiz - katta imkoniyatlar\n4. Daryo - hayot oqimi\n5. Bulutli suv - noaniqlik\n\nSuv tushlari ko'pincha hissiy holatni ifodalaydi."
                 },
                 'hayvon': {
                     title: "Hayvonlar Tushlarda Nimani Anglatadi?",
-                    content: `
-                        <h3>Hayvon tushlarining ma'nolari</h3>
-                        <p>Har bir hayvonning tushda o'ziga xos ma'nosi bor:</p>
-                        <ul style="margin: 15px 0; padding-left: 20px;">
-                            <li><strong>Arslon</strong> - kuch, hokimiyat, liderlik</li>
-                            <li><strong>Ilon</strong> - fitna, xavf, yashirin dushmanlar</li>
-                            <li><strong>Qush</strong> - xabar, yangilik, erkinlik</li>
-                            <li><strong>Ot</strong> - erkinlik, safar, kuch</li>
-                            <li><strong>It</strong> - sadoqat, do'stlik, himoya</li>
-                            <li><strong>Mushuk</strong> - mustaqillik, ayollik, sir</li>
-                        </ul>
-                        <p>Hayvonning rangi va harakati ham muhim ahamiyatga ega. Oq hayvonlar poklik, qora hayvonlar esa xavf belgisi bo'lishi mumkin.</p>
-                    `
+                    content: "Har bir hayvonning tushda o'ziga xos ma'nosi bor:\n\n• Arslon - kuch, hokimiyat\n• Ilon - fitna, xavf\n• Qush - xabar, yangilik\n• Ot - erkinlik, safar\n• It - sadoqat, do'stlik\n• Mushuk - mustaqillik\n\nHayvonning rangi va harakati ham muhim ahamiyatga ega."
                 },
                 'ish': {
                     title: "Ish va Karera Tushlarining Tahlili",
-                    content: `
-                        <h3>Ish bilan bog'liq tushlar</h3>
-                        <p>Bu tushlar ko'pincha real hayotingizdagi vaziyatlarni aks ettiradi:</p>
-                        <ul style="margin: 15px 0; padding-left: 20px;">
-                            <li><strong>Yangi ish</strong> - yangi boshlanish, imkoniyatlar</li>
-                            <li><strong>Ishdan bo'shatilish</strong> - o'zgarishlarga tayyorlik, qo'rquv</li>
-                            <li><strong>Ishda muvaffaqiyat</strong> - haqiqiy imkoniyatlar, o'ziga ishonch</li>
-                            <li><strong>Hamkasblar bilan munosabat</strong> - ijtimoiy munosabatlar, jamoa ishi</li>
-                            <li><strong>Ish joyi</strong> - o'zingizni qayerda ko'rishingiz, maqsadlar</li>
-                        </ul>
-                        <p>Bu tushlar karyera qarorlaringizga yordam beradi va kelajakdagi imkoniyatlarni ko'rsatishi mumkin.</p>
-                    `
+                    content: "Ish bilan bog'liq tushlar ko'pincha real hayotingizdagi vaziyatlarni aks ettiradi:\n\n• Yangi ish - yangi boshlanish\n• Ishdan bo'shatilish - o'zgarishlarga tayyorlik\n• Ishda muvaffaqiyat - haqiqiy imkoniyatlar\n• Hamkasblar - ijtimoiy munosabatlar\n• Ish joyi - o'zingizni qayerda ko'rishingiz\n\nBu tushlar karyera qarorlaringizga yordam beradi."
                 }
             };
-            const article = articles[type] || {
+            
+            const article = articleData[type] || {
                 title: "Maqola tayyorlanmoqda",
-                content: "<p>Ushbu maqola tez orada qo'shiladi. Iltimos, kuting!</p>"
+                content: "Ushbu maqola tez orada qo'shiladi. Kuting!"
             };
             
-            document.getElementById('modalTitle').textContent = article.title;
-            document.getElementById('modalContent').innerHTML = article.content;
-            document.getElementById('articleModal').style.display = 'flex';
+            showArticleModal(article.title, article.content);
         }
-
-        // ===== MODAL FUNCTIONS =====
-        function closeModal() {
-            document.getElementById('articleModal').style.display = 'none';
+            // ===== MODAL FUNCTIONS =====
+        function showArticleModal(title, content) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                z-index: 1000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                animation: fadeIn 0.3s ease-out;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: rgba(255, 255, 255, 0.08);
+                    border: 1px solid rgba(255, 255, 255, 0.12);
+                    border-radius: 20px;
+                    padding: 40px;
+                    max-width: 500px;
+                    width: 90%;
+                    backdrop-filter: blur(20px);
+                    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+                ">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h3 style="font-size: 1.8rem; color: #ffcc00;">${title}</h3>
+                        <button onclick="this.closest('.modal').remove()" style="
+                            background: none;
+                            border: none;
+                            color: #aaa;
+                            font-size: 2rem;
+                            cursor: pointer;
+                            transition: color 0.3s ease;
+                        ">×</button>
+                    </div>
+                    <p style="color: #ccc; line-height: 1.7; white-space: pre-line;">${content}</p>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Click outside to close
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
         }
-
-        // Click outside to close modal
-        document.getElementById('articleModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
-        });
 
         // ===== ZODIAC CALCULATION =====
         function calculateZodiac() {
@@ -1038,37 +973,37 @@
             
             if (!day || !month || day < 1 || day > 31 || month < 1 || month > 12) {
                 playErrorSound();
-                alert('⚠️ Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.');
+                showArticleModal('Xatolik', '⚠️ Iltimos, kun (1-31) va oy (1-12) ni to\'g\'ri kiriting.');
                 return;
             }
             
+            // Zodiac calculation
             let zodiac = '';
-            let symbol = '';
             
             if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
-                zodiac = "Qo'y"; symbol = "♈";
+                zodiac = 'Qo\'y';
             } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
-                zodiac = "Buzoq"; symbol = "♉";
+                zodiac = 'Buzoq';
             } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
-                zodiac = "Egizak"; symbol = "♊";
+                zodiac = 'Egizak';
             } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
-                zodiac = "Qisqichbaqa"; symbol = "♋";
+                zodiac = 'Qisqichbaqa';
             } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
-                zodiac = "Arslon"; symbol = "♌";
+                zodiac = 'Arslon';
             } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
-                zodiac = "Parizod"; symbol = "♍";
+                zodiac = 'Parizod';
             } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
-                zodiac = "Tarozi"; symbol = "♎";
+                zodiac = 'Tarozi';
             } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
-                zodiac = "Chayon"; symbol = "♏";
+                zodiac = 'Chayon';
             } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
-                zodiac = "O'qotar"; symbol = "♐";
+                zodiac = 'O\'qotar';
             } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
-                zodiac = "Echki"; symbol = "♑";
+                zodiac = 'Echki';
             } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
-                zodiac = "Qovg'a"; symbol = "♒";
+                zodiac = 'Qovg\'a';
             } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
-                zodiac = "Baliq"; symbol = "♓";
+                zodiac = 'Baliq';
             }
             
             playSuccessSound();
@@ -1079,55 +1014,80 @@
                 9: 'Sentabr', 10: 'Oktabr', 11: 'Noyabr', 12: 'Dekabr'
             };
             
+            const zodiacSymbols = {
+                'Qo\'y': '♈', 'Buzoq': '♉', 'Egizak': '♊', 'Qisqichbaqa': '♋',
+                'Arslon': '♌', 'Parizod': '♍', 'Tarozi': '♎', 'Chayon': '♏',
+                'O\'qotar': '♐', 'Echki': '♑', 'Qovg\'a': '♒', 'Baliq': '♓'
+            };
+            
+            const zodiacDates = {
+                'Qo\'y': '21-mart - 19-aprel',
+                'Buzoq': '20-aprel - 20-may',
+                'Egizak': '21-may - 20-iyun',
+                'Qisqichbaqa': '21-iyun - 22-iyul',
+                'Arslon': '23-iyul - 22-avgust',
+                'Parizod': '23-avgust - 22-sentabr',
+                'Tarozi': '23-sentabr - 22-oktabr',
+                'Chayon': '23-oktabr - 21-noyabr',
+                'O\'qotar': '22-noyabr - 21-dekabr',
+                'Echki': '22-dekabr - 19-yanvar',
+                'Qovg\'a': '20-yanvar - 18-fevral',
+                'Baliq': '19-fevral - 20-mart'
+            };
+            
+            // Display result
             document.getElementById('zodiac-result').innerHTML = `
                 <div class="zodiac-result">
                     <h3 class="result-title">✨ Sizning burjingiz</h3>
-                    <div class="zodiac-display">${zodiac} ${symbol}</div>
+                    <div class="zodiac-display">${zodiac} ${zodiacSymbols[zodiac]}</div>
                     <p class="birth-date">Tug'ilgan sana: ${day} - ${monthNames[month]}</p>
+                    <p class="birth-date">Burj davri: ${zodiacDates[zodiac]}</p>
                 </div>
             `;
             
-            const zodiacDetails = {
-                "Qo'y": "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi. Liderlik qobiliyati yuqori.",
-                "Buzoq": "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi. Sabrli va mehnatsevar.",
-                "Egizak": "Qiziquvchan, muloqotchi va tez o'zgaruvchan. Ko'p qirrali va ijodiy.",
-                "Qisqichbaqa": "Sezgir, oilaviy va himoyachi. Hissiyotlarga boy va sodiq.",
-                "Arslon": "Karizmatik, yetakchi va ijodkor. Diqqat markazida bo'lishni yaxshi ko'radi.",
-                "Parizod": "Batafsil, tashkilotchi va amaliy. Mukammallikka intiluvchi.",
-                "Tarozi": "Adolatli, munozarali va go'zallikni qadirlovchi. Diplomatik va ijtimoiy.",
-                "Chayon": "Intensiv, serg'ayrat va sirli. Kuchli irodali va maqsadli.",
-                "O'qotar": "Ozodlikni sevuvchi, sayohatchi va falsafiy. Optimistik va keng qarashli.",
-                "Echki": "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi. Disciplinali va sabrli.",
-                "Qovg'a": "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi. Mustaqil va innovatsion.",
-                "Baliq": "Sezgir, ruhiy va xayolparast. Mehribon va boshqalarga yordam berishni yaxshi ko'radi."
+            // Zodiac descriptions
+            const zodiacDescriptions = {
+                'Qo\'y': "Faol, energik va yangi boshlanishlarni yaxshi ko'ruvchi. Liderlik qobiliyati yuqori, lekin sabrsiz.",
+                'Buzoq': "Barqaror, ishonchli va moddiy narsalarga qadriyat beruvchi. Sabrli va mehnatsevar.",
+                'Egizak': "Qiziquvchan, muloqotchi va tez o'zgaruvchan. Ko'p qirrali va ijodiy.",
+                'Qisqichbaqa': "Sezgir, oilaviy va himoyachi. Hissiyotlarga boy va sodiq.",
+                'Arslon': "Karizmatik, yetakchi va ijodkor. Diqqat markazida bo'lishni yaxshi ko'radi.",
+                'Parizod': "Batafsil, tashkilotchi va amaliy. Mukammallikka intiluvchi.",
+                'Tarozi': "Adolatli, munozarali va go'zallikni qadirlovchi. Diplomatik va ijtimoiy.",
+                'Chayon': "Intensiv, serg'ayrat va sirli. Kuchli irodali va maqsadli.",
+                'O\'qotar': "Ozodlikni sevuvchi, sayohatchi va falsafiy. Optimistik va keng qarashli.",
+                'Echki': "Ambitsiyali, mas'uliyatli va muvaffaqiyatga intiluvchi. Disciplinali va sabrli.",
+                'Qovg\'a': "Ijodiy, gumanist va ijtimoiy adolat uchun kurashuvchi. Mustaqil va innovatsion.",
+                'Baliq': "Sezgir, ruhiy va xayolparast. Mehribon va boshqalarga yordam berishni yaxshi ko'radi."
             };
-            document.getElementById('zodiac-info').innerHTML = `
+            
+            document.getElementById('zodiac-info').innerHTML =
                 <div class="zodiac-details">
                     <div class="detail-item">
                         <div class="detail-icon">📖</div>
-                        <div>
-                            <h4 style="color: var(--accent); margin-bottom: 5px;">Tavsif</h4>
-                            <p>${zodiacDetails[zodiac]}</p>
+                        <div class="detail-content">
+                            <h4>Tavsif</h4>
+                            <p>${zodiacDescriptions[zodiac]}</p>
                         </div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-icon">🎯</div>
-                        <div>
-                            <h4 style="color: var(--accent); margin-bottom: 5px;">Maqsad</h4>
-                            <p>Yuksalish va rivojlanish</p>
+                        <div class="detail-content">
+                            <h4>Kuchli tomonlari</h4>
+                            <p>${getStrength(zodiac)}</p>
                         </div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-icon">💖</div>
-                        <div>
-                            <h4 style="color: var(--accent); margin-bottom: 5px;">Muvofiqlik</h4>
-                            <p>${zodiac === "Qo'y" ? "Buzoq" : zodiac === "Buzoq" ? "Qisqichbaqa" : "Tarozi"}</p>
+                        <div class="detail-content">
+                            <h4>Muvofiqlik</h4>
+                            <p>${getCompatibility(zodiac)}</p>
                         </div>
                     </div>
                     <div class="detail-item">
                         <div class="detail-icon">⭐</div>
-                        <div>
-                            <h4 style="color: var(--accent); margin-bottom: 5px;">Omadli raqam</h4>
+                        <div class="detail-content">
+                            <h4>Omadli raqam</h4>
                             <p>${(day % 9) || 9}</p>
                         </div>
                     </div>
@@ -1142,6 +1102,42 @@
                     block: 'start' 
                 });
             }, 300);
+        }
+        
+        function getStrength(zodiac) {
+            const strengths = {
+                'Qo\'y': "Bravura, liderlik, halollik",
+                'Buzoq': "Barqarorlik, sabr, mehnatsevarlik",
+                'Egizak': "Muloqot, moslashuvchanlik, aqlli",
+                'Qisqichbaqa': "Sezgirlik, himoyachilik, sadoqat",
+                'Arslon': "Karizma, jasurlik, keng qalb",
+                'Parizod': "Tashkilotchilik, aniqlik, mehnatsevarlik",
+                'Tarozi': "Adolat, diplomatiklik, go'zallik sevgisi",
+                'Chayon': "Iroda, serg'ayratlik, sir",
+                'O\'qotar': "Optimizm, sayohat sevgisi, donolik",
+                'Echki': "Ambitsiya, mas'uliyat, disiplina",
+                'Qovg\'a': "Ijodiy, innovatsion, mustaqil",
+                'Baliq': "Sezgirlik, mehribonlik, xayolparast"
+            };
+            return strengths[zodiac];
+        }
+        
+        function getCompatibility(zodiac) {
+            const compatibilities = {
+                'Qo\'y': "Buzoq, Arslon",
+                'Buzoq': "Qo'y, Parizod",
+                'Egizak': "Tarozi, Qovg'a",
+                'Qisqichbaqa': "Buzoq, Baliq",
+                'Arslon': "Qo'y, Tarozi",
+                'Parizod': "Buzoq, Echki",
+                'Tarozi': "Egizak, Arslon",
+                'Chayon': "Baliq, Chayon",
+                'O\'qotar': "Chayon, Qovg'a",
+                'Echki': "Parizod, Buzoq",
+                'Qovg\'a': "Egizak, O'qotar",
+                'Baliq': "Qisqichbaqa, Chayon"
+            };
+            return compatibilities[zodiac];
         }
 
         // ===== SHARE FUNCTIONS =====
@@ -1168,11 +1164,10 @@
             const zodiacResult = document.querySelector('.zodiac-display')?.textContent || 'Burjimni aniqladim';
             const date = document.querySelector('.birth-date')?.textContent || '';
             const text = `Mening burjim: ${zodiacResult}\n${date}\n\nAniqlash uchun: TushVaBurj.uz`;
-            
-            navigator.clipboard.writeText(text).then(() => {
-                alert('✅ Natija nusxalandi! Endi istalgan joyga joylashtirishingiz mumkin.');
+             navigator.clipboard.writeText(text).then(() => {
+                showArticleModal('Muvaffaqiyat', 'Natija nusxalandi! Endi istalgan joyga joylashtirishingiz mumkin.');
             }).catch(err => {
-                alert('❌ Nusxalash amalga oshmadi. Iltimos, qayta urinib ko\'ring.');
+                showArticleModal('Xatolik', 'Nusxalash amalga oshmadi. Iltimos, qayta urinib ko\'ring.');
             });
         }
     </script>
