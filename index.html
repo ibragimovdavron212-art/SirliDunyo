@@ -1054,6 +1054,17 @@
                             border-top: 1px solid #ddd; 
                             padding-top: 20px; 
                         }
+                       .footer p {
+    word-break: break-word; /* Uzun so'zlarni uzib yozadi */
+    overflow-wrap: break-word; /* Chiqizdan chiqib ketmasligi */
+}
+
+@media (max-width: 480px) {
+    .footer p {
+        font-size: 0.85rem; /* Mobilda kichikroq */
+        line-height: 1.4;
+    }
+}
                         @media print {
                             body { padding: 0; }
                             .print-container { border: none; }
