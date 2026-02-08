@@ -470,8 +470,18 @@
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
-        /* RESPONSIVE */
+        .footer p {
+    word-break: break-word; /* Uzun so'zlarni uzib yozadi */
+    overflow-wrap: break-word; /* Chiqizdan chiqib ketmasligi */
+}
+
+@media (max-width: 480px) {
+    .footer p {
+        font-size: 0.85rem; /* Mobilda kichikroq */
+        line-height: 1.4;
+    }
+}
+     /* RESPONSIVE */
         @media (max-width: 768px) {
             .logo {
                 font-size: 2rem;
