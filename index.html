@@ -3,288 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>✨ TushVaBurj.uz | Tush Tahlili va Burj Platformasi</title>
+    <title>TushVaBurj.uz | Tush Tahlili va Burj</title>
     <style>
-        :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ffcc00;
-            --dark: #0a0a1a;
-            --light: #f8f9fa;
-            --card-bg: rgba(255, 255, 255, 0.08);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--dark) 0%, #1a1a2e 100%);
-            color: var(--light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+            color: white;
             min-height: 100vh;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
         
-        /* LOGO ANIMATSIYASI - KICHIKROQ QILINDI */
+        /* LOGO ANIMATSIYASI */
         @keyframes logoFloat {
-            0%, 100% { 
-                transform: translateY(0) scale(1);
-                text-shadow: 0 0 10px rgba(255, 204, 0, 0.5),
-                           0 0 20px rgba(255, 204, 0, 0.3);
-            }
-            50% { 
-                transform: translateY(-5px) scale(1.02);
-                text-shadow: 0 0 15px rgba(255, 204, 0, 0.8),
-                           0 0 30px rgba(255, 204, 0, 0.5);
-            }
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.02); }
         }
         
         @keyframes logoGlow {
-            0% { 
-                background-position: 0% 50%;
-            }
-            50% { 
-                background-position: 100% 50%;
-            }
-            100% { 
-                background-position: 0% 50%;
-            }
+            0% { text-shadow: 0 0 10px #ffcc00; }
+            50% { text-shadow: 0 0 20px #ffcc00; }
+            100% { text-shadow: 0 0 10px #ffcc00; }
         }
         
-        /* HEADER */
-        .header {
-            text-align: center;
-            padding: 30px 0 20px;
-        }
+        .header { text-align: center; padding: 30px 0; }
         
         .logo {
-            font-size: 2.5rem; /* KICHIKROQ QILINDI */
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--accent), #ff6b6b, var(--primary), #2575fc);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #ffcc00;
             margin-bottom: 10px;
             cursor: pointer;
             display: inline-block;
-            animation: logoFloat 4s infinite ease-in-out, logoGlow 3s infinite ease-in-out;
+            animation: logoFloat 3s infinite ease-in-out, logoGlow 2s infinite;
         }
         
-        .logo:hover {
-            animation: logoFloat 2s infinite ease-in-out, logoGlow 1.5s infinite ease-in-out;
-        }
-        
-        .tagline {
-            font-size: 1.1rem;
-            color: #aaa;
-            font-weight: 300;
-        }
+        .tagline { color: #aaa; font-size: 1rem; }
         
         /* NAVIGATION */
-        .navigation {
+        .tabs {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 30px 0;
+            gap: 10px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
         
-        .nav-btn {
-            padding: 14px 32px;
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            color: var(--light);
-            border-radius: 12px;
+        .tab {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 10px;
+            color: white;
             font-size: 1rem;
-            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            transition: all 0.3s;
         }
         
-        .nav-btn:hover {
-            background: rgba(106, 17, 203, 0.2);
-            transform: translateY(-2px);
-            border-color: var(--primary);
-        }
-        
-        .nav-btn.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-color: transparent;
-            box-shadow: 0 8px 25px rgba(106, 17, 203, 0.3);
-        }
+        .tab:hover { background: rgba(106, 17, 203, 0.3); }
+        .tab.active { background: linear-gradient(135deg, #6a11cb, #2575fc); }
         
         /* SECTIONS */
-        .section {
-            display: none;
-        }
-        
-        .section.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
+        .section { display: none; }
+        .section.active { display: block; animation: fadeIn 0.5s ease; }
         
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        /* CARDS */
+        /* CARD */
         .card {
-            background: var(--card-bg);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
             padding: 30px;
             margin-bottom: 30px;
-            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .card-icon {
+        .section-title {
+            color: #ffcc00;
             font-size: 1.8rem;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(106, 17, 203, 0.2);
-            border-radius: 10px;
-        }
-        
-        .card-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--accent);
-        }
-        
-        /* POST CARDS */
-        .blog-posts {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .post-card {
-            background: linear-gradient(145deg, rgba(106, 17, 203, 0.1), rgba(37, 117, 252, 0.05));
-            border: 1px solid rgba(106, 17, 203, 0.2);
-            border-radius: 16px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            height: 100%;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(106, 17, 203, 0.2);
-            border-color: var(--primary);
-        }
-        
-        .post-banner {
-            width: 100%;
-            height: 200px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            overflow: hidden;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            position: relative;
-        }
-        
-        .post-banner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .post-category {
-            display: inline-block;
-            padding: 6px 14px;
-            background: rgba(106, 17, 203, 0.2);
-            color: var(--accent);
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-        
-        .post-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-        
-        .post-excerpt {
-            color: #ccc;
-            font-size: 0.95rem;
             margin-bottom: 20px;
-            line-height: 1.6;
+            text-align: center;
         }
         
-        .post-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
+        /* TUSH QO'YISH - JUDDA ODDIY */
+        .simple-post-form {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+        
+        .simple-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+        
+        .simple-textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            min-height: 100px;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        
+        .simple-btn {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+        }
+        
+        /* O'QILGAN TUSHLAR - ODDIY */
+        .simple-posts {
+            display: grid;
+            gap: 15px;
+        }
+        
+        .simple-post {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #6a11cb;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .simple-post:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-3px);
+        }
+        
+        .simple-post-title {
+            color: #ffcc00;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .simple-post-excerpt {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        .simple-post-full {
+            display: none;
+            margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ddd;
+            line-height: 1.7;
         }
         
-        .post-date {
-            font-size: 0.85rem;
+        .simple-post-full.show {
+            display: block;
+        }
+        
+        .simple-post-meta {
             color: #888;
-        }
-        
-        .read-more {
-            color: #ffcc00;
-            text-decoration: none;
-            font-weight: 600;
             font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: color 0.3s ease;
+            margin-top: 10px;
         }
         
-        .read-more:hover {
-            color: #ffdd44;
-        }
-        
-        /* ZODIAC CALCULATOR */
-        .zodiac-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-text {
-            text-align: center;
-            color: #aaa;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-        
-        .input-group {
+        /* BURJ HISOBLASH */
+        .zodiac-inputs {
             display: flex;
             gap: 20px;
-            margin: 30px 0;
-            align-items: center;
             justify-content: center;
+            margin: 30px 0;
             flex-wrap: wrap;
         }
         
@@ -292,692 +198,219 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            min-width: 150px;
         }
         
         .date-input label {
-            font-size: 0.9rem;
+            color: #ffcc00;
             font-weight: 600;
-            color: var(--accent);
         }
         
         .date-input input,
         .date-input select {
-            padding: 14px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 12px;
-            color: var(--light);
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
             font-size: 1rem;
-            width: 150px;
             text-align: center;
         }
         
         .calculate-btn {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
             border: none;
-            padding: 16px 40px;
+            padding: 15px 40px;
             font-size: 1.1rem;
-            font-weight: 700;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
+            display: block;
             margin: 30px auto;
+            font-weight: 600;
         }
         
-        .calculate-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(106, 17, 203, 0.4);
-        }
-                /* RESULTS */
-        .result-section {
-            margin-top: 40px;
-        }
+        .calculate-btn:hover { transform: translateY(-2px); }
         
+        /* BURJ NATIJASI */
         .zodiac-result {
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.15), rgba(37, 117, 252, 0.1));
-            border: 1px solid rgba(106, 17, 203, 0.3);
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .zodiac-display {
-            font-size: 2.8rem;
-            font-weight: 800;
-            background: linear-gradient(45deg, var(--accent), #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 20px 0;
-            line-height: 1.2;
-            word-wrap: break-word;
-        }
-        
-        .zodiac-details {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 25px;
-            margin-top: 20px;
-        }
-        
-        .detail-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .detail-item:last-child {
-            border-bottom: none;
-        }
-        
-        .share-section {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .share-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-        
-        .share-btn {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        /* PRINT BUTTON QO'SHILDI */
-        .print-btn {
-            background: linear-gradient(135deg, #28a745, #20c997);
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .print-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(40, 167, 69, 0.3);
-        }
-        
-        /* ABOUT SECTION */
-        .about-info {
-            background: linear-gradient(135deg, rgba(106, 17, 203, 0.15), rgba(37, 117, 252, 0.1));
-            border-radius: 24px;
+            background: rgba(106, 17, 203, 0.1);
+            border-radius: 15px;
             padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .zodiac-result.show { display: block; }
+        
+        .zodiac-name {
+            font-size: 3rem;
+            color: #ffcc00;
             margin: 20px 0;
         }
         
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .info-card {
-            background: rgba(255, 255, 255, 0.07);
-            border-radius: 16px;
-            padding: 25px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .info-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        
-        .info-title {
-            color: var(--accent);
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-        }
-        
-        .info-text {
-            color: #bbb;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-        
+        /* FOOTER */
         .footer {
             text-align: center;
             margin-top: 40px;
-            color: #aaa;
-            font-size: 0.9rem;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
         }
+        
         .footer p {
-    word-break: break-word; /* Uzun so'zlarni uzib yozadi */
-    overflow-wrap: break-word; /* Chiqizdan chiqib ketmasligi */
-}
-
-@media (max-width: 480px) {
-    .footer p {
-        font-size: 0.85rem; /* Mobilda kichikroq */
-        line-height: 1.4;
-    }
-}
-     /* RESPONSIVE */
+            margin-bottom: 10px;
+            word-break: break-word;
+        }
+        
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .nav-btn {
-                padding: 12px 20px;
-                font-size: 0.95rem;
-                width: 100%;
-            }
-            
-            .navigation {
-                flex-direction: column;
-            }
-            
-            .input-group {
-                flex-direction: column;
-            }
-            
-            .date-input {
-                width: 100%;
-            }
-            
-            .date-input input,
-            .date-input select {
-                width: 100%;
-            }
-            
-            .zodiac-display {
-                font-size: 2.2rem;
-            }
+            .container { padding: 15px; }
+            .logo { font-size: 2rem; }
+            .tab { padding: 10px 20px; font-size: 0.9rem; }
+            .card { padding: 20px; }
+            .zodiac-name { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <!-- HEADER -->
-        <header class="header">
-            <div class="logo" onclick="showSection('tush', this)">TushVaBurj.uz</div>
-            <p class="tagline">Professional tush tahlili va burj platformasi</p>
-        </header>
-
-        <!-- NAVIGATION -->
-        <nav class="navigation">
-            <button class="nav-btn active" onclick="showSection('tush', this)">
-                <span>🔮</span> Tush Tabiri
-            </button>
-            <button class="nav-btn" onclick="showSection('burj', this)">
-                <span>♈</span> Burj Aniqlash
-            </button>
-            <button class="nav-btn" onclick="showSection('about', this)">
-                <span>🌟</span> Biz haqimizda
-            </button>
-        </nav>
-
-        <!-- TUSH TABIRI SECTION -->
-<section id="tush" class="section active">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-icon">🔮</div>
-            <h2 class="card-title">Tush Tahlili</h2>
+        <div class="header">
+            <div class="logo" onclick="showSection('tush')">TushVaBurj.uz</div>
+            <p class="tagline">Tush tahlili va burj platformasi</p>
         </div>
-        <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 25px; line-height: 1.8;">
-            Tushlaringizning sirli ma'nolarini oching. Ibn Sirin ta'limoti asosida professional tush tahlillari.
-        </p>
         
-        <div class="blog-posts">
-            <!-- Post 1 - Suv tushlari -->
-            <div class="post-card">
-                <span class="post-category">💧 Suv tushlari</span>
-                <h3 class="post-title">Suv Ko'rish Tushining To'liq Tahlili</h3>
-                <p class="post-excerpt">
-                    Ibn Sirin ta'limotiga ko'ra suv tushlari hayot, poklik va baraka ramzidir. 
-                    Suvning holati, rangi va harakati tushning ma'nosini belgilaydi...
+        <!-- NAVIGATION -->
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('tush')">🔮 Tush Tabiri</button>
+            <button class="tab" onclick="showSection('burj')">♈ Burj Aniqlash</button>
+            <button class="tab" onclick="showSection('about')">🌟 Biz haqimizda</button>
+        </div>
+        
+        <!-- TUSH TABIRI SECTION -->
+        <section id="tush" class="section active">
+            <div class="card">
+                <h2 class="section-title">Tush Tahlili</h2>
+                <p style="text-align: center; color: #ccc; margin-bottom: 30px;">
+                    Tushingizni kiriting va o'qing
                 </p>
-                <div class="post-meta">
-                    <span class="post-date">📅 15-yanvar, 2026</span>
-                    <a href="javascript:void(0)" class="read-more" onclick="openArticle('suv')">
-                        To'liq o'qish <span>→</span>
-                    </a>
-                </div>
                 
-                <!-- Po'stning butun kontenti (yashirin) -->
-                <div class="full-content" style="display: none;">
-                    <div class="article-body" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                        
-                        <h2 style="color: #ffcc00; margin-bottom: 25px;">Suv Ko'rish Tushining Haqiqiy Ma'nolari</h2>
-                        
-                        <p style="margin-bottom: 20px; line-height: 1.8;">
-                            <strong>Ibn Sirin ta'limotiga ko'ra</strong>, suv tushlari hayot, poklik va baraka ramzidir. 
-                            "Tobir-ul Ahlam" kitobida suvning turli shakllari va holatlari batafsil izohlangan.
-                        </p>
-                        
-                        <!-- 1. Toza Suv Ichish -->
-                        <div class="article-section" style="background: rgba(52, 168, 83, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #34a853;">
-                            <h3 style="color: #34a853; margin-bottom: 15px; font-size: 1.4rem;">✅ Toza Suv Ichish Tushining Tahlili</h3>
-                            <p style="margin-bottom: 15px;">
-                                <strong>Ibn Sirin talqini:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi"
-                            </p>
-                            <p><strong>Asosiy ma'nolari:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 25px;">
+                <!-- 1. TUSH QO'YISH FORMASI - JUDDA ODDIY -->
+                <div class="simple-post-form">
+                    <input type="text" 
+                           id="post-title" 
+                           class="simple-input" 
+                           placeholder="Tush nomi (masalan: Suv ichish)"
+                           maxlength="50">
+                    
+                    <textarea id="post-content" 
+                              class="simple-textarea" 
+                              placeholder="Tushingizni batafsil yozing..."
+                              maxlength="500"></textarea>
+                    
+                    <button class="simple-btn" onclick="addPost()">
+                        ✨ Tushni Saqlash
+                    </button>
+                </div>
+                             <!-- 2. O'QILGAN TUSHLAR -->
+                <h3 style="color: #ffcc00; margin-bottom: 20px;">📝 Mening tushlarim</h3>
+                <div id="posts-container" class="simple-posts">
+                    <!-- Bu yerda tushlar ko'rinadi -->
+                    <div class="simple-post" onclick="togglePost(this)">
+                        <div class="simple-post-title">Suv ichish</div>
+                        <div class="simple-post-excerpt">
+                            Men toza buloq suvi ichganimni ko'rdim. Suv shaffof va iliq edi...
+                        </div>
+                        <div class="simple-post-full">
+                            <p><strong>📖 Ibn Sirin talqini:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi"</p>
+                            <p><strong>✅ Ma'nolari:</strong></p>
+                            <ul style="padding-left: 20px; margin: 10px 0;">
                                 <li>Din mustahkamligi va imon kuchi</li>
                                 <li>Moliyaviy baraka va halol rizq</li>
-                                <li>Ruhiy poklik va ma'naviy barqarorlik</li>
-                                <li>Sog'lik yaxshilanishi va quvvatli immunitet</li>
+                                <li>Sog'lik yaxshilanishi</li>
                             </ul>
-                            <p><strong>Amaliy tavsiyalar:</strong></p>
-                            <ul style="padding-left: 25px;">
-                                <li>Yangi biznes yoki loyiha boshlash (3 kundan keyin)</li>
-                                <li>Bank hisob raqamini ochish yoki moliyaviy rejalashtirish</li>
-                                <li>Sog'lig'ingizni tekshirish va vitamin kursini boshlash</li>
-                            </ul>
+                            <p><strong>💡 Tavsiya:</strong> Yangi loyiha boshlash yoki moliyaviy rejalashtirish</p>
                         </div>
-                        
-                        <!-- 2. Daryoda Suzish -->
-                        <div class="article-section" style="background: rgba(37, 117, 252, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px; border-left: 5px solid #2575fc;">
-                            <h3 style="color: #2575fc; margin-bottom: 15px; font-size: 1.4rem;">🏊 Daryoda Suzish Tushining Ma'nolari</h3>
-                            <p style="margin-bottom: 15px;">
-                                <strong>Ibn Sirin talqini:</strong> "Daryoda suzayotganni ko'rsang, u hayotida yuksaladi"
-                            </p>
-                            <p><strong>Oqim yo'nalishiga qarab:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 25px;">
-                                <li><strong>Oqim bilan suzish:</strong> Hayotning tabiiy oqimiga moslashish, qulay imkoniyatlar</li>
-                                <li><strong>Oqimga qarshi suzish:</strong> Qiyinchiliklarni yengish, irodaviylik va matonat</li>
-                                <li><strong>Sokin suzish:</strong> Muvozanat, hayotda barqarorlik, ichki tinchlik</li>
-                            </ul>
-                            <p><strong>Karyera tavsiyalari:</strong></p>
-                            <ul style="padding-left: 25px;">
-                                <li>Rezyume va LinkedIn profilini yangilash</li>
-                                <li>Malaka oshirish kurslariga yozilish</li>
-                                <li>Rahbariyat bilan martaba rejalari haqida suhbatlashish</li>
-                            </ul>
-                        </div>
-                        
-                        <!-- 3. Suv Ranglariga qarab tahlil -->
-                        <div class="article-section" style="background: rgba(106, 17, 203, 0.1); padding: 25px; border-radius: 12px; margin-bottom: 30px;">
-                            <h3 style="color: #6a11cb; margin-bottom: 20px; font-size: 1.4rem;">🎨 Suv Ranglariga Qarab Tush Tahlili</h3>
-                            
-                            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
-                                <div style="background: rgba(0, 123, 255, 0.15); padding: 15px; border-radius: 8px;">
-                                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                        <div style="width: 20px; height: 20px; background: #007bff; border-radius: 50%; margin-right: 10px;"></div>
-                                        <strong style="color: #007bff;">Ko'k Suv</strong>
-                                    </div>
-                                    <p style="margin: 0; font-size: 0.95rem;">Sog'lik yaxshilanishi, ruhiy barqarorlik, tinchlik holati</p>
-                                </div>
-                                
-                                <div style="background: rgba(40, 167, 69, 0.15); padding: 15px; border-radius: 8px;">
-                                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                        <div style="width: 20px; height: 20px; background: #28a745; border-radius: 50%; margin-right: 10px;"></div>
-                                        <strong style="color: #28a745;">Yashil Suv</strong>
-                                    </div>
-                                    <p style="margin: 0; font-size: 0.95rem;">Moliyaviy baraka, o'sish, rivojlanish, yangi imkoniyatlar</p>
-                                </div>
-                                
-                                <div style="background: rgba(255, 255, 255, 0.15); padding: 15px; border-radius: 8px;">
-                                    <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                                        <div style="width: 20px; height: 20px; background: #ffffff; border-radius: 50%; margin-right: 10px;"></div>
-                                        <strong style="color: #ffffff;">Oq Suv</strong>
-                                    </div>
-                                    <p style="margin: 0; font-size: 0.95rem;">Poklik, ilhom, yangi boshlanish, ruhiy yangilanish</p>
-                                </div>
-                                
-                                <div style="background: rgba(108, 117, 125, 0.15); padding: 15px; border-radius: 8px;">
-
-          <!-- TUSH TABIRI SECTION -->
-<section id="tush" class="section active">
-    <div class="card">
-        <div class="card-header">
-            <div class="card-icon">🔮</div>
-            <h2 class="card-title">Tush Tahlili</h2>
-        </div>
-        <p style="font-size: 1.1rem; color: #ccc; margin-bottom: 25px; line-height: 1.8;">
-            Tushlaringizning sirli ma'nolarini oching. Ibn Sirin ta'limoti asosida professional tush tahlillari.
-        </p>
-        
-        <div class="blog-posts">
-            <!-- Post 1 - Suv tushlari -->
-            <div class="post-card">
-                <span class="post-category">💧 Suv tushlari</span>
-                <h3 class="post-title">Suv Ko'rish Tushining To'liq Tahlili</h3>
-                <p class="post-excerpt">
-                    Ibn Sirin ta'limotiga ko'ra suv tushlari hayot, poklik va baraka ramzidir. 
-                    Suvning holati, rangi va harakati tushning ma'nosini belgilaydi...
-                </p>
-                <div class="post-meta">
-                    <span class="post-date">📅 15-yanvar, 2026</span>
-                    <a href="javascript:void(0)" class="read-more" onclick="openArticle('suv', this)">
-                        To'liq o'qish <span>→</span>
-                    </a>
-                </div>
-                
-                <!-- Po'stning butun kontenti (yashirin) -->
-                <div class="full-content" style="display: none; overflow: hidden;">
-                    <div class="article-body" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word;">
-                        
-                        <h2 style="color: #ffcc00; margin-bottom: 25px; font-size: 1.8rem; line-height: 1.3; word-wrap: break-word;">Suv Ko'rish Tushining Haqiqiy Ma'nolari</h2>
-                        
-                        <p style="margin-bottom: 20px; line-height: 1.8; word-wrap: break-word;">
-                            <strong>Ibn Sirin ta'limotiga ko'ra</strong>, suv tushlari hayot, poklik va baraka ramzidir. 
-                            "Tobir-ul Ahlam" kitobida suvning turli shakllari va holatlari batafsil izohlangan.
-                        </p>
-                        
-                        <!-- 1. Toza Suv Ichish -->
-                        <div class="article-section" style="background: rgba(52, 168, 83, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #34a853; overflow: hidden; max-width: 100%;">
-                            <h3 style="color: #34a853; margin-bottom: 15px; font-size: 1.3rem; word-wrap: break-word;">✅ Toza Suv Ichish Tushining Tahlili</h3>
-                            <p style="margin-bottom: 15px; word-wrap: break-word;">
-                                <strong>Ibn Sirin talqini:</strong> "Kim toza suv ichganini ko'rsa, u dinida mustahkam bo'ladi"
-                            </p>
-                            <p style="word-wrap: break-word;"><strong>Asosiy ma'nolari:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 20px; word-wrap: break-word; overflow-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Din mustahkamligi va imon kuchi</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Moliyaviy baraka va halol rizq</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Ruhiy poklik va ma'naviy barqarorlik</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Sog'lik yaxshilanishi va quvvatli immunitet</li>
-                            </ul>
-                            <p style="word-wrap: break-word;"><strong>Amaliy tavsiyalar:</strong></p>
-                            <ul style="padding-left: 20px; word-wrap: break-word; overflow-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Yangi biznes yoki loyiha boshlash (3 kundan keyin)</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Bank hisob raqamini ochish yoki moliyaviy rejalashtirish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Sog'lig'ingizni tekshirish va vitamin kursini boshlash</li>
-                            </ul>
-                        </div>
-
-                        <!-- 2. Daryo, Ko'l -->
-                        <div class="article-section" style="background: rgba(66, 133, 244, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #4285f4; overflow: hidden; max-width: 100%;">
-                            <h3 style="color: #4285f4; margin-bottom: 15px; font-size: 1.3rem; word-wrap: break-word;">🌊 Daryo, Ko'l yoki Dengiz Ko'rish</h3>
-                            <p style="margin-bottom: 15px; word-wrap: break-word;">
-                                <strong>Ibn Sirin talqini:</strong> "Daryo ko'rgan kishi boylikka erishadi"
-                            </p>
-                            <p style="word-wrap: break-word;"><strong>Asosiy ma'nolari:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Katta moliyaviy yutuqlar</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Hayotiy o'zgarishlar va yangi bosqichlar</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Ruhiy tinchlik va ichki muvozanat</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Ijodiy rivojlanish va g'oyalarning oqimi</li>
-                            </ul>
-                            <p style="word-wrap: break-word;"><strong>Dengiz turi bo'yicha:</strong></p>
-                            <ul style="padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Sokin dengiz:</strong> Tinch hayot, barqaror muvaffaqiyat</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>To'lqinli dengiz:</strong> Sinovlar, ammo oxiri yaxshi</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Moviy dengiz:</strong> Ruhiy ochiqlik, bilim olish</li>
-                            </ul>
-                        </div>
-
-                        <!-- 3. Loyqa Suv -->
-                        <div class="article-section" style="background: rgba(123, 31, 162, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #7b1fa2; overflow: hidden; max-width: 100%;">
-                            <h3 style="color: #7b1fa2; margin-bottom: 15px; font-size: 1.3rem; word-wrap: break-word;">⚠️ Loyqa Suv Ko'rish</h3>
-                            <p style="margin-bottom: 15px; word-wrap: break-word;">
-                                <strong>Ibn Sirin ogohlantirishi:</strong> "Loyqa suv muammo va g'ashlik alomatidir"
-                            </p>
-                            <p style="word-wrap: break-word;"><strong>Ogohlantiruvchi belgilar:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Moliyaviy qiyinchiliklar</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Sog'lik muammolari</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Oilaviy nizolar</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Ish joyidagi muammolar</li>
-                            </ul>
-                            <p style="word-wrap: break-word;"><strong>Himoya choralari:</strong></p>
-                            <ul style="padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Moliyaviy ehtiyotkorlik</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Dori-darmonlarni o'z vaqtida ishlatish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Oilaviy masalalarda sabr-toqat</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Ish joyida ehtiyot bo'lish</li>
-                            </ul>
-                        </div>
-
-                        <!-- Tavsiyalar -->
-                        <div class="article-section" style="background: rgba(251, 192, 45, 0.1); padding: 20px; border-radius: 12px; border-left: 5px solid #fbc02d; overflow: hidden; max-width: 100%;">
-                            <h3 style="color: #fbc02d; margin-bottom: 15px; font-size: 1.3rem; word-wrap: break-word;">📝 Umumiy Tavsiyalar</h3>
-                            <ul style="padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Tushni esdalikda yozib qo'ying</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Suv holati va rangi haqida eslang</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Tushdagi his-tuyg'ularni yozing</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">3 kun ichida amal qiling</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Post 2 - Hayvon tushlari -->
-            <div class="post-card">
-                <span class="post-category">🐍 Hayvon tushlari</span>
-                <h3 class="post-title">Hayvonlar Tushlarda Nimani Anglatadi?</h3>
-                <p class="post-excerpt">
-                    Hayvonlar tushlarda turli ma'nolarni anglatadi. 
-                    Masalan, arslon kuch va hokimiyatni, quyon esa qo'rquvni ifodalashi mumkin.
-                </p>
-                <div class="post-meta">
-                    <span class="post-date">📅 10-yanvar, 2026</span>
-                    <a href="javascript:void(0)" class="read-more" onclick="openArticle('hayvon', this)">
-                        To'liq o'qish <span>→</span>
-                    </a>
-                </div>
-                
-                <!-- Po'stning butun kontenti (yashirin) -->
-                <div class="full-content" style="display: none; overflow: hidden;">
-                    <div class="article-body" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word;">
-                        
-                        <h2 style="color: #ffcc00; margin-bottom: 25px; font-size: 1.8rem; line-height: 1.3; word-wrap: break-word;">Hayvonlar Tushlarda Nimani Anglatadi?</h2>
-                        
-                        <p style="margin-bottom: 20px; line-height: 1.8; word-wrap: break-word;">
-                            <strong>Ibn Sirin asarlarida</strong> har bir hayvonning o'ziga xos ma'nolari bor. 
-                            Hayvonning turi, harakati va tushdagi holati tahlilga ta'sir qiladi.
-                        </p>
-                        
-                        <!-- 1. Yirtqich hayvonlar -->
-                        <div class="article-section" style="background: rgba(52, 168, 83, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #34a853; overflow: hidden; max-width: 100%;">
-                            <h3 style="color: #34a853; margin-bottom: 15px; font-size: 1.3rem; word-wrap: break-word;">🦁 Yirtqich Hayvonlar</h3>
-                            <p style="word-wrap: break-word;"><strong>Arslon ko'rish:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Hukumat yoki yuqori lavozim:</strong> Ishda ko'tarilish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Kuch va nufuz:</strong> Jamiyatdagi obro'</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Himoya:</strong> Kuchli homiy topish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Sokin arslon:</strong> O'zini tuta bilish, donolik</li>
-                            </ul>
-                            
-                            <p style="word-wrap: break-word;"><strong>Yo'lbars ko'rish:</strong></p>
-                            <ul style="padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Jasorat va qat'iyat</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Xavfli raqobat</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Tez muvaffaqiyat</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Qo'rquvdan ozod bo'lish</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Post 3 - Ish tushlari -->
-            <div class="post-card">
-                <span class="post-category">💼 Ish tushlari</span>
-                <h3 class="post-title">Ish va Karera Tushlarining Tahlili</h3>
-                <p class="post-excerpt">
-                    Ish haqidagi tushlar kelajakdagi kasbiy yutuqlar, 
-                    muammolar yoki yangi imkoniyatlar haqida xabar berishi mumkin.
-                </p>
-                <div class="post-meta">
-                    <span class="post-date">📅 5-yanvar, 2026</span>
-                    <a href="javascript:void(0)" class="read-more" onclick="openArticle('ish', this)">
-                        To'liq o'qish <span>→</span>
-                    </a>
-                </div>
-                
-                <!-- Po'stning butun kontenti (yashirin) -->
-                <div class="full-content" style="display: none; overflow: hidden;">
-                    <div class="article-body" style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); max-width: 100%; overflow-wrap: break-word; word-wrap: break-word;">
-                        
-                        <h2 style="color: #ffcc00; margin-bottom: 25px; font-size: 1.8rem; line-height: 1.3; word-wrap: break-word;">Ish va Karera Tushlarining Tahlili</h2>
-                        
-                        <p style="margin-bottom: 20px; line-height: 1.8; word-wrap: break-word;">
-                            <strong>Kasbiy hayotingizdagi</strong> o'zgarishlar, imkoniyatlar va muammolar tushlarda 
-                            oldindan ko'rsatilishi mumkin. Ibn Sirin ish tushlarini alohida ahamiyat bergan.
-                        </p>
-                        
-                        <!-- 1. Yangi ish -->
-                        <div class="article-section" style="background: rgba(52, 168, 83, 0.1); padding: 20px; border-radius: 12px; margin-bottom: 25px; border-left: 5px solid #34a853; overflow: hidden; max-width: 100%;">
-                            <h3 style="color: #34a853; margin-bottom: 15px; font-size: 1.3rem; word-wrap: break-word;">💼 Yangi Ish Boshlash</h3>
-                            <p style="word-wrap: break-word;"><strong>Yangi ofisda ishlash:</strong></p>
-                            <ul style="margin-bottom: 15px; padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Yangi martaba bosqichi</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Ko'nikmalarni rivojlantirish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Yaxshi maosh oshishi</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;">Muhim loyihalar</li>
-                            </ul>
-                            
-                            <p style="word-wrap: break-word;"><strong>Ish intervyusi:</strong></p>
-                            <ul style="padding-left: 20px; word-wrap: break-word;">
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Muvaffaqiyatli intervyu:</strong> Ishga qabul qilinish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Muvaffaqiyatsiz:</strong> Tayyorgarlikni kuchaytirish</li>
-                                <li style="word-wrap: break-word; margin-bottom: 5px;"><strong>Qiyin savollar:</strong> Qo'shimcha o'qish kerak</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<script>
-// ===== PO'STNI OCHISH/YOPISH FUNKSIYASI =====
-function openArticle(type, element) {
-    playButtonClickSound();
-    
-    const postCard = element.closest('.post-card');
-    const content = postCard.querySelector('.full-content');
-    const readMoreBtn = element;
-    
-    // Agar ochiq bo'lsa yopish
-    if (content.style.display === 'block') {
-        content.style.display = 'none';
-        readMoreBtn.innerHTML = 'To\'liq o\'qish <span>→</span>';
-    } else {
-        // Boshqa ochiq bo'lgan postlarni yopish
-        document.querySelectorAll('.full-content').forEach(fullContent => {
-            fullContent.style.display = 'none';
-            const btn = fullContent.closest('.post-card').querySelector('.read-more');
-            if (btn) btn.innerHTML = 'To\'liq o\'qish <span>→</span>';
-        });
-        
-        // Yangisini ochish
-        content.style.display = 'block';
-        readMoreBtn.innerHTML = 'Kamroq ko\'rsatish <span>↑</span>';
-    }
-}
-</script>
-                    
-                    
-             <!-- BURJ BO'LIMI -->
-        <section id="burj" class="section">
-            <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">♈</div>
-                    <h2 class="card-title">Burj Aniqlash</h2>
-                </div>
-                
-                <div class="zodiac-form">
-                    <p class="form-text">
-                        Tug'ilgan kuningizni tanlang va burjingizni bilib oling
-                    </p>
-                    
-                    <div class="input-group">
-                        <div class="date-input">
-                            <label>📅 Kun</label>
-                            <input type="number" id="day" min="1" max="31" value="26" placeholder="Kun">
-                        </div>
-                        
-                        <div class="date-input">
-                            <label>📆 Oy</label>
-                            <select id="month">
-                                <option value="1">Yanvar</option>
-                                <option value="2">Fevral</option>
-                                <option value="3">Mart</option>
-                                <option value="4">Aprel</option>
-                                <option value="5">May</option>
-                                <option value="6" selected>Iyun</option>
-                                <option value="7">Iyul</option>
-                                <option value="8">Avgust</option>
-                                <option value="9">Sentabr</option>
-                                <option value="10">Oktabr</option>
-                                <option value="11">Noyabr</option>
-                                <option value="12">Dekabr</option>
-                            </select>
-                        </div>
+                        <div class="simple-post-meta">📅 15-yanvar, 2026</div>
                     </div>
                     
-                    <button class="calculate-btn" onclick="calculateZodiac()">
-                        <span>✨</span> Burjimni Aniqlash
-                    </button>
-                    
-                    <div class="result-section">
-                        <div id="zodiac-result"></div>
+                    <div class="simple-post" onclick="togglePost(this)">
+                        <div class="simple-post-title">Arslon ko'rish</div>
+                        <div class="simple-post-excerpt">
+                            O'rmonda sokin yotgan arslon ko'rdim. U menga qarab turardi...
+                        </div>
+                        <div class="simple-post-full">
+                            <p><strong>📖 Ibn Sirin talqini:</strong> Arslon - kuch va hokimiyat ramzidir</p>
+                            <p><strong>✅ Ma'nolari:</strong></p>
+                            <ul style="padding-left: 20px; margin: 10px 0;">
+                                <li>Ishda ko'tarilish va mas'uliyat</li>
+                                <li>Jamiyatdagi obro' va nufuz</li>
+                                <li>Kuchli homiy topish</li>
+                            </ul>
+                            <p><strong>💡 Tavsiya:</strong> Karyera rejalaringizni ko'rib chiqing</p>
+                        </div>
+                        <div class="simple-post-meta">📅 10-yanvar, 2026</div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- BIZ HAQIMIZDA BO'LIMI -->
-        <section id="about" class="section">
+        
+        <!-- BURJ ANIQLASH SECTION -->
+        <section id="burj" class="section">
             <div class="card">
-                <div class="card-header">
-                    <div class="card-icon">🌟</div>
-                    <h2 class="card-title">Biz haqimizda</h2>
+                <h2 class="section-title">Burj Aniqlash</h2>
+                <p style="text-align: center; color: #ccc; margin-bottom: 30px;">
+                    Tug'ilgan kuningizni tanlang va burjingizni bilib oling
+                </p>
+                
+                <div class="zodiac-inputs">
+                    <div class="date-input">
+                        <label>Kun</label>
+                        <input type="number" id="zodiac-day" min="1" max="31" value="26" placeholder="26">
+                    </div>
+                    
+                    <div class="date-input">
+                        <label>Oy</label>
+                        <select id="zodiac-month">
+                            <option value="1">Yanvar</option>
+                            <option value="2">Fevral</option>
+                            <option value="3">Mart</option>
+                            <option value="4">Aprel</option>
+                            <option value="5">May</option>
+                            <option value="6" selected>Iyun</option>
+                            <option value="7">Iyul</option>
+                            <option value="8">Avgust</option>
+                            <option value="9">Sentabr</option>
+                            <option value="10">Oktabr</option>
+                            <option value="11">Noyabr</option>
+                            <option value="12">Dekabr</option>
+                        </select>
+                    </div>
                 </div>
                 
-                <div class="about-info">
-                    <h3 style="font-size: 2rem; color: var(--accent); margin-bottom: 20px; text-align: center;">
-                        TushVaBurj.uz haqida
-                    </h3>
+                <button class="calculate-btn" onclick="calculateZodiac()">
+                    ✨ Burjimni Aniqlash
+                </button>
+                
+                <!-- NATIJA -->
+                <div id="zodiac-result" class="zodiac-result"></div>
+            </div>
+        </section>
+        
+        <!-- BIZ HAQIMIZDA SECTION -->
+        <section id="about" class="section">
+            <div class="card">
+                <h2 class="section-title">Biz haqimizda</h2>
+                
+                <div style="background: rgba(106, 17, 203, 0.1); padding: 25px; border-radius: 12px; margin: 20px 0;">
+                    <h3 style="color: #ffcc00; margin-bottom: 20px; text-align: center;">TushVaBurj.uz haqida</h3>
                     
                     <p style="color: #ccc; line-height: 1.7; margin-bottom: 25px; text-align: center;">
-                        <strong>TushVaBurj.uz</strong> - bu tushlar va astrologiya haqida ishonchli va professional ma'lumotlar taqdim etuvchi platforma. 
-                        Bizning maqsadimiz - Ibn Sirin ta'limoti asosida tushlarning haqiqiy ma'nolarini va astrologik bilimlarni oddiy, tushunarli va zamonaviy tarzda yetkazish.
+                        <strong>TushVaBurj.uz</strong> - bu tushlar va astrologiya haqida ishonchli va professional ma'lumotlar taqdim etuvchi platforma.
                     </p>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <div class="info-icon">📚</div>
-                            <h4 class="info-title">Ilmiy Asos</h4>
-                            <p class="info-text">Ibn Sirin asarlari, zamonaviy psixologiya tadqiqotlari va an'anaviy astrologik bilimlar asosida</p>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">🎯</div>
-                            <h4 class="info-title">Maqsadimiz</h4>
-                            <p class="info-text">Tushlarning haqiqiy ma'nolarini oddiy va tushunarli tarzda tushuntirish, burjlar haqida aniq ma'lumot berish</p>
-                        </div>
-                        
-                        <div class="info-card">
-                            <div class="info-icon">🔬</div>
-                            <h4 class="info-title">Professionalizm</h4>
-                            <p class="info-text">Mutaxassislar tomonidan tayyorlangan aniq, ishonchli va doimiy yangilanib turiladigan ma'lumotlar</p>
-                        </div>
-                    </div>
                 </div>
                 
                 <div class="footer">
@@ -988,20 +421,12 @@ function openArticle(type, element) {
         </section>
     </div>
 
+    <!-- JAVASCRIPT -->
     <script>
         // ===== OVOZ FUNKSIYASI =====
-        let audioContext;
-        
-        function playButtonClickSound() {
+        function playClickSound() {
             try {
-                if (!audioContext) {
-                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                }
-                
-                if (audioContext.state === 'suspended') {
-                    audioContext.resume();
-                }
-                
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
                 const oscillator = audioContext.createOscillator();
                 const gainNode = audioContext.createGain();
                 
@@ -1016,382 +441,161 @@ function openArticle(type, element) {
                 
                 oscillator.start(audioContext.currentTime);
                 oscillator.stop(audioContext.currentTime + 0.1);
-                
             } catch (e) {
-                // Ovozi ishlamasa ham sayt ishlashda davom etadi
+                console.log("Ovoz ishlamadi");
             }
         }
 
         // ===== BO'LIMLARNI O'ZGARTIRISH =====
-        function showSection(sectionId, buttonElement) {
-            playButtonClickSound();
+        function showSection(sectionId) {
+            playClickSound();
             
-            // Barcha bo'limlarni yashirish
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             
-            // Barcha tugmalardan active klassini olib tashlash
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Tanlangan bo'limni ko'rsatish
             document.getElementById(sectionId).classList.add('active');
+            event.target.classList.add('active');
             
-            // Tanlangan tugmani active qilish
-            if (buttonElement) {
-                buttonElement.classList.add('active');
-            }
-            
-            // Yuqoriga scroll qilish
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-             // ===== SAYT YUKLANGANDA =====
-        document.addEventListener('DOMContentLoaded', function() {
-            // Barcha bo'limlarni yashirish
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
+
+        // ===== PO'ST QO'SHISH - ODDIY =====
+        function addPost() {
+            playClickSound();
             
-            // Barcha tugmalardan active klassini olib tashlash
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            const title = document.getElementById('post-title').value.trim();
+            const content = document.getElementById('post-content').value.trim();
             
-            // Faqat Tush Tabiri bo'limini ko'rsatish
-            document.getElementById('tush').classList.add('active');
-            
-            // Faqat Tush Tabiri tugmasini active qilish
-            document.querySelector('.nav-btn').classList.add('active');
-        });
-        
-        // ===== MAQOLA KO'RSATISH =====
-        function showArticle(type) {
-            playButtonClickSound();
-            let title = '';
-            let content = '';
-            
-            if (type === 'suv') {
-                title = 'Suv Ko\'rish Tushining Tahlili';
-                content = 'Suv tushlari hayotiy energiya, tozalanish va hissiyotlarni ifodalaydi. Tushdagi suvning holati tahlilga ta\'sir qiladi. Toza suv omad, manba esa yangi boshlanishlarni anglatadi.';
-            } else if (type === 'hayvon') {
-                title = 'Hayvonlar Tushlarda Nimani Anglatadi?';
-                content = 'Hayvonlar tushlarda turli ma\'nolarni anglatadi. Arslon kuch va hokimiyatni, quyon esa qo\'rquvni ifodalashi mumkin. Har bir hayvonning o\'ziga xos ma\'nosi bor.';
-            } else if (type === 'ish') {
-                title = 'Ish va Karera Tushlarining Tahlili';
-                content = 'Ish haqidagi tushlar kelajakdagi kasbiy yutuqlar, muammolar yoki yangi imkoniyatlar haqida xabar berishi mumkin. Bu tushlar hayotingizdagi kasbiy o\'zgarishlarni anglatishi mumkin.';
+            if (!title || !content) {
+                alert("Iltimos, tush nomi va tavsifini kiriting!");
+                return;
             }
             
-            alert(`MAQOLA: ${title}\n\n${content}\n\nTo'liq maqola tez orada yuklanadi...`);
+            const postsContainer = document.getElementById('posts-container');
+            const postDiv = document.createElement('div');
+            postDiv.className = 'simple-post';
+            postDiv.onclick = function() { togglePost(this); };
+            
+            // Excerpt - birinchi 100 ta belgi
+            const excerpt = content.length > 100 ? content.substring(0, 100) + '...' : content;
+            
+            postDiv.innerHTML = `
+                <div class="simple-post-title">${title}</div>
+                <div class="simple-post-excerpt">${excerpt}</div>
+                <div class="simple-post-full">
+                    <p><strong>📖 Sizning tushingiz:</strong></p>
+                    <p>${content}</p>
+                    <p style="margin-top: 15px; color: #ffcc00;">
+                        <strong>💡 Eslatma:</strong> Tahlilni tez orada qo'shamiz
+                    </p>
+                </div>
+                <div class="simple-post-meta">📅 ${new Date().toLocaleDateString('uz-UZ')}</div>
+            `;
+            
+            // Yangi postni boshiga qo'shish
+            postsContainer.prepend(postDiv);
+            
+            // Formani tozalash
+            document.getElementById('post-title').value = '';
+            document.getElementById('post-content').value = '';
+            
+            alert("Tushingiz saqlandi! 🎉\nEndi tushni bosib, to'liq o'qishingiz mumkin.");
         }
-        
+
+        // ===== PO'STNI OCHISH/YOPISH =====
+        function togglePost(postElement) {
+            playClickSound();
+            const fullContent = postElement.querySelector('.simple-post-full');
+            fullContent.classList.toggle('show');
+        }
+
         // ===== BURJ HISOBLASH =====
         function calculateZodiac() {
-            playButtonClickSound();
+            playClickSound();
             
-            const day = parseInt(document.getElementById('day').value);
-            const month = parseInt(document.getElementById('month').value);
+            const day = parseInt(document.getElementById('zodiac-day').value);
+            const month = parseInt(document.getElementById('zodiac-month').value);
             
             if (!day || day < 1 || day > 31) {
                 alert("Iltimos, to'g'ri kun kiriting (1-31)");
                 return;
             }
             
-            let zodiac = '';
-            let symbol = '';
-            let element = '';
-            let planet = '';
-            let quality = '';
-            let compatibility = '';
-            let luckyColors = '';
-            let luckyStones = '';
+            let zodiac = '', symbol = '';
             
-            // Burj ma'lumotlari - KO'PROQ MA'LUMOT QO'SHILDI
             if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
                 zodiac = "Qo'y"; symbol = "♈";
-                element = "Olov"; planet = "Mars";
-                quality = "Boshlovchi"; compatibility = "Tarozi, O'qotar";
-                luckyColors = "Qizil, Qora"; luckyStones = "Olmos, Yoqut";
             } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
                 zodiac = "Buzoq"; symbol = "♉";
-                element = "Yer"; planet = "Venera";
-                quality = "Barqaror"; compatibility = "Chayon, Baliq";
-                luckyColors = "Yashil, Pushti"; luckyStones = "Zumrad, Opal";
             } else if ((month === 5 && day >= 21) || (month === 6 && day <= 20)) {
                 zodiac = "Egizak"; symbol = "♊";
-                element = "Havo"; planet = "Merkuriy";
-                quality = "O'zgaruvchan"; compatibility = "Qisqichbaqa, Qovg'a";
-                luckyColors = "Sariq, Oq"; luckyStones = "Oqqush, Aqik";
             } else if ((month === 6 && day >= 21) || (month === 7 && day <= 22)) {
                 zodiac = "Qisqichbaqa"; symbol = "♋";
-                element = "Suv"; planet = "Oy";
-                quality = "Barqaror"; compatibility = "Egizak, Parizod";
-                luckyColors = "Kumush, Oq"; luckyStones = "Marvarid, Oy toshi";
             } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
                 zodiac = "Arslon"; symbol = "♌";
-                element = "Olov"; planet = "Quyosh";
-                quality = "Boshlovchi"; compatibility = "Qo'y, Chayon";
-                luckyColors = "Oltin, To'q sariq"; luckyStones = "Oltin, Olmos";
             } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
                 zodiac = "Parizod"; symbol = "♍";
-                element = "Yer"; planet = "Merkuriy";
-                quality = "O'zgaruvchan"; compatibility = "Baliq, Tarozi";
-                luckyColors = "Kulrang, Moviy"; luckyStones = "Safir, Topaz";
             } else if ((month === 9 && day >= 23) || (month === 10 && day <= 22)) {
                 zodiac = "Tarozi"; symbol = "♎";
-                element = "Havo"; planet = "Venera";
-                quality = "Boshlovchi"; compatibility = "Qo'y, Arslon";
-                luckyColors = "Moviy, Pushti"; luckyStones = "Opal, Zumrad";
             } else if ((month === 10 && day >= 23) || (month === 11 && day <= 21)) {
                 zodiac = "Chayon"; symbol = "♏";
-                element = "Suv"; planet = "Pluton";
-                quality = "Barqaror"; compatibility = "Buzoq, O'qotar";
-                luckyColors = "Qizil, Qora"; luckyStones = "Yoqut, Topaz";
             } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
                 zodiac = "O'qotar"; symbol = "♐";
-                element = "Olov"; planet = "Yupiter";
-                quality = "O'zgaruvchan"; compatibility = "Chayon, Qovg'a";
-                luckyColors = "Binafsha, Ko'k"; luckyStones = "Topaz, Ametist";
             } else if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
                 zodiac = "Echki"; symbol = "♑";
-                element = "Yer"; planet = "Saturn";
-                quality = "Boshlovchi"; compatibility = "Buzoq, Parizod";
-                luckyColors = "Jigarrang, Qora"; luckyStones = "Onyx, Granat";
             } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
                 zodiac = "Qovg'a"; symbol = "♒";
-                element = "Havo"; planet = "Uran";
-                quality = "Barqaror"; compatibility = "Egizak, O'qotar";
-                luckyColors = "Kobalt, Kumush"; luckyStones = "Ametist, Opal";
             } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
                 zodiac = "Baliq"; symbol = "♓";
-                element = "Suv"; planet = "Neptun";
-                quality = "O'zgaruvchan"; compatibility = "Parizod, Buzoq";
-                luckyColors = "Moviy, Yashil"; luckyStones = "Aqik, Marvarid";
             }
             
-            const monthNames = {
-                1: 'Yanvar', 2: 'Fevral', 3: 'Mart', 4: 'Aprel',
-                5: 'May', 6: 'Iyun', 7: 'Iyul', 8: 'Avgust',
-                9: 'Sentabr', 10: 'Oktabr', 11: 'Noyabr', 12: 'Dekabr'
-            };
+            const monthNames = ['', 'Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 
+                              'Iyul', 'Avgust', 'Sentabr', 'Oktabr', 'Noyabr', 'Dekabr'];
             
             const luckyNumber = (day % 9) || 9;
-            const description = getZodiacDescription(zodiac);
             
-            document.getElementById('zodiac-result').innerHTML = `
-                <div class="zodiac-result">
-                    <h3 style="color: var(--accent); margin-bottom: 20px;">✨ Sizning burjingiz ✨</h3>
-                    <div class="zodiac-display">${zodiac} ${symbol}</div>
-                    <p style="color: #aaa; margin-top: 10px; font-size: 1.1rem;">
-                        Tug'ilgan sana: ${day} - ${monthNames[month]}
-                    </p>
-                    
-                    <div class="zodiac-details">
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">📖</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Tavsif:</strong>
-                                <span style="color: #ddd;">${description}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">🌍</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Element:</strong>
-                                <span style="color: #ddd;">${element}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">🪐</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Sayyora:</strong>
-                                <span style="color: #ddd;">${planet}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">💞</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Mos keladigan burjlar:</strong>
-                                <span style="color: #ddd;">${compatibility}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">🎨</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Omadli ranglar:</strong>
-                                <span style="color: #ddd;">${luckyColors}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">💎</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Tosh:</strong>
-                                <span style="color: #ddd;">${luckyStones}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="detail-item">
-                            <span style="color: var(--accent); font-size: 1.2rem;">⭐</span>
-                            <div style="flex: 1;">
-                                <strong style="color: var(--accent); display: block; margin-bottom: 5px;">Omadli raqam:</strong>
-                                <span style="color: #ddd; font-size: 1.3rem; font-weight: bold;">${luckyNumber}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="share-section">
-                        <h3 style="text-align: center; color: var(--accent); margin-bottom: 20px;">
-                            Natijani Ulashing
-                        </h3>
-                        <div class="share-buttons">
-                            <button class="share-btn" style="background: #0088cc; color: white;" onclick="shareTelegram()">
-                                <span>📱</span> Telegram
-                            </button>
-                            <button class="share-btn" style="background: #25D366; color: white;" onclick="shareWhatsApp()">
-                                <span>📲</span> WhatsApp
-                            </button>
-                            <button class="print-btn" onclick="printZodiac()">
-                                <span>🖨️</span> Nusxa olish
-                            </button>
-                        </div>
-                    </div>
+            const resultDiv = document.getElementById('zodiac-result');
+            resultDiv.innerHTML = `
+                <h3 style="color: #ffcc00; margin-bottom: 15px;">✨ Sizning burjingiz</h3>
+                <div class="zodiac-name">${zodiac} ${symbol}</div>
+                <p style="color: #aaa; margin-bottom: 20px;">
+                    Tug'ilgan sana: ${day} - ${monthNames[month]}
+                </p>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                    <p><strong>📝 Tavsif:</strong> ${getZodiacDescription(zodiac)}</p>
+                    <p style="margin-top: 15px;"><strong>⭐ Omadli raqam:</strong> 
+                    <span style="font-size: 2rem; color: #ffcc00;">${luckyNumber}</span></p>
                 </div>
             `;
+            
+            resultDiv.classList.add('show');
         }
-        
+
         function getZodiacDescription(zodiac) {
             const descriptions = {
-                "Qo'y": "Faol, energik, yangi boshlanishlarni yaxshi ko'ruvchi. Boshqa odamlarni rag'batlantirish qobiliyatiga ega.",
-                "Buzoq": "Barqaror, ishonchli, sabrli va mehnatsevar. Amaliy yondashuv va aniq maqsadlarga ega.",
-                "Egizak": "Qiziquvchan, muloqotchi, tez o'zgaruvchan. Yangi g'oyalar va tajribalarni qidiruvchi.",
-                "Qisqichbaqa": "Sezgir, oilaviy, himoyachi va sodiq. Uyda qulaylik va xavfsizlikni qadirlaydi.",
-                "Arslon": "Karizmatik, yetakchi, ijodkor va jasur. Boshqalarga ilhom berish qobiliyatiga ega.",
-                "Parizod": "Batafsil, tashkilotchi, mukammallikka intiluvchi. Tartib va aniqlikni yaxshi ko'radi.",
-                "Tarozi": "Adolatli, munozarali, go'zallikni qadirlovchi. Muvozanat va hamjihatlikni istaydi.",
-                "Chayon": "Intensiv, serg'ayrat, sirli va maqsadli. Chuqur hissiyotlar va sadoqatga ega.",
-                "O'qotar": "Ozodlikni sevuvchi, sayohatchi, falsafiy. Bilim va yangi tajribalarni qidiruvchi.",
-                "Echki": "Ambitsiyali, mas'uliyatli, disciplinali. Uzoq muddatli maqsadlarga erishishga qodir.",
-                "Qovg'a": "Ijodiy, gumanist, mustaqil va innovatsion. Dunyoni yaxshilashga intiladi.",
-                "Baliq": "Sezgir, ruhiy, xayolparast va mehribon. Boshqalarga shafqat va yordam berishni yaxshi ko'radi."
+                "Qo'y": "Faol, energik, yangi boshlanishlarni yaxshi ko'ruvchi",
+                "Buzoq": "Barqaror, ishonchli, sabrli va mehnatsevar",
+                "Egizak": "Qiziquvchan, muloqotchi, tez o'zgaruvchan",
+                "Qisqichbaqa": "Sezgir, oilaviy, himoyachi va sodiq",
+                "Arslon": "Karizmatik, yetakchi, ijodkor va jasur",
+                "Parizod": "Batafsil, tashkilotchi, mukammallikka intiluvchi",
+                "Tarozi": "Adolatli, munozarali, go'zallikni qadirlovchi",
+                "Chayon": "Intensiv, serg'ayrat, sirli va maqsadli",
+                "O'qotar": "Ozodlikni sevuvchi, sayohatchi, falsafiy",
+                "Echki": "Ambitsiyali, mas'uliyatli, disciplinali",
+                "Qovg'a": "Ijodiy, gumanist, mustaqil va innovatsion",
+                "Baliq": "Sezgir, ruhiy, xayolparast va mehribon"
             };
-            return descriptions[zodiac] || "";
+            return descriptions[zodiac] || "Sizning burjingiz juda ajoyib xususiyatlarga ega";
         }
-        
-        // ===== NUSXA OLISH FUNKSIYASI =====
-        function printZodiac() {
-            playButtonClickSound();
+                // ===== SAYT YUKLANGANDA =====
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             
-            const originalContent = document.body.innerHTML;
-            const printContent = document.getElementById('zodiac-result').innerHTML;
-            
-            document.body.innerHTML = `
-                <!DOCTYPE html>
-                <html>
-                <head>
-                    <title>Burj Natijasi - TushVaBurj.uz</title>
-                    <style>
-                        body { 
-                            font-family: 'Segoe UI', sans-serif; 
-                            padding: 20px; 
-                            background: white; 
-                            color: black; 
-                        }
-                        .print-container { 
-                            max-width: 800px; 
-                            margin: 0 auto; 
-                            padding: 30px; 
-                            border: 2px solid #6a11cb; 
-                            border-radius: 20px; 
-                        }
-                        .print-header { 
-                            text-align: center; 
-                            margin-bottom: 30px; 
-                            color: #6a11cb; 
-                        }
-                        .print-title { 
-                            font-size: 2.5rem; 
-                            font-weight: bold; 
-                            margin-bottom: 10px; 
-                        }
-                        .print-date { 
-                            color: #666; 
-                            font-size: 1.1rem; 
-                        }
-                        .zodiac-display { 
-                            font-size: 3rem; 
-                            font-weight: bold; 
-                            color: #ff9900; 
-                            text-align: center; 
-                            margin: 20px 0; 
-                        }
-                        .footer { 
-                            text-align: center; 
-                            margin-top: 30px; 
-                            color: #666; 
-                            font-size: 0.9rem; 
-                            border-top: 1px solid #ddd; 
-                            padding-top: 20px; 
-                        }
-                       .footer p {
-    word-break: break-word; /* Uzun so'zlarni uzib yozadi */
-    overflow-wrap: break-word; /* Chiqizdan chiqib ketmasligi */
-}
-
-@media (max-width: 480px) {
-    .footer p {
-        font-size: 0.85rem; /* Mobilda kichikroq */
-        line-height: 1.4;
-    }
-}
-                        @media print {
-                            body { padding: 0; }
-                            .print-container { border: none; }
-                        }
-                    </style>
-                </head>
-                <body>
-                    <div class="print-container">
-                        <div class="print-header">
-                            <div class="print-title">TushVaBurj.uz</div>
-                            <div class="print-date">Natija: ${new Date().toLocaleDateString('uz-UZ')}</div>
-                        </div>
-                        ${printContent}
-                        <div class="footer">
-                            <p>© 2026 TushVaBurj.uz - Barcha huquqlar himoyalangan</p>
-                            <p>www.tushvaburj.uz | info@tushvaburj.uz</p>
-                        </div>
-                    </div>
-                </body>
-                </html>
-            `;
-                        window.print();
-            document.body.innerHTML = originalContent;
-            showSection('burj');
-        }
-        
-        // ===== ULASHISH FUNKSIYALARI =====
-        function shareTelegram() {
-            playButtonClickSound();
-            const zodiacElement = document.querySelector('.zodiac-display');
-            const zodiac = zodiacElement ? zodiacElement.textContent : 'Burjim';
-            const text = `Mening burjim: ${zodiac}\nTushVaBurj.uz saytida aniqladim\n👉 https://tushvaburj.uz`;
-            const url = `https://t.me/share/url?url=${encodeURIComponent('https://tushvaburj.uz')}&text=${encodeURIComponent(text)}`;
-            window.open(url, '_blank');
-        }
-        
-        function shareWhatsApp() {
-            playButtonClickSound();
-            const zodiacElement = document.querySelector('.zodiac-display');
-            const zodiac = zodiacElement ? zodiacElement.textContent : 'Burjim';
-            const text = `Mening burjim: ${zodiac}%0ATushVaBurj.uz saytida aniqladim%0Ahttps://tushvaburj.uz`;
-            window.open(`https://wa.me/?text=${text}`, '_blank');
-        }
+            document.getElementById('tush').classList.add('active');
+            document.querySelector('.tab').classList.add('active');
+        });
     </script>
 </body>
 </html>
